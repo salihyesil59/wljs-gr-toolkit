@@ -107,3 +107,9 @@ running them:
   the textbook $3FH^2 = \kappa\rho + \tfrac{1}{2}(FR - f) - 3H\dot F$
 - $\Lambda$CDM: $E^2 = \Omega_m(1+z)^3 + \Omega_r(1+z)^4 + \Omega_k(1+z)^2 + \Omega_\Lambda$,
   $q_0 = -1 + \tfrac{3}{2}\Omega_m$, acceleration from $z = 0.671$ at $\Omega_m = 0.3$
+
+## License
+
+MIT — see [LICENSE](LICENSE). Use it, change it, publish with it; just keep the copyright
+notice. If it ends up being useful in published work, a citation is appreciated but not
+required.
