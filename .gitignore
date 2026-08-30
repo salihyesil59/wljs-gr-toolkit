@@ -1,0 +1,18 @@
+# Claude Code local settings
+.claude/settings.local.json
+
+# WLJS Notebook scratch and backups
+*.wln.bak
+*.wln~
+.wljs/
+attachments/
+
+# Wolfram
+*.mx
+*.nb.bak
+Untitled*.nb
+
+# OS
+Thumbs.db
+desktop.ini
+.DS_Store

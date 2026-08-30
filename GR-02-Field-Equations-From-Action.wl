@@ -1,0 +1,660 @@
+(* ::Package:: *)
+
+(* ============================================================================
+   GR-02 : Field Equations and Friedmann Equations from an Action
+   WLJS Notebook source.  Build the notebook with
+
+       wolframscript -file wl2wln.wls GR-02-Field-Equations-From-Action.wl
+
+   ============================================================================ *)
+
+(*::md::
+# Field Equations from an Action
+
+Write down a gravitational action, get the field equations and the Friedmann equations.
+The action does not have to be the Einstein-Hilbert one: $f(R)$, $f(R,T)$, $f(T)$, $f(Q)$
+and Gauss-Bonnet $f(R,\mathcal{G})$ models are all handled.
+
+$$
+S \;=\; \frac{1}{2\kappa}\int \sqrt{-g}\; f\big(R,\; T,\; \mathcal{T},\; Q,\; \mathcal{G}\big)\, d^4x \;+\; S_{m}
+$$
+
+## Two routes, and why there are two
+
+$f(R)$ and $f(R,T)$ live on a Levi-Civita connection, so their field equations follow from
+varying the metric and can be written covariantly for **any** metric ansatz.
+$f(\mathcal{T})$ and $f(Q)$ do not: their fundamental variable is a tetrad or a flat
+non-metric connection, and curvature is not what carries the gravitational field there.
+So this notebook gives you two engines.
+
+| | **Part I** covariant field equations | **Part II** FLRW minisuperspace |
+|---|---|---|
+| what it varies | the metric $g_{\mu\nu}$, covariantly | the lapse $N(t)$ and scale factor $a(t)$ |
+| valid for | any metric you supply | FLRW only |
+| handles | $R$, $f(R)$, $f(R,T)$ | $f(R)$, $f(\mathcal{T})$, $f(Q)$, $f(R,\mathcal{G})$ |
+| gives you | $\mathcal{E}_{\mu\nu} = 0$ | Friedmann I and II, and $E(z) = H(z)/H_0$ |
+
+Both are derivations, not quotations, and where they overlap (any $f(R)$ on FLRW) the
+notebook checks that they agree &mdash; that check is in the last section.
+
+## Conventions
+
+Signature $(-,+,+,+)$, $\kappa = 8\pi G/c^4$, Levi-Civita connection for the curvature
+sector. A perfect fluid means $T_{\mu\nu} = (\rho+p)u_\mu u_\nu + p\, g_{\mu\nu}$ with
+$u^\mu u_\mu = -1$.
+
+The scalars are written as the symbols `Rs` (Ricci scalar), `Tms` (trace $T = g^{\mu\nu}T_{\mu\nu}$
+of the stress tensor), `Ts` (torsion scalar), `Qs` (non-metricity scalar) and `Gs`
+(Gauss-Bonnet). You build the action out of those.
+::*)
+
+(*::md::
+## 1. Setup
+
+Curvature comes from the same Function Repository resources as GR-01. They are cached
+after the first download, so this cell needs the network only once.
+::*)
+
+(*::code::*)
+ClearAll["Global`*"];
+
+$grMetric      = ResourceFunction["MetricTensor"];
+$grChristoffel = ResourceFunction["ChristoffelSymbols"];
+$grRiemann     = ResourceFunction["RiemannTensor"];
+$grRicci       = ResourceFunction["RicciTensor"];
+$grEinstein    = ResourceFunction["EinsteinTensor"];
+
+(*::md::
+## 2. Curvature core
+
+Same wrapper as GR-01, plus the two quadratic invariants. The Gauss-Bonnet term is
+assembled explicitly from
+$\mathcal{G} = R^2 - 4R_{\mu\nu}R^{\mu\nu} + R_{\rho\sigma\mu\nu}R^{\rho\sigma\mu\nu}$
+rather than taken from the resource's `"EulerScalar"` property, which is a differently
+normalised object &mdash; on Schwarzschild it returns $-192M^2\csc^2\theta/r^{10}$ instead
+of the $48M^2/r^6$ that $\mathcal{G}$ must equal there.
+::*)
+
+(*::code::*)
+ClearAll[GRTensors, RicciSquare, GaussBonnet];
+
+Options[GRTensors] = {"Simplify" -> Simplify, "Assumptions" -> True};
+
+GRTensors[metricIn_?MatrixQ, coordsIn_List, OptionsPattern[]] :=
+ Module[{n, simp, mt, chr, rie, ric, ein, g, ginv},
+  n = Length[coordsIn];
+  With[{f = OptionValue["Simplify"], as = OptionValue["Assumptions"]},
+   simp = Which[f === Identity, Identity, as === True, Identity, True, Function[e, f[e, as]]]];
+  mt  = $grMetric[metricIn, coordsIn];
+  chr = $grChristoffel[mt];
+  rie = $grRiemann[mt];
+  ric = $grRicci[mt];
+  ein = $grEinstein[mt];
+  g    = Map[simp, mt["ReducedMatrixRepresentation"], {2}];
+  ginv = Map[simp, mt["InverseMetricTensor"]["ReducedMatrixRepresentation"], {2}];
+  <|
+   "Coordinates"   -> coordsIn,
+   "Dimension"     -> n,
+   "Metric"        -> g,
+   "MetricInverse" -> ginv,
+   "Christoffel"   -> Map[simp, chr["ReducedTensorRepresentation"], {3}],
+   "Riemann"       -> Map[simp, rie["ReducedTensorRepresentation"], {4}],
+   "RiemannLower"  -> Map[simp, rie["CovariantRiemannTensor"]["ReducedTensorRepresentation"], {4}],
+   "Ricci"         -> Map[simp, ric["ReducedMatrixRepresentation"], {2}],
+   "RicciScalar"   -> simp[Tr[ginv . ric["ReducedMatrixRepresentation"]]],
+   "Einstein"      -> Map[simp, ein["ReducedMatrixRepresentation"], {2}],
+   "Kretschmann"   -> simp[rie["ReducedKretschmannScalar"]],
+   "Simplifier"    -> simp
+  |>];
+
+(* R_ab R^ab, as the trace of the square of the mixed Ricci tensor *)
+RicciSquare[gr_Association] :=
+ Module[{mixed = gr["MetricInverse"] . gr["Ricci"]}, Simplify[Tr[mixed . mixed]]];
+
+GaussBonnet[gr_Association] :=
+ Simplify[gr["RicciScalar"]^2 - 4 RicciSquare[gr] + gr["Kretschmann"]];
+
+(*::md::
+## 3. Part I &mdash; covariant field equations
+
+Varying $S = \frac{1}{2\kappa}\int\sqrt{-g}\,f(R,T)\,d^4x + \int\sqrt{-g}\,\mathcal{L}_m d^4x$
+with respect to $g^{\mu\nu}$ gives
+
+$$
+f_R R_{\mu\nu} - \tfrac{1}{2} f g_{\mu\nu} + \left(g_{\mu\nu}\Box - \nabla_\mu\nabla_\nu\right) f_R \;=\; \kappa T_{\mu\nu} - f_T\left(T_{\mu\nu} + \Theta_{\mu\nu}\right)
+$$
+
+with $\Theta_{\mu\nu} = g^{\alpha\beta}\,\delta T_{\alpha\beta}/\delta g^{\mu\nu} = -2T_{\mu\nu} + \mathcal{L}_m g_{\mu\nu}$
+when $\mathcal{L}_m$ carries no metric derivatives. Setting $f = R$ collapses this to
+$G_{\mu\nu} = \kappa T_{\mu\nu}$; dropping the $T$ dependence leaves ordinary $f(R)$ gravity.
+
+`FieldEquations` returns $\mathcal{E}_{\mu\nu}$, defined so that the field equations are
+$\mathcal{E}_{\mu\nu} = 0$.
+
+**On the matter Lagrangian.** For a perfect fluid both $\mathcal{L}_m = -p$ and
+$\mathcal{L}_m = -\rho$ appear in the literature. They give the same $T_{\mu\nu}$ but
+different $\Theta_{\mu\nu}$, hence genuinely different $f(R,T)$ field equations. There is
+no way for the notebook to choose for you, so it is an explicit argument. It never
+matters when $f$ does not depend on $T$.
+::*)
+
+(*::code::*)
+(* BoxOp, not Box: Box is a protected built-in symbol in Wolfram. *)
+ClearAll[CovariantHessian, BoxOp, PerfectFluid, FieldEquations];
+
+(* \[Del]_m \[Del]_n \[Phi] = \[PartialD]_m \[PartialD]_n \[Phi] - \[CapitalGamma]^l_mn \[PartialD]_l \[Phi] *)
+CovariantHessian[phi_, gr_Association] :=
+ Module[{x = gr["Coordinates"], n = gr["Dimension"], ch = gr["Christoffel"], m, q, l},
+  Table[D[phi, x[[m]], x[[q]]] - Sum[ch[[l, m, q]] D[phi, x[[l]]], {l, n}], {m, n}, {q, n}]];
+
+BoxOp[phi_, gr_Association] :=
+ Module[{n = gr["Dimension"], ig = gr["MetricInverse"], hh = CovariantHessian[phi, gr], m, q},
+  Simplify[Sum[ig[[m, q]] hh[[m, q]], {m, n}, {q, n}]]];
+
+(* uUp is the four-velocity with an upper index; for a comoving observer it is
+   {1/N, 0, 0, 0}, which is {1, 0, 0, 0} once the lapse is set to one. *)
+PerfectFluid[gr_Association, rho_, pres_, uUp_List] :=
+ Module[{g = gr["Metric"], n = gr["Dimension"], uD, m, q, l},
+  uD = Table[Sum[g[[m, l]] uUp[[l]], {l, n}], {m, n}];
+  Table[Simplify[(rho + pres) uD[[m]] uD[[q]] + pres g[[m, q]]], {m, n}, {q, n}]];
+
+Options[FieldEquations] = {"MatterLagrangian" -> Automatic, "Kappa" -> \[Kappa]};
+
+FieldEquations[gr_Association, fExpr_, stress_?MatrixQ, OptionsPattern[]] :=
+ Module[{n = gr["Dimension"], g = gr["Metric"], ig = gr["MetricInverse"], ric = gr["Ricci"],
+         kap = OptionValue["Kappa"], lagM = OptionValue["MatterLagrangian"],
+         trT, sub, f0, fR, fT, hess, box, theta, m, q},
+
+  trT = Simplify[Tr[ig . stress]];
+  sub = {Rs -> gr["RicciScalar"], Tms -> trT};
+  f0  = Simplify[fExpr /. sub];
+  fR  = Simplify[D[fExpr, Rs] /. sub];
+  fT  = Simplify[D[fExpr, Tms] /. sub];
+
+  If[lagM === Automatic,
+   If[fT =!= 0,
+    Message[FieldEquations::lagm]; Return[$Failed],
+    lagM = 0]];
+
+  hess  = CovariantHessian[fR, gr];
+  box   = BoxOp[fR, gr];
+  theta = Table[-2 stress[[m, q]] + lagM g[[m, q]], {m, n}, {q, n}];
+
+  Table[
+   Simplify[
+    fR ric[[m, q]] - (1/2) f0 g[[m, q]] + g[[m, q]] box - hess[[m, q]]
+     - kap stress[[m, q]] + fT (stress[[m, q]] + theta[[m, q]])],
+   {m, n}, {q, n}]];
+
+FieldEquations::lagm =
+  "The action depends on Tms, so \[CapitalTheta]_mn is needed. Set \"MatterLagrangian\" -> -p or -\[Rho].";
+
+(* ---- display: non-zero, independent components of a symmetric tensor ---- *)
+ClearAll[ShowEquations];
+ShowEquations[eqs_?MatrixQ, gr_Association, sym_: "\[ScriptCapitalE]"] :=
+ Module[{n = gr["Dimension"], x = gr["Coordinates"], rows, a, b},
+  rows = Flatten[
+    Table[If[eqs[[a, b]] === 0, Nothing,
+      {Subscript[sym, Row[Riffle[x[[{a, b}]], "\[VeryThinSpace]"]]], eqs[[a, b]]}],
+     {a, n}, {b, a, n}], 1];
+  If[rows === {},
+   Style["every component vanishes identically", Italic, GrayLevel[0.5]],
+   Grid[{#1, "= 0,     ", #2} & @@@ rows,
+    Alignment -> {{Right, Center, Left}}, Spacings -> {1.2, 0.9}]]];
+
+(*::md::
+## 4. Part II &mdash; Friedmann equations by minisuperspace variation
+
+Put the FLRW ansatz with a lapse into the action,
+
+$$
+ds^2 = -N(t)^2 dt^2 + a(t)^2\left[\frac{dr^2}{1-k r^2} + r^2 d\Omega^2\right],
+$$
+
+so that $\sqrt{-g} \propto N a^3$ and the action collapses to a point Lagrangian
+$L(N,\dot N, a,\dot a,\ddot a)$. Varying with respect to $N$ gives the Hamiltonian
+constraint, which is **Friedmann I**; varying with respect to $a$ gives **Friedmann II**.
+The lapse is set to $1$ only after both variations, which is what makes the constraint
+come out at all.
+
+Because $f(R)$ and $f(\mathcal{G})$ put $\ddot a$ into the Lagrangian, the variation uses the
+higher-order Euler-Lagrange operator
+$\;\partial_q - \frac{d}{dt}\partial_{\dot q} + \frac{d^2}{dt^2}\partial_{\ddot q}$.
+
+Matter enters as $-N a^3 \rho(a)$, and after the variation $\rho'(a)$ is eliminated with
+the continuity equation $\dot\rho = -3H(\rho+p)$.
+
+### Sign convention for the torsion and non-metricity scalars
+
+In flat FLRW this notebook uses
+
+$$
+\mathcal{T} \;=\; Q \;=\; -\,\frac{6\,\dot a^2}{N^2 a^2} \;=\; -6H^2 ,
+$$
+
+chosen so that the **linear** theory is ordinary GR: $f = \mathcal{T}$ is TEGR and $f = Q$ is
+STEGR, exactly as $f = R$ is GR. The notebook verifies this in the checks section. Papers
+that define $\mathcal{T} = +6H^2$ instead write TEGR as $f = -\mathcal{T}$; if you follow
+one of those, flip the sign in `$flrwTorsion` below and read your $f$ unchanged.
+
+These two scalars are supplied for $k = 0$ only, in the diagonal-tetrad and coincident
+gauge respectively. `Rs` and `Gs` work for any $k$.
+::*)
+
+(*::code::*)
+ClearAll[EulerOperator, FLRWScalars, FriedmannEquations, ToHubble, $flrwTorsion];
+
+(* higher-order Euler-Lagrange operator, up to nmax time derivatives of q *)
+EulerOperator[L_, q_Symbol, tv_Symbol, nmax_Integer: 2] :=
+ Module[{m}, D[L, q[tv]] + Sum[(-1)^m D[D[L, Derivative[m][q][tv]], {tv, m}], {m, 1, nmax}]];
+
+$flrwTorsion[k_] := -6 a'[t]^2/(Nl[t]^2 a[t]^2);   (* = -6 H^2 ; flat FLRW only *)
+
+FLRWScalars[k_] := FLRWScalars[k] =
+ Module[{gr, g},
+  g = DiagonalMatrix[{-Nl[t]^2, a[t]^2/(1 - k r^2), a[t]^2 r^2,
+                      a[t]^2 r^2 Sin[\[Theta]]^2}];
+  gr = GRTensors[g, {t, r, \[Theta], \[Phi]},
+    "Assumptions" -> a[t] > 0 && Nl[t] > 0 && r > 0 && 0 < \[Theta] < Pi && 1 - k r^2 > 0];
+  <|"Rs" -> gr["RicciScalar"], "Gs" -> GaussBonnet[gr],
+    "Ts" -> $flrwTorsion[k], "Qs" -> $flrwTorsion[k],
+    "Volume" -> Nl[t] a[t]^3, "Tensors" -> gr|>];
+
+Options[FriedmannEquations] = {"Curvature" -> 0, "Kappa" -> \[Kappa], "Order" -> 2};
+
+FriedmannEquations[fExpr_, OptionsPattern[]] :=
+ Module[{k = OptionValue["Curvature"], kap = OptionValue["Kappa"],
+         ord = OptionValue["Order"], sc, sub, L, e1, e2, toN1, contin, rename},
+
+  If[k =!= 0 && (! FreeQ[fExpr, Ts] || ! FreeQ[fExpr, Qs]),
+   Message[FriedmannEquations::flat]; Return[$Failed]];
+
+  sc  = FLRWScalars[k];
+  sub = {Rs -> sc["Rs"], Gs -> sc["Gs"], Ts -> sc["Ts"], Qs -> sc["Qs"]};
+
+  (* point Lagrangian: gravity plus a perfect fluid of density dens[a] *)
+  L = sc["Volume"] ((fExpr /. sub)/(2 kap) - dens[a[t]]);
+
+  toN1   = {Derivative[_][Nl][t] -> 0, Nl[t] -> 1};
+  contin = {Derivative[1][dens][a[t]] -> -3 (dens[a[t]] + pres[a[t]])/a[t]};
+  rename = {dens[a[t]] -> \[Rho], pres[a[t]] -> p};
+
+  e1 = Simplify[(EulerOperator[L, Nl, t, ord] /. toN1 /. contin /. rename)/a[t]^3];
+  e2 = Simplify[(EulerOperator[L, a,  t, ord] /. toN1 /. contin /. rename)/a[t]^2];
+
+  <|"Friedmann1" -> e1, "Friedmann2" -> e2,
+    "Friedmann1H" -> ToHubble[e1], "Friedmann2H" -> ToHubble[e2],
+    "Scalars" -> sc, "Curvature" -> k|>];
+
+FriedmannEquations::flat =
+  "The torsion and non-metricity scalars are supplied for k = 0 only.";
+
+(* rewrite a[t] derivatives in terms of the Hubble function H[t] = a'/a *)
+ToHubble[expr_, nmax_Integer: 6] :=
+ Module[{rules = {}, rhs = H[t] a[t], m},
+  Do[AppendTo[rules, Derivative[m][a][t] -> rhs];
+     rhs = Expand[D[rhs, t] //. rules], {m, 1, nmax}];
+  Simplify[expr //. rules]];
+
+ShowFriedmann[fr_Association] :=
+ Column[{
+   Row[{Style["Friedmann I   (\[Delta]N) :  ", Bold], fr["Friedmann1H"], " = 0"}],
+   Row[{Style["Friedmann II  (\[Delta]a) :  ", Bold], fr["Friedmann2H"], " = 0"}]},
+  Spacings -> 1.2];
+
+(*::md::
+## 5. Action library
+
+One long comment, nothing evaluated. The right-hand column says which engine can take it.
+::*)
+
+(*::code::*)
+(* ============================================================================
+   ACTION LIBRARY -- copy an "action = ..." line into the input cells below.
+   Symbols:  Rs = Ricci scalar,  Tms = trace of T_mn,  Ts = torsion scalar,
+             Qs = non-metricity scalar,  Gs = Gauss-Bonnet term.
+   ============================================================================
+
+   -- Curvature sector ------------------------------------- Part I and Part II
+
+   General relativity            action = Rs;
+   GR with a cosmological const  action = Rs - 2 \[CapitalLambda];
+   Starobinsky inflation         action = Rs + Rs^2/(6 m0^2);
+   f(R) = R - mu^4/R             action = Rs - mu^4/Rs;
+   power law                     action = Rs + alp Rs^nn;
+   Hu-Sawicki                    action = Rs - m0^2 c1 (Rs/m0^2)^nn/(c2 (Rs/m0^2)^nn + 1);
+   exponential                   action = Rs + alp (1 - Exp[-Rs/m0^2]);
+
+   -- Curvature-matter coupling ------------------------------------- Part I only
+   (set "MatterLagrangian" -> -p or -\[Rho]; the two choices are inequivalent)
+
+   f(R,T) = R + 2 lam T          action = Rs + 2 lam Tms;
+   f(R,T) = R + lam R T          action = Rs + lam Rs Tms;
+   f(R,T) = R + alp Sqrt[T]      action = Rs + alp Sqrt[Tms];
+
+   -- Torsion, teleparallel ---------------------------------------- Part II only
+   (flat FLRW; convention Ts = -6 H^2, so f = Ts is TEGR = GR)
+
+   TEGR                          action = Ts;
+   f(T) = T + alp T^2            action = Ts + alp Ts^2;
+   f(T) = T + alp (-T)^b         action = Ts + alp (-Ts)^bb;
+   f(T) = T + alp T Log[-T]      action = Ts + alp Ts Log[-Ts];
+
+   -- Non-metricity, symmetric teleparallel ------------------------ Part II only
+   (flat FLRW, coincident gauge; convention Q = -6 H^2, so f = Qs is STEGR = GR)
+
+   STEGR                         action = Qs;
+   f(Q) = Q + alp Q^2            action = Qs + alp Qs^2;
+   f(Q) = Q + alp (-Q)^b         action = Qs + alp (-Qs)^bb;
+
+   -- Gauss-Bonnet -------------------------------------------------- Part II only
+
+   R + f(G), quadratic           action = Rs + alp Gs^2;
+   R + f(G), power law           action = Rs + alp Gs^nn;
+   topological check             action = Rs + alp Gs;   (* must reproduce plain GR *)
+
+   ============================================================================ *)
+
+(*::md::
+## 6. Part I &mdash; your metric, action and matter
+
+The default is Schwarzschild in vacuum with $f = R$, whose field equations should collapse
+to nothing at all. Swap in FLRW plus a perfect fluid and you get the Friedmann equations
+from the covariant route instead.
+::*)
+
+(*::code::*)
+ClearAll[t, r, x, y, z, \[Theta], \[Phi], M, a, k, \[CapitalLambda], alp, lam, m0, mu, nn, c1, c2, bb, \[Rho], p, H];
+
+coords = {t, r, \[Theta], \[Phi]};
+metric = DiagonalMatrix[{-(1 - 2 M/r), 1/(1 - 2 M/r), r^2, r^2 Sin[\[Theta]]^2}];
+assumptions = M > 0 && r > 2 M && 0 < \[Theta] < Pi;
+
+action = Rs;
+
+gr = GRTensors[metric, coords, "Assumptions" -> assumptions];
+
+(* vacuum: no stress tensor. For a fluid use
+     stress = PerfectFluid[gr, \[Rho][t], p[t], {1, 0, 0, 0}];                 *)
+stress = ConstantArray[0, {4, 4}];
+
+MatrixForm[metric, TableHeadings -> {coords, coords}]
+
+(*::code::*)
+eqs = FieldEquations[gr, action, stress];
+ShowEquations[eqs, gr]
+
+(*::md::
+## 7. Part I on FLRW &mdash; the covariant route to Friedmann
+
+The same engine, now with the flat FLRW metric and a comoving perfect fluid. The $tt$
+component is Friedmann I and the spatial component is Friedmann II. Change `actionI`
+to any $f(R)$ or $f(R,T)$ you like.
+::*)
+
+(*::code::*)
+ClearAll[a, \[Rho], p];
+
+coordsI = {t, x, y, z};
+metricI = DiagonalMatrix[{-1, a[t]^2, a[t]^2, a[t]^2}];
+grI     = GRTensors[metricI, coordsI, "Assumptions" -> a[t] > 0];
+
+stressI = PerfectFluid[grI, \[Rho][t], p[t], {1, 0, 0, 0}];
+
+actionI = Rs;                          (* try  Rs + alp Rs^2  or  Rs + 2 lam Tms *)
+
+eqsI = FieldEquations[grI, actionI, stressI, "MatterLagrangian" -> -p[t]];
+ShowEquations[eqsI, grI]
+
+(*::md::
+## 8. Part II &mdash; your action, Friedmann equations
+
+`FriedmannEquations` takes the action alone; the FLRW ansatz is built in. Use
+`"Curvature" -> k` for an open or closed universe (curvature sector only).
+::*)
+
+(*::code::*)
+ClearAll[alp, lam, bet, \[Rho], p, H];
+
+actionII = Rs;        (* Ts | Qs | Rs + alp Rs^2 | Ts + alp Ts^2 | Rs + alp Gs^2 | ... *)
+
+fr = FriedmannEquations[actionII];
+ShowFriedmann[fr]
+
+(*::md::
+## 9. Reading the output
+
+For $f = R$ the two lines above are
+
+$$
+\frac{3H^2}{\kappa} - \rho = 0, \qquad \frac{3\left(2\dot H + 3H^2 + \kappa p\right)}{\kappa} = 0,
+$$
+
+which are the standard Friedmann and acceleration equations. Solving them for $\rho$ and
+$p$ is usually the most readable form, and is what the next cell does.
+::*)
+
+(*::code::*)
+Solve[{fr["Friedmann1H"] == 0, fr["Friedmann2H"] == 0}, {\[Rho], p}] // Simplify
+
+(*::md::
+## 10. The dimensionless Hubble parameter $E(z)$
+
+Friedmann I is a constraint, so it is exactly the equation that fixes $H$ as a function of
+redshift. Write $H(z) = H_0 E(z)$ with $1+z = 1/a$ (taking $a_0 = 1$), fill the fluid in as a
+sum of barotropic components $\rho = \sum_i \rho_{i0}\,a^{-3(1+w_i)}$, and divide through by
+$3H_0^2/\kappa$. Time derivatives convert with
+
+$$
+\frac{d}{dt} = -(1+z)\,H_0 E(z)\,\frac{d}{dz},
+$$
+
+which the engine applies recursively to however many derivatives of $H$ the theory produced.
+
+Whether $E(z)$ comes out in closed form depends on the theory, and the function reports which
+case you are in:
+
+- **algebraic** &mdash; GR, $\Lambda$CDM, $f(\mathcal{T})$, $f(Q)$. Friedmann I contains $H$ but
+  no $\dot H$, so the result is a polynomial equation in $E$ and `Solve` finishes the job.
+- **differential** &mdash; $f(R)$, $f(R,\mathcal{G})$. Those are fourth-order theories, so
+  Friedmann I carries $\dot H$ and $\ddot H$ and $E(z)$ obeys an ODE instead. The engine hands
+  you that ODE, ready for `NDSolve`.
+
+Each component is given as `{Omega, w}`: matter is `{\[CapitalOmega]m, 0}`, radiation
+`{\[CapitalOmega]r, 1/3}`, a cosmological constant `{\[CapitalOmega]\[CapitalLambda], -1}`.
+Spatial curvature is not a fluid, so it enters through `"CurvatureOmega"` and appears as
+$\Omega_k(1+z)^2$. The flatness condition $\sum_i \Omega_i + \Omega_k = 1$, equivalent to
+$E(0)=1$, is returned as `"Closure"` rather than imposed, so you can see it.
+
+The symbol for the answer is `Ez`, not `E`: `E` is Euler's number and is protected.
+::*)
+
+(*::code::*)
+ClearAll[HubbleFunction, DecelerationParameter, ShowHubble, tidyZ, Ez, H0, z];
+
+(* Solve likes to expand (1+z)^4 into 1 + 4z + 6z^2 + ...; regroup by moving to
+   u = 1+z, collecting there, and coming back. Single-pass /. so the (1+z) powers
+   it produces are not re-expanded. *)
+tidyZ[e_] := Module[{u},
+  e /. (x_Plus /; PolynomialQ[x, z] && Exponent[x, z] >= 2) :>
+    (Collect[x /. z -> u - 1, u, Simplify] /. u -> 1 + z)];
+
+Options[HubbleFunction] = {
+  "Components"     -> {{\[CapitalOmega]m, 0}, {\[CapitalOmega]\[CapitalLambda], -1}},
+  "CurvatureOmega" -> \[CapitalOmega]k,
+  "Kappa"          -> \[Kappa],
+  "Order"          -> 4};
+
+HubbleFunction[fr_Association, opts : OptionsPattern[]] :=
+  HubbleFunction[fr["Friedmann1H"], fr["Curvature"], opts];
+
+HubbleFunction[eqH_, kSym_, OptionsPattern[]] :=
+ Module[{kap = OptionValue["Kappa"], comps = OptionValue["Components"],
+         omk = OptionValue["CurvatureOmega"], nmax = OptionValue["Order"],
+         rules, cur, m, eqz, algQ, sols},
+
+  (* d/dt -> -(1+z) H0 Ez[z] d/dz, applied nmax times to build the H^(m) rules *)
+  rules = {}; cur = H0 Ez[z];
+  Do[cur = Expand[-(1 + z) H0 Ez[z] D[cur, z]];
+     AppendTo[rules, Derivative[m][H][t] -> cur], {m, 1, nmax}];
+  AppendTo[rules, H[t] -> H0 Ez[z]];
+  AppendTo[rules, a[t] -> 1/(1 + z)];
+  AppendTo[rules, \[Rho] -> (3 H0^2/kap) Total[(#[[1]] (1 + z)^(3 (1 + #[[2]]))) & /@ comps]];
+  If[kSym =!= 0, AppendTo[rules, kSym -> -omk H0^2]];
+
+  eqz  = tidyZ[Simplify[(eqH /. rules) kap/(3 H0^2)]];
+  algQ = FreeQ[eqz, Derivative[_][Ez][z]];
+  sols = If[algQ, tidyZ[Simplify[Solve[eqz == 0, Ez[z]]]], {}];
+
+  <|"Equation"   -> eqz,
+    "Algebraic"  -> algQ,
+    "Solutions"  -> sols,
+    "Branch"     -> If[algQ && sols =!= {}, Ez[z] /. Last[sols], Missing["NotAlgebraic"]],
+    "Components" -> comps,
+    "Closure"    -> Total[First /@ comps] + If[kSym === 0, 0, omk] == 1|>];
+
+(* q = -1 - Hdot/H^2 = -1 + (1+z) E'/E *)
+DecelerationParameter[e_] := tidyZ[Simplify[-1 + (1 + z) D[e, z]/e]];
+
+ShowHubble[hz_Association] :=
+ Column[{
+   Row[{Style["constraint : ", Bold], hz["Equation"], " = 0"}],
+   Row[{Style["closure    : ", Bold], hz["Closure"]}],
+   If[hz["Algebraic"],
+    Row[{Style["E(z)       : ", Bold], hz["Branch"]}],
+    Style["not algebraic: solve the constraint above as an ODE for Ez[z]", Italic,
+     GrayLevel[0.4]]]},
+  Spacings -> 1.2];
+
+(*::md::
+## 11. $E(z)$ for your model
+
+The default is $\Lambda$CDM with radiation and curvature carried along, which should give the
+textbook $E^2 = \Omega_m(1+z)^3 + \Omega_r(1+z)^4 + \Omega_k(1+z)^2 + \Omega_\Lambda$.
+Point `frz` at any Part II result to get that theory's $E(z)$ instead.
+::*)
+
+(*::code::*)
+ClearAll[\[CapitalOmega]m, \[CapitalOmega]r, \[CapitalOmega]\[CapitalLambda], \[CapitalOmega]k, bet, alp];
+
+frz = FriedmannEquations[Rs, "Curvature" -> kk];
+
+hz = HubbleFunction[frz,
+   "Components" -> {{\[CapitalOmega]m, 0}, {\[CapitalOmega]r, 1/3}, {\[CapitalOmega]\[CapitalLambda], -1}}];
+
+ShowHubble[hz]
+
+(*::md::
+## 12. Reading $E(z)$ off: expansion history and deceleration
+
+With a closed-form branch in hand, everything else is calculus: $q(z) = -1 + (1+z)E'/E$
+changes sign at the onset of acceleration, and $q_0 = -1 + \tfrac{3}{2}\Omega_m$ for flat
+$\Lambda$CDM. Edit `sample` to move the parameters around.
+::*)
+
+(*::code::*)
+sample = {\[CapitalOmega]m -> 0.3, \[CapitalOmega]r -> 0, \[CapitalOmega]k -> 0,
+          \[CapitalOmega]\[CapitalLambda] -> 0.7};
+
+ez = hz["Branch"];
+qz = DecelerationParameter[ez];
+
+Column[{
+  Row[{"E(z)  = ", ez}],
+  Row[{"q(z)  = ", qz}],
+  Row[{"q(0)  = ", Simplify[qz /. z -> 0]}],
+  Row[{"acceleration starts at z = ",
+       z /. FindRoot[Evaluate[qz /. sample], {z, 0.7}]}],
+  Plot[Evaluate[{ez, qz} /. sample], {z, 0, 3},
+   PlotLegends -> {"E(z)", "q(z)"}, AxesLabel -> {"z", None},
+   PlotRange -> All, ImageSize -> 460]},
+ Spacings -> 1.2]
+
+(*::md::
+## 13. When $E(z)$ is not algebraic
+
+$f(R) = R + \alpha R^2$ turns Friedmann I into a second-order ODE for $E(z)$. Writing
+$\tilde\alpha = \alpha H_0^2$ for the dimensionless coupling, the constraint is what the next
+cell prints, and it collapses to $\Lambda$CDM at $\tilde\alpha = 0$.
+
+The initial conditions used below are the $\Lambda$CDM ones, $E(0) = 1$ and
+$E'(0) = \tfrac{3}{2}\Omega_m$, which is the statement that the model is tuned to match
+today's expansion rate and matter density; a different tuning is a different solution branch.
+::*)
+
+(*::code::*)
+hzFR = HubbleFunction[FriedmannEquations[Rs + alp Rs^2],
+   "Components" -> {{\[CapitalOmega]m, 0}, {\[CapitalOmega]\[CapitalLambda], -1}}];
+
+Column[{
+  Row[{Style["algebraic : ", Bold], hzFR["Algebraic"]}],
+  Row[{Style["ODE       : ", Bold], hzFR["Equation"], " = 0"}],
+  Row[{Style["at \[Alpha] = 0    : ", Bold], Simplify[hzFR["Equation"] /. alp -> 0], " = 0"}]},
+ Spacings -> 1.2]
+
+(*::code::*)
+Module[{pars, ode, sol, om = 0.3},
+ pars = {alp H0^2 -> 0.02, \[CapitalOmega]m -> om, \[CapitalOmega]\[CapitalLambda] -> 1 - om};
+ ode  = Simplify[hzFR["Equation"] /. alp -> 0.02/H0^2] /. pars;
+ sol  = NDSolve[{ode == 0, Ez[0] == 1, Ez'[0] == 3 om/2}, Ez, {z, 0, 3}];
+ Plot[{Evaluate[Ez[z] /. First[sol]], Sqrt[om (1 + z)^3 + (1 - om)]}, {z, 0, 3},
+  PlotLegends -> {"f(R), \[Alpha]H0^2 = 0.02", "\[CapitalLambda]CDM"},
+  AxesLabel -> {"z", "E(z)"}, PlotRange -> All, ImageSize -> 460]]
+
+(*::md::
+## 14. Checks
+
+Four independent things that must hold, all verified from scratch:
+
+1. $f = R$ reproduces the textbook Friedmann equations.
+2. $f = \mathcal{T}$ (TEGR) and $f = Q$ (STEGR) give exactly the same equations as $f = R$.
+   This is what pins the sign convention of the two scalars.
+3. The Gauss-Bonnet term is topological in four dimensions, so $f = R + \alpha\mathcal{G}$
+   must give plain GR.
+4. Part I and Part II must agree wherever both apply. The test below is
+   $f(R) = R + \alpha R^2$ on flat FLRW, derived once covariantly and once by
+   minisuperspace variation.
+5. $E(z)$ from GR must be the textbook $\Lambda$CDM expression, and $q_0$ must come out
+   as $-1 + \tfrac{3}{2}\Omega_m$ on the flat branch.
+::*)
+
+(*::code::*)
+Module[{gr0, tegr, stegr, gb, fR2, cov, mini},
+ gr0   = FriedmannEquations[Rs];
+ tegr  = FriedmannEquations[Ts];
+ stegr = FriedmannEquations[Qs];
+ gb    = FriedmannEquations[Rs + alp Gs];
+ fR2   = FriedmannEquations[Rs + alp Rs^2];
+
+ cov  = FieldEquations[grI, Rs + alp Rs^2,
+         PerfectFluid[grI, \[Rho], p, {1, 0, 0, 0}]][[1, 1]];
+ mini = \[Kappa] fR2["Friedmann1"];
+
+ Dataset @ {
+  <|"check" -> "f = Rs gives 3H^2/\[Kappa] = \[Rho]",
+    "ok" -> (Simplify[gr0["Friedmann1H"] - (3 H[t]^2/\[Kappa] - \[Rho])] === 0)|>,
+  <|"check" -> "TEGR (f = Ts) equals GR",
+    "ok" -> (Simplify[tegr["Friedmann1"] - gr0["Friedmann1"]] === 0 &&
+             Simplify[tegr["Friedmann2"] - gr0["Friedmann2"]] === 0)|>,
+  <|"check" -> "STEGR (f = Qs) equals GR",
+    "ok" -> (Simplify[stegr["Friedmann1"] - gr0["Friedmann1"]] === 0 &&
+             Simplify[stegr["Friedmann2"] - gr0["Friedmann2"]] === 0)|>,
+  <|"check" -> "Gauss-Bonnet is topological in 4D",
+    "ok" -> (Simplify[gb["Friedmann1"] - gr0["Friedmann1"]] === 0 &&
+             Simplify[gb["Friedmann2"] - gr0["Friedmann2"]] === 0)|>,
+  <|"check" -> "Part I = Part II for f(R) = R + \[Alpha] R^2",
+    "ok" -> (Simplify[cov - mini] === 0)|>,
+  <|"check" -> "E(z)^2 = \[CapitalOmega]m(1+z)^3 + \[CapitalOmega]r(1+z)^4 + \[CapitalOmega]k(1+z)^2 + \[CapitalOmega]\[CapitalLambda]",
+    "ok" -> (Simplify[hz["Equation"] - (Ez[z]^2 -
+        (\[CapitalOmega]m (1 + z)^3 + \[CapitalOmega]r (1 + z)^4 +
+         \[CapitalOmega]k (1 + z)^2 + \[CapitalOmega]\[CapitalLambda]))] === 0)|>,
+  <|"check" -> "flat \[CapitalLambda]CDM has E(0) = 1 and q0 = -1 + 3\[CapitalOmega]m/2",
+    "ok" -> Module[{flat = {\[CapitalOmega]r -> 0, \[CapitalOmega]k -> 0,
+                            \[CapitalOmega]\[CapitalLambda] -> 1 - \[CapitalOmega]m}, e},
+      e = hz["Branch"] /. flat;
+      Simplify[(e /. z -> 0) - 1] === 0 &&
+      Simplify[(DecelerationParameter[e] /. z -> 0) - (-1 + 3 \[CapitalOmega]m/2)] === 0]|>,
+  <|"check" -> "f(Ts) keeps E(z) algebraic, f(R) does not",
+    "ok" -> (HubbleFunction[FriedmannEquations[Ts + bet Ts^2]]["Algebraic"] &&
+             ! hzFR["Algebraic"])|>
+ }]
