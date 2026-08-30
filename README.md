@@ -93,6 +93,30 @@ Reproduces $f(0) = 0.527$ against $\Omega_m^{0.55} = 0.530$, $\gamma(0) = 0.554$
 $f\sigma_8(0) = 0.427$, the exact $\Lambda$CDM growing-mode quadrature to two parts in $10^4$,
 and $f = 1$ exactly in Einstein–de Sitter.
 
+### `GR-05-Effective-Gravitational-Coupling`
+
+GR-04 takes $G_{\rm eff}/G$ as input. This notebook derives it: it perturbs the field
+equations in Newtonian gauge, expands in a bookkeeping parameter, applies the quasi-static
+sub-horizon approximation, and solves for the metric potentials.
+
+For $f(R)$, with $m = \dfrac{k^2}{a^2}\dfrac{f_{RR}}{f_R}$, it returns
+
+$$\frac{G_{\rm eff}}{G} = \frac{1}{f_R}\frac{1+4m}{1+3m}, \qquad \eta = \frac{\Phi}{\Psi} = \frac{1+2m}{1+4m}, \qquad \Sigma = \frac{1}{f_R}.$$
+
+The third is the one worth noticing, and it was not put in by hand: the scalaron cancels out
+of the lensing combination, so light is deflected as in general relativity up to a constant
+rescaling, with **no scale dependence at all**. Growth feels $m$; lensing does not.
+
+Checks: the $\epsilon^0$ order reproduces the GR-02 Friedmann constraint for both $f = R$ and
+$f = R - 2\Lambda$ — an independent cross-check between covariant perturbation theory here and
+minisuperspace variation there — and the limits $m \to 0$, $m \to \infty$ give $1/f_R$ and
+$4/(3f_R)$ with $\eta \to 1$ and $1/2$. The derived $G_{\rm eff}(k,z)$ is then fed back into
+the GR-04 growth equation to show the scale-dependent growth that is the $f(R)$ fingerprint.
+
+Scope: this is metric perturbation theory, so it covers $f(R)$ and any other theory whose
+variable is $g_{\mu\nu}$. $f(\mathcal{T})$ and $f(Q)$ need tetrad and connection perturbations
+and are **not** covered — those entries in GR-04's library stay quoted.
+
 ## Conventions worth knowing before you trust the output
 
 - **Torsion and non-metricity scalars.** In flat FLRW the notebook uses
@@ -111,11 +135,14 @@ and $f = 1$ exactly in Einstein–de Sitter.
   The Gauss–Bonnet term is assembled explicitly as
   $R^2 - 4R_{\mu\nu}R^{\mu\nu} + R_{\rho\sigma\mu\nu}R^{\rho\sigma\mu\nu}$ rather than taken
   from the resource's `"EulerScalar"` property, which is a differently normalised object.
-- **$G_{\rm eff}$ in GR-04 is input, not output.** The growth equation is derived in the
-  notebook; the $G_{\rm eff}/G$ expressions in its library are the standard quasi-static,
-  sub-horizon results quoted from the literature. Deriving them means perturbing each
-  theory's field equations, which the series does not yet do. Check the convention against
-  your source.
+- **$G_{\rm eff}$ is derived for metric theories, quoted for the rest.** GR-04 takes it as
+  input; GR-05 derives it for $f(R)$ from perturbed field equations. For $f(\mathcal{T})$ and
+  $f(Q)$ the library entries remain quoted from the literature, because their fundamental
+  variables are a tetrad and a flat non-metric connection rather than the metric. Check the
+  convention against your source for those two.
+- **GR-05's approximations are real approximations.** Quasi-static and sub-horizon both fail
+  on scales approaching the horizon. The sub-horizon truncation is implemented as an explicit,
+  readable term filter rather than hidden, so you can change it.
 - **The CMB acoustic scale in GR-03 is indicative only.** $r_s$ is accurate, but $\theta_*$
   comes out around $100\theta_* = 1.06$ against Planck's $1.0411$, because $z_d$ and $z_*$ are
   put in by hand and $\Omega_r$ is a single number rather than a proper photon plus neutrino

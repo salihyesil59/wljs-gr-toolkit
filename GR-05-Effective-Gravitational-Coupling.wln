@@ -1,0 +1,778 @@
+%-------------------------------%Notebook%--------------------------------%
+ObjectFields:
+  - Objects
+  - Symbols
+  - Storage
+  - ExcalidrawImages
+  - RuntimeCache
+%-------------------------------------------------------------------------%
+
+
+%---------------------------------%Cells%---------------------------------%
+Props:
+  Hidden: true
+Type: Input
+%-------------------------------------------------------------------------%
+.md
+# The Effective Gravitational Coupling
+
+GR-04 solved the growth equation but took $G_{\text{eff}}/G$ from the literature. This
+notebook closes that gap: it perturbs the field equations, applies the quasi-static
+sub-horizon approximation, and derives $G_{\text{eff}}$ instead of quoting it.
+
+Work in Newtonian (longitudinal) gauge,
+
+$$
+ds^2 = -\left(1+2\Psi\right)dt^2 + a(t)^2\left(1-2\Phi\right)\delta_{ij}dx^i dx^j ,
+$$
+
+and define the three functions that any metric theory has to supply:
+
+$$
+\frac{k^2}{a^2}\Psi = -4\pi G_{\text{eff}}\,\rho_m\delta_m , \qquad
+\eta = \frac{\Phi}{\Psi} , \qquad
+\Sigma = \frac{G_{\text{eff}}}{2G}\left(1+\eta\right) .
+$$
+
+$G_{\text{eff}}$ is what a galaxy falls with, so it drives growth. $\Sigma$ is what a photon
+is deflected by, since lensing responds to the Weyl combination $\Phi+\Psi$. The slip $\eta$
+measures the gap between them, and it is exactly $1$ in general relativity without anisotropic
+stress. A theory that changes $G_{\text{eff}}$ but not $\Sigma$ shifts galaxy clustering while
+leaving weak lensing alone, which is why the two are quoted separately.
+
+## How the derivation runs
+
+1. Write the metric with a bookkeeping parameter $\epsilon$ in front of $\Psi$ and $\Phi$, and
+   put the perturbation in a single plane wave $e^{ikx}$.
+2. Build the full non-linear field equations on that metric with $f$ left as an unspecified
+   function, so the answer holds for every $f(R)$ at once.
+3. Expand in $\epsilon$. Order $\epsilon^0$ returns the background Friedmann equations, which
+   is a free check that the setup is right. Order $\epsilon^1$ is the perturbation system.
+4. Apply the two approximations, stated explicitly below.
+5. Solve the resulting algebra for $\Psi$ and $\Phi$ in terms of $\delta_m$, and read off the
+   three functions.
+
+## The two approximations, stated plainly
+
+Everything above step 4 is exact. These two are not, and they are where the physics input sits:
+
+- **Quasi-static.** Time derivatives of $\Psi$, $\Phi$ and $\delta$ are dropped. The
+  perturbations are assumed to evolve on the Hubble timescale, so $\dot\Psi \sim H\Psi$, which
+  is negligible next to the spatial gradients kept below.
+- **Sub-horizon**, $k/a \gg H$. A metric perturbation survives only where it carries at least
+  $k^2$ and no factor of $\dot a$ or $\ddot a$; anything with a Hubble factor in place of a
+  gradient is smaller by $(aH/k)^2$. Matter source terms carry no $k$ at all and are kept.
+
+Both are standard and both fail on scales approaching the horizon. The notebook implements the
+second as an explicit term filter rather than burying it, so you can read the rule and change
+it.
+
+## Scope
+
+This is metric perturbation theory, so it covers $f(R)$ and, with the field equations swapped,
+any other theory whose fundamental variable is $g_{\mu\nu}$. It does **not** cover
+$f(\mathcal{T})$ or $f(Q)$: their fundamental variables are a tetrad and a flat non-metric
+connection, and perturbing those needs machinery this notebook does not have. Those entries in
+GR-04's library remain quoted rather than derived.
+
+%-------------------------------------------------------------------------%
+Display: markdown
+Type: Output
+%-------------------------------------------------------------------------%
+# The Effective Gravitational Coupling
+
+GR-04 solved the growth equation but took $G_{\text{eff}}/G$ from the literature. This
+notebook closes that gap: it perturbs the field equations, applies the quasi-static
+sub-horizon approximation, and derives $G_{\text{eff}}$ instead of quoting it.
+
+Work in Newtonian (longitudinal) gauge,
+
+$$
+ds^2 = -\left(1+2\Psi\right)dt^2 + a(t)^2\left(1-2\Phi\right)\delta_{ij}dx^i dx^j ,
+$$
+
+and define the three functions that any metric theory has to supply:
+
+$$
+\frac{k^2}{a^2}\Psi = -4\pi G_{\text{eff}}\,\rho_m\delta_m , \qquad
+\eta = \frac{\Phi}{\Psi} , \qquad
+\Sigma = \frac{G_{\text{eff}}}{2G}\left(1+\eta\right) .
+$$
+
+$G_{\text{eff}}$ is what a galaxy falls with, so it drives growth. $\Sigma$ is what a photon
+is deflected by, since lensing responds to the Weyl combination $\Phi+\Psi$. The slip $\eta$
+measures the gap between them, and it is exactly $1$ in general relativity without anisotropic
+stress. A theory that changes $G_{\text{eff}}$ but not $\Sigma$ shifts galaxy clustering while
+leaving weak lensing alone, which is why the two are quoted separately.
+
+## How the derivation runs
+
+1. Write the metric with a bookkeeping parameter $\epsilon$ in front of $\Psi$ and $\Phi$, and
+   put the perturbation in a single plane wave $e^{ikx}$.
+2. Build the full non-linear field equations on that metric with $f$ left as an unspecified
+   function, so the answer holds for every $f(R)$ at once.
+3. Expand in $\epsilon$. Order $\epsilon^0$ returns the background Friedmann equations, which
+   is a free check that the setup is right. Order $\epsilon^1$ is the perturbation system.
+4. Apply the two approximations, stated explicitly below.
+5. Solve the resulting algebra for $\Psi$ and $\Phi$ in terms of $\delta_m$, and read off the
+   three functions.
+
+## The two approximations, stated plainly
+
+Everything above step 4 is exact. These two are not, and they are where the physics input sits:
+
+- **Quasi-static.** Time derivatives of $\Psi$, $\Phi$ and $\delta$ are dropped. The
+  perturbations are assumed to evolve on the Hubble timescale, so $\dot\Psi \sim H\Psi$, which
+  is negligible next to the spatial gradients kept below.
+- **Sub-horizon**, $k/a \gg H$. A metric perturbation survives only where it carries at least
+  $k^2$ and no factor of $\dot a$ or $\ddot a$; anything with a Hubble factor in place of a
+  gradient is smaller by $(aH/k)^2$. Matter source terms carry no $k$ at all and are kept.
+
+Both are standard and both fail on scales approaching the horizon. The notebook implements the
+second as an explicit term filter rather than burying it, so you can read the rule and change
+it.
+
+## Scope
+
+This is metric perturbation theory, so it covers $f(R)$ and, with the field equations swapped,
+any other theory whose fundamental variable is $g_{\mu\nu}$. It does **not** cover
+$f(\mathcal{T})$ or $f(Q)$: their fundamental variables are a tetrad and a flat non-metric
+connection, and perturbing those needs machinery this notebook does not have. Those entries in
+GR-04's library remain quoted rather than derived.
+
+%-------------------------------------------------------------------------%
+Props:
+  Hidden: true
+Type: Input
+%-------------------------------------------------------------------------%
+.md
+## 1. Setup
+
+Curvature comes from the same Function Repository resources as the rest of the series.
+Simplification is deliberately kept off the hot path: these expressions are large, and
+`Simplify` is applied only after the perturbative order has been extracted.
+
+%-------------------------------------------------------------------------%
+Display: markdown
+Type: Output
+%-------------------------------------------------------------------------%
+## 1. Setup
+
+Curvature comes from the same Function Repository resources as the rest of the series.
+Simplification is deliberately kept off the hot path: these expressions are large, and
+`Simplify` is applied only after the perturbative order has been extracted.
+
+%-------------------------------------------------------------------------%
+Props:
+  Hidden: false
+Type: Input
+%-------------------------------------------------------------------------%
+ClearAll["Global`*"];
+
+$grMetric = ResourceFunction["MetricTensor"];
+$grRicci  = ResourceFunction["RicciTensor"];
+$grChr    = ResourceFunction["ChristoffelSymbols"];
+
+$coords = {t, x, y, z};
+$wave   = Exp[I k x];        (* one plane wave along x is enough to expose the k^2 structure *)
+
+%-------------------------------------------------------------------------%
+Props:
+  Hidden: true
+Type: Input
+%-------------------------------------------------------------------------%
+.md
+## 2. The perturbed metric
+
+$\epsilon$ is a bookkeeping parameter, not a physical quantity: it counts perturbative order
+and is set to zero at the end of each `Series`. Putting the wave along a single axis costs no
+generality for scalar perturbations and keeps every expression a function of $t$ and $x$ only,
+which is what makes the whole derivation run in seconds instead of hours.
+
+%-------------------------------------------------------------------------%
+Display: markdown
+Type: Output
+%-------------------------------------------------------------------------%
+## 2. The perturbed metric
+
+$\epsilon$ is a bookkeeping parameter, not a physical quantity: it counts perturbative order
+and is set to zero at the end of each `Series`. Putting the wave along a single axis costs no
+generality for scalar perturbations and keeps every expression a function of $t$ and $x$ only,
+which is what makes the whole derivation run in seconds instead of hours.
+
+%-------------------------------------------------------------------------%
+Props:
+  Hidden: false
+Type: Input
+%-------------------------------------------------------------------------%
+ClearAll[PerturbedMetric];
+
+PerturbedMetric[] := DiagonalMatrix[{
+   -(1 + 2 eps psi[t] $wave),
+   a[t]^2 (1 - 2 eps phi[t] $wave),
+   a[t]^2 (1 - 2 eps phi[t] $wave),
+   a[t]^2 (1 - 2 eps phi[t] $wave)}];
+
+gPert = PerturbedMetric[];
+MatrixForm[gPert]
+
+%-------------------------------------------------------------------------%
+Type: Output
+%-------------------------------------------------------------------------%
+(*GB[*){{-1-2 ((*SpB[*)Power[E(*|*),(*|*)I k x](*]SpB*)) eps psi[t](*|*),(*|*)0(*|*),(*|*)0(*|*),(*|*)0}(*||*),(*||*){0(*|*),(*|*)((*SpB[*)Power[a[t](*|*),(*|*)2](*]SpB*)) (1-2 ((*SpB[*)Power[E(*|*),(*|*)I k x](*]SpB*)) eps phi[t])(*|*),(*|*)0(*|*),(*|*)0}(*||*),(*||*){0(*|*),(*|*)0(*|*),(*|*)((*SpB[*)Power[a[t](*|*),(*|*)2](*]SpB*)) (1-2 ((*SpB[*)Power[E(*|*),(*|*)I k x](*]SpB*)) eps phi[t])(*|*),(*|*)0}(*||*),(*||*){0(*|*),(*|*)0(*|*),(*|*)0(*|*),(*|*)((*SpB[*)Power[a[t](*|*),(*|*)2](*]SpB*)) (1-2 ((*SpB[*)Power[E(*|*),(*|*)I k x](*]SpB*)) eps phi[t])}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcFsQBHfxJKizAoAs04KOA==*)(*]GB*)
+
+%-------------------------------------------------------------------------%
+Props:
+  Hidden: true
+Type: Input
+%-------------------------------------------------------------------------%
+.md
+## 3. Curvature and the field equations
+
+The metric is handed to the resources once and everything else is built from what comes back.
+Leaving $f$ as the undefined symbol `F` is the trick that keeps the derivation general:
+Wolfram differentiates it symbolically, so $f_R$, $f_{RR}$ and $f_{RRR}$ appear on their own as
+`F'`, `F''` and `F'''` evaluated on the background scalar curvature.
+
+%-------------------------------------------------------------------------%
+Display: markdown
+Type: Output
+%-------------------------------------------------------------------------%
+## 3. Curvature and the field equations
+
+The metric is handed to the resources once and everything else is built from what comes back.
+Leaving $f$ as the undefined symbol `F` is the trick that keeps the derivation general:
+Wolfram differentiates it symbolically, so $f_R$, $f_{RR}$ and $f_{RRR}$ appear on their own as
+`F'`, `F''` and `F'''` evaluated on the background scalar curvature.
+
+%-------------------------------------------------------------------------%
+Props:
+  Hidden: false
+Type: Input
+%-------------------------------------------------------------------------%
+ClearAll[covariantHessian, boxOperator];
+
+mt  = $grMetric[gPert, $coords];
+gdn = mt["MatrixRepresentation"];
+gup = mt["InverseMetricTensor"]["MatrixRepresentation"];
+chr = $grChr[mt]["TensorRepresentation"];
+ric = $grRicci[mt]["MatrixRepresentation"];
+rsc = Sum[gup[[i, j]] ric[[i, j]], {i, 4}, {j, 4}];
+
+covariantHessian[f_] := Table[
+   D[f, $coords[[m]], $coords[[q]]]
+     - Sum[chr[[l, m, q]] D[f, $coords[[l]]], {l, 4}], {m, 4}, {q, 4}];
+
+boxOperator[f_] := Sum[gup[[m, q]] covariantHessian[f][[m, q]], {m, 4}, {q, 4}];
+
+(* pressureless matter, comoving to first order *)
+uUp    = {1 - eps psi[t] $wave, 0, 0, 0};
+uDn    = Table[Sum[gdn[[i, j]] uUp[[j]], {j, 4}], {i, 4}];
+rhoTot = rho[t] (1 + eps del[t] $wave);
+tmn    = Table[rhoTot uDn[[i]] uDn[[j]], {i, 4}, {j, 4}];
+
+(* f(R) field equations, with f generic *)
+fieldEq = With[{fv = F[rsc], fr = F'[rsc]},
+  Table[fr ric[[i, j]] - (1/2) fv gdn[[i, j]] + gdn[[i, j]] boxOperator[fr]
+      - covariantHessian[fr][[i, j]] - kap tmn[[i, j]], {i, 4}, {j, 4}]];
+
+Dimensions[fieldEq]
+
+%-------------------------------------------------------------------------%
+Type: Output
+%-------------------------------------------------------------------------%
+{4,4}
+
+%-------------------------------------------------------------------------%
+Props:
+  Hidden: true
+Type: Input
+%-------------------------------------------------------------------------%
+.md
+## 4. Expanding in $\epsilon$
+
+Order $\epsilon^0$ is the background. It should be exactly the $f(R)$ Friedmann constraint
+GR-02 derives by minisuperspace variation, which is a genuine cross-check between two
+independent routes through this series.
+
+%-------------------------------------------------------------------------%
+Display: markdown
+Type: Output
+%-------------------------------------------------------------------------%
+## 4. Expanding in $\epsilon$
+
+Order $\epsilon^0$ is the background. It should be exactly the $f(R)$ Friedmann constraint
+GR-02 derives by minisuperspace variation, which is a genuine cross-check between two
+independent routes through this series.
+
+%-------------------------------------------------------------------------%
+Props:
+  Hidden: false
+Type: Input
+%-------------------------------------------------------------------------%
+AbsoluteTiming[
+ order0 = Table[Normal[Series[fieldEq[[i, j]], {eps, 0, 0}]], {i, 4}, {j, 4}];
+ order1 = Table[Coefficient[Normal[Series[fieldEq[[i, j]], {eps, 0, 1}]], eps], {i, 4}, {j, 4}];
+ backgroundR = Simplify[Normal[Series[rsc, {eps, 0, 0}]]];
+]
+
+%-------------------------------------------------------------------------%
+Type: Output
+%-------------------------------------------------------------------------%
+{7.263783`,Null}
+
+%-------------------------------------------------------------------------%
+Props:
+  Hidden: false
+Type: Input
+%-------------------------------------------------------------------------%
+Column[{
+  Row[{Style["background R = ", Bold], backgroundR}],
+  Row[{Style["background 00 equation:  ", Bold], Simplify[order0[[1, 1]]], " = 0"}]}]
+
+%-------------------------------------------------------------------------%
+Type: Output
+%-------------------------------------------------------------------------%
+(*GB[*){{(*GB[*){{(*BB[*)("background R = ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)(*FB[*)((6 ((*SpB[*)Power[(a')[t](*|*),(*|*)2](*]SpB*)+a[t] (a'')[t]))(*,*)/(*,*)((*SpB[*)Power[a[t](*|*),(*|*)2](*]SpB*)))(*]FB*)}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}(*||*),(*||*){(*GB[*){{(*BB[*)("background 00 equation:  ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)((*FB[*)((1)(*,*)/(*,*)(2))(*]FB*)) F[(*FB[*)((6 ((*SpB[*)Power[(a')[t](*|*),(*|*)2](*]SpB*)+a[t] (a'')[t]))(*,*)/(*,*)((*SpB[*)Power[a[t](*|*),(*|*)2](*]SpB*)))(*]FB*)]-kap rho[t]-(*FB[*)((3 (F')[(*FB[*)((6 ((*SpB[*)Power[(a')[t](*|*),(*|*)2](*]SpB*)+a[t] (a'')[t]))(*,*)/(*,*)((*SpB[*)Power[a[t](*|*),(*|*)2](*]SpB*)))(*]FB*)] (a'')[t])(*,*)/(*,*)(a[t]))(*]FB*)+(*FB[*)((18 (a')[t] (F'')[(*FB[*)((6 ((*SpB[*)Power[(a')[t](*|*),(*|*)2](*]SpB*)+a[t] (a'')[t]))(*,*)/(*,*)((*SpB[*)Power[a[t](*|*),(*|*)2](*]SpB*)))(*]FB*)] (-2 ((*SpB[*)Power[(a')[t](*|*),(*|*)3](*]SpB*))+a[t] (a')[t] (a'')[t]+((*SpB[*)Power[a[t](*|*),(*|*)2](*]SpB*)) (a''')[t]))(*,*)/(*,*)((*SpB[*)Power[a[t](*|*),(*|*)4](*]SpB*)))(*]FB*)(*|*),(*|*)" = 0"}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}}(*||*)(*1:eJxTTMoPSmNiYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUiDyIF1Sak1osABV2yq9wzMlMz8tNzStJY4Qp8cksLkHVEMwOZDjn55Tm5hWjqUPhQRipaSUAIwUhsg==*)(*]GB*)
+
+%-------------------------------------------------------------------------%
+Props:
+  Hidden: true
+Type: Input
+%-------------------------------------------------------------------------%
+.md
+## 5. The two approximations
+
+`quasiStatic` kills time derivatives of the perturbation amplitudes. `subHorizon` is the term
+filter: it keeps a term if the term has no metric perturbation in it at all (those are the
+matter sources), or if it carries $k^2$ or more with no Hubble factor. Naming the background
+$f$-derivatives first is what lets the filter see a $\dot a$ for what it is, rather than
+tripping over the ones buried inside the argument of `F'`.
+
+%-------------------------------------------------------------------------%
+Display: markdown
+Type: Output
+%-------------------------------------------------------------------------%
+## 5. The two approximations
+
+`quasiStatic` kills time derivatives of the perturbation amplitudes. `subHorizon` is the term
+filter: it keeps a term if the term has no metric perturbation in it at all (those are the
+matter sources), or if it carries $k^2$ or more with no Hubble factor. Naming the background
+$f$-derivatives first is what lets the filter see a $\dot a$ for what it is, rather than
+tripping over the ones buried inside the argument of `F'`.
+
+%-------------------------------------------------------------------------%
+Props:
+  Hidden: false
+Type: Input
+%-------------------------------------------------------------------------%
+ClearAll[quasiStatic, subHorizon, reduceEquation];
+
+abbreviations = {
+  Derivative[3][F][backgroundR] -> fRRR,
+  Derivative[2][F][backgroundR] -> fRR,
+  Derivative[1][F][backgroundR] -> fR,
+  F[backgroundR] -> f0};
+
+quasiStatic = {Derivative[_][psi][t] -> 0, Derivative[_][phi][t] -> 0,
+               Derivative[_][del][t] -> 0};
+
+subHorizon[e_] := Total[Select[List @@ Expand[e],
+   (FreeQ[#, psi | phi] ||
+     (Exponent[#, k] >= 2 && FreeQ[#, Derivative[_][a][t]])) &]];
+
+reduceEquation[e_] := subHorizon[Expand[Simplify[(e /. quasiStatic)/$wave] /. abbreviations]];
+
+eq00       = reduceEquation[order1[[1, 1]]];
+eqTraceless = reduceEquation[order1[[2, 2]] - order1[[3, 3]]];
+
+Column[{
+  Row[{Style["00 :          ", Bold], eq00, " = 0"}],
+  Row[{Style["traceless ij: ", Bold], eqTraceless, " = 0"}]}]
+
+%-------------------------------------------------------------------------%
+Type: Output
+%-------------------------------------------------------------------------%
+(*GB[*){{(*GB[*){{(*BB[*)("00 :          ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)-(*FB[*)((4 fRR ((*SpB[*)Power[k(*|*),(*|*)4](*]SpB*)) phi[t])(*,*)/(*,*)((*SpB[*)Power[a[t](*|*),(*|*)4](*]SpB*)))(*]FB*)-(*FB[*)((2 fR ((*SpB[*)Power[k(*|*),(*|*)2](*]SpB*)) phi[t])(*,*)/(*,*)((*SpB[*)Power[a[t](*|*),(*|*)2](*]SpB*)))(*]FB*)+(*FB[*)((2 fRR ((*SpB[*)Power[k(*|*),(*|*)4](*]SpB*)) psi[t])(*,*)/(*,*)((*SpB[*)Power[a[t](*|*),(*|*)4](*]SpB*)))(*]FB*)-kap del[t] rho[t](*|*),(*|*)" = 0"}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}(*||*),(*||*){(*GB[*){{(*BB[*)("traceless ij: ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)-fR ((*SpB[*)Power[k(*|*),(*|*)2](*]SpB*)) phi[t]-(*FB[*)((4 fRR ((*SpB[*)Power[k(*|*),(*|*)4](*]SpB*)) phi[t])(*,*)/(*,*)((*SpB[*)Power[a[t](*|*),(*|*)2](*]SpB*)))(*]FB*)+fR ((*SpB[*)Power[k(*|*),(*|*)2](*]SpB*)) psi[t]+(*FB[*)((2 fRR ((*SpB[*)Power[k(*|*),(*|*)4](*]SpB*)) psi[t])(*,*)/(*,*)((*SpB[*)Power[a[t](*|*),(*|*)2](*]SpB*)))(*]FB*)(*|*),(*|*)" = 0"}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}}(*||*)(*1:eJxTTMoPSmNiYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUiDyIF1Sak1osABV2yq9wzMlMz8tNzStJY4Qp8cksLkHVEMwOZDjn55Tm5hWjqUPhQRipaSUAIwUhsg==*)(*]GB*)
+
+%-------------------------------------------------------------------------%
+Props:
+  Hidden: true
+Type: Input
+%-------------------------------------------------------------------------%
+.md
+## 6. The result
+
+Two equations, two unknowns. Solving them gives $\Psi$ and $\Phi$ in terms of $\delta_m$, and
+the three response functions follow by definition.
+
+%-------------------------------------------------------------------------%
+Display: markdown
+Type: Output
+%-------------------------------------------------------------------------%
+## 6. The result
+
+Two equations, two unknowns. Solving them gives $\Psi$ and $\Phi$ in terms of $\delta_m$, and
+the three response functions follow by definition.
+
+%-------------------------------------------------------------------------%
+Props:
+  Hidden: false
+Type: Input
+%-------------------------------------------------------------------------%
+solution = Simplify[First @ Solve[{eq00 == 0, eqTraceless == 0}, {psi[t], phi[t]}]];
+
+psiSol = Simplify[psi[t] /. solution];
+phiSol = Simplify[phi[t] /. solution];
+
+geffExpr  = Simplify[-2 k^2 psiSol/(a[t]^2 kap rho[t] del[t])];
+slipExpr  = Simplify[phiSol/psiSol];
+sigmaExpr = Simplify[geffExpr (1 + slipExpr)/2];
+
+Column[{
+  Row[{Style["G_eff / G = ", Bold], geffExpr}],
+  Row[{Style["eta       = ", Bold], slipExpr}],
+  Row[{Style["Sigma     = ", Bold], sigmaExpr}]}]
+
+%-------------------------------------------------------------------------%
+Type: Output
+%-------------------------------------------------------------------------%
+(*GB[*){{(*GB[*){{(*BB[*)("G_eff / G = ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)(*FB[*)((4 fRR ((*SpB[*)Power[k(*|*),(*|*)2](*]SpB*))+fR ((*SpB[*)Power[a[t](*|*),(*|*)2](*]SpB*)))(*,*)/(*,*)(3 fR fRR ((*SpB[*)Power[k(*|*),(*|*)2](*]SpB*))+((*SpB[*)Power[fR(*|*),(*|*)2](*]SpB*)) ((*SpB[*)Power[a[t](*|*),(*|*)2](*]SpB*))))(*]FB*)}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}(*||*),(*||*){(*GB[*){{(*BB[*)("eta       = ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)(*FB[*)((2 fRR ((*SpB[*)Power[k(*|*),(*|*)2](*]SpB*))+fR ((*SpB[*)Power[a[t](*|*),(*|*)2](*]SpB*)))(*,*)/(*,*)(4 fRR ((*SpB[*)Power[k(*|*),(*|*)2](*]SpB*))+fR ((*SpB[*)Power[a[t](*|*),(*|*)2](*]SpB*))))(*]FB*)}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}(*||*),(*||*){(*GB[*){{(*BB[*)("Sigma     = ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)(*FB[*)((1)(*,*)/(*,*)(fR))(*]FB*)}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}}(*||*)(*1:eJxTTMoPSmNiYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUiDyIF1Sak1osABV2yq9wzMlMz8tNzStJY4Qp8cksLkHVEMwOZDjn55Tm5hWjqUPhQRipaSUAIwUhsg==*)(*]GB*)
+
+%-------------------------------------------------------------------------%
+Props:
+  Hidden: true
+Type: Input
+%-------------------------------------------------------------------------%
+.md
+## 7. In the usual variables
+
+Writing $m = \dfrac{k^2}{a^2}\dfrac{f_{RR}}{f_R}$, the same three expressions read
+
+$$
+\frac{G_{\text{eff}}}{G} = \frac{1}{f_R}\,\frac{1+4m}{1+3m}, \qquad
+\eta = \frac{1+2m}{1+4m}, \qquad
+\Sigma = \frac{1}{f_R}.
+$$
+
+The last one is worth pausing on, and it was not put in by hand: the scalaron cancels out of
+the lensing combination entirely, so light in $f(R)$ gravity is deflected exactly as in general
+relativity up to the constant rescaling $1/f_R$, with **no scale dependence at all**. Growth
+feels $m$; lensing does not. That is a sharp, falsifiable signature, and it is why a
+disagreement between clustering and lensing amplitudes is read as a hint of modified gravity.
+
+Between the two limits $G_{\text{eff}}$ moves by a factor of $4/3$: on scales far outside the
+scalaron's Compton wavelength ($m \to 0$) gravity is standard, and far inside it ($m \to \infty$)
+it is a third stronger.
+
+%-------------------------------------------------------------------------%
+Display: markdown
+Type: Output
+%-------------------------------------------------------------------------%
+## 7. In the usual variables
+
+Writing $m = \dfrac{k^2}{a^2}\dfrac{f_{RR}}{f_R}$, the same three expressions read
+
+$$
+\frac{G_{\text{eff}}}{G} = \frac{1}{f_R}\,\frac{1+4m}{1+3m}, \qquad
+\eta = \frac{1+2m}{1+4m}, \qquad
+\Sigma = \frac{1}{f_R}.
+$$
+
+The last one is worth pausing on, and it was not put in by hand: the scalaron cancels out of
+the lensing combination entirely, so light in $f(R)$ gravity is deflected exactly as in general
+relativity up to the constant rescaling $1/f_R$, with **no scale dependence at all**. Growth
+feels $m$; lensing does not. That is a sharp, falsifiable signature, and it is why a
+disagreement between clustering and lensing amplitudes is read as a hint of modified gravity.
+
+Between the two limits $G_{\text{eff}}$ moves by a factor of $4/3$: on scales far outside the
+scalaron's Compton wavelength ($m \to 0$) gravity is standard, and far inside it ($m \to \infty$)
+it is a third stronger.
+
+%-------------------------------------------------------------------------%
+Props:
+  Hidden: false
+Type: Input
+%-------------------------------------------------------------------------%
+Module[{m, target, targetSlip},
+ m = k^2 fRR/(a[t]^2 fR);
+ target = (1/fR) (1 + 4 m)/(1 + 3 m);
+ targetSlip = (1 + 2 m)/(1 + 4 m);
+ Dataset @ {
+  <|"statement" -> "G_eff/G = (1/fR)(1+4m)/(1+3m)",
+    "ok" -> (Simplify[geffExpr - target] === 0)|>,
+  <|"statement" -> "eta = (1+2m)/(1+4m)",
+    "ok" -> (Simplify[slipExpr - targetSlip] === 0)|>,
+  <|"statement" -> "Sigma = 1/fR, with no k dependence",
+    "ok" -> (Simplify[sigmaExpr - 1/fR] === 0 && FreeQ[Simplify[sigmaExpr], k])|>,
+  <|"statement" -> "general relativity (fR = 1, fRR = 0) gives G_eff = G and eta = 1",
+    "ok" -> (Simplify[geffExpr /. {fR -> 1, fRR -> 0}] === 1 &&
+             Simplify[slipExpr /. {fR -> 1, fRR -> 0}] === 1)|>,
+  <|"statement" -> "large scales, k -> 0: G_eff -> G/fR and eta -> 1",
+    "ok" -> (Simplify[Limit[geffExpr, k -> 0] - 1/fR] === 0 &&
+             Simplify[Limit[slipExpr, k -> 0] - 1] === 0)|>,
+  <|"statement" -> "small scales, k -> infinity: G_eff -> 4G/(3 fR) and eta -> 1/2",
+    "ok" -> (Simplify[Limit[geffExpr, k -> Infinity] - 4/(3 fR)] === 0 &&
+             Simplify[Limit[slipExpr, k -> Infinity] - 1/2] === 0)|>}]
+
+%-------------------------------------------------------------------------%
+Type: Output
+%-------------------------------------------------------------------------%
+(*VB[*)(FrontEndRef["a3805de6-77dd-44cd-9823-928c3e7dfde6"])(*,*)(*"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKJxpbGJimpJrpmpunpOiamCSn6FpaGBnrWhpZJBunmqekAeUAhN8V7A=="*)(*]VB*)
+
+%-------------------------------------------------------------------------%
+Props:
+  Hidden: true
+Type: Input
+%-------------------------------------------------------------------------%
+.md
+## 8. A concrete model
+
+Take Starobinsky's $f(R) = R + \alpha R^2$, so $f_R = 1 + 2\alpha R$ and $f_{RR} = 2\alpha$.
+On a $\Lambda$CDM-like background the scalar curvature follows from $R = 6(\dot H + 2H^2)$,
+which in redshift is
+
+$$
+R(z) = 6H_0^2\left[2E^2 - \tfrac{1}{2}(1+z)\frac{d(E^2)}{dz}\right] = 3H_0^2\left[\Omega_m(1+z)^3 + 4\Omega_\Lambda\right].
+$$
+
+Units are $H_0 = 1$ from here on, so $\tilde\alpha = \alpha H_0^2$ and $\tilde k = k/H_0$ are
+both dimensionless. The plot shows the scale dependence that is the whole point: different
+wavenumbers feel different gravity, which never happens in general relativity and never
+happens in $f(\mathcal{T})$ or $f(Q)$ either.
+
+**The coupling below is deliberately oversized.** $\tilde\alpha = 0.05$ gives
+$f_R(0) \approx 1.92$, so $G_{\text{eff}}$ comes out roughly half of Newton's constant and
+$f\sigma_8$ drops to about half its $\Lambda$CDM value — nothing like that survives contact
+with data. It is chosen so the scale dependence is visible on a linear axis rather than being
+a line thickness. Turn $\tilde\alpha$ down to $10^{-3}$ or below for a model you would
+actually defend, and the curves converge onto each other, which is itself the point: viable
+$f(R)$ has to hide.
+
+%-------------------------------------------------------------------------%
+Display: markdown
+Type: Output
+%-------------------------------------------------------------------------%
+## 8. A concrete model
+
+Take Starobinsky's $f(R) = R + \alpha R^2$, so $f_R = 1 + 2\alpha R$ and $f_{RR} = 2\alpha$.
+On a $\Lambda$CDM-like background the scalar curvature follows from $R = 6(\dot H + 2H^2)$,
+which in redshift is
+
+$$
+R(z) = 6H_0^2\left[2E^2 - \tfrac{1}{2}(1+z)\frac{d(E^2)}{dz}\right] = 3H_0^2\left[\Omega_m(1+z)^3 + 4\Omega_\Lambda\right].
+$$
+
+Units are $H_0 = 1$ from here on, so $\tilde\alpha = \alpha H_0^2$ and $\tilde k = k/H_0$ are
+both dimensionless. The plot shows the scale dependence that is the whole point: different
+wavenumbers feel different gravity, which never happens in general relativity and never
+happens in $f(\mathcal{T})$ or $f(Q)$ either.
+
+**The coupling below is deliberately oversized.** $\tilde\alpha = 0.05$ gives
+$f_R(0) \approx 1.92$, so $G_{\text{eff}}$ comes out roughly half of Newton's constant and
+$f\sigma_8$ drops to about half its $\Lambda$CDM value — nothing like that survives contact
+with data. It is chosen so the scale dependence is visible on a linear axis rather than being
+a line thickness. Turn $\tilde\alpha$ down to $10^{-3}$ or below for a model you would
+actually defend, and the curves converge onto each other, which is itself the point: viable
+$f(R)$ has to hide.
+
+%-------------------------------------------------------------------------%
+Props:
+  Hidden: false
+Type: Input
+%-------------------------------------------------------------------------%
+ClearAll[om, ol, alpha, Rbg, fRof, fRRof, geffOf];
+
+om = 0.315; ol = 1 - om;
+Rbg[zz_]   := 3 (om (1 + zz)^3 + 4 ol);          (* H0 = 1 *)
+alpha      = 0.05;
+fRof[zz_]  := 1 + 2 alpha Rbg[zz];
+fRRof      = 2 alpha;
+geffOf[zz_, kv_] := Module[{m},
+   m = kv^2 (1 + zz)^2 fRRof/fRof[zz];           (* k^2/a^2 with a = 1/(1+z) *)
+   (1/fRof[zz]) (1 + 4 m)/(1 + 3 m)];
+
+Column[{
+  Row[{"R(0) = ", Rbg[0], " H0^2,     fR(0) = ", fRof[0]}],
+  Plot[Evaluate[Table[geffOf[z, kv], {kv, {0.3, 1, 3, 10}}]], {z, 0, 3},
+   PlotLegends -> {"k = 0.3", "k = 1", "k = 3", "k = 10"},
+   AxesLabel -> {"z", "G_eff / G"}, PlotRange -> All, ImageSize -> 440,
+   PlotLabel -> "f(R) = R + 0.05 R^2, in units H0 = 1"]}]
+
+%-------------------------------------------------------------------------%
+Type: Output
+%-------------------------------------------------------------------------%
+(*GB[*){{(*GB[*){{"R(0) = "(*|*),(*|*)9.165000000000001`(*|*),(*|*)" H0^2,     fR(0) = "(*|*),(*|*)1.9165`}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}(*||*),(*||*){(*VB[*)(Legended[ToExpression[FrontEndRef["40afc94a-7dec-4060-81b7-192d0570e8ca"], InputForm], Placed[LineLegend[{Directive[Opacity[1.], RGBColor[0.24, 0.6, 0.8], AbsoluteThickness[2]], Directive[Opacity[1.], RGBColor[0.95, 0.627, 0.1425], AbsoluteThickness[2]], Directive[Opacity[1.], RGBColor[0.455, 0.7, 0.21], AbsoluteThickness[2]], Directive[Opacity[1.], RGBColor[0.922526, 0.385626, 0.209179], AbsoluteThickness[2]]}, {"k = 0.3", "k = 1", "k = 3", "k = 10"}, LegendMarkers -> None, LabelStyle -> {}, LegendLayout -> "Column"], After, Identity]])(*,*)(*"1:eJxTTMoPSmNmYGAo5gUSYZmp5S6pyflFiSX5RcHsQBGf1PTUvBQjiBIuIOGakgmUAylMYwSJCQEJt6L8vBLXvBTXitTk0pLEpJzUYBWgsIlBYlqypUmirnlKarKuiYGZga6FYZK5rqGlUYqBqblBqkVyYhoTyBAWIBFUCtTGAWKkJqb45+VUgkVDikpT0dSAXBGcmpOaDLapmBXkgMSc4lSIG9mAREBOYnJqShorzM0+mXmpEI+kscCM8sksLoHo4AQSLplFQPMyy1IhngL53L8gMTmzpLKIAQw+2EMUgx3o7uScn5NfVLRDrvV14I5z9kXGYPDYvmjWTBB4aQ8xRhBIOCYV5+eUlqSGZGQmZ+elFhdngnxDqc1pYPDOvmjVx0u+SQJP7Itsua4vLrA9RHOb5UFelrtrD3XCM/uih1Ui69wfnqK5zVe2frMLbX1rX3RHf/4aiXU37Is03BkXJRwjwmaUWAen62wFWwUDPeNgVijbEM4yDmaDiRmgpjxwFoGkI9/EouzUomKwlF9+HloShSS6xKTUnOCSypzUNAaURIeqlAdupk9iZX5pCdh2oIdLc/PASdsxrQRoESggPFNS80qAYQQAdE71Ng=="*)(*]VB*)}}(*||*)(*1:eJxTTMoPSmNiYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUiDyIF1Sak1osABV2yq9wzMlMz8tNzStJY4Qp8cksLkHVEMwOZDjn55Tm5hWjqUPhQRipaSUAIwUhsg==*)(*]GB*)
+
+%-------------------------------------------------------------------------%
+Props:
+  Hidden: true
+Type: Input
+%-------------------------------------------------------------------------%
+.md
+## 9. Feeding it back into growth
+
+This is the loop closing. GR-04's growth equation is reused verbatim, but $G_{\text{eff}}$ is
+now the derived expression rather than a library entry. Because it depends on $k$, so does the
+growth: small scales grow faster. In general relativity every curve here would lie on top of
+the others.
+
+%-------------------------------------------------------------------------%
+Display: markdown
+Type: Output
+%-------------------------------------------------------------------------%
+## 9. Feeding it back into growth
+
+This is the loop closing. GR-04's growth equation is reused verbatim, but $G_{\text{eff}}$ is
+now the derived expression rather than a library entry. Because it depends on $k$, so does the
+growth: small scales grow faster. In general relativity every curve here would lie on top of
+the others.
+
+%-------------------------------------------------------------------------%
+Props:
+  Hidden: false
+Type: Input
+%-------------------------------------------------------------------------%
+Module[{eBg, growthFor, s8 = 0.811, zi = 100, curves},
+ eBg = Sqrt[om (1 + z)^3 + ol];
+
+ growthFor[geffFun_] := Module[{del2, sol},
+   sol = NDSolve[{
+      del2''[z] + (D[eBg, z]/eBg - 1/(1 + z)) del2'[z]
+        - (3/2) om (1 + z) geffFun[z] del2[z]/eBg^2 == 0,
+      del2[zi] == 1/(1 + zi), del2'[zi] == -1/(1 + zi)^2},
+     del2, {z, 0, zi}, MaxSteps -> 10^6];
+   del2 /. First[sol]];
+
+ curves = Table[
+   With[{kv = kv}, {kv, growthFor[Function[zz, geffOf[zz, kv]]]}],
+   {kv, {0.3, 1, 3, 10}}];
+
+ Column[{
+   Grid[Prepend[
+     {#[[1]], -s8 (1 + 0.) #[[2]]'[0]/#[[2]][0]} & /@ curves,
+     {Style["k / H0", Bold], Style["f sigma8 (0)", Bold]}],
+    Alignment -> Left, Spacings -> {3, 0.7}],
+   Plot[Evaluate[(-s8 (1 + z) #[[2]]'[z]/#[[2]][0]) & /@ curves], {z, 0, 3},
+    PlotLegends -> (("k = " <> ToString[#[[1]]]) & /@ curves),
+    AxesLabel -> {"z", "f\[Sigma]8"}, PlotRange -> All, ImageSize -> 440,
+    PlotLabel -> "scale-dependent growth, the f(R) fingerprint"]}]]
+
+%-------------------------------------------------------------------------%
+Type: Output
+%-------------------------------------------------------------------------%
+(*GB[*){{(*GB[*){{(*BB[*)("k / H0")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)(*BB[*)("f sigma8 (0)")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)}(*||*),(*||*){0.3`(*|*),(*|*)0.20362112483705483`}(*||*),(*||*){1(*|*),(*|*)0.21582886364954107`}(*||*),(*||*){3(*|*),(*|*)0.24126194298167863`}(*||*),(*||*){10(*|*),(*|*)0.2530726458250779`}}(*||*)(*1:eJxTTMoPSmNmYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3osyUNCaQPIgXVJqTWiwAFXbKr3DMyUzPy03NK0ljhCnxySwuQdUQzA5kOOfnlObmFaOpQ+FBGKlpaNqL+RH2BRckJmfmpRcjVJBvXSbI12hawYz8crz6itLA4Jk9AJ66RYg=*)(*]GB*)}(*||*),(*||*){(*VB[*)(Legended[ToExpression[FrontEndRef["76fe7252-d0b5-451a-b73f-0ce38277285e"], InputForm], Placed[LineLegend[{Directive[Opacity[1.], RGBColor[0.24, 0.6, 0.8], AbsoluteThickness[2]], Directive[Opacity[1.], RGBColor[0.95, 0.627, 0.1425], AbsoluteThickness[2]], Directive[Opacity[1.], RGBColor[0.455, 0.7, 0.21], AbsoluteThickness[2]], Directive[Opacity[1.], RGBColor[0.922526, 0.385626, 0.209179], AbsoluteThickness[2]]}, {"k = 0.3", "k = 1", "k = 3", "k = 10"}, LegendMarkers -> None, LabelStyle -> {}, LegendLayout -> "Column"], After, Identity]])(*,*)(*"1:eJxTTMoPSmNmYGAo5gUSYZmp5S6pyflFiSX5RcHsQBGf1PTUvBQjiBIuIOGakgmUAylMYwSJCQEJt6L8vBLXvBTXitTk0pLEpJzUYBWgsLlZWqq5kamRbopBkqmuialhom6SuXGarkFyqrGFkbm5kYVpahoTyBAWIBFUCtTGAWKkJqb45+VUgkVDikrR1YBcEZyak5oMtqmYFeSAxJziVIgb2YBEQE5icmpKGivMzT6ZeakQj6SxwIzyySwugejgBBIumUVA8zLLUiGeAvncvyAxObOksogBDD7YQxSDHeju5Jyfk19UtEOu9XXgjnP2RcZg8Ni+aNZMEHhpDzFGEEg4JhXn55SWpIZkZCZn56UWF2eCfEOpzWlg8M6+aNXHS75JAk/si2y5ri8usD1Ec5vlQV6Wu2sPdcIz+6KHVSLr3B+eornNV7Z+swttfWtfdEd//hqJdTfsizTcGRclHCPCZpRYB6frbAVbBQM942BWKNsQzjIOZoOJGaCmPHAWgaQj38Si7NSiYrCUX34eWhKFJLrEpNSc4JLKnNQ0BpREh6qUB26mT2JlfmkJ2Hagh0tz88BJ2zGtBGgRKCA8U1LzSoBhBABqBfTl"*)(*]VB*)}}(*||*)(*1:eJxTTMoPSmNiYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUiDyIF1Sak1osABV2yq9wzMlMz8tNzStJY4Qp8cksLkHVEMwOZDjn55Tm5hWjqUPhQRipaSUAIwUhsg==*)(*]GB*)
+
+%-------------------------------------------------------------------------%
+Props:
+  Hidden: true
+Type: Input
+%-------------------------------------------------------------------------%
+.md
+## 10. What would have to change for $f(\mathcal{T})$ or $f(Q)$
+
+Nothing in sections 2 to 6 assumed anything about $f(R)$ except the form of the field
+equations fed into `fieldEq`. Swap those for another **metric** theory and the rest of the
+pipeline runs unchanged.
+
+Torsion and non-metricity are a different matter. In $f(\mathcal{T})$ the dynamical variable is
+the tetrad $e^A{}_\mu$, and a perturbed tetrad carries six more degrees of freedom than the
+metric it builds; in $f(Q)$ the flat connection has its own perturbations that survive the
+coincident gauge. Neither can be reached by perturbing $g_{\mu\nu}$ alone, so this notebook
+does not attempt them, and the corresponding entries in GR-04's library stay quoted from the
+literature. That is a real boundary of the series, not an oversight.
+
+%-------------------------------------------------------------------------%
+Display: markdown
+Type: Output
+%-------------------------------------------------------------------------%
+## 10. What would have to change for $f(\mathcal{T})$ or $f(Q)$
+
+Nothing in sections 2 to 6 assumed anything about $f(R)$ except the form of the field
+equations fed into `fieldEq`. Swap those for another **metric** theory and the rest of the
+pipeline runs unchanged.
+
+Torsion and non-metricity are a different matter. In $f(\mathcal{T})$ the dynamical variable is
+the tetrad $e^A{}_\mu$, and a perturbed tetrad carries six more degrees of freedom than the
+metric it builds; in $f(Q)$ the flat connection has its own perturbations that survive the
+coincident gauge. Neither can be reached by perturbing $g_{\mu\nu}$ alone, so this notebook
+does not attempt them, and the corresponding entries in GR-04's library stay quoted from the
+literature. That is a real boundary of the series, not an oversight.
+
+%-------------------------------------------------------------------------%
+Props:
+  Hidden: false
+Type: Input
+%-------------------------------------------------------------------------%
+Dataset @ <|
+  "derived here"      -> "GR, and any metric theory: f(R) shown in full",
+  "quoted in GR-04"   -> "f(T), f(Q): need tetrad and connection perturbations",
+  "approximations"    -> "quasi-static and sub-horizon, both fail near the horizon",
+  "cross-check"       -> "order eps^0 reproduces the GR-02 Friedmann constraint"|>
+
+%-------------------------------------------------------------------------%
+Type: Output
+%-------------------------------------------------------------------------%
+(*VB[*)(FrontEndRef["ea81d813-aa7c-40f1-b218-5896303502e9"])(*,*)(*"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKpyZaGKZYGBrrJiaaJ+uaGKQZ6iYZGVromlpYmhkbGJsaGKVaAgCDgRUN"*)(*]VB*)
+
+%------------------------------%EndOfCells%-------------------------------%
+
+
+
+%--------------------------------%Objects%--------------------------------%
+Key: a3805de6-77dd-44cd-9823-928c3e7dfde6
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[Dataset[{Association["statement" -> "G_eff/G = (1/fR)(1+4m)/(1+3m)", "ok" -> True], Association["statement" -> "eta = (1+2m)/(1+4m)", "ok" -> True], Association["statement" -> "Sigma = 1/fR, with no k dependence", "ok" -> True], Association["statement" -> "general relativity (fR = 1, fRR = 0) gives G_eff = G and eta = 1", "ok" -> True], Association["statement" -> "large scales, k -> 0: G_eff -> G/fR and eta -> 1", "ok" -> True], Association["statement" -> "small scales, k -> infinity: G_eff -> 4G/(3 fR) and eta -> 1/2", "ok" -> True]}, TypeSystem`Vector[TypeSystem`Struct[{"statement", "ok"}, {TypeSystem`Atom[String], TypeSystem`Atom[TypeSystem`Boolean]}], 6], Association[]]]|>
+
+%-------------------------------------------------------------------------%
+Key: 40afc94a-7dec-4060-81b7-192d0570e8ca
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold["(*VB[*)(FrontEndRef[\"723417a4-3ba9-481b-bbbd-b0392a7620d6\"])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKmxsZmxiaJ5roGiclWuqaWBgm6SYlJaXoJhkYWxolmpsZGaSYAQB8dxVi\"*)(*]VB*)"]|>
+
+%-------------------------------------------------------------------------%
+Key: 76fe7252-d0b5-451a-b73f-0ce38277285e
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold["(*VB[*)(FrontEndRef[\"229718ee-d544-4c83-b84b-6d5244b8608c\"])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKGxlZmhtapKbqppiamOiaJFsY6yZZmCTpmqWYGpmYJFmYGVgkAwB5wRUh\"*)(*]VB*)"]|>
+
+%-------------------------------------------------------------------------%
+Key: ea81d813-aa7c-40f1-b218-5896303502e9
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[Dataset[Association["derived here" -> "GR, and any metric theory: f(R) shown in full", "quoted in GR-04" -> "f(T), f(Q): need tetrad and connection perturbations", "approximations" -> "quasi-static and sub-horizon, both fail near the horizon", "cross-check" -> "order eps^0 reproduces the GR-02 Friedmann constraint"], TypeSystem`Assoc[TypeSystem`Atom[TypeSystem`Enumeration["approximations", "cross-check", "derived here", "quoted in GR-04"]], TypeSystem`Atom[String], 4], Association[]]]|>
+
+%-------------------------------------------------------------------------%
+Key: 723417a4-3ba9-481b-bbbd-b0392a7620d6
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[Graphics[{Annotation[{{{{}, {}, Annotation[{Directive[Opacity[1], RGBColor[0.24, 0.6, 0.8], AbsoluteThickness[2]], Line[{{6.122448979591837*^-8, 0.5242007889921775}, {0.0009201537616788803, 0.5241334472876185}, {0.0018402462988679647, 0.5240659947184065}, {0.0036804313732461333, 0.5239307568682845}, {0.007360801522002471, 0.5236589495105862}, {0.014721541819515146, 0.5231100018832423}, {0.029443022414540495, 0.5219907279884682}, {0.05888598360459119, 0.5196663423594289}, {0.12272507125637595, 0.5142314043749586}, {0.1823336507104563, 0.5086675803250306}, {0.24077294645662814, 0.5027574727889138}, {0.30416540747448334, 0.49584510577887947}, {0.36332736029463414, 0.48893597904582253}, {0.4274424783864683, 0.48096831219842007}, {0.490388312770394, 0.47268448224417053}, {0.5491036389566153, 0.46457084787725067}, {0.6127721304145198, 0.4553828508552559}, {0.6722101136747201, 0.4464714561102673}, {0.7304788132270118, 0.4374547995341762}, {0.7937006780509869, 0.4273956478529373}, {0.8526920346772575, 0.41778751934160335}, {0.9166365565752115, 0.4071729137804582}, {0.979411794765257, 0.3965932994723971}, {1.0379565247575981, 0.3866225533774323}, {1.1014544200216227, 0.3757350280608349}, {1.1607218070879428, 0.3655400677406924}, {1.2249423594259463, 0.35449584900125025}, {1.2879936280560413, 0.34369214861622127}, {1.346814388488432, 0.3336789883795109}, {1.410588314192506, 0.32292468636902344}, {1.4701317316988756, 0.3130051424546279}, {1.5285058654973367, 0.30341565531140136}, {1.591833164567481, 0.29318522068198116}, {1.650929955439921, 0.2838178506791876}, {1.7149799115840445, 0.2738780965420997}, {1.7778605840202595, 0.2643494165947186}, {1.83651074825877, 0.2556773958180732}, {1.9001140777689638, 0.24651729834328678}, {1.9594868990814533, 0.23820230728378472}, {2.017690436686034, 0.23027646618779082}, {2.080847139562298, 0.22193172806960154}, {2.1397733342408576, 0.2143873778653442}, {2.2036526941911005, 0.20647238896335243}, {2.263301545943639, 0.19932813046919856}, {2.321781113988269, 0.19255320072581925}, {2.3852138473045827, 0.1854580709149403}, {2.444416072423192, 0.17907065924532434}, {2.5085714628134843, 0.17239971992083095}, {2.571557569495868, 0.16609879070442068}, {2.630313167980548, 0.1604376840998285}, {2.694021931736911, 0.15452947249133853}, {2.7535001872955696, 0.1492237806838545}, {2.8118091591463195, 0.1442136937818924}, {2.875071296268753, 0.13898569170352593}, {2.9341029251934816, 0.13429603396000278}, {2.935132566030701, 0.13421581630970705}, {2.9361622068679196, 0.13413565221951895}, {2.938221488542358, 0.13397548459389963}, {2.942340051891235, 0.13365579068275946}, {2.950577178588989, 0.13301896119004541}, {2.967051431984496, 0.1317554792903258}, {2.968081072821715, 0.1316769599976243}, {2.9691107136589343, 0.13159849326100723}, {2.971169995333373, 0.13144171733062898}, {2.9752885586822493, 0.1311287947636361}, {2.9835256853800027, 0.13050545978537864}, {2.984555326217222, 0.13042777762932029}, {2.985584967054441, 0.13035014752803029}, {2.9876442487288797, 0.13019504336451806}, {2.9917628120777566, 0.12988545831726592}, {2.992792452914976, 0.1298081917228369}, {2.993822093752195, 0.12973097693277894}, {2.9958813754266336, 0.1295767026406366}, {2.996911016263853, 0.12949964307599063}, {2.997940657101072, 0.12942263519059258}, {2.998970297938291, 0.12934567895317023}, {2.99999993877551, 0.12926877433245437}}]}, "Charting`Private`Tag#1"], Annotation[{Directive[Opacity[1], RGBColor[0.95, 0.627, 0.1425], AbsoluteThickness[2]], Line[{{6.122448979591837*^-8, 0.5453254208747963}, {0.0009201537616788803, 0.5452858241135266}, {0.0018402462988679647, 0.5452461053542124}, {0.0036804313732461333, 0.5451663014373708}, {0.007360801522002471, 0.5450052252001653}, {0.014721541819515146, 0.5446771768959234}, {0.029443022414540495, 0.5439973235946768}, {0.05888598360459119, 0.542541274061309}, {0.05988346934915033, 0.542489669938961}, {0.06088095509370947, 0.5424379155971}, {0.06287592658282774, 0.5423339558488598}, {0.06686586956106429, 0.5421242292792575}, {0.07484575551753739, 0.5416975257307548}, {0.09080552743048358, 0.5408149465633239}, {0.12272507125637595, 0.5389318418216252}, {0.1823336507104563, 0.5349869362104644}, {0.24077294645662814, 0.5305688497414784}, {0.30416540747448334, 0.5251542555305687}, {0.36332736029463414, 0.5195186897216396}, {0.4274424783864683, 0.5127862296158112}, {0.490388312770394, 0.5055616029794099}, {0.5491036389566153, 0.4982952863148971}, {0.6127721304145198, 0.48987120552498115}, {0.6722101136747201, 0.4815283420454712}, {0.7304788132270118, 0.47293598180916757}, {0.7937006780509869, 0.4631927433410669}, {0.8526920346772575, 0.4537494284407043}, {0.9166365565752115, 0.4431793840013578}, {0.979411794765257, 0.43251654952307894}, {1.0379565247575981, 0.4223632659561866}, {1.1014544200216227, 0.41117295665745324}, {1.1607218070879428, 0.40060614097310926}, {1.2249423594259463, 0.38907207819219214}, {1.2879936280560413, 0.37770985617002223}, {1.346814388488432, 0.36711532115301565}, {1.410588314192506, 0.355674298163309}, {1.4701317316988756, 0.345068869169072}, {1.5285058654973367, 0.3347723041840602}, {1.591833164567481, 0.3237435376296953}, {1.650929955439921, 0.31360836220685756}, {1.7149799115840445, 0.30281831088844985}, {1.7778605840202595, 0.29244264557055644}, {1.83651074825877, 0.28297463843593185}, {1.9001140777689638, 0.27294956420972155}, {1.9594868990814533, 0.26382934466410585}, {2.017690436686034, 0.2551193884644852}, {2.080847139562298, 0.24593277166429212}, {2.1397733342408576, 0.23761383024946497}, {2.2036526941911005, 0.22887338615904657}, {2.263301545943639, 0.220973540809391}, {2.321781113988269, 0.21347349152604222}, {2.3852138473045827, 0.20561061254278407}, {2.444416072423192, 0.19852522342716095}, {2.5085714628134843, 0.19111894040468783}, {2.571557569495868, 0.18411791513313286}, {2.630313167980548, 0.17782357365887613}, {2.694021931736911, 0.17125056721239476}, {2.7535001872955696, 0.16534475475025975}, {2.8118091591463195, 0.15976551655349167}, {2.875071296268753, 0.15394130162253633}, {2.9341029251934816, 0.14871503235770023}, {2.935132566030701, 0.14862562228495219}, {2.9361622068679196, 0.14853627147385676}, {2.938221488542358, 0.1483577475040671}, {2.942340051891235, 0.14800140924597172}, {2.950577178588989, 0.1472915640274981}, {2.967051431984496, 0.14588313930944433}, {2.968081072821715, 0.145795609154994}, {2.9691107136589343, 0.14570813720005824}, {2.971169995333373, 0.14553336775577816}, {2.9752885586822493, 0.14518452579881286}, {2.9835256853800027, 0.144489622163599}, {2.984555326217222, 0.144403019211867}, {2.985584967054441, 0.14431647392764219}, {2.9876442487288797, 0.14414355622866376}, {2.9917628120777566, 0.14379841137718216}, {2.992792452914976, 0.14371226883410712}, {2.993822093752195, 0.1436261836924146}, {2.9958813754266336, 0.14345418548010025}, {2.996911016263853, 0.1433682723429388}, {2.997940657101072, 0.14328241647408077}, {2.998970297938291, 0.14319661784025536}, {2.99999993877551, 0.14311087640819123}}]}, "Charting`Private`Tag#2"], Annotation[{Directive[Opacity[1], RGBColor[0.455, 0.7, 0.21], AbsoluteThickness[2]], Line[{{6.122448979591837*^-8, 0.6235078970731291}, {0.0009201537616788803, 0.6234948693949514}, {0.0018402462988679647, 0.6234815870288131}, {0.0036804313732461333, 0.6234542585206555}, {0.007360801522002471, 0.6233965484467987}, {0.014721541819515146, 0.623268932880985}, {0.01564163435670423, 0.6232518391165813}, {0.016561726893893316, 0.6232344918774327}, {0.018401911968271484, 0.6231990372963154}, {0.02208228211702782, 0.6231250900009497}, {0.029443022414540495, 0.622965061521909}, {0.03036311495172958, 0.6229439220691028}, {0.03128320748891866, 0.6229225304849404}, {0.033123392563296834, 0.6228789912754843}, {0.03680376271205317, 0.6227888911892787}, {0.04416450300956584, 0.6225966247212935}, {0.05888598360459119, 0.622163995787888}, {0.05988346934915033, 0.6221323698711655}, {0.06088095509370947, 0.6221004512166465}, {0.06287592658282774, 0.6220357362180844}, {0.06686586956106429, 0.6219027991628893}, {0.07484575551753739, 0.6216229269092499}, {0.09080552743048358, 0.6210074381911221}, {0.09180301317504272, 0.620966512406649}, {0.09280049891960185, 0.6209252983533927}, {0.09479547040872013, 0.6208420060359225}, {0.09878541338695668, 0.6206719687543456}, {0.10676529934342976, 0.6203181176190955}, {0.12272507125637595, 0.6195555880226001}, {0.12365645531034597, 0.6195088410433804}, {0.12458783936431597, 0.6194618470958602}, {0.12645060747225598, 0.6193671188326116}, {0.130176143688136, 0.6191747046102873}, {0.13762721611989603, 0.6187780758977487}, {0.15252936098341613, 0.6179378662283215}, {0.1823336507104563, 0.6160717011696824}, {0.1832467647064902, 0.6160106566631919}, {0.18415987870252415, 0.6159493836866917}, {0.18598610669459203, 0.6158261529089347}, {0.18963856267872775, 0.615576956166859}, {0.19694347464699924, 0.6150676550676583}, {0.21155329858354222, 0.6140056911040318}, {0.24077294645662814, 0.6117105222215676}, {0.2417634536600321, 0.6116287642206254}, {0.2427539608634361, 0.6115467490369032}, {0.24473497527024407, 0.6113819479525014}, {0.24869700408386003, 0.6110492687539064}, {0.25662106171109195, 0.610371649215365}, {0.2724691769655557, 0.6089677457020316}, {0.30416540747448334, 0.6059683887417194}, {0.36332736029463414, 0.5997089041901634}, {0.4274424783864683, 0.5920030209360055}, {0.490388312770394, 0.5835681385804089}, {0.5491036389566153, 0.5749831573501466}, {0.6127721304145198, 0.5649592035055904}, {0.6722101136747201, 0.554993778365616}, {0.7304788132270118, 0.5447154343584752}, {0.7937006780509869, 0.5330613946277031}, {0.8526920346772575, 0.5217794843529998}, {0.9166365565752115, 0.5091762366368732}, {0.979411794765257, 0.49649450443040627}, {1.0379565247575981, 0.484451614884149}, {1.1014544200216227, 0.47121708653419886}, {1.1607218070879428, 0.4587570176240665}, {1.2249423594259463, 0.44519681573186154}, {1.2879936280560413, 0.43187866042743794}, {1.346814388488432, 0.41949475807849923}, {1.410588314192506, 0.4061570479629118}, {1.4701317316988756, 0.3938249498262991}, {1.5285058654973367, 0.3818795382651271}, {1.591833164567481, 0.3691132012429933}, {1.650929955439921, 0.3574058695799864}, {1.7149799115840445, 0.34496654850274916}, {1.7778605840202595, 0.33302739820320326}, {1.83651074825877, 0.3221507735527034}, {1.9001140777689638, 0.3106519267408359}, {1.9594868990814533, 0.30020587345108785}, {2.017690436686034, 0.29024221240281495}, {2.080847139562298, 0.27974571344257687}, {2.1397733342408576, 0.27025095348456474}, {2.2036526941911005, 0.26028503054169433}, {2.263301545943639, 0.2512857438718114}, {2.321781113988269, 0.24274860346662847}, {2.3852138473045827, 0.23380499900455834}, {2.444416072423192, 0.22575107155313306}, {2.5085714628134843, 0.21733736619904095}, {2.571557569495868, 0.20938834514894236}, {2.630313167980548, 0.20224496153470695}, {2.694021931736911, 0.19478831894138166}, {2.7535001872955696, 0.1880909194824566}, {2.8118091591463195, 0.18176569732092368}, {2.875071296268753, 0.17516441895228663}, {2.9341029251934816, 0.16924213049782122}, {2.935132566030701, 0.16914082240470937}, {2.9361622068679196, 0.1690395817557938}, {2.938221488542358, 0.16883730263444785}, {2.942340051891235, 0.1684335520049323}, {2.950577178588989, 0.16762927245603648}, {2.967051431984496, 0.1660335302568475}, {2.968081072821715, 0.16593436101971074}, {2.9691107136589343, 0.16583525797788373}, {2.971169995333373, 0.1656372503240879}, {2.9752885586822493, 0.1652420276435125}, {2.9835256853800027, 0.1644547440524325}, {2.984555326217222, 0.16435662925895017}, {2.985584967054441, 0.16425858003668473}, {2.9876442487288797, 0.16406267814985087}, {2.9917628120777566, 0.16367165951542792}, {2.992792452914976, 0.16357406820012285}, {2.993822093752195, 0.16347654214419124}, {2.9958813754266336, 0.16328168565457699}, {2.996911016263853, 0.16318435514296567}, {2.997940657101072, 0.16308708973487063}, {2.998970297938291, 0.16298988939133513}, {2.99999993877551, 0.1628927540734052}}]}, "Charting`Private`Tag#3"], Annotation[{Directive[Opacity[1], RGBColor[0.922526, 0.385626, 0.209179], AbsoluteThickness[2]], Line[{{6.122448979591837*^-8, 0.6852687468066971}, {0.0009201537616788803, 0.6851921091541464}, {0.0018402462988679647, 0.6851152768487212}, {0.0036804313732461333, 0.6849610287793256}, {0.007360801522002471, 0.6846502022906342}, {0.014721541819515146, 0.6840192555521478}, {0.029443022414540495, 0.6827204046158478}, {0.05888598360459119, 0.6799765647447205}, {0.12272507125637595, 0.6733735742357281}, {0.1823336507104563, 0.6664266537127631}, {0.24077294645662814, 0.6589126676914739}, {0.30416540747448334, 0.6500086127364119}, {0.36332736029463414, 0.6410260222073478}, {0.4274424783864683, 0.6305999516181869}, {0.490388312770394, 0.6197103590505258}, {0.5491036389566153, 0.6090129797910647}, {0.6127721304145198, 0.5968758107657833}, {0.6722101136747201, 0.5850902586010048}, {0.7304788132270118, 0.5731585981631699}, {0.7937006780509869, 0.5598449388722737}, {0.8526920346772575, 0.5471297325427316}, {0.9166365565752115, 0.5330875023345085}, {0.979411794765257, 0.5190990031264988}, {1.0379565247575981, 0.5059237687658443}, {1.1014544200216227, 0.4915472266591088}, {1.1607218070879428, 0.4780953408905749}, {1.2249423594259463, 0.46353432296813746}, {1.2879936280560413, 0.44930205164481657}, {1.346814388488432, 0.4361214582834957}, {1.410588314192506, 0.42197613938723316}, {1.4701317316988756, 0.40893857351150426}, {1.5285058654973367, 0.3963435158315144}, {1.591833164567481, 0.38291578405132676}, {1.650929955439921, 0.3706288741862735}, {1.7149799115840445, 0.35759926658103103}, {1.7778605840202595, 0.3451160236571565}, {1.83651074825877, 0.33376118241125025}, {1.9001140777689638, 0.32177332203975906}, {1.9594868990814533, 0.3108965937927395}, {2.017690436686034, 0.30053324125024417}, {2.080847139562298, 0.2896265074895992}, {2.1397733342408576, 0.2797695309210545}, {2.2036526941911005, 0.2694318020406608}, {2.263301545943639, 0.2601036197389238}, {2.321781113988269, 0.2512600519146406}, {2.3852138473045827, 0.24200084462120647}, {2.444416072423192, 0.233667115667498}, {2.5085714628134843, 0.22496524323909797}, {2.571557569495868, 0.21674756399148148}, {2.630313167980548, 0.2093655049189401}, {2.694021931736911, 0.2016622865131833}, {2.7535001872955696, 0.1947454768823232}, {2.8118091591463195, 0.1882146798214708}, {2.875071296268753, 0.18140040980581001}, {2.9341029251934816, 0.17528826590430552}, {2.935132566030701, 0.1751837195180836}, {2.9361622068679196, 0.17507924303713066}, {2.938221488542358, 0.17487049962525164}, {2.942340051891235, 0.17445384984126278}, {2.950577178588989, 0.1736238891516293}, {2.967051431984496, 0.17197724907695214}, {2.968081072821715, 0.17187491911503597}, {2.9691107136589343, 0.17177265773348674}, {2.971169995333373, 0.17156834054610495}, {2.9752885586822493, 0.17116052731675543}, {2.9835256853800027, 0.17034817618374887}, {2.984555326217222, 0.17024693854847506}, {2.985584967054441, 0.17014576883254298}, {2.9876442487288797, 0.16994363299361318}, {2.9917628120777566, 0.1695401745321383}, {2.992792452914976, 0.16943947909621238}, {2.993822093752195, 0.16933885124958056}, {2.9958813754266336, 0.1691377981592769}, {2.996911016263853, 0.1690373728331577}, {2.997940657101072, 0.16893701493143795}, {2.998970297938291, 0.16883672441290823}, {2.99999993877551, 0.16873650123636452}}]}, "Charting`Private`Tag#4"]}}, {}}, Association["HighlightElements" -> Association["Label" -> {"XYLabel"}, "Ball" -> {"InterpolatedBall"}], "LayoutOptions" -> Association["PanelPlotLayout" -> Association[], "PlotRange" -> {All, All}, "Frame" -> {{False, False}, {False, False}}, "AxesOrigin" -> {0, 0}, "ImageSize" -> {440, 440/GoldenRatio}, "Axes" -> {True, True}, "LabelStyle" -> {}, "AspectRatio" -> GoldenRatio^(-1), "DefaultStyle" -> {Directive[Opacity[1], RGBColor[0.922526, 0.385626, 0.209179], AbsoluteThickness[2]], Directive[Opacity[1], RGBColor[0.455, 0.7, 0.21], AbsoluteThickness[2]], Directive[Opacity[1], RGBColor[0.95, 0.627, 0.1425], AbsoluteThickness[2]], Directive[Opacity[1], RGBColor[0.24, 0.6, 0.8], AbsoluteThickness[2]]}, "HighlightLabelingFunctions" -> Association["CoordinatesToolOptions" -> ({(Identity[#1] & )[#1[[1]]], (Identity[#1] & )[#1[[2]]]} & ), "ScalingFunctions" -> {{Identity, Identity}, {Identity, Identity}}], "Primitives" -> {}, "GCFlag" -> False], "Meta" -> Association["DefaultHighlight" -> {"Dynamic", None}, "Index" -> {}, "Function" -> Plot, "GroupHighlight" -> False]], "DynamicHighlight"]}, {DisplayFunction -> Identity, PlotInteractivity :> $PlotInteractivity, DisplayFunction -> Identity, PlotInteractivity :> $PlotInteractivity, DefaultBaseStyle -> {"PlotGraphics", "Graphics"}, DisplayFunction -> Identity, Ticks -> {Automatic, Automatic}, AxesOrigin -> {0, 0}, FrameTicks -> {{Automatic, Automatic}, {Automatic, Automatic}}, GridLines -> {None, None}, PlotInteractivity :> $PlotInteractivity, DefaultBaseStyle -> {"PlotGraphics", "Graphics"}, DisplayFunction -> Identity, PlotRangePadding -> {{Scaled[0.02], Scaled[0.02]}, {Scaled[0.05], Scaled[0.05]}}, PlotRangeClipping -> True, ImagePadding -> All, PlotInteractivity :> $PlotInteractivity, DisplayFunction -> Identity, PlotInteractivity :> $PlotInteractivity, DefaultBaseStyle -> {"PlotGraphics", "Graphics"}, AspectRatio -> GoldenRatio^(-1), Axes -> {True, True}, AxesLabel -> {HoldForm["z"], HoldForm["G_eff / G"]}, AxesOrigin -> {0, 0.12926877433245437}, DisplayFunction :> Identity, Frame -> {{False, False}, {False, False}}, FrameLabel -> {{None, None}, {None, None}}, FrameTicks -> {{Automatic, Automatic}, {Automatic, Automatic}}, GridLines -> {None, None}, GridLinesStyle -> Directive[GrayLevel[0.5, 0.4]], ImageSize -> 440, Method -> {"DefaultBoundaryStyle" -> Automatic, "DefaultGraphicsInteraction" -> {"Version" -> 1.2, "TrackMousePosition" -> {True, False}, "Effects" -> {"Highlight" -> {"ratio" -> 2}, "HighlightPoint" -> {"ratio" -> 2}, "Droplines" -> {"freeformCursorMode" -> True, "placement" -> {"x" -> "All", "y" -> "None"}}}}, "DefaultMeshStyle" -> AbsolutePointSize[6], "ScalingFunctions" -> None, "CoordinatesToolOptions" -> {"DisplayFunction" -> ({(Identity[#1] & )[#1[[1]]], (Identity[#1] & )[#1[[2]]]} & ), "CopiedValueFunction" -> ({(Identity[#1] & )[#1[[1]]], (Identity[#1] & )[#1[[2]]]} & )}}, PlotLabel -> "f(R) = R + 0.05 R^2, in units H0 = 1", PlotRange -> {All, All}, PlotRangeClipping -> True, PlotRangePadding -> {{Automatic, Automatic}, {Automatic, Automatic}}, Ticks -> {Automatic, Automatic}}]]|>
+
+%-------------------------------------------------------------------------%
+Key: 229718ee-d544-4c83-b84b-6d5244b8608c
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[Graphics[{Annotation[{{{{}, {}, Annotation[{Directive[Opacity[1], RGBColor[0.24, 0.6, 0.8], AbsoluteThickness[2]], Line[{{6.122448979591837*^-8, 0.20362113158147277}, {0.0009201537616788803, 0.20372228810779536}, {0.0018402462988679647, 0.20382304514898908}, {0.0036804313732461333, 0.20402336118314596}, {0.007360801522002471, 0.20441920419781728}, {0.014721541819515146, 0.20519176349358828}, {0.029443022414540495, 0.20666068176341948}, {0.03036311495172958, 0.20674913056134592}, {0.03128320748891866, 0.2068371856995799}, {0.033123392563296834, 0.20701211608544237}, {0.03680376271205317, 0.20735726522251843}, {0.04416450300956584, 0.20802878503620567}, {0.05888598360459119, 0.2092973308384822}, {0.05988346934915033, 0.209379720892286}, {0.06088095509370947, 0.20946166177077702}, {0.06287592658282774, 0.20962419831735568}, {0.06686586956106429, 0.20994390723058262}, {0.07484575551753739, 0.2105620073686467}, {0.09080552743048358, 0.21171342299700016}, {0.09180301317504272, 0.2117816685757077}, {0.09280049891960185, 0.21184948072088508}, {0.09479547040872013, 0.21198380728320326}, {0.09878541338695668, 0.21224728729313738}, {0.10676529934342976, 0.21275369397790572}, {0.12272507125637595, 0.21368535182396708}, {0.12365645531034597, 0.2137364167994375}, {0.12458783936431597, 0.21378712005467018}, {0.12645060747225598, 0.2138874430521714}, {0.130176143688136, 0.2140837663195808}, {0.13762721611989603, 0.21445920931791224}, {0.13855860017386604, 0.21450453418089746}, {0.13948998422783604, 0.21454950346803509}, {0.14135275233577604, 0.21463837671120747}, {0.14507828855165608, 0.2148118714147387}, {0.15252936098341613, 0.2151420152020786}, {0.15346074503738613, 0.2151817342376546}, {0.15439212909135613, 0.2152211112034742}, {0.15625489719929614, 0.21529883956451742}, {0.15998043341517618, 0.21545019893875395}, {0.16743150584693622, 0.21573657480272482}, {0.16836288990090623, 0.21577084430731}, {0.16929427395487623, 0.21580477526971076}, {0.17115704206281623, 0.2158716227484918}, {0.17488257827869624, 0.21600126867394787}, {0.1823336507104563, 0.21624444180922592}, {0.1832467647064902, 0.2162727711483318}, {0.18415987870252415, 0.2163007806109479}, {0.18598610669459203, 0.21635584155484036}, {0.18963856267872775, 0.21646214352770368}, {0.19694347464699924, 0.2166595710665544}, {0.19785658864303318, 0.2166828363391834}, {0.19876970263906713, 0.2167057893196863}, {0.20059593063113498, 0.21675076060428553}, {0.20424838661527073, 0.21683698036331395}, {0.21155329858354222, 0.21699466330545186}, {0.21246641257957616, 0.21701300262605153}, {0.2133795265756101, 0.2170310394920797}, {0.21520575456767796, 0.2170662086375167}, {0.2188582105518137, 0.21713294853935072}, {0.21977132454784765, 0.2171488881166127}, {0.2206844385438816, 0.21716453103462788}, {0.22251066653594945, 0.21719492996805478}, {0.2261631225200852, 0.2172522022792845}, {0.22707623651611913, 0.21726579057177642}, {0.22798935051215308, 0.21727908860156483}, {0.22981557850422094, 0.2173048172525301}, {0.23346803448835668, 0.21735282911639767}, {0.23438114848439062, 0.2173641194366772}, {0.23529426248042454, 0.21737512650465557}, {0.2371204904724924, 0.21739629457388945}, {0.24077294645662814, 0.21743527282768424}, {0.2417634536600321, 0.21744507733583235}, {0.2427539608634361, 0.21745454535288605}, {0.24473497527024407, 0.21747246219911953}, {0.24572548247364806, 0.2174809133404589}, {0.24671598967705205, 0.21748902782038024}, {0.24869700408386003, 0.21750425132080523}, {0.24968751128726402, 0.21751136258084866}, {0.250678018490668, 0.21751814165844838}, {0.252659032897476, 0.21753070764359278}, {0.25364954010088, 0.2175364967163701}, {0.25464004730428397, 0.2175419579370633}, {0.25662106171109195, 0.21755190104853886}, {0.2576115689144959, 0.21755638502855895}, {0.25860207611789987, 0.21756054533486505}, {0.25959258332130386, 0.21756438298790565}, {0.26058309052470785, 0.21756789899836645}, {0.26157359772811184, 0.2175710943671172}, {0.26256410493151583, 0.21757397008515922}, {0.2635546121349198, 0.21757652713357262}, {0.2645451193383238, 0.2175787664834635}, {0.2655356265417278, 0.21758068909591124}, {0.2665261337451318, 0.21758229592191577}, {0.2675166409485358, 0.2175835879023449}, {0.26850714815193977, 0.21758456596788145}, {0.26949765535534376, 0.21758523103897062}, {0.27048816255874775, 0.21758558402576722}, {0.27147866976215174, 0.21758562582808297}, {0.2724691769655557, 0.21758535733533368}, {0.2734596841689597, 0.21758477942648652}, {0.2744501913723637, 0.21758389297000744}, {0.2754406985757677, 0.21758269882380826}, {0.2764312057791717, 0.217581197835194}, {0.2774217129825757, 0.21757939084081018}, {0.27841222018597966, 0.21757727866658996}, {0.27940272738938365, 0.21757486212770155}, {0.28039323459278764, 0.21757214202849542}, {0.28138374179619163, 0.2175691191624515}, {0.2823742489995956, 0.21756579431212664}, {0.2833647562029996, 0.21756216824910152}, {0.2843552634064036, 0.21755824173392826}, {0.2853457706098076, 0.21755401551607761}, {0.2863362778132116, 0.21754949033388601}, {0.28831729222001956, 0.21753954597383907}, {0.28930779942342355, 0.2175341282165112}, {0.29029830662682754, 0.2175284143357922}, {0.2922793210336355, 0.21751610092022877}, {0.2932698282370395, 0.21750950271472927}, {0.2942603354404435, 0.21750261104442284}, {0.2962413498472515, 0.21748794984075165}, {0.29723185705065547, 0.21748018154386145}, {0.29822236425405946, 0.21747212225500812}, {0.30020337866086744, 0.2174551330447133}, {0.30416540747448334, 0.21741768782906978}, {0.3050898129872982, 0.2174082890635952}, {0.306014218500113, 0.21739864063064884}, {0.30786302952574274, 0.21737859635781495}, {0.3115606515770022, 0.21733552882861853}, {0.31248505708981705, 0.21732414343233203}, {0.3134094626026319, 0.21731251131507764}, {0.31525827362826164, 0.21728850821037748}, {0.31895589567952104, 0.21723755502838776}, {0.3198803011923359, 0.21722420443935142}, {0.3208047067051507, 0.21721060946256135}, {0.32265351773078044, 0.21718268732611232}, {0.3263511397820399, 0.2171239206269489}, {0.33374638388455874, 0.21699473950182788}, {0.3346707893973736, 0.21697750278832237}, {0.3355951949101884, 0.21696002019164787}, {0.33744400593581814, 0.21692431178041566}, {0.3411416279870776, 0.21684996767598644}, {0.34853687208959644, 0.21668991286498757}, {0.3494612776024113, 0.21666886825609957}, {0.3503856831152261, 0.2166475974809317}, {0.35223449414085584, 0.21660438243830718}, {0.3559321161921153, 0.2165152918742215}, {0.36332736029463414, 0.21632671313463359}, {0.364329159014819, 0.2163001221604178}, {0.3653309577350039, 0.2162732853243121}, {0.3673345551753737, 0.21621887809565235}, {0.37134175005611336, 0.21610715533811728}, {0.37935613981759264, 0.2158722494153531}, {0.3953849193405512, 0.2153574112684776}, {0.3963867180607361, 0.21532325058910687}, {0.397388516780921, 0.21528885571183431}, {0.39939211422129084, 0.21521936188390586}, {0.4033993091020305, 0.21507754501322468}, {0.41141369886350976, 0.21478245479789934}, {0.4274424783864683, 0.21414771265062008}, {0.42842600704871714, 0.21410694299661617}, {0.42940953571096596, 0.2140659713199119}, {0.43137659303546366, 0.21398342691228717}, {0.435310707684459, 0.21381596718018728}, {0.44317893698244976, 0.21347180316670625}, {0.4589153955784312, 0.21274796332259951}, {0.490388312770394, 0.21116256976231773}, {0.4913057397420537, 0.21111358736646213}, {0.49222316671371347, 0.21106445360755838}, {0.49405802065703286, 0.2109657366922173}, {0.49772772854367164, 0.2107665369996398}, {0.5050671443169493, 0.21036131111247816}, {0.5197459758635047, 0.20952517308124108}, {0.5491036389566153, 0.20775851368358028}, {0.6127721304145198, 0.20352995720141293}, {0.6722101136747201, 0.19919151558523585}, {0.7304788132270118, 0.1946640370026459}, {0.7937006780509869, 0.18953504530376417}, {0.8526920346772575, 0.1846169780799336}, {0.9166365565752115, 0.17921562451237277}, {0.979411794765257, 0.17389653987652873}, {1.0379565247575981, 0.16896534217012726}, {1.1014544200216227, 0.1636893498021524}, {1.1607218070879428, 0.1588586102803267}, {1.2249423594259463, 0.1537540943757739}, {1.2879936280560413, 0.1488944760267166}, {1.346814388488432, 0.14450582239860973}, {1.410588314192506, 0.13991614758538776}, {1.4701317316988756, 0.13580242386494268}, {1.5285058654973367, 0.13192216214839786}, {1.591833164567481, 0.12789645740065045}, {1.650929955439921, 0.12430919608454218}, {1.7149799115840445, 0.12059688917581655}, {1.7778605840202595, 0.11714153161412211}, {1.83651074825877, 0.11407094486812298}, {1.9001140777689638, 0.11090957971868531}, {1.9594868990814533, 0.10811480770895629}, {2.017690436686034, 0.10550669127617823}, {2.080847139562298, 0.10283094061763018}, {2.1397733342408576, 0.100467737008435}, {2.2036526941911005, 0.09804416268864527}, {2.263301545943639, 0.09591397877288653}, {2.321781113988269, 0.09393268513149715}, {2.3852138473045827, 0.09189894155443395}, {2.444416072423192, 0.09011738615084586}, {2.5085714628134843, 0.08829543789806911}, {2.571557569495868, 0.08660785578610457}, {2.630313167980548, 0.08513099497619446}, {2.694021931736911, 0.08362311194688377}, {2.7535001872955696, 0.08229353039745489}, {2.8118091591463195, 0.08106772931397001}, {2.875071296268753, 0.07981855875843318}, {2.9341029251934816, 0.0787198907719359}, {2.935132566030701, 0.07870128965491163}, {2.9361622068679196, 0.07868270809119043}, {2.938221488542358, 0.07864560373168251}, {2.942340051891235, 0.0785716308878775}, {2.950577178588989, 0.07842463584131922}, {2.967051431984496, 0.07813451692528181}, {2.968081072821715, 0.07811655902797135}, {2.9691107136589343, 0.07809862196527834}, {2.971169995333373, 0.07806281056196934}, {2.9752885586822493, 0.07799144027571284}, {2.9835256853800027, 0.07784974361946366}, {2.984555326217222, 0.07783212900449854}, {2.985584967054441, 0.07781453571556239}, {2.9876442487288797, 0.07777941272411791}, {2.9917628120777566, 0.0777094183843613}, {2.992792452914976, 0.07769197167019239}, {2.993822093752195, 0.07767454551688989}, {2.9958813754266336, 0.07763975452362532}, {2.996911016263853, 0.07762238950079628}, {2.997940657101072, 0.07760504467310193}, {2.998970297938291, 0.0775877199508761}, {2.99999993877551, 0.07757041524516146}}]}, "Charting`Private`Tag#1"], Annotation[{Directive[Opacity[1], RGBColor[0.95, 0.627, 0.1425], AbsoluteThickness[2]], Line[{{6.122448979591837*^-8, 0.21582887104002602}, {0.0009201537616788803, 0.21593972414484455}, {0.0018402462988679647, 0.21605015250735454}, {0.0036804313732461333, 0.21626973543742786}, {0.007360801522002471, 0.21670380941961248}, {0.014721541819515146, 0.21755162047970622}, {0.029443022414540495, 0.21916620765637523}, {0.03036311495172958, 0.21926354684849997}, {0.03128320748891866, 0.21936046721540267}, {0.033123392563296834, 0.21955305255732002}, {0.03680376271205317, 0.21993320955362147}, {0.04416450300956584, 0.22067353626320532}, {0.05888598360459119, 0.22207485184404452}, {0.05988346934915033, 0.2221660038194111}, {0.06088095509370947, 0.22225667683376257}, {0.06287592658282774, 0.22243658824039883}, {0.06686586956106429, 0.22279068881949343}, {0.07484575551753739, 0.22347611329151848}, {0.09080552743048358, 0.22475653881747737}, {0.09180301317504272, 0.22483259170694278}, {0.09280049891960185, 0.2249081798446095}, {0.09479547040872013, 0.22505796382327387}, {0.09878541338695668, 0.22535197667220258}, {0.10676529934342976, 0.22591790010093063}, {0.12272507125637595, 0.2269623727534799}, {0.12365645531034597, 0.2270197697601561}, {0.12458783936431597, 0.22707677802594006}, {0.12645060747225598, 0.22718963062743225}, {0.130176143688136, 0.22741069645276485}, {0.13762721611989603, 0.22783439398759775}, {0.13855860017386604, 0.22788563155872424}, {0.13948998422783604, 0.22793648648272258}, {0.14135275233577604, 0.22803705095041094}, {0.14507828855165608, 0.2282336161658236}, {0.15252936098341613, 0.22860863217139263}, {0.15346074503738613, 0.22865382299619433}, {0.15439212909135613, 0.22869864114645094}, {0.15625489719929614, 0.22878716183020265}, {0.15998043341517618, 0.22895975743197988}, {0.16743150584693622, 0.22928729691959282}, {0.1823336507104563, 0.22987278167939032}, {0.1832467647064902, 0.22990567727020303}, {0.18415987870252415, 0.22993823183318343}, {0.18598610669459203, 0.23000231978711735}, {0.18963856267872775, 0.23012642421368187}, {0.19694347464699924, 0.2303584501379036}, {0.19785658864303318, 0.23038594495878606}, {0.19876970263906713, 0.2304131060291319}, {0.20059593063113498, 0.23046642862244432}, {0.20424838661527073, 0.23056908735707643}, {0.21155329858354222, 0.2307585687008601}, {0.21246641257957616, 0.2307807926114054}, {0.2133795265756101, 0.23080269605992787}, {0.21520575456767796, 0.23084554255615322}, {0.2188582105518137, 0.23092740121388258}, {0.21977132454784765, 0.23094706865073958}, {0.2206844385438816, 0.23096641776929178}, {0.22251066653594945, 0.23100416225093373}, {0.2261631225200852, 0.23107584496919398}, {0.22707623651611913, 0.23109297458927122}, {0.22798935051215308, 0.23110978846727678}, {0.22981557850422094, 0.23114247041578562}, {0.23346803448835668, 0.23120406140329927}, {0.23438114848439062, 0.23121867535903343}, {0.23529426248042454, 0.2312329765915609}, {0.2371204904724924, 0.23126064253002676}, {0.24077294645662814, 0.23131224020019506}, {0.2417634536600321, 0.2313253775984591}, {0.2427539608634361, 0.23133815114707132}, {0.24473497527024407, 0.23136260909083886}, {0.24572548247364806, 0.23137429470888754}, {0.24671598967705205, 0.23138561892313086}, {0.24869700408386003, 0.231407185697265}, {0.24968751128726402, 0.2314174295611291}, {0.250678018490668, 0.23142731462919347}, {0.252659032897476, 0.23144601109845242}, {0.25364954010088, 0.23145482388564953}, {0.25464004730428397, 0.23146328064911148}, {0.25662106171109195, 0.23147912899072381}, {0.2576115689144959, 0.23148652203785583}, {0.25860207611789987, 0.23149356199927554}, {0.26058309052470785, 0.2315065857181356}, {0.26157359772811184, 0.2315125710284865}, {0.26256410493151583, 0.2315182063590053}, {0.2645451193383238, 0.23152843030286796}, {0.2655356265417278, 0.23153302055400077}, {0.2665261337451318, 0.23153726410093875}, {0.2675166409485358, 0.23154116178933837}, {0.26850714815193977, 0.23154471447561428}, {0.26949765535534376, 0.23154792302696897}, {0.27048816255874775, 0.23155078832142237}, {0.27147866976215174, 0.23155331124784187}, {0.2724691769655557, 0.23155549270597162}, {0.2734596841689597, 0.23155733360646238}, {0.2744501913723637, 0.23155883487090115}, {0.2754406985757677, 0.23155999743184097}, {0.2764312057791717, 0.2315608222328303}, {0.2774217129825757, 0.23156131022844317}, {0.27841222018597966, 0.23156146238430833}, {0.27940272738938365, 0.2315612796771393}, {0.28039323459278764, 0.23156076309476392}, {0.28138374179619163, 0.23155991363615402}, {0.2823742489995956, 0.23155873231145524}, {0.2833647562029996, 0.2315572201420163}, {0.2843552634064036, 0.23155537816041927}, {0.2853457706098076, 0.2315532074105086}, {0.2863362778132116, 0.2315507089474215}, {0.28732678501661557, 0.23154788383761712}, {0.28831729222001956, 0.23154473315890606}, {0.28930779942342355, 0.2315412580004809}, {0.29029830662682754, 0.23153745946294477}, {0.29128881383023153, 0.23153333865834202}, {0.2922793210336355, 0.23152889671018728}, {0.2932698282370395, 0.23152413475349523}, {0.2942603354404435, 0.23151905393481056}, {0.2962413498472515, 0.23150794035546854}, {0.29723185705065547, 0.23150190994581668}, {0.29822236425405946, 0.23149556537624222}, {0.30020337866086744, 0.23148192162989137}, {0.3011938858642714, 0.231474613872305}, {0.3021843930676754, 0.23146698328941345}, {0.30416540747448334, 0.231450757952188}, {0.3050898129872982, 0.23144274869317497}, {0.306014218500113, 0.23143446191369302}, {0.30786302952574274, 0.23141705919573685}, {0.3115606515770022, 0.23137896061043248}, {0.31248505708981705, 0.23136875471490514}, {0.3134094626026319, 0.23135827794947264}, {0.31525827362826164, 0.23133651501991}, {0.31895589567952104, 0.23128977369936068}, {0.3198803011923359, 0.2312774230202989}, {0.3208047067051507, 0.2312648077328664}, {0.32265351773078044, 0.23123878634483555}, {0.3263511397820399, 0.23118360104254942}, {0.33374638388455874, 0.23106082070619224}, {0.3346707893973736, 0.23104432323239876}, {0.3355951949101884, 0.23102757244482217}, {0.33744400593581814, 0.23099331351910168}, {0.3411416279870776, 0.23092178401681837}, {0.34853687208959644, 0.23076681457901163}, {0.3494612776024113, 0.23074633813474638}, {0.3503856831152261, 0.2307256179309902}, {0.35223449414085584, 0.23068344838392568}, {0.3559321161921153, 0.2305962072931294}, {0.36332736029463414, 0.23041022737302191}, {0.364329159014819, 0.23038386448433215}, {0.3653309577350039, 0.23035722438550896}, {0.3673345551753737, 0.2303031146598411}, {0.37134175005611336, 0.23019159120865948}, {0.37935613981759264, 0.22995543201823876}, {0.3953849193405512, 0.22943112018520942}, {0.3963867180607361, 0.22939605337950136}, {0.397388516780921, 0.2293607237517694}, {0.39939211422129084, 0.22928928335788443}, {0.4033993091020305, 0.22914332726170653}, {0.41141369886350976, 0.2288394766738935}, {0.4274424783864683, 0.22818641424252153}, {0.42842600704871714, 0.2281444458857757}, {0.42940953571096596, 0.22810226285225257}, {0.43137659303546366, 0.22801725499783349}, {0.435310707684459, 0.2278446856901068}, {0.44317893698244976, 0.22748940846759383}, {0.4589153955784312, 0.22673837273596775}, {0.490388312770394, 0.22507567783841384}, {0.4913057397420537, 0.22502425895994826}, {0.49222316671371347, 0.22497268514958146}, {0.49405802065703286, 0.2248690759129621}, {0.49772772854367164, 0.22466003189555325}, {0.5050671443169493, 0.2242347887387233}, {0.5197459758635047, 0.223356527058207}, {0.5491036389566153, 0.22149040047422397}, {0.6127721304145198, 0.2170002432669339}, {0.6722101136747201, 0.2123651374840211}, {0.7304788132270118, 0.20750964610913022}, {0.7937006780509869, 0.2019891239393178}, {0.8526920346772575, 0.19668198511387022}, {0.9166365565752115, 0.190834390815667}, {0.979411794765257, 0.18506604049922315}, {1.0379565247575981, 0.17970627668960434}, {1.1014544200216227, 0.17396080565776803}, {1.1607218070879428, 0.16869319319235268}, {1.2249423594259463, 0.16311742586865377}, {1.2879936280560413, 0.1577994098446842}, {1.346814388488432, 0.15299410111088185}, {1.410588314192506, 0.14796643352898933}, {1.4701317316988756, 0.14344378103762292}, {1.5285058654973367, 0.1391868594760679}, {1.591833164567481, 0.13475866354285262}, {1.650929955439921, 0.13080526159266875}, {1.7149799115840445, 0.12672462545405785}, {1.7778605840202595, 0.12290653301096578}, {1.83651074825877, 0.11952184324253005}, {1.9001140777689638, 0.11603337477094139}, {1.9594868990814533, 0.1129378232277247}, {2.017690436686034, 0.1100612980597048}, {2.080847139562298, 0.10709683532889831}, {2.1397733342408576, 0.10447791648812603}, {2.2036526941911005, 0.10179568394301548}, {2.263301545943639, 0.0994248299557796}, {2.321781113988269, 0.09722942286420383}, {2.3852138473045827, 0.09497944020415582}, {2.444416072423192, 0.09298959110233608}, {2.5085714628134843, 0.09096164563003947}, {2.571557569495868, 0.08909109646938349}, {2.630313167980548, 0.08743901531346285}, {2.694021931736911, 0.08575335814162548}, {2.7535001872955696, 0.08427586277052496}, {2.8118091591463195, 0.08290389345636011}, {2.875071296268753, 0.08150114955401498}, {2.9341029251934816, 0.0802738083782307}, {2.935132566030701, 0.08025302799768692}, {2.9361622068679196, 0.08023226812805226}, {2.938221488542358, 0.0801908097660976}, {2.942340051891235, 0.080108137505508}, {2.950577178588989, 0.07994376310222313}, {2.967051431984496, 0.07961884308791979}, {2.968081072821715, 0.07959870344140808}, {2.9691107136589343, 0.07957858343287476}, {2.971169995333373, 0.07953840227224672}, {2.9752885586822493, 0.07945827501814764}, {2.9835256853800027, 0.07929895857086833}, {2.984555326217222, 0.07927913182378098}, {2.985584967054441, 0.07925932457605482}, {2.9876442487288797, 0.07921976857180138}, {2.9917628120777566, 0.07914089052474006}, {2.992792452914976, 0.0791212197636096}, {2.993822093752195, 0.0791015685089232}, {2.9958813754266336, 0.07906232453771733}, {2.996911016263853, 0.07904273183263702}, {2.997940657101072, 0.07902315865688127}, {2.998970297938291, 0.07900360501819638}, {2.99999993877551, 0.0789840709251412}}]}, "Charting`Private`Tag#2"], Annotation[{Directive[Opacity[1], RGBColor[0.455, 0.7, 0.21], AbsoluteThickness[2]], Line[{{6.122448979591837*^-8, 0.24126195091643038}, {0.0009201537616788803, 0.2413809509874079}, {0.0018402462988679647, 0.24149946158515337}, {0.0036804313732461333, 0.2417350148441657}, {0.007360801522002471, 0.24220025339232032}, {0.014721541819515146, 0.24310729476396703}, {0.029443022414540495, 0.24482802034219775}, {0.03036311495172958, 0.24493145167715596}, {0.03128320748891866, 0.24503440090644069}, {0.033123392563296834, 0.24523885446131566}, {0.03680376271205317, 0.24564199227216113}, {0.04416450300956584, 0.2464252796077078}, {0.05888598360459119, 0.24790071588144416}, {0.05988346934915033, 0.2479963310528008}, {0.06088095509370947, 0.24809139736447774}, {0.06287592658282774, 0.24827988648541163}, {0.06686586956106429, 0.2486503015808862}, {0.07484575551753739, 0.24936490755716706}, {0.09080552743048358, 0.25069041371871176}, {0.09180301317504272, 0.2507687150490207}, {0.09280049891960185, 0.25084648599500925}, {0.09479547040872013, 0.2510004394238415}, {0.09878541338695668, 0.25130201119688184}, {0.10676529934342976, 0.2518799635626104}, {0.12272507125637595, 0.252936278771477}, {0.12365645531034597, 0.2529938651366083}, {0.12458783936431597, 0.25305100723930685}, {0.12645060747225598, 0.2531639606924123}, {0.130176143688136, 0.2533845616970628}, {0.13762721611989603, 0.2538047805970528}, {0.13855860017386604, 0.25385535233654255}, {0.13948998422783604, 0.2539054910872332}, {0.14135275233577604, 0.25400447159057576}, {0.14507828855165608, 0.2541972586435539}, {0.15252936098341613, 0.2545622531592211}, {0.15346074503738613, 0.2546059585973854}, {0.15439212909135613, 0.2546492394615768}, {0.15625489719929614, 0.254734529736338}, {0.15998043341517618, 0.2549000406153317}, {0.16743150584693622, 0.25521091684884084}, {0.16836288990090623, 0.2552478996772418}, {0.16929427395487623, 0.25528446755854656}, {0.17115704206281623, 0.2553563610548868}, {0.17488257827869624, 0.2554951972794368}, {0.1823336507104563, 0.2557532171265975}, {0.1832467647064902, 0.25578304773250565}, {0.18415987870252415, 0.2558124899412634}, {0.18598610669459203, 0.25587021188853915}, {0.18963856267872775, 0.2559810252071838}, {0.1905516766747617, 0.2560077679089941}, {0.19146479067079564, 0.25603412777537854}, {0.1932910186628635, 0.25608570187021923}, {0.19694347464699924, 0.25618428784589314}, {0.19785658864303318, 0.2562079881697195}, {0.19876970263906713, 0.25623131151536827}, {0.20059593063113498, 0.2562768302891566}, {0.20424838661527073, 0.256363377547807}, {0.21155329858354222, 0.2565186859035505}, {0.21246641257957616, 0.2565364475740919}, {0.2133795265756101, 0.2565538448798108}, {0.21520575456767796, 0.25658754934310307}, {0.2188582105518137, 0.2566505436208593}, {0.21977132454784765, 0.25666537248112037}, {0.2206844385438816, 0.2566798353032702}, {0.22251066653594945, 0.25670766649573756}, {0.2261631225200852, 0.25675897650699037}, {0.22707623651611913, 0.25677090252094115}, {0.22798935051215308, 0.25678246972634633}, {0.22981557850422094, 0.2568045312552199}, {0.23072869250025485, 0.2568150273409518}, {0.2316418064962888, 0.2568251681426128}, {0.23346803448835668, 0.2568443873755016}, {0.23438114848439062, 0.25685346753777044}, {0.23529426248042454, 0.25686219587799786}, {0.2371204904724924, 0.25687860051050815}, {0.23803360446852634, 0.2568862785017696}, {0.23894671846456028, 0.25689360806889416}, {0.24077294645662814, 0.256907225283633}, {0.2417634536600321, 0.2569140317878055}, {0.2427539608634361, 0.256920432304779}, {0.24374446806684008, 0.25692642788379066}, {0.24473497527024407, 0.2569320195681953}, {0.24572548247364806, 0.25693720839542566}, {0.24671598967705205, 0.25694199539695306}, {0.24770649688045604, 0.25694638159824806}, {0.24869700408386003, 0.25695036801874127}, {0.24968751128726402, 0.2569539556717833}, {0.250678018490668, 0.25695714556460597}, {0.251668525694072, 0.2569599386982825}, {0.252659032897476, 0.25696233606768815}, {0.25364954010088, 0.2569643386614612}, {0.25464004730428397, 0.2569659474619629}, {0.25563055450768796, 0.2569671634452383}, {0.25662106171109195, 0.2569679875809773}, {0.2576115689144959, 0.2569684208324741}, {0.25860207611789987, 0.2569684641565893}, {0.25959258332130386, 0.256968118503709}, {0.26058309052470785, 0.25696738481770637}, {0.26157359772811184, 0.2569662640359017}, {0.26256410493151583, 0.25696475708902355}, {0.2635546121349198, 0.2569628649011686}, {0.2645451193383238, 0.2569605883897625}, {0.2655356265417278, 0.2569579284655209}, {0.2665261337451318, 0.2569548860324095}, {0.2675166409485358, 0.25695146198760466}, {0.26850714815193977, 0.25694765722145424}, {0.26949765535534376, 0.25694347261743816}, {0.27048816255874775, 0.2569389090521285}, {0.2724691769655557, 0.2569286485091443}, {0.2734596841689597, 0.2569229532497222}, {0.2744501913723637, 0.25691688246543265}, {0.2764312057791717, 0.256903617680882}, {0.2774217129825757, 0.2568964253420366}, {0.27841222018597966, 0.25688886080107665}, {0.28039323459278764, 0.2568726183560356}, {0.28138374179619163, 0.2568639420552722}, {0.2823742489995956, 0.2568548967589507}, {0.2843552634064036, 0.25683570230492525}, {0.28831729222001956, 0.256792919408455}, {0.28930779942342355, 0.25678131265200094}, {0.29029830662682754, 0.2567693429544211}, {0.2922793210336355, 0.25674431761774563}, {0.2962413498472515, 0.25668994291376707}, {0.29723185705065547, 0.25667545241761425}, {0.29822236425405946, 0.2566606045397075}, {0.30020337866086744, 0.2566298392669706}, {0.30416540747448334, 0.256564048596922}, {0.3050898129872982, 0.25654788464904943}, {0.306014218500113, 0.256531413786358}, {0.30786302952574274, 0.256497553241894}, {0.3115606515770022, 0.25642616999585055}, {0.31895589567952104, 0.25626885437759817}, {0.3198803011923359, 0.2562478341256764}, {0.3208047067051507, 0.2562265139055992}, {0.32265351773078044, 0.2561829750646704}, {0.3263511397820399, 0.25609231346360045}, {0.33374638388455874, 0.25589681823356}, {0.3346707893973736, 0.25587107197883824}, {0.3355951949101884, 0.2558450380498378}, {0.33744400593581814, 0.2557921110539428}, {0.3411416279870776, 0.25568284739117797}, {0.34853687208959644, 0.255450891639546}, {0.36332736029463414, 0.25493486951024036}, {0.364329159014819, 0.2548974713658871}, {0.3653309577350039, 0.2548597685754603}, {0.3673345551753737, 0.2547834530137797}, {0.37134175005611336, 0.25462720916426423}, {0.37935613981759264, 0.2543004804534467}, {0.3953849193405512, 0.25359161160173455}, {0.3963867180607361, 0.2535449105882895}, {0.397388516780921, 0.25349793199878196}, {0.39939211422129084, 0.25340314481458615}, {0.4033993091020305, 0.2532102689050279}, {0.41141369886350976, 0.2528114499199991}, {0.4274424783864683, 0.2519625102979418}, {0.42842600704871714, 0.2519082237618288}, {0.42940953571096596, 0.2518536856035504}, {0.43137659303546366, 0.25174385566426316}, {0.435310707684459, 0.2515211915155215}, {0.44317893698244976, 0.2510640766526497}, {0.4589153955784312, 0.2501046675483026}, {0.490388312770394, 0.24801911433425483}, {0.4913057397420537, 0.24795520197179483}, {0.49222316671371347, 0.24789112033690242}, {0.49405802065703286, 0.24776245144567982}, {0.49772772854367164, 0.24750310616380528}, {0.5050671443169493, 0.24697649965845822}, {0.5197459758635047, 0.24589243999416008}, {0.5491036389566153, 0.2436059524810424}, {0.6127721304145198, 0.23817558074176073}, {0.6722101136747201, 0.23264729303065773}, {0.7304788132270118, 0.22690627852293596}, {0.7937006780509869, 0.22043107385631333}, {0.8526920346772575, 0.214245903775084}, {0.9166365565752115, 0.20746825917933814}, {0.979411794765257, 0.20081304680815018}, {1.0379565247575981, 0.1946539392079407}, {1.1014544200216227, 0.18807734994498704}, {1.1607218070879428, 0.182065485258662}, {1.2249423594259463, 0.17571851215205425}, {1.2879936280560413, 0.1696783455130669}, {1.346814388488432, 0.16423166110236476}, {1.410588314192506, 0.15854783686323992}, {1.4701317316988756, 0.1534466628740455}, {1.5285058654973367, 0.14864464143779826}, {1.591833164567481, 0.14365866148546036}, {1.650929955439921, 0.13921968786127784}, {1.7149799115840445, 0.13462838617219958}, {1.7778605840202595, 0.13034355083085924}, {1.83651074825877, 0.12654753569881566}, {1.9001140777689638, 0.12262822019983616}, {1.9594868990814533, 0.11916411478407626}, {2.017690436686034, 0.11593531716479002}, {2.080847139562298, 0.11261020062557672}, {2.1397733342408576, 0.10967918674881656}, {2.2036526941911005, 0.1066660131509356}, {2.263301545943639, 0.10400907867158948}, {2.321781113988269, 0.10154274664467582}, {2.3852138473045827, 0.09901079598855529}, {2.444416072423192, 0.09678560271638725}, {2.5085714628134843, 0.09450561292146319}, {2.571557569495868, 0.09239055714202607}, {2.630313167980548, 0.09053615123241363}, {2.694021931736911, 0.08863836317490224}, {2.7535001872955696, 0.08696160656912809}, {2.8118091591463195, 0.08541267001080474}, {2.875071296268753, 0.08383023347582393}, {2.9341029251934816, 0.08243310983945513}, {2.935132566030701, 0.0824094145053373}, {2.9361622068679196, 0.08238574296402722}, {2.938221488542358, 0.08233847148864633}, {2.942340051891235, 0.08224421664978353}, {2.950577178588989, 0.08205687410665324}, {2.967051431984496, 0.08168699478578877}, {2.968081072821715, 0.08166409626758404}, {2.9691107136589343, 0.08164122408892385}, {2.971169995333373, 0.081595559168246}, {2.9752885586822493, 0.08150454930622887}, {2.9835256853800027, 0.08132373397590946}, {2.984555326217222, 0.08130124154215732}, {2.985584967054441, 0.08127877316493118}, {2.9876442487288797, 0.08123390826050814}, {2.9917628120777566, 0.08114446365228155}, {2.992792452914976, 0.08112216146659336}, {2.993822093752195, 0.08109988271570243}, {2.9958813754266336, 0.08105539522019237}, {2.996911016263853, 0.08103318632819917}, {2.997940657101072, 0.08101100057625718}, {2.998970297938291, 0.08098883789236984}, {2.99999993877551, 0.08096669820521865}}]}, "Charting`Private`Tag#3"], Annotation[{Directive[Opacity[1], RGBColor[0.922526, 0.385626, 0.209179], AbsoluteThickness[2]], Line[{{6.122448979591837*^-8, 0.2530726534153956}, {0.0009201537616788803, 0.253186466016255}, {0.0018402462988679647, 0.2532997667435326}, {0.0036804313732461333, 0.25352483368791023}, {0.007360801522002471, 0.2539688375916849}, {0.014721541819515146, 0.25483239414436654}, {0.029443022414540495, 0.2564623199389112}, {0.03036311495172958, 0.25655991477663287}, {0.03128320748891866, 0.2566570091020964}, {0.033123392563296834, 0.25684969797990204}, {0.03680376271205317, 0.25722908927896815}, {0.04416450300956584, 0.2579640315069039}, {0.05888598360459119, 0.25933946842591166}, {0.05988346934915033, 0.2594281511745017}, {0.06088095509370947, 0.25951626531059274}, {0.06287592658282774, 0.2596907908536955}, {0.06686586956106429, 0.2600330531956003}, {0.07484575551753739, 0.2606905477979167}, {0.07584324126209652, 0.2607702114959191}, {0.07684072700665566, 0.260849316854833}, {0.07883569849577393, 0.2610058554176083}, {0.08282564147401048, 0.26131226409612485}, {0.09080552743048358, 0.2618985710805738}, {0.09180301317504272, 0.2619693885057854}, {0.09280049891960185, 0.2620396593201655}, {0.09479547040872013, 0.2621785641303574}, {0.09878541338695668, 0.26244984769993807}, {0.10676529934342976, 0.26296648227838226}, {0.12272507125637595, 0.26389742292052554}, {0.12365645531034597, 0.263947589865854}, {0.12458783936431597, 0.26399730212655814}, {0.12645060747225598, 0.2640953652613397}, {0.130176143688136, 0.2642860647332245}, {0.13762721611989603, 0.26464591033971463}, {0.13855860017386604, 0.2646888848874423}, {0.13948998422783604, 0.26473141597366145}, {0.14135275233577604, 0.2648151503754157}, {0.14507828855165608, 0.26497732650173766}, {0.15252936098341613, 0.2652806569038609}, {0.15346074503738613, 0.2653166155033732}, {0.15439212909135613, 0.26535214131917123}, {0.15625489719929614, 0.26542189733506827}, {0.15998043341517618, 0.26555624615548556}, {0.16091181746914618, 0.26558876172366297}, {0.1618432015231162, 0.2656208500268007}, {0.16370596963105621, 0.2656837476319106}, {0.16743150584693622, 0.26580444649577856}, {0.16836288990090623, 0.26583356358924415}, {0.16929427395487623, 0.26586225905212196}, {0.17115704206281623, 0.26591838793704903}, {0.17488257827869624, 0.26602561759809507}, {0.1823336507104563, 0.2662201263744005}, {0.1832467647064902, 0.2662421472449741}, {0.18415987870252415, 0.26626377400345097}, {0.18598610669459203, 0.26630584797339923}, {0.18963856267872775, 0.2663852973358466}, {0.1905516766747617, 0.2664041849094075}, {0.19146479067079564, 0.2664226839890117}, {0.1932910186628635, 0.2664585195040608}, {0.19694347464699924, 0.2665255599046505}, {0.19785658864303318, 0.2665413594631794}, {0.19876970263906713, 0.2665567762416185}, {0.20059593063113498, 0.2665864643429793}, {0.2015090446271689, 0.2666007371118893}, {0.20242215862320284, 0.2666146299926755}, {0.20424838661527073, 0.2666412789976301}, {0.20516150061130467, 0.266654036579234}, {0.2060746146073386, 0.2666664171875736}, {0.20790084259940647, 0.2666900504148703}, {0.21155329858354222, 0.26673282550311567}, {0.21246641257957616, 0.2667425878798855}, {0.2133795265756101, 0.26675197918040805}, {0.21520575456767796, 0.2667696515273954}, {0.21611886856371187, 0.2667779340645981}, {0.21703198255974582, 0.2667858485070189}, {0.2188582105518137, 0.2668005761038164}, {0.21977132454784765, 0.2668073907596861}, {0.2206844385438816, 0.266813840323749}, {0.22159755253991553, 0.2668199255500692}, {0.22251066653594945, 0.26682564719402824}, {0.22342378053198336, 0.26683100601231957}, {0.2243368945280173, 0.2668360027629432}, {0.22525000852405125, 0.2668406382052002}, {0.2261631225200852, 0.26684491242000624}, {0.22707623651611913, 0.2668488202943754}, {0.22798935051215308, 0.26685236146121843}, {0.22890246450818702, 0.26685553696027975}, {0.22981557850422094, 0.2668583478267959}, {0.23072869250025485, 0.26686079509146543}, {0.2316418064962888, 0.2668628797804187}, {0.23255492049232274, 0.2668646029151881}, {0.23346803448835668, 0.26686596551267744}, {0.23438114848439062, 0.2668669685851323}, {0.23529426248042454, 0.2668676131401099}, {0.23620737647645845, 0.26686790018044876}, {0.2371204904724924, 0.2668678307042386}, {0.23803360446852634, 0.26686740570479056}, {0.23894671846456028, 0.26686662617060675}, {0.23985983246059422, 0.2668654930853505}, {0.24077294645662814, 0.266864007427816}, {0.2417634536600321, 0.2668619983185749}, {0.2427539608634361, 0.2668595767204355}, {0.24374446806684008, 0.2668567438630787}, {0.24473497527024407, 0.26685350096926985}, {0.24572548247364806, 0.2668498492548134}, {0.24671598967705205, 0.26684578992850805}, {0.24770649688045604, 0.266841324192101}, {0.24869700408386003, 0.2668364532402433}, {0.24968751128726402, 0.26683117826044445}, {0.250678018490668, 0.26682550043302705}, {0.252659032897476, 0.2668129409204217}, {0.25364954010088, 0.26680606155953823}, {0.25464004730428397, 0.2667987839995547}, {0.25662106171109195, 0.2667830388496716}, {0.2576115689144959, 0.2667745735247739}, {0.25860207611789987, 0.2667657145306896}, {0.26058309052470785, 0.26674681998175087}, {0.26157359772811184, 0.26673678663114936}, {0.26256410493151583, 0.2667263640197763}, {0.2645451193383238, 0.2667043553380184}, {0.2655356265417278, 0.2666927714096907}, {0.2665261337451318, 0.26668080250461534}, {0.26850714815193977, 0.26665571396114396}, {0.2724691769655557, 0.26660096286881807}, {0.2734596841689597, 0.26658632810977845}, {0.2744501913723637, 0.2665713165572921}, {0.2764312057791717, 0.2665401670074618}, {0.28039323459278764, 0.2664733892059367}, {0.28138374179619163, 0.26645576723479175}, {0.2823742489995956, 0.26643777612121816}, {0.2843552634064036, 0.2664006901292545}, {0.28831729222001956, 0.26632212823228707}, {0.28930779942342355, 0.26630157832837137}, {0.29029830662682754, 0.266280666377617}, {0.2922793210336355, 0.26623775971347613}, {0.2962413498472515, 0.26614763846854333}, {0.30416540747448334, 0.26595034159185627}, {0.3050898129872982, 0.265925857818763}, {0.306014218500113, 0.26590106949662984}, {0.30786302952574274, 0.2658505814638325}, {0.3115606515770022, 0.26574597523600135}, {0.31895589567952104, 0.2655223589069945}, {0.3198803011923359, 0.2654930661073694}, {0.3208047067051507, 0.26546347691251165}, {0.32265351773078044, 0.2654034111038819}, {0.3263511397820399, 0.265279741731543}, {0.33374638388455874, 0.2650183405415276}, {0.3346707893973736, 0.26498435415074206}, {0.3355951949101884, 0.2649500774919111}, {0.33744400593581814, 0.2648806550624802}, {0.3411416279870776, 0.2647383610559781}, {0.34853687208959644, 0.2644402156033005}, {0.36332736029463414, 0.2637915262985364}, {0.364329159014819, 0.26374513808448524}, {0.3653309577350039, 0.2636984455729592}, {0.3673345551753737, 0.26360415223554684}, {0.37134175005611336, 0.26341196382116217}, {0.37935613981759264, 0.26301342412612183}, {0.3953849193405512, 0.26216151339093813}, {0.3963867180607361, 0.26210590827311253}, {0.397388516780921, 0.262050030672363}, {0.39939211422129084, 0.261937461305932}, {0.4033993091020305, 0.2617090882899663}, {0.41141369886350976, 0.26123957486220173}, {0.4274424783864683, 0.26025068409495}, {0.42842600704871714, 0.26018788152019795}, {0.42940953571096596, 0.2601248363015194}, {0.43137659303546366, 0.25999801963991703}, {0.435310707684459, 0.25974149272976915}, {0.44317893698244976, 0.2592169452896746}, {0.4589153955784312, 0.2581228401871607}, {0.490388312770394, 0.2557693724882234}, {0.5491036389566153, 0.25087367553207346}, {0.6127721304145198, 0.2449455683226761}, {0.6722101136747201, 0.23898009596347808}, {0.7304788132270118, 0.23283320656076284}, {0.7937006780509869, 0.22594851648348827}, {0.8526920346772575, 0.21940469952912828}, {0.9166365565752115, 0.21226792800724043}, {0.979411794765257, 0.20528500747628767}, {1.0379565247575981, 0.1988435676745946}, {1.1014544200216227, 0.19198132525783845}, {1.1607218070879428, 0.18572431100262612}, {1.2249423594259463, 0.17913164735130147}, {1.2879936280560413, 0.17286913143333402}, {1.346814388488432, 0.16722753562790368}, {1.410588314192506, 0.1613481772138116}, {1.4701317316988756, 0.1560806719256519}, {1.5285058654973367, 0.15112604628433984}, {1.591833164567481, 0.14598479580396712}, {1.650929955439921, 0.14140762242667607}, {1.7149799115840445, 0.13668557832032233}, {1.7778605840202595, 0.1322729558790753}, {1.83651074825877, 0.12836827107444782}, {1.9001140777689638, 0.12434261386646465}, {1.9594868990814533, 0.12077669189811938}, {2.017690436686034, 0.1174623356781236}, {2.080847139562298, 0.11404579466352364}, {2.1397733342408576, 0.11103279301157776}, {2.2036526941911005, 0.10794168770802451}, {2.263301545943639, 0.10520942958174259}, {2.321781113988269, 0.10267733038576361}, {2.3852138473045827, 0.10007737996609858}, {2.444416072423192, 0.09778793662381721}, {2.5085714628134843, 0.0954490424997814}, {2.571557569495868, 0.09327708828824448}, {2.630313167980548, 0.09136639802965622}, {2.694021931736911, 0.08941740642085304}, {2.7535001872955696, 0.08769524385871397}, {2.8118091591463195, 0.08609795857864039}, {2.875071296268753, 0.08446988820315508}, {2.9341029251934816, 0.08303382467004138}, {2.935132566030701, 0.08300944103711845}, {2.9361622068679196, 0.08298508016813362}, {2.938221488542358, 0.08293642680247135}, {2.942340051891235, 0.08283939420198538}, {2.950577178588989, 0.08264643183454437}, {2.967051431984496, 0.08226498790587063}, {2.968081072821715, 0.08224134950692119}, {2.9691107136589343, 0.08221773520518504}, {2.971169995333373, 0.08217057915597295}, {2.9752885586822493, 0.08207655919439587}, {2.9835256853800027, 0.08188970440398728}, {2.984555326217222, 0.08186646021243431}, {2.985584967054441, 0.08184324133814083}, {2.9876442487288797, 0.08179687989785081}, {2.9917628120777566, 0.08170446482920427}, {2.992792452914976, 0.08168142574412213}, {2.993822093752195, 0.08165841272798159}, {2.9958813754266336, 0.08161246530670137}, {2.996911016263853, 0.08158953110739439}, {2.997940657101072, 0.08156662338869818}, {2.998970297938291, 0.08154374225728205}, {2.99999993877551, 0.08152088782131993}}]}, "Charting`Private`Tag#4"]}}, {}}, Association["HighlightElements" -> Association["Label" -> {"XYLabel"}, "Ball" -> {"InterpolatedBall"}], "LayoutOptions" -> Association["PanelPlotLayout" -> Association[], "PlotRange" -> {All, All}, "Frame" -> {{False, False}, {False, False}}, "AxesOrigin" -> {0, 0}, "ImageSize" -> {440, 440/GoldenRatio}, "Axes" -> {True, True}, "LabelStyle" -> {}, "AspectRatio" -> GoldenRatio^(-1), "DefaultStyle" -> {Directive[Opacity[1], RGBColor[0.922526, 0.385626, 0.209179], AbsoluteThickness[2]], Directive[Opacity[1], RGBColor[0.455, 0.7, 0.21], AbsoluteThickness[2]], Directive[Opacity[1], RGBColor[0.95, 0.627, 0.1425], AbsoluteThickness[2]], Directive[Opacity[1], RGBColor[0.24, 0.6, 0.8], AbsoluteThickness[2]]}, "HighlightLabelingFunctions" -> Association["CoordinatesToolOptions" -> ({(Identity[#1] & )[#1[[1]]], (Identity[#1] & )[#1[[2]]]} & ), "ScalingFunctions" -> {{Identity, Identity}, {Identity, Identity}}], "Primitives" -> {}, "GCFlag" -> False], "Meta" -> Association["DefaultHighlight" -> {"Dynamic", None}, "Index" -> {}, "Function" -> Plot, "GroupHighlight" -> False]], "DynamicHighlight"]}, {DisplayFunction -> Identity, PlotInteractivity :> $PlotInteractivity, DisplayFunction -> Identity, PlotInteractivity :> $PlotInteractivity, DefaultBaseStyle -> {"PlotGraphics", "Graphics"}, DisplayFunction -> Identity, Ticks -> {Automatic, Automatic}, AxesOrigin -> {0, 0}, FrameTicks -> {{Automatic, Automatic}, {Automatic, Automatic}}, GridLines -> {None, None}, PlotInteractivity :> $PlotInteractivity, DefaultBaseStyle -> {"PlotGraphics", "Graphics"}, DisplayFunction -> Identity, PlotRangePadding -> {{Scaled[0.02], Scaled[0.02]}, {Scaled[0.05], Scaled[0.05]}}, PlotRangeClipping -> True, ImagePadding -> All, PlotInteractivity :> $PlotInteractivity, DisplayFunction -> Identity, PlotInteractivity :> $PlotInteractivity, DefaultBaseStyle -> {"PlotGraphics", "Graphics"}, AspectRatio -> GoldenRatio^(-1), Axes -> {True, True}, AxesLabel -> {HoldForm["z"], HoldForm["f\[Sigma]8"]}, AxesOrigin -> {0, 0.07757041524516146}, DisplayFunction :> Identity, Frame -> {{False, False}, {False, False}}, FrameLabel -> {{None, None}, {None, None}}, FrameTicks -> {{Automatic, Automatic}, {Automatic, Automatic}}, GridLines -> {None, None}, GridLinesStyle -> Directive[GrayLevel[0.5, 0.4]], ImageSize -> 440, Method -> {"DefaultBoundaryStyle" -> Automatic, "DefaultGraphicsInteraction" -> {"Version" -> 1.2, "TrackMousePosition" -> {True, False}, "Effects" -> {"Highlight" -> {"ratio" -> 2}, "HighlightPoint" -> {"ratio" -> 2}, "Droplines" -> {"freeformCursorMode" -> True, "placement" -> {"x" -> "All", "y" -> "None"}}}}, "DefaultMeshStyle" -> AbsolutePointSize[6], "ScalingFunctions" -> None, "CoordinatesToolOptions" -> {"DisplayFunction" -> ({(Identity[#1] & )[#1[[1]]], (Identity[#1] & )[#1[[2]]]} & ), "CopiedValueFunction" -> ({(Identity[#1] & )[#1[[1]]], (Identity[#1] & )[#1[[2]]]} & )}}, PlotLabel -> "scale-dependent growth, the f(R) fingerprint", PlotRange -> {All, All}, PlotRangeClipping -> True, PlotRangePadding -> {{Automatic, Automatic}, {Automatic, Automatic}}, Ticks -> {Automatic, Automatic}}]]|>
+
+%-----------------------------%EndOfObjects%------------------------------%
+
+
+
+%--------------------------------%Symbols%--------------------------------%
+%-----------------------------%EndOfSymbols%------------------------------%
+
+
+
+%--------------------------------%Storage%--------------------------------%
+%-----------------------------%EndOfStorage%------------------------------%
+
+
+
+%---------------------------%ExcalidrawImages%----------------------------%
+%-------------------------%EndOfExcalidrawImages%-------------------------%
+
+
+
+%-----------------------------%RuntimeCache%------------------------------%
+%---------------------------%EndOfRuntimeCache%---------------------------%
+
+
+
+
+
+%-----------------------------%EndOfNotebook%-----------------------------%
