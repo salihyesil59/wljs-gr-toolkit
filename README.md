@@ -50,6 +50,28 @@ closed form for GR, $\Lambda$CDM, $f(\mathcal{T})$ and $f(Q)$, and as an ODE for
 $f(R,\mathcal{G})$, which carry $\dot H$ and $\ddot H$; the engine reports which case you are
 in and hands the ODE to `NDSolve` when it has to.
 
+### `GR-03-Cosmological-Distances`
+
+$E(z)$ in, observables out — the step that makes a model falsifiable. Everything here is an
+integral of $E(z)$:
+
+- comoving, transverse comoving, angular diameter and luminosity distances, and the distance
+  modulus $\mu(z)$
+- lookback time, age at redshift $z$, age of the universe
+- particle and event horizons, comoving volume and its element
+- the BAO sound horizon $r_s$
+
+Distances come in Mpc and times in Gyr. A cosmology is just an $E(z)$ plus $h$ and $\Omega_k$,
+so models sit side by side: the library covers flat, open and closed $\Lambda$CDM,
+Einstein–de Sitter, de Sitter, $w$CDM and CPL, and shows how to carry a model over from GR-02
+— including one whose $E(z)$ is only defined implicitly, which `ENumeric` solves by
+root-finding at each redshift.
+
+Reproduces, from scratch: age $13.796$ Gyr for Planck parameters (matching the closed form
+$t_0 = \tfrac{2}{3H_0\sqrt{\Omega_\Lambda}}\operatorname{arcsinh}\sqrt{\Omega_\Lambda/\Omega_m}$),
+the $D_A$ turnover near $z \approx 1.6$, Etherington reciprocity $D_L = (1+z)^2 D_A$, a
+comoving distance to last scattering of $13.86$ Gpc, and $r_s \approx 147$ Mpc.
+
 ## Conventions worth knowing before you trust the output
 
 - **Torsion and non-metricity scalars.** In flat FLRW the notebook uses
@@ -68,6 +90,10 @@ in and hands the ODE to `NDSolve` when it has to.
   The Gauss–Bonnet term is assembled explicitly as
   $R^2 - 4R_{\mu\nu}R^{\mu\nu} + R_{\rho\sigma\mu\nu}R^{\rho\sigma\mu\nu}$ rather than taken
   from the resource's `"EulerScalar"` property, which is a differently normalised object.
+- **The CMB acoustic scale in GR-03 is indicative only.** $r_s$ is accurate, but $\theta_*$
+  comes out around $100\theta_* = 1.06$ against Planck's $1.0411$, because $z_d$ and $z_*$ are
+  put in by hand and $\Omega_r$ is a single number rather than a proper photon plus neutrino
+  background. Precision CMB work needs a Boltzmann code.
 
 ## Building
 
