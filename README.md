@@ -72,6 +72,27 @@ $t_0 = \tfrac{2}{3H_0\sqrt{\Omega_\Lambda}}\operatorname{arcsinh}\sqrt{\Omega_\L
 the $D_A$ turnover near $z \approx 1.6$, Etherington reciprocity $D_L = (1+z)^2 D_A$, a
 comoving distance to last scattering of $13.86$ Gpc, and $r_s \approx 147$ Mpc.
 
+### `GR-04-Structure-Growth`
+
+Distances cannot separate a modified-gravity model tuned to mimic the $\Lambda$CDM expansion
+history. Growth can. This notebook solves the linear growth equation
+
+$$\delta'' + \left[\frac{E'}{E} - \frac{1}{1+z}\right]\delta' = \frac{3\Omega_{m0}(1+z)}{2E^2}\frac{G_{\rm eff}}{G}\delta$$
+
+and returns the growth factor $D(z)$, the growth rate $f(z) = d\ln\delta/d\ln a$, and the
+redshift-survey observable $f\sigma_8(z)$, plus the growth index $\gamma$ read off rather
+than assumed.
+
+The background $E(z)$ and $G_{\rm eff}/G$ are chosen independently, which is the point: hold
+the background fixed and vary only the gravity, and every distance in GR-03 stays identical
+while $f\sigma_8$ moves by several percent. The library covers GR, the phenomenological
+$\mu(z)$ used in DESI and Euclid forecasts, $f(\mathcal{T})$ and $f(Q)$, and the $f(R)$
+large-scale, small-scale and general scale-dependent forms.
+
+Reproduces $f(0) = 0.527$ against $\Omega_m^{0.55} = 0.530$, $\gamma(0) = 0.554$,
+$f\sigma_8(0) = 0.427$, the exact $\Lambda$CDM growing-mode quadrature to two parts in $10^4$,
+and $f = 1$ exactly in Einstein–de Sitter.
+
 ## Conventions worth knowing before you trust the output
 
 - **Torsion and non-metricity scalars.** In flat FLRW the notebook uses
@@ -90,6 +111,11 @@ comoving distance to last scattering of $13.86$ Gpc, and $r_s \approx 147$ Mpc.
   The Gauss–Bonnet term is assembled explicitly as
   $R^2 - 4R_{\mu\nu}R^{\mu\nu} + R_{\rho\sigma\mu\nu}R^{\rho\sigma\mu\nu}$ rather than taken
   from the resource's `"EulerScalar"` property, which is a differently normalised object.
+- **$G_{\rm eff}$ in GR-04 is input, not output.** The growth equation is derived in the
+  notebook; the $G_{\rm eff}/G$ expressions in its library are the standard quasi-static,
+  sub-horizon results quoted from the literature. Deriving them means perturbing each
+  theory's field equations, which the series does not yet do. Check the convention against
+  your source.
 - **The CMB acoustic scale in GR-03 is indicative only.** $r_s$ is accurate, but $\theta_*$
   comes out around $100\theta_* = 1.06$ against Planck's $1.0411$, because $z_d$ and $z_*$ are
   put in by hand and $\Omega_r$ is a single number rather than a proper photon plus neutrino
