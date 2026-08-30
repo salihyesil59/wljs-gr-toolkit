@@ -1,0 +1,8 @@
+# Keep line endings deterministic. WLJS reads both LF and CRLF in .wln files,
+# but pinning them avoids the whole file showing up as changed on another machine.
+* text=auto eol=lf
+
+*.wl  text eol=lf
+*.wls text eol=lf
+*.wln text eol=lf
+*.md  text eol=lf
