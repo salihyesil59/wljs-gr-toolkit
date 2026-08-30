@@ -447,6 +447,11 @@ assumptions = M > 0 && r > 2 M && 0 < \[Theta] < Pi;
 MatrixForm[metric, TableHeadings -> {coords, coords}]
 
 %-------------------------------------------------------------------------%
+Type: Output
+%-------------------------------------------------------------------------%
+(*GB[*){{-1+(*FB[*)((2 M)(*,*)/(*,*)(r))(*]FB*)(*|*),(*|*)0(*|*),(*|*)0(*|*),(*|*)0}(*||*),(*||*){0(*|*),(*|*)(*FB[*)((1)(*,*)/(*,*)(1-(*FB[*)((2 M)(*,*)/(*,*)(r))(*]FB*)))(*]FB*)(*|*),(*|*)0(*|*),(*|*)0}(*||*),(*||*){0(*|*),(*|*)0(*|*),(*|*)(*SpB[*)Power[r(*|*),(*|*)2](*]SpB*)(*|*),(*|*)0}(*||*),(*||*){0(*|*),(*|*)0(*|*),(*|*)0(*|*),(*|*)((*SpB[*)Power[r(*|*),(*|*)2](*]SpB*)) ((*SpB[*)Power[Sin[\[Theta]](*|*),(*|*)2](*]SpB*))}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcFsQBHfxJKizAoAs04KOA==*)(*]GB*)
+
+%-------------------------------------------------------------------------%
 Props:
   Hidden: true
 Type: Input
@@ -468,11 +473,21 @@ Type: Input
 AbsoluteTiming[gr = GRTensors[metric, coords, "Assumptions" -> assumptions];]
 
 %-------------------------------------------------------------------------%
+Type: Output
+%-------------------------------------------------------------------------%
+{8.1442689`,Null}
+
+%-------------------------------------------------------------------------%
 Props:
   Hidden: false
 Type: Input
 %-------------------------------------------------------------------------%
 ShowSummary[gr]
+
+%-------------------------------------------------------------------------%
+Type: Output
+%-------------------------------------------------------------------------%
+(*VB[*)(FrontEndRef["d05ea176-11c1-4e98-adf5-c7b1a4a3a1bd"])(*,*)(*"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKpxiYpiYampvpGhomG+qapFpa6CampJnqJpsnGSaaJBonGialAACG1hYe"*)(*]VB*)
 
 %-------------------------------------------------------------------------%
 Props:
@@ -500,6 +515,11 @@ Props:
 Type: Input
 %-------------------------------------------------------------------------%
 ShowChristoffel[gr]
+
+%-------------------------------------------------------------------------%
+Type: Output
+%-------------------------------------------------------------------------%
+(*GB[*){{TemplateBox[{"\[CapitalGamma]", (*GB[*){{t(*|*),(*|*)" "(*|*),(*|*)r}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*), t}, Subsuperscript, SyntaxForm -> SubsuperscriptBox](*|*),(*|*)"="(*|*),(*|*)(*FB[*)((M)(*,*)/(*,*)(r (-2 M+r)))(*]FB*)}(*||*),(*||*){TemplateBox[{"\[CapitalGamma]", (*GB[*){{t(*|*),(*|*)" "(*|*),(*|*)t}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*), r}, Subsuperscript, SyntaxForm -> SubsuperscriptBox](*|*),(*|*)"="(*|*),(*|*)(*FB[*)((M (-2 M+r))(*,*)/(*,*)((*SpB[*)Power[r(*|*),(*|*)3](*]SpB*)))(*]FB*)}(*||*),(*||*){TemplateBox[{"\[CapitalGamma]", (*GB[*){{r(*|*),(*|*)" "(*|*),(*|*)r}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*), r}, Subsuperscript, SyntaxForm -> SubsuperscriptBox](*|*),(*|*)"="(*|*),(*|*)(*FB[*)((M)(*,*)/(*,*)(2 M r-(*SpB[*)Power[r(*|*),(*|*)2](*]SpB*)))(*]FB*)}(*||*),(*||*){TemplateBox[{"\[CapitalGamma]", (*GB[*){{\[Theta](*|*),(*|*)" "(*|*),(*|*)\[Theta]}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*), r}, Subsuperscript, SyntaxForm -> SubsuperscriptBox](*|*),(*|*)"="(*|*),(*|*)2 M-r}(*||*),(*||*){TemplateBox[{"\[CapitalGamma]", (*GB[*){{\[Phi](*|*),(*|*)" "(*|*),(*|*)\[Phi]}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*), r}, Subsuperscript, SyntaxForm -> SubsuperscriptBox](*|*),(*|*)"="(*|*),(*|*)(2 M-r) ((*SpB[*)Power[Sin[\[Theta]](*|*),(*|*)2](*]SpB*))}(*||*),(*||*){TemplateBox[{"\[CapitalGamma]", (*GB[*){{r(*|*),(*|*)" "(*|*),(*|*)\[Theta]}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*), \[Theta]}, Subsuperscript, SyntaxForm -> SubsuperscriptBox](*|*),(*|*)"="(*|*),(*|*)(*FB[*)((1)(*,*)/(*,*)(r))(*]FB*)}(*||*),(*||*){TemplateBox[{"\[CapitalGamma]", (*GB[*){{\[Phi](*|*),(*|*)" "(*|*),(*|*)\[Phi]}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*), \[Theta]}, Subsuperscript, SyntaxForm -> SubsuperscriptBox](*|*),(*|*)"="(*|*),(*|*)-Cos[\[Theta]] Sin[\[Theta]]}(*||*),(*||*){TemplateBox[{"\[CapitalGamma]", (*GB[*){{r(*|*),(*|*)" "(*|*),(*|*)\[Phi]}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*), \[Phi]}, Subsuperscript, SyntaxForm -> SubsuperscriptBox](*|*),(*|*)"="(*|*),(*|*)(*FB[*)((1)(*,*)/(*,*)(r))(*]FB*)}(*||*),(*||*){TemplateBox[{"\[CapitalGamma]", (*GB[*){{\[Theta](*|*),(*|*)" "(*|*),(*|*)\[Phi]}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*), \[Phi]}, Subsuperscript, SyntaxForm -> SubsuperscriptBox](*|*),(*|*)"="(*|*),(*|*)Cot[\[Theta]]}}(*||*)(*1:eJxTTMoPSmNmYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3osyUNCaQPIgXVJqTWiwAFXbKr3DMyUzPy03NK0ljhCnxySwuQdUQzA5kOOfnlObmFUOsgqkrZgUpyUzPKClmA6kBGpRaBJFNTUMzpZgfYW1wQWJyZl56MUIFAVtRXYfCKzIGg8/2aNrBjPxy/HrPngGBN/YAGBhNNQ==*)(*]GB*)
 
 %-------------------------------------------------------------------------%
 Props:
@@ -537,6 +557,11 @@ Type: Input
 ShowRiemann[gr]
 
 %-------------------------------------------------------------------------%
+Type: Output
+%-------------------------------------------------------------------------%
+(*GB[*){{(*SbB[*)Subscript["R"(*|*),(*|*)(*GB[*){{t(*|*),(*|*)" "(*|*),(*|*)r(*|*),(*|*)" "(*|*),(*|*)t(*|*),(*|*)" "(*|*),(*|*)r}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)](*]SbB*)(*|*),(*|*)"="(*|*),(*|*)-(*FB[*)((2 M)(*,*)/(*,*)((*SpB[*)Power[r(*|*),(*|*)3](*]SpB*)))(*]FB*)}(*||*),(*||*){(*SbB[*)Subscript["R"(*|*),(*|*)(*GB[*){{t(*|*),(*|*)" "(*|*),(*|*)\[Theta](*|*),(*|*)" "(*|*),(*|*)t(*|*),(*|*)" "(*|*),(*|*)\[Theta]}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)](*]SbB*)(*|*),(*|*)"="(*|*),(*|*)(*FB[*)((M (-2 M+r))(*,*)/(*,*)((*SpB[*)Power[r(*|*),(*|*)2](*]SpB*)))(*]FB*)}(*||*),(*||*){(*SbB[*)Subscript["R"(*|*),(*|*)(*GB[*){{t(*|*),(*|*)" "(*|*),(*|*)\[Phi](*|*),(*|*)" "(*|*),(*|*)t(*|*),(*|*)" "(*|*),(*|*)\[Phi]}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)](*]SbB*)(*|*),(*|*)"="(*|*),(*|*)(*FB[*)((M (-2 M+r) ((*SpB[*)Power[Sin[\[Theta]](*|*),(*|*)2](*]SpB*)))(*,*)/(*,*)((*SpB[*)Power[r(*|*),(*|*)2](*]SpB*)))(*]FB*)}(*||*),(*||*){(*SbB[*)Subscript["R"(*|*),(*|*)(*GB[*){{r(*|*),(*|*)" "(*|*),(*|*)\[Theta](*|*),(*|*)" "(*|*),(*|*)r(*|*),(*|*)" "(*|*),(*|*)\[Theta]}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)](*]SbB*)(*|*),(*|*)"="(*|*),(*|*)(*FB[*)((M)(*,*)/(*,*)(2 M-r))(*]FB*)}(*||*),(*||*){(*SbB[*)Subscript["R"(*|*),(*|*)(*GB[*){{r(*|*),(*|*)" "(*|*),(*|*)\[Phi](*|*),(*|*)" "(*|*),(*|*)r(*|*),(*|*)" "(*|*),(*|*)\[Phi]}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)](*]SbB*)(*|*),(*|*)"="(*|*),(*|*)(*FB[*)((M ((*SpB[*)Power[Sin[\[Theta]](*|*),(*|*)2](*]SpB*)))(*,*)/(*,*)(2 M-r))(*]FB*)}(*||*),(*||*){(*SbB[*)Subscript["R"(*|*),(*|*)(*GB[*){{\[Theta](*|*),(*|*)" "(*|*),(*|*)\[Phi](*|*),(*|*)" "(*|*),(*|*)\[Theta](*|*),(*|*)" "(*|*),(*|*)\[Phi]}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)](*]SbB*)(*|*),(*|*)"="(*|*),(*|*)2 M r ((*SpB[*)Power[Sin[\[Theta]](*|*),(*|*)2](*]SpB*))}}(*||*)(*1:eJxTTMoPSmNmYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3osyUNCaQPIgXVJqTWiwAFXbKr3DMyUzPy03NK0ljhCnxySwuQdUQzA5kOOfnlObmFUOsgqkrZgUpyUzPKClmA6kBGpRaBJFNTUMzpZgfYW1wQWJyZl56MUIFAVtRXYfCKzIGg8/2aNrBjPxy/HrPngGBN/YAGBhNNQ==*)(*]GB*)
+
+%-------------------------------------------------------------------------%
 Props:
   Hidden: true
 Type: Input
@@ -562,6 +587,11 @@ Type: Input
 ShowRicci[gr]
 
 %-------------------------------------------------------------------------%
+Type: Output
+%-------------------------------------------------------------------------%
+(*BB[*)("all components vanish")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFEAk+IBFcUpmT6pKanF+UWJJfVMwGFPIsSczJTE5jBCnhBBLuRYmVPqllqTlFDGDwwB6inQVIBJXmpAazgc0pysxLB4uFFJWmAgDycB8h"*)(*]BB*)
+
+%-------------------------------------------------------------------------%
 Props:
   Hidden: true
 Type: Input
@@ -581,6 +611,11 @@ Props:
 Type: Input
 %-------------------------------------------------------------------------%
 ShowRicciScalar[gr]
+
+%-------------------------------------------------------------------------%
+Type: Output
+%-------------------------------------------------------------------------%
+(*GB[*){{(*BB[*)("R")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAYU8ixJzMlMhuhlARJBpTmpwWxgtUWZeelgsZCi0lQA5zsZIQ=="*)(*]BB*)(*|*),(*|*)" = "(*|*),(*|*)0}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)
 
 %-------------------------------------------------------------------------%
 Props:
@@ -606,6 +641,11 @@ Props:
 Type: Input
 %-------------------------------------------------------------------------%
 ShowEinstein[gr]
+
+%-------------------------------------------------------------------------%
+Type: Output
+%-------------------------------------------------------------------------%
+(*BB[*)("all components vanish")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFEAk+IBFcUpmT6pKanF+UWJJfVMwGFPIsSczJTE5jBCnhBBLuRYmVPqllqTlFDGDwwB6inQVIBJXmpAazgc0pysxLB4uFFJWmAgDycB8h"*)(*]BB*)
 
 %-------------------------------------------------------------------------%
 Props:
@@ -649,11 +689,40 @@ Type: Input
   "curvature singularities" -> gr["Resources"]["Riemann"]["CurvatureSingularities"]
 |> // Dataset
 
+%-------------------------------------------------------------------------%
+Type: Output
+%-------------------------------------------------------------------------%
+(*VB[*)(FrontEndRef["b2ce61c7-758e-4fc0-b54f-445fc1d418cd"])(*,*)(*"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKJxklp5oZJpvrmptapOqapCUb6CaZmqTpmpiYpiUbppgYWiSnAACLYRYG"*)(*]VB*)
+
 %------------------------------%EndOfCells%-------------------------------%
 
 
 
 %--------------------------------%Objects%--------------------------------%
+Key: 48
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["0", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: 90667117
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["{r->2 M}[{r->0}]", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: 235427342
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*FB[*)((48 ((*SpB[*)Power[M(*|*),(*|*)2](*]SpB*)))(*,*)/(*,*)((*SpB[*)Power[r(*|*),(*|*)6](*]SpB*)))(*]FB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: d05ea176-11c1-4e98-adf5-c7b1a4a3a1bd
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[Dataset[{Association["tensor" -> "Christoffel  \[CapitalGamma]^a_bc", "non-zero" -> 13], Association["tensor" -> "Riemann  R^a_bcd", "non-zero" -> 24], Association["tensor" -> "Ricci  R_ab", "non-zero" -> 0], Association["tensor" -> "Einstein  G_ab", "non-zero" -> 0]}, TypeSystem`Vector[TypeSystem`Struct[{"tensor", "non-zero"}, {TypeSystem`Atom[String], TypeSystem`Atom[Integer]}], 4], Association[]]]|>
+
+%-------------------------------------------------------------------------%
+Key: b2ce61c7-758e-4fc0-b54f-445fc1d418cd
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[Dataset[Association["vacuum (G_ab = 0)" -> True, "flat (R^a_bcd = 0)" -> False, "Kretschmann K" -> (48*M^2)/r^6, "curvature singularities" -> {{r -> 2*M}, {r -> 0}}], TypeSystem`Struct[{"vacuum (G_ab = 0)", "flat (R^a_bcd = 0)", "Kretschmann K", "curvature singularities"}, {TypeSystem`Atom[TypeSystem`Boolean], TypeSystem`Atom[TypeSystem`Boolean], TypeSystem`AnyType, TypeSystem`Vector[TypeSystem`Vector[TypeSystem`AnyType, 1], 2]}], Association[]]]|>
+
 %-----------------------------%EndOfObjects%------------------------------%
 
 
