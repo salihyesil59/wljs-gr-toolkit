@@ -162,6 +162,40 @@ The TEGR limit is the acceptance test throughout, and it is demanding: the $00$ 
 carry $k^2$, the transverse equation must force $\Phi = \Psi$, the two momentum equations must
 coincide, and both Lorentz modes must disappear.
 
+### `GR-07-Symmetric-Teleparallel`
+
+The third corner of the geometric trinity, and the last gap in the series. Symmetric
+teleparallel gravity drops both curvature and torsion; what is left is **non-metricity**,
+$Q_{\lambda\mu\nu} = \nabla_\lambda g_{\mu\nu}$, and its scalar $Q$, which differs from $R$ by
+a total derivative — so STEGR is general relativity again, and stops being so as soon as $f$
+is non-linear.
+
+The awkward part, and the reason GR-05 and GR-06 both deferred it, is that the connection is a
+**second field**. Being flat and torsion-free means it can be written from four Stückelberg
+functions $\xi^\rho$, and setting $\xi^\rho = x^\rho$ is the coincident gauge that makes $Q$
+come out as $-6H^2$. But a diffeomorphism shifts $\delta\xi^\mu$, so the coincident gauge
+competes for the same freedom Newtonian gauge wants. This notebook spends it on Newtonian
+gauge, keeps $\delta\xi^\mu$ as physical fields, and varies fourteen functions — ten metric,
+four connection. The result:
+
+$$\frac{G_{\rm eff}}{G} = \frac{1}{f_Q}, \qquad \eta = \frac{\Phi}{\Psi} = 1,$$
+
+scale independent. Matter couples to the metric and not to the connection, so the connection
+equations carry no source at all; they are pure constraint, and they are what closes the
+system. Leave out the $xx$ equation and a connection mode stays undetermined and contaminates
+the answer — a result that still depends on one has not closed.
+
+With this the three families line up:
+
+| | $G_{\rm eff}/G$ | slip | scale dependent |
+|---|---|---|---|
+| $f(R)$ | $\frac{1}{f_R}\frac{1+4m}{1+3m}$ | $\frac{1+2m}{1+4m}$ | **yes**, running to $4/3$ |
+| $f(\mathcal{T})$ | $-1/f_{\mathcal{T}}$ | $1$ | no |
+| $f(Q)$ | $1/f_Q$ | $1$ | no |
+
+$f(R)$ carries a scalaron with a Compton wavelength, so it has a scale to compare $k$ against.
+Neither teleparallel family does, and their modification is a pure rescaling.
+
 ## Conventions worth knowing before you trust the output
 
 - **Torsion and non-metricity scalars.** In flat FLRW the notebook uses
@@ -180,11 +214,12 @@ coincide, and both Lorentz modes must disappear.
   The Gauss–Bonnet term is assembled explicitly as
   $R^2 - 4R_{\mu\nu}R^{\mu\nu} + R_{\rho\sigma\mu\nu}R^{\rho\sigma\mu\nu}$ rather than taken
   from the resource's `"EulerScalar"` property, which is a differently normalised object.
-- **What is derived and what is quoted.** GR-04 takes $G_{\rm eff}/G$ as input. GR-05 derives
-  it for $f(R)$; GR-06 derives the teleparallel geometry, the TEGR equivalence, the
-  $f(\mathcal{T})$ background cosmology and its $G_{\rm eff}$. Only $f(Q)$ is still quoted from
-  the literature — its fundamental variable is a flat non-metric connection that neither
-  calculation reaches. Check the convention against your source for that one.
+- **Nothing is quoted.** GR-04 takes $G_{\rm eff}/G$ as input, and every entry its library
+  offers is derived inside the series: $f(R)$ in GR-05, $f(\mathcal{T})$ in GR-06, $f(Q)$ in
+  GR-07. What remains are the approximations, shared by all three — quasi-static and
+  sub-horizon, both of which fail on scales approaching the horizon — and the strong-coupling
+  question in the teleparallel families, where extra modes propagate and their kinetic terms
+  can degenerate, so a correct linear calculation is necessary but not sufficient.
 - **Two sign conventions for the torsion scalar, both used here on purpose.** GR-06 computes
   the standard superpotential contraction, $\mathcal{T} = +6H^2$ in flat FLRW, so TEGR is
   $f = -\mathcal{T}$. GR-02 uses `Ts` $= -6H^2$ instead, chosen so a linear $f$ is GR, matching

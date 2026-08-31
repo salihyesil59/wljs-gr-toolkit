@@ -58,14 +58,18 @@ The growth equation above is derived in the notebook, and everything downstream 
 by integration. $G_{\text{eff}}/G$ is **input**, not output, and in general relativity it is
 exactly 1.
 
-Where the modified-gravity entries come from splits three ways now. The $f(R)$ forms are
-derived from scratch in **GR-05**, which perturbs the field equations in Newtonian gauge and
-solves for the metric potentials. The $f(\mathcal{T})$ form is derived in **GR-06**, by varying
-all sixteen components of a perturbed tetrad in a second order action; it comes out as
-$G_{\text{eff}}/G = 1/f_{\mathcal{T}}$ in the sign convention used here, scale independent and
-with no gravitational slip. Only the $f(Q)$ entry is still quoted from the literature, because
-its fundamental variable is a flat non-metric connection that neither of those calculations
-reaches. Check the convention against your own source for that one.
+Nothing in this library is quoted any more. The $f(R)$ forms are derived in **GR-05**, which
+perturbs the field equations in Newtonian gauge and solves for the metric potentials. The
+$f(\mathcal{T})$ form is derived in **GR-06**, by varying all sixteen components of a perturbed
+tetrad in a second order action. The $f(Q)$ form is derived in **GR-07**, by carrying the flat
+connection as four Stückelberg fields and varying those alongside the metric.
+
+The pattern that comes out is worth keeping in mind while choosing an entry. $f(R)$ carries a
+scalaron with a Compton wavelength, so its $G_{\text{eff}}$ has a scale to compare $k$ against
+and runs by a factor of $4/3$ between large and small scales, with a slip that goes to $1/2$.
+Neither teleparallel family has such a scale: both give a pure rescaling,
+$G_{\text{eff}}/G = 1/f_{\mathcal{T}}$ and $1/f_Q$, scale independent and with no slip at all.
+A survey covering a range of scales can see that difference.
 
 One structural difference is worth keeping in view: in $f(R)$ gravity $G_{\text{eff}}$ depends
 on the wavenumber $k$, while in $f(\mathcal{T})$ and $f(Q)$ it does not. That scale dependence
@@ -84,6 +88,7 @@ default.
 | **GR-04** | $E(z)$ and $G_{\text{eff}}$ in, growth and $f\sigma_8$ out |
 | **GR-05** | perturbed field equations in, $G_{\text{eff}}$, slip and lensing out |
 | **GR-06** | a tetrad in, torsion, the TEGR identity and $f(\mathcal{T})$ cosmology out |
+| **GR-07** | a metric and a flat connection in, non-metricity and $f(Q)$ cosmology out |
 
 You are on the growth branch, the one distances cannot substitute for. GR-03 takes the same
 $E(z)$ and turns it into what a telescope measures; the models worth arguing about are the ones
@@ -137,14 +142,18 @@ The growth equation above is derived in the notebook, and everything downstream 
 by integration. $G_{\text{eff}}/G$ is **input**, not output, and in general relativity it is
 exactly 1.
 
-Where the modified-gravity entries come from splits three ways now. The $f(R)$ forms are
-derived from scratch in **GR-05**, which perturbs the field equations in Newtonian gauge and
-solves for the metric potentials. The $f(\mathcal{T})$ form is derived in **GR-06**, by varying
-all sixteen components of a perturbed tetrad in a second order action; it comes out as
-$G_{\text{eff}}/G = 1/f_{\mathcal{T}}$ in the sign convention used here, scale independent and
-with no gravitational slip. Only the $f(Q)$ entry is still quoted from the literature, because
-its fundamental variable is a flat non-metric connection that neither of those calculations
-reaches. Check the convention against your own source for that one.
+Nothing in this library is quoted any more. The $f(R)$ forms are derived in **GR-05**, which
+perturbs the field equations in Newtonian gauge and solves for the metric potentials. The
+$f(\mathcal{T})$ form is derived in **GR-06**, by varying all sixteen components of a perturbed
+tetrad in a second order action. The $f(Q)$ form is derived in **GR-07**, by carrying the flat
+connection as four Stückelberg fields and varying those alongside the metric.
+
+The pattern that comes out is worth keeping in mind while choosing an entry. $f(R)$ carries a
+scalaron with a Compton wavelength, so its $G_{\text{eff}}$ has a scale to compare $k$ against
+and runs by a factor of $4/3$ between large and small scales, with a slip that goes to $1/2$.
+Neither teleparallel family has such a scale: both give a pure rescaling,
+$G_{\text{eff}}/G = 1/f_{\mathcal{T}}$ and $1/f_Q$, scale independent and with no slip at all.
+A survey covering a range of scales can see that difference.
 
 One structural difference is worth keeping in view: in $f(R)$ gravity $G_{\text{eff}}$ depends
 on the wavenumber $k$, while in $f(\mathcal{T})$ and $f(Q)$ it does not. That scale dependence
@@ -163,6 +172,7 @@ default.
 | **GR-04** | $E(z)$ and $G_{\text{eff}}$ in, growth and $f\sigma_8$ out |
 | **GR-05** | perturbed field equations in, $G_{\text{eff}}$, slip and lensing out |
 | **GR-06** | a tetrad in, torsion, the TEGR identity and $f(\mathcal{T})$ cosmology out |
+| **GR-07** | a metric and a flat connection in, non-metricity and $f(Q)$ cosmology out |
 
 You are on the growth branch, the one distances cannot substitute for. GR-03 takes the same
 $E(z)$ and turns it into what a telescope measures; the models worth arguing about are the ones

@@ -83,6 +83,7 @@ that matters.
 | **GR-04** | $E(z)$ and $G_{\text{eff}}$ in, growth and $f\sigma_8$ out |
 | **GR-05** | perturbed field equations in, $G_{\text{eff}}$, slip and lensing out |
 | **GR-06** | a tetrad in, torsion, the TEGR identity and $f(\mathcal{T})$ cosmology out |
+| **GR-07** | a metric and a flat connection in, non-metricity and $f(Q)$ cosmology out |
 
 This one branches off the main line. Everything before it lives on the metric; this is the
 first notebook whose fundamental variable is something else.
