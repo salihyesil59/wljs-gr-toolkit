@@ -139,12 +139,28 @@ What it establishes:
 - the $f(\mathcal{T})$ Friedmann equations, $\kappa\rho = \tfrac{1}{2}(f - 2\mathcal{T}f_\mathcal{T})$,
   derived by varying the tetrad and agreeing with what GR-02 got from the metric side.
 
-It deliberately stops short of $G_{\rm eff}$, and section 8 shows why: for the perturbed
-diagonal tetrad $\delta\mathcal{T}$ carries no spatial gradient at all, and the restricted
-variation returns zero **even in the TEGR limit**, where the answer has to be the Poisson
-equation. A method that loses general relativity cannot be trusted with anything else. The fix
-is to vary all sixteen tetrad components rather than the diagonal four, which is a different
-calculation, not an extension of this one.
+It then derives the effective gravitational coupling, by varying **all sixteen** components of
+a perturbed tetrad in a second order action:
+
+$$\frac{G_{\rm eff}}{G} = -\frac{1}{f_{\mathcal{T}}}, \qquad \eta = \frac{\Phi}{\Psi} = 1,$$
+
+scale independent and with no gravitational slip — sharply unlike $f(R)$, where GR-05 finds a
+factor of $4/3$ running between large and small scales and a slip that goes to $1/2$. In the
+sign convention of GR-02 and GR-04 this reads $1/f_{\texttt{Ts}}$, which is exactly what GR-04's
+library had been quoting. It is quoted no longer.
+
+Two wrong turns are kept in the notebook because each is worth more than the result. Section 8
+shows a **diagonal** tetrad losing general relativity: $\delta\mathcal{T}$ carries no spatial
+gradient and the restricted variation returns zero even in the TEGR limit, where the answer has
+to be the Poisson equation. Section 9 shows a subtler trap — the obvious Wolfram spelling of
+the field-theory Euler–Lagrange operator silently discards the $\partial_x$ term, which is
+precisely the one carrying $k^2$, so a Lagrangian full of correct physics yields equations with
+no Poisson term at all. A toy Lagrangian whose answer can be written by hand catches it in one
+line.
+
+The TEGR limit is the acceptance test throughout, and it is demanding: the $00$ equation must
+carry $k^2$, the transverse equation must force $\Phi = \Psi$, the two momentum equations must
+coincide, and both Lorentz modes must disappear.
 
 ## Conventions worth knowing before you trust the output
 
@@ -165,11 +181,10 @@ calculation, not an extension of this one.
   $R^2 - 4R_{\mu\nu}R^{\mu\nu} + R_{\rho\sigma\mu\nu}R^{\rho\sigma\mu\nu}$ rather than taken
   from the resource's `"EulerScalar"` property, which is a differently normalised object.
 - **What is derived and what is quoted.** GR-04 takes $G_{\rm eff}/G$ as input. GR-05 derives
-  it for $f(R)$. GR-06 derives the teleparallel geometry, the TEGR equivalence and the
-  $f(\mathcal{T})$ *background* cosmology, but **not** its $G_{\rm eff}$ — its section 8 shows
-  the diagonal-tetrad calculation failing the TEGR test rather than papering over it. Nothing
-  is derived for $f(Q)$ yet. So the $f(\mathcal{T})$ and $f(Q)$ entries in GR-04's library are
-  still quoted from the literature; check the convention against your source for those two.
+  it for $f(R)$; GR-06 derives the teleparallel geometry, the TEGR equivalence, the
+  $f(\mathcal{T})$ background cosmology and its $G_{\rm eff}$. Only $f(Q)$ is still quoted from
+  the literature — its fundamental variable is a flat non-metric connection that neither
+  calculation reaches. Check the convention against your source for that one.
 - **Two sign conventions for the torsion scalar, both used here on purpose.** GR-06 computes
   the standard superpotential contraction, $\mathcal{T} = +6H^2$ in flat FLRW, so TEGR is
   $f = -\mathcal{T}$. GR-02 uses `Ts` $= -6H^2$ instead, chosen so a linear $f$ is GR, matching

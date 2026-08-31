@@ -58,12 +58,14 @@ The growth equation above is derived in the notebook, and everything downstream 
 by integration. $G_{\text{eff}}/G$ is **input**, not output, and in general relativity it is
 exactly 1.
 
-Where the modified-gravity entries come from splits in two. The $f(R)$ forms are derived from
-scratch in **GR-05**, which perturbs the field equations in Newtonian gauge and solves for the
-metric potentials; its result drops straight into the library below. The $f(\mathcal{T})$ and
-$f(Q)$ forms are quoted from the literature, because their fundamental variables are a tetrad
-and a flat non-metric connection, which metric perturbation theory cannot reach. Check the
-convention against your own source for those two.
+Where the modified-gravity entries come from splits three ways now. The $f(R)$ forms are
+derived from scratch in **GR-05**, which perturbs the field equations in Newtonian gauge and
+solves for the metric potentials. The $f(\mathcal{T})$ form is derived in **GR-06**, by varying
+all sixteen components of a perturbed tetrad in a second order action; it comes out as
+$G_{\text{eff}}/G = 1/f_{\mathcal{T}}$ in the sign convention used here, scale independent and
+with no gravitational slip. Only the $f(Q)$ entry is still quoted from the literature, because
+its fundamental variable is a flat non-metric connection that neither of those calculations
+reaches. Check the convention against your own source for that one.
 
 One structural difference is worth keeping in view: in $f(R)$ gravity $G_{\text{eff}}$ depends
 on the wavenumber $k$, while in $f(\mathcal{T})$ and $f(Q)$ it does not. That scale dependence
@@ -135,12 +137,14 @@ The growth equation above is derived in the notebook, and everything downstream 
 by integration. $G_{\text{eff}}/G$ is **input**, not output, and in general relativity it is
 exactly 1.
 
-Where the modified-gravity entries come from splits in two. The $f(R)$ forms are derived from
-scratch in **GR-05**, which perturbs the field equations in Newtonian gauge and solves for the
-metric potentials; its result drops straight into the library below. The $f(\mathcal{T})$ and
-$f(Q)$ forms are quoted from the literature, because their fundamental variables are a tetrad
-and a flat non-metric connection, which metric perturbation theory cannot reach. Check the
-convention against your own source for those two.
+Where the modified-gravity entries come from splits three ways now. The $f(R)$ forms are
+derived from scratch in **GR-05**, which perturbs the field equations in Newtonian gauge and
+solves for the metric potentials. The $f(\mathcal{T})$ form is derived in **GR-06**, by varying
+all sixteen components of a perturbed tetrad in a second order action; it comes out as
+$G_{\text{eff}}/G = 1/f_{\mathcal{T}}$ in the sign convention used here, scale independent and
+with no gravitational slip. Only the $f(Q)$ entry is still quoted from the literature, because
+its fundamental variable is a flat non-metric connection that neither of those calculations
+reaches. Check the convention against your own source for that one.
 
 One structural difference is worth keeping in view: in $f(R)$ gravity $G_{\text{eff}}$ depends
 on the wavenumber $k$, while in $f(\mathcal{T})$ and $f(Q)$ it does not. That scale dependence

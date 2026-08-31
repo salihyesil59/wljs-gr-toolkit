@@ -23,8 +23,19 @@ tetrad, torsion, contortion, superpotential, torsion scalar, and from those the 
 Friedmann equations, derived on the tetrad side and checked against the metric-side answer
 GR-02 got by a completely different route.
 
-It stops short of $G_{\text{eff}}$, and section 8 shows exactly where and why. That section is
-not an apology; it is the most informative part of the notebook.
+It then goes further than it first could. Sections 8 to 13 derive the effective gravitational
+coupling for $f(\mathcal{T})$ by varying all sixteen tetrad components of a second order
+action, and get
+
+$$\frac{G_{\text{eff}}}{G} = -\frac{1}{f_{\mathcal{T}}},$$
+
+scale independent and with no gravitational slip. In the sign convention of GR-02 and GR-04
+that is $1/f_{\texttt{Ts}}$, which is exactly the expression GR-04's library had been quoting
+from the literature. It is quoted no longer.
+
+Getting there took two wrong turns, and both are kept in the notebook because each is worth
+more than the result. Section 8 shows a diagonal tetrad losing general relativity; section 9
+shows an Euler-Lagrange operator that silently discards spatial gradients.
 
 ## Teleparallel gravity in one paragraph
 
@@ -78,8 +89,19 @@ tetrad, torsion, contortion, superpotential, torsion scalar, and from those the 
 Friedmann equations, derived on the tetrad side and checked against the metric-side answer
 GR-02 got by a completely different route.
 
-It stops short of $G_{\text{eff}}$, and section 8 shows exactly where and why. That section is
-not an apology; it is the most informative part of the notebook.
+It then goes further than it first could. Sections 8 to 13 derive the effective gravitational
+coupling for $f(\mathcal{T})$ by varying all sixteen tetrad components of a second order
+action, and get
+
+$$\frac{G_{\text{eff}}}{G} = -\frac{1}{f_{\mathcal{T}}},$$
+
+scale independent and with no gravitational slip. In the sign convention of GR-02 and GR-04
+that is $1/f_{\texttt{Ts}}$, which is exactly the expression GR-04's library had been quoting
+from the literature. It is quoted no longer.
+
+Getting there took two wrong turns, and both are kept in the notebook because each is worth
+more than the result. Section 8 shows a diagonal tetrad losing general relativity; section 9
+shows an Euler-Lagrange operator that silently discards spatial gradients.
 
 ## Teleparallel gravity in one paragraph
 
@@ -582,110 +604,73 @@ Props:
 Type: Input
 %-------------------------------------------------------------------------%
 .md
-## 8. Where this stops, and why
+## 8. Why a diagonal tetrad is not enough
 
-The natural next step is $G_{\text{eff}}$ for $f(\mathcal{T})$, by the route GR-05 used for
-$f(R)$: perturb, expand, truncate, solve. Running that route here fails, and the failure is
-worth more than a result would have been.
-
-Take the perturbed diagonal tetrad in Newtonian gauge,
+The obvious way to reach $G_{\text{eff}}$ is the route GR-05 used for $f(R)$: perturb, expand,
+truncate, solve. Take the perturbed diagonal tetrad in Newtonian gauge,
 $e^A{}_\mu = \mathrm{diag}\!\left(1+\Psi,\; a(1-\Phi),\; a(1-\Phi),\; a(1-\Phi)\right)$,
-which builds exactly the perturbed metric GR-05 used. Two things then happen.
+which builds exactly the perturbed metric GR-05 used, and vary its four diagonal components.
 
-First, $\delta\mathcal{T}$ carries **no spatial gradient at all**. The linear perturbation of
-the torsion scalar comes out proportional to $H(\Psi H + \dot\Phi)$, with no $k^2$ anywhere.
-That is not an artefact: $\mathcal{T}$ is quadratic in torsion, the background torsion is
-purely of the $T^i{}_{0j}$ type, and the gradient-carrying perturbation components have index
+It fails, and instructively. First, $\delta\mathcal{T}$ carries **no spatial gradient**: the
+linear perturbation of the torsion scalar comes out proportional to $H(\Psi H + \dot\Phi)$
+with no $k$ anywhere. $\mathcal{T}$ is quadratic in torsion, the background torsion is purely
+of the $T^i{}_{0j}$ type, and the gradient-carrying perturbation components have index
 structures that do not contract with it.
 
-Second, and decisively, varying this tetrad family and truncating the way GR-05 does returns
-**zero** &mdash; and it does so even in the TEGR limit, where the answer has to be the Poisson
-equation $k^2\Phi/a^2 \propto \rho\delta$ that GR-05 derives without difficulty. A method that
-loses general relativity cannot be trusted with anything else.
+Second, and decisively, the resulting equations return **zero even in the TEGR limit**, where
+the answer has to be the Poisson equation. A method that loses general relativity cannot be
+trusted with anything else.
 
-The diagnosis is the point. The diagonal tetrad has six fewer components than a general one,
-and those six are precisely the local Lorentz directions that GR-05's scope note flagged. In
-TEGR they are pure gauge and nothing is lost by fixing them; in a perturbative calculation
-they carry constraint equations, and dropping them drops the gradient content. A trustworthy
-$f(\mathcal{T})$ perturbation calculation has to vary all sixteen tetrad components, or work
-from the second-order action with the full scalar sector present, and neither is a small
-extension of what is here.
-
-So the honest state of the series is:
-
-- $f(R)$: $G_{\text{eff}}$ **derived**, in GR-05.
-- $f(\mathcal{T})$: geometry, TEGR equivalence and background cosmology **derived**, here.
-  $G_{\text{eff}}$ still **quoted** in GR-04's library.
-- $f(Q)$: nothing derived yet.
-
-The cell below reproduces the diagnosis rather than hiding it.
+The diagnosis is the whole point. A diagonal tetrad has six fewer components than a general
+one, and those six are precisely the local Lorentz directions. In TEGR they are pure gauge and
+nothing is lost by fixing them; in a perturbative calculation they carry the constraint that
+supplies the gradient. The rest of this notebook varies all sixteen.
 
 %-------------------------------------------------------------------------%
 Display: markdown
 Type: Output
 %-------------------------------------------------------------------------%
-## 8. Where this stops, and why
+## 8. Why a diagonal tetrad is not enough
 
-The natural next step is $G_{\text{eff}}$ for $f(\mathcal{T})$, by the route GR-05 used for
-$f(R)$: perturb, expand, truncate, solve. Running that route here fails, and the failure is
-worth more than a result would have been.
-
-Take the perturbed diagonal tetrad in Newtonian gauge,
+The obvious way to reach $G_{\text{eff}}$ is the route GR-05 used for $f(R)$: perturb, expand,
+truncate, solve. Take the perturbed diagonal tetrad in Newtonian gauge,
 $e^A{}_\mu = \mathrm{diag}\!\left(1+\Psi,\; a(1-\Phi),\; a(1-\Phi),\; a(1-\Phi)\right)$,
-which builds exactly the perturbed metric GR-05 used. Two things then happen.
+which builds exactly the perturbed metric GR-05 used, and vary its four diagonal components.
 
-First, $\delta\mathcal{T}$ carries **no spatial gradient at all**. The linear perturbation of
-the torsion scalar comes out proportional to $H(\Psi H + \dot\Phi)$, with no $k^2$ anywhere.
-That is not an artefact: $\mathcal{T}$ is quadratic in torsion, the background torsion is
-purely of the $T^i{}_{0j}$ type, and the gradient-carrying perturbation components have index
+It fails, and instructively. First, $\delta\mathcal{T}$ carries **no spatial gradient**: the
+linear perturbation of the torsion scalar comes out proportional to $H(\Psi H + \dot\Phi)$
+with no $k$ anywhere. $\mathcal{T}$ is quadratic in torsion, the background torsion is purely
+of the $T^i{}_{0j}$ type, and the gradient-carrying perturbation components have index
 structures that do not contract with it.
 
-Second, and decisively, varying this tetrad family and truncating the way GR-05 does returns
-**zero** &mdash; and it does so even in the TEGR limit, where the answer has to be the Poisson
-equation $k^2\Phi/a^2 \propto \rho\delta$ that GR-05 derives without difficulty. A method that
-loses general relativity cannot be trusted with anything else.
+Second, and decisively, the resulting equations return **zero even in the TEGR limit**, where
+the answer has to be the Poisson equation. A method that loses general relativity cannot be
+trusted with anything else.
 
-The diagnosis is the point. The diagonal tetrad has six fewer components than a general one,
-and those six are precisely the local Lorentz directions that GR-05's scope note flagged. In
-TEGR they are pure gauge and nothing is lost by fixing them; in a perturbative calculation
-they carry constraint equations, and dropping them drops the gradient content. A trustworthy
-$f(\mathcal{T})$ perturbation calculation has to vary all sixteen tetrad components, or work
-from the second-order action with the full scalar sector present, and neither is a small
-extension of what is here.
-
-So the honest state of the series is:
-
-- $f(R)$: $G_{\text{eff}}$ **derived**, in GR-05.
-- $f(\mathcal{T})$: geometry, TEGR equivalence and background cosmology **derived**, here.
-  $G_{\text{eff}}$ still **quoted** in GR-04's library.
-- $f(Q)$: nothing derived yet.
-
-The cell below reproduces the diagnosis rather than hiding it.
+The diagnosis is the whole point. A diagonal tetrad has six fewer components than a general
+one, and those six are precisely the local Lorentz directions. In TEGR they are pure gauge and
+nothing is lost by fixing them; in a perturbative calculation they carry the constraint that
+supplies the gradient. The rest of this notebook varies all sixteen.
 
 %-------------------------------------------------------------------------%
 Props:
   Hidden: false
 Type: Input
 %-------------------------------------------------------------------------%
-Module[{tet, tp, ans, dT, pw},
+Module[{tet, tp, ans, dT},
  tet = DiagonalMatrix[{aa[t, x], bb[t, x], cc[t, x], dd[t, x]}];
  tp  = Teleparallel[tet, xs];
- ans = {aa -> Function[{t, x}, 1 + eps psi[t] Exp[I kk x]],
-        bb -> Function[{t, x}, a[t] (1 - eps phi[t] Exp[I kk x])],
-        cc -> Function[{t, x}, a[t] (1 - eps phi[t] Exp[I kk x])],
-        dd -> Function[{t, x}, a[t] (1 - eps phi[t] Exp[I kk x])]};
+ ans = {aa -> Function[{t, x}, 1 + eps psi[t] Exp[I k x]],
+        bb -> Function[{t, x}, a[t] (1 - eps phi[t] Exp[I k x])],
+        cc -> Function[{t, x}, a[t] (1 - eps phi[t] Exp[I k x])],
+        dd -> Function[{t, x}, a[t] (1 - eps phi[t] Exp[I k x])]};
  dT = Simplify[
-    Coefficient[Normal[Series[tp["TorsionScalar"] /. ans, {eps, 0, 1}]], eps]/Exp[I kk x]];
- pw = Exponent[Expand[dT], kk];
-
+    Coefficient[Normal[Series[tp["TorsionScalar"] /. ans, {eps, 0, 1}]], eps]/Exp[I k x]];
  Column[{
    Row[{Style["delta T at first order : ", Bold], dT}],
-   Row[{Style["power of k in it       : ", Bold], pw}],
-   Dataset @ {
-     <|"observation" -> "delta T carries no spatial gradient",
-       "ok" -> (pw <= 0)|>,
-     <|"observation" -> "so the diagonal tetrad cannot produce a k^2 Poisson term",
-       "ok" -> (pw < 2)|>}}]]
+   Row[{Style["power of k in it       : ", Bold], Exponent[Expand[dT], k]}],
+   Dataset @ {<|"observation" -> "the diagonal tetrad puts no gradient into delta T",
+      "ok" -> (Exponent[Expand[dT], k] <= 0)|>}}]]
 
 %-------------------------------------------------------------------------%
 Props:
@@ -693,85 +678,610 @@ Props:
 Type: Input
 %-------------------------------------------------------------------------%
 .md
-## 9. Checks
+## 9. An Euler-Lagrange trap
 
-Everything the notebook claims, gathered in one place. The torsion scalar is computed twice by
-routes sharing nothing but the torsion tensor; the TEGR identity is tested on three unrelated
-geometries; the background cosmology is matched against GR-02, which reached it from the metric
-side; and the perturbative limitation of section 8 is recorded as a check too, so that if a
-later version fixes it the check will start failing and say so.
+Before varying anything sixteen ways, one piece of Wolfram behaviour has to be pinned down,
+because getting it wrong costs a wrong answer rather than an error message.
+
+The naive field-theory Euler-Lagrange operator,
+
+`D[lag, q[t,x]] - D[D[lag, Derivative[1,0][q][t,x]], t] - D[D[lag, Derivative[0,1][q][t,x]], x]`
+
+does not reliably return what it looks like it returns. On the test case below it gives
+**zero** where the answer is $-\partial_x^2 B$. The gradient term is exactly the one that
+carries $k^2$, so a Lagrangian full of correct physics silently produces equations with no
+Poisson term in them &mdash; which is what happened here on the first attempt, and what the
+diagonal-tetrad diagnosis in section 8 was almost mistaken for.
+
+The cure is to substitute the derivatives for plain symbols before differentiating, and put
+them back afterwards. `EulerLagrange2D` below does that, and the cell tests both versions
+against a Lagrangian whose Euler-Lagrange equation can be written down by hand.
+
+The single-variable operator used for the background in section 6 is not affected, which is
+why the Friedmann equations above were right.
 
 %-------------------------------------------------------------------------%
 Display: markdown
 Type: Output
 %-------------------------------------------------------------------------%
-## 9. Checks
+## 9. An Euler-Lagrange trap
 
-Everything the notebook claims, gathered in one place. The torsion scalar is computed twice by
-routes sharing nothing but the torsion tensor; the TEGR identity is tested on three unrelated
-geometries; the background cosmology is matched against GR-02, which reached it from the metric
-side; and the perturbative limitation of section 8 is recorded as a check too, so that if a
-later version fixes it the check will start failing and say so.
+Before varying anything sixteen ways, one piece of Wolfram behaviour has to be pinned down,
+because getting it wrong costs a wrong answer rather than an error message.
+
+The naive field-theory Euler-Lagrange operator,
+
+`D[lag, q[t,x]] - D[D[lag, Derivative[1,0][q][t,x]], t] - D[D[lag, Derivative[0,1][q][t,x]], x]`
+
+does not reliably return what it looks like it returns. On the test case below it gives
+**zero** where the answer is $-\partial_x^2 B$. The gradient term is exactly the one that
+carries $k^2$, so a Lagrangian full of correct physics silently produces equations with no
+Poisson term in them &mdash; which is what happened here on the first attempt, and what the
+diagonal-tetrad diagnosis in section 8 was almost mistaken for.
+
+The cure is to substitute the derivatives for plain symbols before differentiating, and put
+them back afterwards. `EulerLagrange2D` below does that, and the cell tests both versions
+against a Lagrangian whose Euler-Lagrange equation can be written down by hand.
+
+The single-variable operator used for the background in section 6 is not affected, which is
+why the Friedmann equations above were right.
 
 %-------------------------------------------------------------------------%
 Props:
   Hidden: false
 Type: Input
 %-------------------------------------------------------------------------%
-Module[{ys = {t, r, th, ph}, f1, s1, d1, tp2, tv, lag, fr1, grSub, toN1, contin, names},
+ClearAll[EulerLagrangeNaive, EulerLagrange2D];
+
+EulerLagrangeNaive[lag_, q_] :=
+  D[lag, q[t, x]] - D[D[lag, Derivative[1, 0][q][t, x]], t]
+    - D[D[lag, Derivative[0, 1][q][t, x]], x];
+
+EulerLagrange2D[lag_, q_] :=
+ Module[{u0, u1, u2, fwd, back, ls},
+  fwd  = {Derivative[1, 0][q][t, x] -> u1, Derivative[0, 1][q][t, x] -> u2, q[t, x] -> u0};
+  back = {u0 -> q[t, x], u1 -> Derivative[1, 0][q][t, x], u2 -> Derivative[0, 1][q][t, x]};
+  ls   = lag /. fwd;
+  (D[ls, u0] /. back) - D[D[ls, u1] /. back, t] - D[D[ls, u2] /. back, x]];
+
+Module[{toy, want},
+ toy  = D[uA[t, x], x] D[uB[t, x], x];
+ want = -D[uB[t, x], {x, 2}];
+ Dataset @ {
+   <|"operator" -> "naive", "result" -> EulerLagrangeNaive[toy, uA],
+     "correct" -> (Simplify[EulerLagrangeNaive[toy, uA] - want] === 0)|>,
+   <|"operator" -> "EulerLagrange2D", "result" -> EulerLagrange2D[toy, uA],
+     "correct" -> (Simplify[EulerLagrange2D[toy, uA] - want] === 0)|>}]
+
+%-------------------------------------------------------------------------%
+Props:
+  Hidden: true
+Type: Input
+%-------------------------------------------------------------------------%
+.md
+## 10. All sixteen components
+
+Write the tetrad as background plus $\epsilon$ times sixteen free functions of $t$ and $x$,
+
+$$e^A{}_\mu = \bar e^A{}_\mu + \epsilon\, h^A{}_\mu(t,x),$$
+
+and truncate at $O(\epsilon^2)$ at every step. Nothing then has to invert or expand a fully
+general symbolic tetrad: the inverse and the determinant are written as explicit series and
+checked against the exact ones.
+
+The linear field equations are the Euler-Lagrange equations of the **second order** action.
+That is not a shortcut, it is an identity: with $\mathcal{L} = \mathcal{L}^{(0)} + \epsilon\mathcal{L}^{(1)} + \epsilon^2\mathcal{L}^{(2)}$
+and $\delta/\delta e = \epsilon^{-1}\delta/\delta h$, the $\mathcal{L}^{(1)}$ term gives the
+background equations and the $\mathcal{L}^{(2)}$ term gives their linearisation.
+
+Keeping $h$ general until after the variation matters. A single complex plane wave substituted
+early would put $e^{2ikx}$ into $\mathcal{L}^{(2)}$, and the phases no longer cancel; varying
+first and specialising afterwards avoids that entirely.
+
+%-------------------------------------------------------------------------%
+Display: markdown
+Type: Output
+%-------------------------------------------------------------------------%
+## 10. All sixteen components
+
+Write the tetrad as background plus $\epsilon$ times sixteen free functions of $t$ and $x$,
+
+$$e^A{}_\mu = \bar e^A{}_\mu + \epsilon\, h^A{}_\mu(t,x),$$
+
+and truncate at $O(\epsilon^2)$ at every step. Nothing then has to invert or expand a fully
+general symbolic tetrad: the inverse and the determinant are written as explicit series and
+checked against the exact ones.
+
+The linear field equations are the Euler-Lagrange equations of the **second order** action.
+That is not a shortcut, it is an identity: with $\mathcal{L} = \mathcal{L}^{(0)} + \epsilon\mathcal{L}^{(1)} + \epsilon^2\mathcal{L}^{(2)}$
+and $\delta/\delta e = \epsilon^{-1}\delta/\delta h$, the $\mathcal{L}^{(1)}$ term gives the
+background equations and the $\mathcal{L}^{(2)}$ term gives their linearisation.
+
+Keeping $h$ general until after the variation matters. A single complex plane wave substituted
+early would put $e^{2ikx}$ into $\mathcal{L}^{(2)}$, and the phases no longer cancel; varying
+first and specialising afterwards avoids that entirely.
+
+%-------------------------------------------------------------------------%
+Props:
+  Hidden: false
+Type: Input
+%-------------------------------------------------------------------------%
+ClearAll[trunc2, tetFull, ivFull, detFull, torsionScalarFull, lagFirst, lagSecond];
+
+trunc2[e_] := Normal[Series[e, {eps, 0, 2}]];
+
+Module[{bgT, ibgT, hp, eup, gg, ig, dpar, tor, tDn, tUp12, tUp23, kon, tr1c, sup, mm},
+ bgT  = DiagonalMatrix[{1, a[t], a[t], a[t]}];
+ ibgT = DiagonalMatrix[{1, 1/a[t], 1/a[t], 1/a[t]}];
+ hp   = Table[hh[i, j][t, x], {i, 4}, {j, 4}];
+
+ tetFull = bgT + eps hp;
+ ivFull  = ibgT - eps ibgT . hp . ibgT + eps^2 ibgT . hp . ibgT . hp . ibgT;
+ mm      = ibgT . hp;
+ detFull = Det[bgT] (1 + eps Tr[mm] + eps^2 (Tr[mm]^2 - Tr[mm . mm])/2);
+
+ eup = Table[ivFull[[m, capA]], {capA, 4}, {m, 4}];
+ gg  = Table[trunc2[Sum[$eta[[capA, capB]] tetFull[[capA, i]] tetFull[[capB, m]],
+     {capA, 4}, {capB, 4}]], {i, 4}, {m, 4}];
+ ig  = Table[trunc2[Sum[$eta[[capA, capB]] eup[[capA, i]] eup[[capB, m]],
+     {capA, 4}, {capB, 4}]], {i, 4}, {m, 4}];
+
+ dpar[f_, mu_] := If[mu <= 2, D[f, {t, x}[[mu]]], 0];   (* nothing depends on y or z *)
+
+ tor = Table[trunc2[Sum[eup[[capA, l]] (dpar[tetFull[[capA, i]], m]
+      - dpar[tetFull[[capA, m]], i]), {capA, 4}]], {l, 4}, {m, 4}, {i, 4}];
+ tDn   = Table[trunc2[Sum[gg[[l, q]] tor[[q, m, i]], {q, 4}]], {l, 4}, {m, 4}, {i, 4}];
+ tUp12 = Table[trunc2[Sum[ig[[m, p]] ig[[i, q]] tDn[[p, q, l]], {p, 4}, {q, 4}]],
+    {m, 4}, {i, 4}, {l, 4}];
+ tUp23 = Table[trunc2[Sum[ig[[m, p]] ig[[i, q]] tDn[[l, p, q]], {p, 4}, {q, 4}]],
+    {l, 4}, {m, 4}, {i, 4}];
+ kon = Table[-(1/2) (tUp12[[m, i, l]] - tUp12[[i, m, l]] - tUp23[[l, m, i]]),
+    {m, 4}, {i, 4}, {l, 4}];
+ tr1c = Table[trunc2[Sum[tUp12[[al, i, al]], {al, 4}]], {i, 4}];
+ sup = Table[(1/2) (kon[[m, i, l]] + KroneckerDelta[m, l] tr1c[[i]]
+      - KroneckerDelta[i, l] tr1c[[m]]), {l, 4}, {m, 4}, {i, 4}];
+
+ torsionScalarFull = trunc2[Sum[sup[[l, m, i]] tor[[l, m, i]], {l, 4}, {m, 4}, {i, 4}]];
+];
+
+$T0 = Simplify[torsionScalarFull /. eps -> 0];
+With[{lg = trunc2[detFull F[torsionScalarFull]]},
+ lagFirst  = Coefficient[lg, eps, 1];
+ lagSecond = Coefficient[lg, eps, 2]];
+
+Dataset @ {
+ <|"check" -> "the series inverse is exact to O(eps^2)",
+   "ok" -> (Simplify[trunc2[tetFull . ivFull] - IdentityMatrix[4]] === ConstantArray[0, {4, 4}])|>,
+ <|"check" -> "the series determinant is exact to O(eps^2)",
+   "ok" -> (Simplify[trunc2[Det[tetFull]] - detFull] === 0)|>,
+ <|"check" -> "background torsion scalar is 6 H^2",
+   "ok" -> (Simplify[$T0 - 6 a'[t]^2/a[t]^2] === 0)|>,
+ <|"check" -> "the second order Lagrangian carries spatial gradients",
+   "ok" -> (Length[Cases[lagSecond, Derivative[0, 1][hh[__]][t, x], Infinity]] > 0)|>}
+
+%-------------------------------------------------------------------------%
+Props:
+  Hidden: true
+Type: Input
+%-------------------------------------------------------------------------%
+.md
+## 11. The perturbed tetrad, the matter source, and the background on shell
+
+The scalar sector of a perturbed tetrad in Newtonian gauge carries four functions, and two of
+them are invisible to the metric:
+
+| | |
+|---|---|
+| $\psi$ | the lapse perturbation, $g_{00} = -(1+2\psi)$ |
+| $\phi$ | the isotropic spatial perturbation, $g_{ij} = a^2(1-2\phi)\delta_{ij}$ |
+| $\zeta$ | a **boost**, $h^0{}_1 = a\zeta$ and $h^1{}_0 = \zeta$ |
+| $\chi$ | a **rotation**, $h^2{}_3 = -h^3{}_2 = a\chi$ |
+
+$\zeta$ and $\chi$ are exactly the local Lorentz directions: an infinitesimal boost with
+parameter $\lambda$ sends $\delta e^0{}_1 = \lambda a$ and $\delta e^1{}_0 = \lambda$, which is
+$\zeta$ on the nose. In TEGR they are gauge and must drop out of every equation. In
+$f(\mathcal{T})$ they do not, and that is where the modification enters.
+
+Matter couples through the metric, so its contribution to the tetrad equations is
+$\delta S_m/\delta e^A{}_\mu = \lambda_m\, e\, e_{A\nu}T^{\mu\nu}$, and the constant is fixed by
+demanding the background reproduce the Friedmann equation of section 7.
+
+**The background has to be put on shell.** Linearised gauge invariance holds only there, so
+without imposing the background equations the boost mode does not drop out even in TEGR. That
+was the second thing this calculation got wrong before it got it right.
+
+%-------------------------------------------------------------------------%
+Display: markdown
+Type: Output
+%-------------------------------------------------------------------------%
+## 11. The perturbed tetrad, the matter source, and the background on shell
+
+The scalar sector of a perturbed tetrad in Newtonian gauge carries four functions, and two of
+them are invisible to the metric:
+
+| | |
+|---|---|
+| $\psi$ | the lapse perturbation, $g_{00} = -(1+2\psi)$ |
+| $\phi$ | the isotropic spatial perturbation, $g_{ij} = a^2(1-2\phi)\delta_{ij}$ |
+| $\zeta$ | a **boost**, $h^0{}_1 = a\zeta$ and $h^1{}_0 = \zeta$ |
+| $\chi$ | a **rotation**, $h^2{}_3 = -h^3{}_2 = a\chi$ |
+
+$\zeta$ and $\chi$ are exactly the local Lorentz directions: an infinitesimal boost with
+parameter $\lambda$ sends $\delta e^0{}_1 = \lambda a$ and $\delta e^1{}_0 = \lambda$, which is
+$\zeta$ on the nose. In TEGR they are gauge and must drop out of every equation. In
+$f(\mathcal{T})$ they do not, and that is where the modification enters.
+
+Matter couples through the metric, so its contribution to the tetrad equations is
+$\delta S_m/\delta e^A{}_\mu = \lambda_m\, e\, e_{A\nu}T^{\mu\nu}$, and the constant is fixed by
+demanding the background reproduce the Friedmann equation of section 7.
+
+**The background has to be put on shell.** Linearised gauge invariance holds only there, so
+without imposing the background equations the boost mode does not drop out even in TEGR. That
+was the second thing this calculation got wrong before it got it right.
+
+%-------------------------------------------------------------------------%
+Props:
+  Hidden: false
+Type: Input
+%-------------------------------------------------------------------------%
+ClearAll[perturbedTetrad, matterSource, backgroundOnShell];
+
+Module[{ph, trunc1, hp, ibgT, ivp, edn, gpert, detp, uUp, rhoTot, tUpper, sigmaFull,
+        bgGrav, bgSrc, bgTT, bgXX},
+ ph = Exp[I k x];
+ trunc1[e_] := Normal[Series[e, {eps, 0, 1}]];
+
+ perturbedTetrad = {
+   {1 + eps psi[t] ph,   eps a[t] zeta[t] ph, 0, 0},
+   {eps zeta[t] ph,      a[t] (1 - eps phi[t] ph), 0, 0},
+   {0, 0, a[t] (1 - eps phi[t] ph),  eps a[t] chi[t] ph},
+   {0, 0, -eps a[t] chi[t] ph,       a[t] (1 - eps phi[t] ph)}};
+
+ ibgT = DiagonalMatrix[{1, 1/a[t], 1/a[t], 1/a[t]}];
+ hp   = Coefficient[perturbedTetrad, eps, 1];
+ ivp  = ibgT - eps ibgT . hp . ibgT;
+ edn  = Table[trunc1[Sum[$eta[[capA, capB]] perturbedTetrad[[capB, m]], {capB, 4}]],
+    {capA, 4}, {m, 4}];
+ gpert = Table[trunc1[Sum[$eta[[capA, capB]] perturbedTetrad[[capA, i]] perturbedTetrad[[capB, m]],
+      {capA, 4}, {capB, 4}]], {i, 4}, {m, 4}];
+ detp = trunc1[Det[perturbedTetrad]];
+
+ uUp    = {1 - eps psi[t] ph, eps vv[t] ph, 0, 0};
+ rhoTot = rho[t] (1 + eps del[t] ph);
+ tUpper = Table[trunc1[rhoTot uUp[[i]] uUp[[j]]], {i, 4}, {j, 4}];
+
+ matterSource = Table[
+   trunc1[(-2 \[Kappa]) detp Sum[edn[[capA, nu]] tUpper[[m, nu]], {nu, 4}]], {capA, 4}, {m, 4}];
+
+ bgGrav = Table[EulerLagrange2D[lagFirst, hh[i, j]], {i, 4}, {j, 4}];
+ bgSrc  = Table[Simplify[matterSource[[i, j]] /. eps -> 0], {i, 4}, {j, 4}];
+ bgTT = Simplify[bgGrav[[1, 1]] - bgSrc[[1, 1]]];
+ bgXX = Simplify[bgGrav[[2, 2]] - bgSrc[[2, 2]]];
+ backgroundOnShell = Simplify[First@Solve[{bgTT == 0, bgXX == 0}, {rho[t], a''[t]}]];
+
+ Column[{
+   Row[{Style["metric from the tetrad, g_00 = ", Bold], gpert[[1, 1]]}],
+   Row[{Style["                       g_0x = ", Bold], Simplify[gpert[[1, 2]]]}],
+   Row[{Style["                       g_11 = ", Bold], gpert[[2, 2]]}],
+   Dataset @ {
+    <|"check" -> "the ansatz is in Newtonian gauge, g_0x = 0",
+      "ok" -> (Simplify[gpert[[1, 2]]] === 0)|>,
+    <|"check" -> "zeta and chi are invisible to the metric at first order",
+      "ok" -> FreeQ[Simplify[Coefficient[gpert, eps, 1]], chi | zeta]|>,
+    <|"check" -> "the four-velocity is normalised to O(eps)",
+      "ok" -> (Simplify[trunc1[Sum[gpert[[i, j]] uUp[[i]] uUp[[j]], {i, 4}, {j, 4}]] + 1] === 0)|>,
+    <|"check" -> "the background 0-0 equation is (f - 2 T f_T) = 2 kappa rho",
+      "ok" -> (Simplify[bgTT/a[t]^3 - ((F[$T0] - 2 $T0 F'[$T0]) - 2 \[Kappa] rho[t])] === 0)|>}}]]
+
+%-------------------------------------------------------------------------%
+Props:
+  Hidden: true
+Type: Input
+%-------------------------------------------------------------------------%
+.md
+## 12. The linear equations
+
+Vary the second order action sixteen ways, substitute the scalar ansatz, subtract the matter
+source, drop time derivatives of the perturbation amplitudes, and put the background on shell.
+
+The TEGR limit is the acceptance test, and it is a demanding one: the $00$ equation has to come
+out as the Poisson equation with a $k^2$, the transverse equation has to force $\phi = \psi$,
+the two momentum equations have to be the same equation, and both Lorentz modes have to
+disappear. All four are checked below rather than asserted.
+
+%-------------------------------------------------------------------------%
+Display: markdown
+Type: Output
+%-------------------------------------------------------------------------%
+## 12. The linear equations
+
+Vary the second order action sixteen ways, substitute the scalar ansatz, subtract the matter
+source, drop time derivatives of the perturbation amplitudes, and put the background on shell.
+
+The TEGR limit is the acceptance test, and it is a demanding one: the $00$ equation has to come
+out as the Poisson equation with a $k^2$, the transverse equation has to force $\phi = \psi$,
+the two momentum equations have to be the same equation, and both Lorentz modes have to
+disappear. All four are checked below rather than asserted.
+
+%-------------------------------------------------------------------------%
+Props:
+  Hidden: false
+Type: Input
+%-------------------------------------------------------------------------%
+ClearAll[linearEquations, quasiStatic];
+
+quasiStatic = {Derivative[_][psi][t] -> 0, Derivative[_][phi][t] -> 0,
+               Derivative[_][zeta][t] -> 0, Derivative[_][chi][t] -> 0,
+               Derivative[_][del][t] -> 0, Derivative[_][vv][t] -> 0};
+
+Module[{ansatz, ph, gravEq, grav},
+ ph = Exp[I k x];
+ ansatz = {hh[1, 1] -> Function[{t, x}, psi[t] Exp[I k x]],
+   hh[1, 2] -> Function[{t, x}, a[t] zeta[t] Exp[I k x]],
+   hh[2, 1] -> Function[{t, x}, zeta[t] Exp[I k x]],
+   hh[2, 2] -> Function[{t, x}, -a[t] phi[t] Exp[I k x]],
+   hh[3, 3] -> Function[{t, x}, -a[t] phi[t] Exp[I k x]],
+   hh[4, 4] -> Function[{t, x}, -a[t] phi[t] Exp[I k x]],
+   hh[3, 4] -> Function[{t, x}, a[t] chi[t] Exp[I k x]],
+   hh[4, 3] -> Function[{t, x}, -a[t] chi[t] Exp[I k x]],
+   hh[1, 3] -> Function[{t, x}, 0], hh[1, 4] -> Function[{t, x}, 0],
+   hh[2, 3] -> Function[{t, x}, 0], hh[2, 4] -> Function[{t, x}, 0],
+   hh[3, 1] -> Function[{t, x}, 0], hh[4, 1] -> Function[{t, x}, 0],
+   hh[3, 2] -> Function[{t, x}, 0], hh[4, 2] -> Function[{t, x}, 0]};
+
+ gravEq = Table[EulerLagrange2D[lagSecond, hh[i, j]], {i, 4}, {j, 4}];
+ grav   = Table[Simplify[(gravEq[[i, j]] /. ansatz)/ph], {i, 4}, {j, 4}];
+
+ linearEquations = Table[
+   Simplify[Simplify[(grav[[i, j]]
+        - Coefficient[matterSource[[i, j]], eps, 1]/ph) /. quasiStatic]
+      /. backgroundOnShell], {i, 4}, {j, 4}];
+];
+
+Module[{tegr},
+ tegr = Simplify[linearEquations /. F -> Function[u, -u]];
+ Column[{
+  Row[{Style["TEGR  0-0 : ", Bold], tegr[[1, 1]], " = 0"}],
+  Row[{Style["TEGR  0-1 : ", Bold], tegr[[1, 2]], " = 0"}],
+  Row[{Style["TEGR  1-0 : ", Bold], tegr[[2, 1]], " = 0"}],
+  Row[{Style["TEGR  1-1 : ", Bold], tegr[[2, 2]], " = 0"}],
+  Row[{Style["TEGR  2-2 : ", Bold], tegr[[3, 3]], " = 0"}],
+  Row[{Style["TEGR  2-3 : ", Bold], tegr[[3, 4]], " = 0"}],
+  "",
+  Dataset @ {
+   <|"acceptance test" -> "0-0 is the Poisson equation, carrying k^2",
+     "ok" -> (Exponent[Expand[tegr[[1, 1]]], k] === 2)|>,
+   <|"acceptance test" -> "the transverse equation forces phi = psi, no slip",
+     "ok" -> (Simplify[tegr[[3, 3]] /. phi[t] -> psi[t]] === 0 && tegr[[3, 3]] =!= 0)|>,
+   <|"acceptance test" -> "the two momentum equations are the same equation",
+     "ok" -> (Simplify[tegr[[2, 1]] + a[t] tegr[[1, 2]]] === 0)|>,
+   <|"acceptance test" -> "the boost mode zeta drops out, as local Lorentz demands",
+     "ok" -> FreeQ[tegr, zeta]|>,
+   <|"acceptance test" -> "the rotation mode chi drops out",
+     "ok" -> FreeQ[tegr, chi]|>,
+   <|"acceptance test" -> "the pressure equation vanishes for dust",
+     "ok" -> (tegr[[2, 2]] === 0)|>}}]]
+
+%-------------------------------------------------------------------------%
+Props:
+  Hidden: true
+Type: Input
+%-------------------------------------------------------------------------%
+.md
+## 13. The effective gravitational coupling
+
+Now solve. The $0$-$1$ equation gives the peculiar velocity; the $1$-$0$ equation then becomes
+a leftover constraint which vanishes identically in TEGR &mdash; that is local Lorentz
+invariance showing up as an algebraic identity &mdash; and for a non-linear $f$ it is the
+equation that fixes the boost mode. Together with the transverse equation it determines $\phi$
+and $\zeta$ in terms of $\psi$, and the $0$-$0$ equation then reads off against
+
+$$\frac{k^2}{a^2}\Psi = -4\pi G_{\text{eff}}\,\rho_m\delta_m .$$
+
+The answer, in the sub-horizon limit, is
+
+$$
+\frac{G_{\text{eff}}}{G} = -\frac{1}{f_{\mathcal{T}}}, \qquad \eta = \frac{\Phi}{\Psi} = 1 .
+$$
+
+With $\mathcal{T} = +6H^2$ here, TEGR is $f = -\mathcal{T}$ and $f_\mathcal{T} = -1$, giving
+$G_{\text{eff}} = G$. In the GR-02 and GR-04 convention, where `Ts` $= -\mathcal{T}$ and TEGR is
+$f(\texttt{Ts}) = \texttt{Ts}$, the same statement reads $G_{\text{eff}}/G = 1/f_{\texttt{Ts}}$
+&mdash; which is exactly the entry GR-04's library had been quoting from the literature. It is
+no longer quoted.
+
+Two features are worth naming. It is **scale independent**: no $k$ survives, in sharp contrast
+to $f(R)$, where GR-05 found a factor of $4/3$ running between large and small scales. And
+there is **no gravitational slip**, so lensing and clustering feel the same modification,
+where in $f(R)$ they do not. Those two differences are what would let a survey tell the
+theories apart even if their backgrounds agreed exactly.
+
+%-------------------------------------------------------------------------%
+Display: markdown
+Type: Output
+%-------------------------------------------------------------------------%
+## 13. The effective gravitational coupling
+
+Now solve. The $0$-$1$ equation gives the peculiar velocity; the $1$-$0$ equation then becomes
+a leftover constraint which vanishes identically in TEGR &mdash; that is local Lorentz
+invariance showing up as an algebraic identity &mdash; and for a non-linear $f$ it is the
+equation that fixes the boost mode. Together with the transverse equation it determines $\phi$
+and $\zeta$ in terms of $\psi$, and the $0$-$0$ equation then reads off against
+
+$$\frac{k^2}{a^2}\Psi = -4\pi G_{\text{eff}}\,\rho_m\delta_m .$$
+
+The answer, in the sub-horizon limit, is
+
+$$
+\frac{G_{\text{eff}}}{G} = -\frac{1}{f_{\mathcal{T}}}, \qquad \eta = \frac{\Phi}{\Psi} = 1 .
+$$
+
+With $\mathcal{T} = +6H^2$ here, TEGR is $f = -\mathcal{T}$ and $f_\mathcal{T} = -1$, giving
+$G_{\text{eff}} = G$. In the GR-02 and GR-04 convention, where `Ts` $= -\mathcal{T}$ and TEGR is
+$f(\texttt{Ts}) = \texttt{Ts}$, the same statement reads $G_{\text{eff}}/G = 1/f_{\texttt{Ts}}$
+&mdash; which is exactly the entry GR-04's library had been quoting from the literature. It is
+no longer quoted.
+
+Two features are worth naming. It is **scale independent**: no $k$ survives, in sharp contrast
+to $f(R)$, where GR-05 found a factor of $4/3$ running between large and small scales. And
+there is **no gravitational slip**, so lensing and clustering feel the same modification,
+where in $f(R)$ they do not. Those two differences are what would let a survey tell the
+theories apart even if their backgrounds agreed exactly.
+
+%-------------------------------------------------------------------------%
+Props:
+  Hidden: false
+Type: Input
+%-------------------------------------------------------------------------%
+ClearAll[geffExact, geffSubHorizon, slipSubHorizon];
+
+Module[{nm, e00, e01, e10, exx, eyy, eyz, vsol, lorentz, sol, poi, dsol, abbrev},
+ abbrev = {Derivative[3][F][$T0] -> fTTT, Derivative[2][F][$T0] -> fTT,
+           Derivative[1][F][$T0] -> fT, F[$T0] -> f0};
+ nm[e_] := Simplify[Expand[e] /. abbrev];
+
+ e00 = nm[linearEquations[[1, 1]]];  e01 = nm[linearEquations[[1, 2]]];
+ e10 = nm[linearEquations[[2, 1]]];  exx = nm[linearEquations[[2, 2]]];
+ eyy = nm[linearEquations[[3, 3]]];  eyz = nm[linearEquations[[3, 4]]];
+
+ vsol    = First@Solve[e01 == 0, vv[t]];
+ lorentz = Simplify[e10 /. vsol];
+ sol     = Simplify[First@Solve[{lorentz == 0, eyy == 0}, {phi[t], zeta[t]}]];
+ poi     = Simplify[(e00 /. vsol) /. sol];
+ dsol    = First@Solve[poi == 0, del[t]];
+
+ geffExact = Simplify[
+   ((k^2 psi[t]/a[t]^2)/(-(\[Kappa]/2) rho[t] (del[t] /. dsol))) /. backgroundOnShell /. abbrev];
+ geffSubHorizon = Simplify[Limit[geffExact, k -> Infinity]];
+ slipSubHorizon = Simplify[
+   Limit[Simplify[((phi[t] /. sol)/psi[t]) /. backgroundOnShell /. abbrev], k -> Infinity]];
+
+ Column[{
+   Row[{Style["the leftover 1-0 constraint : ", Bold], Short[lorentz, 3]}],
+   Row[{Style["G_eff / G, sub-horizon      : ", Bold], geffSubHorizon}],
+   Row[{Style["slip  Phi/Psi, sub-horizon  : ", Bold], slipSubHorizon}]}]]
+
+%-------------------------------------------------------------------------%
+Props:
+  Hidden: true
+Type: Input
+%-------------------------------------------------------------------------%
+.md
+## 14. Checks
+
+Everything the notebook claims. The geometry checks come first, then the background, then the
+perturbative result. The last group is the one that matters: if any of it fails, the
+$G_{\text{eff}}$ above is not to be believed.
+
+%-------------------------------------------------------------------------%
+Display: markdown
+Type: Output
+%-------------------------------------------------------------------------%
+## 14. Checks
+
+Everything the notebook claims. The geometry checks come first, then the background, then the
+perturbative result. The last group is the one that matters: if any of it fails, the
+$G_{\text{eff}}$ above is not to be believed.
+
+%-------------------------------------------------------------------------%
+Props:
+  Hidden: false
+Type: Input
+%-------------------------------------------------------------------------%
+Module[{ys = {t, r, th, ph}, f1, s1, d1, tv, grSub, p1, p2},
  f1 = Teleparallel[DiagonalMatrix[{1, a[t], a[t], a[t]}], xs];
  s1 = Teleparallel[DiagonalMatrix[{Sqrt[1 - 2 M/r], 1/Sqrt[1 - 2 M/r], r, r Sin[th]}], ys];
- d1 = Teleparallel[DiagonalMatrix[{1, Exp[hh t], Exp[hh t], Exp[hh t]}], xs];
-
- lag = bg["Determinant"] (F[bg["TorsionScalar"]]/(2 \[Kappa]) - dens[a[t]]);
- toN1 = {Derivative[_][Nl][t] -> 0, Nl[t] -> 1};
- contin = {Derivative[1][dens][a[t]] -> -3 (dens[a[t]] + pres[a[t]])/a[t]};
- names = {dens[a[t]] -> \[Rho], pres[a[t]] -> p};
- fr1 = Simplify[(eulerT[lag, Nl] /. toN1 /. contin /. names)/a[t]^3];
- grSub = {F -> Function[u, -u]};
+ d1 = Teleparallel[DiagonalMatrix[{1, Exp[hh0 t], Exp[hh0 t], Exp[hh0 t]}], xs];
+ p1 = Teleparallel[DiagonalMatrix[{1, 1, r, r Sin[th]}], ys];
+ p2 = Teleparallel[{{1, 0, 0, 0},
+     {0, Sin[th] Cos[ph], r Cos[th] Cos[ph], -r Sin[th] Sin[ph]},
+     {0, Sin[th] Sin[ph], r Cos[th] Sin[ph], r Sin[th] Cos[ph]},
+     {0, Cos[th], -r Sin[th], 0}}, ys];
  tv = 6 a'[t]^2/a[t]^2;
+ grSub = {fT -> -1, fTT -> 0, fTTT -> 0, f0 -> -tv};
 
  Dataset @ {
-  <|"check" -> "tetrad reproduces the FLRW metric",
-    "ok" -> (Simplify[f1["Metric"] - DiagonalMatrix[{-1, a[t]^2, a[t]^2, a[t]^2}]]
-       === ConstantArray[0, {4, 4}])|>,
   <|"check" -> "T = 6 H^2 in flat FLRW",
-    "ok" -> (Simplify[f1["TorsionScalar"] - 6 a'[t]^2/a[t]^2] === 0)|>,
-  <|"check" -> "superpotential and three-term forms agree, all three tetrads",
+    "ok" -> (Simplify[f1["TorsionScalar"] - tv] === 0)|>,
+  <|"check" -> "superpotential and three-term forms agree on three tetrads",
     "ok" -> AllTrue[{f1, s1, d1},
        Simplify[#["TorsionScalar"] - #["TorsionScalarAlt"]] === 0 &]|>,
-  <|"check" -> "R = -T + B for flat FLRW",
-    "ok" -> (Simplify[RicciScalarOf[f1["Metric"], xs]
-        - (-f1["TorsionScalar"] + BoundaryTerm[f1])] === 0)|>,
-  <|"check" -> "R = -T + B for the Schwarzschild tetrad",
-    "ok" -> (Simplify[RicciScalarOf[s1["Metric"], ys]
-        - (-s1["TorsionScalar"] + BoundaryTerm[s1])] === 0)|>,
-  <|"check" -> "R = -T + B for de Sitter",
-    "ok" -> (Simplify[RicciScalarOf[d1["Metric"], xs]
-        - (-d1["TorsionScalar"] + BoundaryTerm[d1])] === 0)|>,
-  <|"check" -> "Friedmann I is kappa rho = (f - 2 T f_T)/2",
-    "ok" -> (Simplify[fr1 - ((F[tv] - 2 tv F'[tv])/(2 \[Kappa]) - \[Rho])] === 0)|>,
-  <|"check" -> "TEGR limit returns 3H^2 = kappa rho, matching GR-02",
-    "ok" -> (Simplify[(fr1 /. grSub) - (3 a'[t]^2/(\[Kappa] a[t]^2) - \[Rho])] === 0)|>,
-  <|"check" -> "the good-tetrad problem is real: same metric, different T",
-    "ok" -> Module[{p1, p2},
-      p1 = Teleparallel[DiagonalMatrix[{1, 1, r, r Sin[th]}], ys];
-      p2 = Teleparallel[{{1, 0, 0, 0},
-         {0, Sin[th] Cos[ph], r Cos[th] Cos[ph], -r Sin[th] Sin[ph]},
-         {0, Sin[th] Sin[ph], r Cos[th] Sin[ph], r Sin[th] Cos[ph]},
-         {0, Cos[th], -r Sin[th], 0}}, ys];
-      Simplify[p1["Metric"] - p2["Metric"]] === ConstantArray[0, {4, 4}] &&
-       Simplify[p1["TorsionScalar"] - p2["TorsionScalar"]] =!= 0]|>,
-  <|"check" -> "section 8 still stands: no gradient in delta T for the diagonal tetrad",
-    "ok" -> Module[{tp, ans, dT},
-      tp = Teleparallel[DiagonalMatrix[{aa[t, x], bb[t, x], cc[t, x], dd[t, x]}], xs];
-      ans = {aa -> Function[{t, x}, 1 + eps psi[t] Exp[I kk x]],
-             bb -> Function[{t, x}, a[t] (1 - eps phi[t] Exp[I kk x])],
-             cc -> Function[{t, x}, a[t] (1 - eps phi[t] Exp[I kk x])],
-             dd -> Function[{t, x}, a[t] (1 - eps phi[t] Exp[I kk x])]};
-      dT = Simplify[Coefficient[
-         Normal[Series[tp["TorsionScalar"] /. ans, {eps, 0, 1}]], eps]/Exp[I kk x]];
-      Exponent[Expand[dT], kk] <= 0]|>}]
+  <|"check" -> "R = -T + B on all three",
+    "ok" -> AllTrue[{{f1, xs}, {s1, ys}, {d1, xs}},
+       Simplify[RicciScalarOf[#[[1]]["Metric"], #[[2]]]
+          - (-#[[1]]["TorsionScalar"] + BoundaryTerm[#[[1]]])] === 0 &]|>,
+  <|"check" -> "the good-tetrad problem: same metric, different T",
+    "ok" -> (Simplify[p1["Metric"] - p2["Metric"]] === ConstantArray[0, {4, 4}] &&
+       Simplify[p1["TorsionScalar"] - p2["TorsionScalar"]] =!= 0)|>,
+  <|"check" -> "the naive Euler-Lagrange operator really does drop the gradient term",
+    "ok" -> (EulerLagrangeNaive[D[uA[t, x], x] D[uB[t, x], x], uA] === 0)|>,
+  <|"check" -> "EulerLagrange2D gets it right",
+    "ok" -> (Simplify[EulerLagrange2D[D[uA[t, x], x] D[uB[t, x], x], uA]
+        + D[uB[t, x], {x, 2}]] === 0)|>,
+  <|"check" -> "TEGR: G_eff = G",
+    "ok" -> (Simplify[geffSubHorizon /. grSub] === 1)|>,
+  <|"check" -> "G_eff = -1/f_T, and is scale independent",
+    "ok" -> (Simplify[geffSubHorizon - (-1/fT)] === 0 && FreeQ[geffSubHorizon, k])|>,
+  <|"check" -> "no gravitational slip",
+    "ok" -> (Simplify[slipSubHorizon - 1] === 0)|>,
+  <|"check" -> "this is what GR-04's library quotes, in its own sign convention",
+    "ok" -> (Simplify[(geffSubHorizon /. fT -> -fTs) - 1/fTs] === 0)|>}]
+
+%-------------------------------------------------------------------------%
+Props:
+  Hidden: true
+Type: Input
+%-------------------------------------------------------------------------%
+.md
+## 15. What is still quoted
+
+$f(\mathcal{T})$ is now derived end to end in this series: geometry here, background here,
+$G_{\text{eff}}$ here, growth in GR-04. Together with $f(R)$ in GR-05 that leaves one gap.
+
+$f(Q)$ remains quoted. Its fundamental variable is a flat, torsion-free connection, and the
+coincident gauge that makes $Q$ come out as the tidy $-6H^2$ used in GR-02 is a statement about
+that connection rather than about coordinates. It does not stack for free on top of Newtonian
+gauge, so a consistent calculation either keeps the connection perturbations explicitly or
+gives up the convenient form of $Q$. The machinery in sections 10 to 13 is the right shape for
+it &mdash; general perturbation, second order action, all components free, background on shell,
+TEGR-style limit as the acceptance test &mdash; but the variables are different.
+
+Both families also carry known perturbative pathologies: extra modes propagate and their
+kinetic terms can degenerate on cosmological backgrounds, the strong-coupling problem. A
+correct linear calculation is necessary, not sufficient.
+
+%-------------------------------------------------------------------------%
+Display: markdown
+Type: Output
+%-------------------------------------------------------------------------%
+## 15. What is still quoted
+
+$f(\mathcal{T})$ is now derived end to end in this series: geometry here, background here,
+$G_{\text{eff}}$ here, growth in GR-04. Together with $f(R)$ in GR-05 that leaves one gap.
+
+$f(Q)$ remains quoted. Its fundamental variable is a flat, torsion-free connection, and the
+coincident gauge that makes $Q$ come out as the tidy $-6H^2$ used in GR-02 is a statement about
+that connection rather than about coordinates. It does not stack for free on top of Newtonian
+gauge, so a consistent calculation either keeps the connection perturbations explicitly or
+gives up the convenient form of $Q$. The machinery in sections 10 to 13 is the right shape for
+it &mdash; general perturbation, second order action, all components free, background on shell,
+TEGR-style limit as the acceptance test &mdash; but the variables are different.
+
+Both families also carry known perturbative pathologies: extra modes propagate and their
+kinetic terms can degenerate on cosmological backgrounds, the strong-coupling problem. A
+correct linear calculation is necessary, not sufficient.
+
+%-------------------------------------------------------------------------%
+Props:
+  Hidden: false
+Type: Input
+%-------------------------------------------------------------------------%
+Dataset @ <|
+  "f(R)"           -> "G_eff derived in GR-05",
+  "f(T)"           -> "geometry, background and G_eff derived here",
+  "f(Q)"           -> "still quoted in GR-04's library",
+  "approximations" -> "quasi-static and sub-horizon; both fail near the horizon",
+  "cross-checks"   -> "background matches GR-02; TEGR limit reproduces general relativity"|>
 
 %------------------------------%EndOfCells%-------------------------------%
 
