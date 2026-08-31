@@ -82,6 +82,7 @@ change.
 | **GR-05** | perturbed field equations in, $G_{\text{eff}}$, slip and lensing out |
 | **GR-06** | a tetrad in, torsion, the TEGR identity and $f(\mathcal{T})$ cosmology out |
 | **GR-07** | a metric and a flat connection in, non-metricity and $f(Q)$ cosmology out |
+| **GR-08** | the same quadratic actions in, kinetic matrices and wave speeds out |
 
 This is the last link and the only one that feeds backwards: GR-04 treats $G_{\text{eff}}$ as
 something you look up, and this is where the $f(R)$ entry it looks up is manufactured.
