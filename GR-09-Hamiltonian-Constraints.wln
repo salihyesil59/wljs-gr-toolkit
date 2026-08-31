@@ -389,6 +389,11 @@ grResult = DiracCount[l2GR, {psi, phi, b, ee}];
 grResult
 
 %-------------------------------------------------------------------------%
+Type: Output
+%-------------------------------------------------------------------------%
+<|"ok"->True,"Coordinates"->4,"HessianRank"->2,"Primary"->2,"Total"->4,"SecondClass"->0,"FirstClass"->4,"DOF"->0,"Chain"->{"stage 1: 2 new","stage 2: 0 new"},"Constraints"->{pp[3],pp[1],-2 ((*SpB[*)Power[E(*|*),(*|*)-2 hh t](*]SpB*)) ((*SqB[*)Sqrt[(*SpB[*)Power[E(*|*),(*|*)6 hh t](*]SpB*)](*]SqB*)) ((*SpB[*)Power[k(*|*),(*|*)2](*]SpB*)) qq[2]+hh (pp[2]+2 ((*SqB[*)Sqrt[(*SpB[*)Power[E(*|*),(*|*)6 hh t](*]SpB*)](*]SqB*)) hh (3 qq[2]+qq[4])),((*SpB[*)Power[E(*|*),(*|*)-hh t](*]SpB*)) k (pp[4]+2 ((*SqB[*)Sqrt[(*SpB[*)Power[E(*|*),(*|*)6 hh t](*]SpB*)](*]SqB*)) hh (qq[2]-qq[4]))}|>
+
+%-------------------------------------------------------------------------%
 Props:
   Hidden: true
 Type: Input
@@ -502,6 +507,11 @@ $Q0 = Simplify[qscalar /. eps -> 0];
 $Q0
 
 %-------------------------------------------------------------------------%
+Type: Output
+%-------------------------------------------------------------------------%
+-6 ((*SpB[*)Power[hh(*|*),(*|*)2](*]SpB*))
+
+%-------------------------------------------------------------------------%
 Props:
   Hidden: true
 Type: Input
@@ -552,6 +562,11 @@ bgEnergy = Simplify[elOp[linTerm, psi] /. x -> 0];
 bgEvolve = Simplify[elOp[linTerm, phi] /. x -> 0];
 bgRule = First@Solve[bgEnergy == 0, f0];
 {bgEnergy == 0, bgRule, Simplify[bgEvolve /. bgRule] === 0}
+
+%-------------------------------------------------------------------------%
+Type: Output
+%-------------------------------------------------------------------------%
+{((*SqB[*)Sqrt[(*SpB[*)Power[E(*|*),(*|*)6 hh t](*]SpB*)](*]SqB*)) (f0+12 fQ ((*SpB[*)Power[hh(*|*),(*|*)2](*]SpB*)))==0,{f0->-12 fQ ((*SpB[*)Power[hh(*|*),(*|*)2](*]SpB*))},True}
 
 %-------------------------------------------------------------------------%
 Props:
@@ -617,6 +632,11 @@ Dataset @ {
  <|"case" -> "general f(Q)", "n" -> fqResult["Coordinates"],
    "constraints" -> fqResult["Total"], "first class" -> fqResult["FirstClass"],
    "second class" -> fqResult["SecondClass"], "DOF" -> fqResult["DOF"]|>}
+
+%-------------------------------------------------------------------------%
+Type: Output
+%-------------------------------------------------------------------------%
+(*VB[*)(FrontEndRef["ba1ada0b-5180-411f-980d-8c45d3dadbdb"])(*,*)(*"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKJyUaJqYkGiTpmhpaGOiaGBqm6VpaGKToWiSbmKYYpySmJKUkAQCLGBZK"*)(*]VB*)
 
 %-------------------------------------------------------------------------%
 Props:
@@ -792,11 +812,30 @@ Dataset @ {
  <|"check" -> "numerical spot check, the linear branch gives none",
    "ok" -> (numLin["DOF"] === 0)|>}
 
+%-------------------------------------------------------------------------%
+Type: Output
+%-------------------------------------------------------------------------%
+(*VB[*)(FrontEndRef["3bacf829-a6d4-409b-8e7d-c4ca6833dccc"])(*,*)(*"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKGyclJqdZGFnqJpqlmOiaGFgm6VqkmqfoJpskJ5pZGBunJCcnAwCPZBZn"*)(*]VB*)
+
 %------------------------------%EndOfCells%-------------------------------%
 
 
 
 %--------------------------------%Objects%--------------------------------%
+Key: 48
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["0", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: ba1ada0b-5180-411f-980d-8c45d3dadbdb
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[Dataset[{Association["case" -> "general relativity, metric ADM sector", "n" -> 4, "constraints" -> 4, "first class" -> 4, "second class" -> 0, "DOF" -> 0], Association["case" -> "STEGR, f = Q - 2 Lambda", "n" -> 10, "constraints" -> 12, "first class" -> 8, "second class" -> 4, "DOF" -> 0], Association["case" -> "linear branch, f'' = 0", "n" -> 10, "constraints" -> 12, "first class" -> 8, "second class" -> 4, "DOF" -> 0], Association["case" -> "general f(Q)", "n" -> 10, "constraints" -> 12, "first class" -> 6, "second class" -> 6, "DOF" -> 1]}, TypeSystem`Vector[TypeSystem`Struct[{"case", "n", "constraints", "first class", "second class", "DOF"}, {TypeSystem`Atom[String], TypeSystem`Atom[Integer], TypeSystem`Atom[Integer], TypeSystem`Atom[Integer], TypeSystem`Atom[Integer], TypeSystem`Atom[Integer]}], 4], Association[]]]|>
+
+%-------------------------------------------------------------------------%
+Key: 3bacf829-a6d4-409b-8e7d-c4ca6833dccc
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[Dataset[{Association["check" -> "background non-metricity scalar is -6 H^2", "ok" -> True], Association["check" -> "the de Sitter background condition is f0 = 2 Q0 fQ", "ok" -> True], Association["check" -> "STEGR satisfies that background condition", "ok" -> True], Association["check" -> "the second background equation follows from the first", "ok" -> True], Association["check" -> "every constraint chain terminated", "ok" -> True], Association["check" -> "ACCEPTANCE: general relativity has no propagating scalar mode", "ok" -> True], Association["check" -> "ACCEPTANCE: STEGR has no propagating scalar mode", "ok" -> True], Association["check" -> "ACCEPTANCE: the linear branch f'' = 0 has no propagating scalar mode", "ok" -> True], Association["check" -> "general f(Q) propagates exactly one scalar mode", "ok" -> True], Association["check" -> "the constraint count is unchanged; only the classification moves", "ok" -> True], Association["check" -> "exactly two constraints move from first class to second", "ok" -> True], Association["check" -> "the connection modes really do carry second time derivatives", "ok" -> True], Association["check" -> "numerical spot check, general f(Q) gives one mode", "ok" -> True], Association["check" -> "numerical spot check, the linear branch gives none", "ok" -> True]}, TypeSystem`Vector[TypeSystem`Struct[{"check", "ok"}, {TypeSystem`Atom[String], TypeSystem`Atom[TypeSystem`Boolean]}], 14], Association[]]]|>
+
 %-----------------------------%EndOfObjects%------------------------------%
 
 

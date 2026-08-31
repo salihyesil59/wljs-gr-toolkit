@@ -1,13 +1,37 @@
 # General Relativity notebooks
 
-Wolfram Language notebooks for symbolic general relativity, written for
-[WLJS Notebook](https://jerryi.github.io/wljs-docs/). Give them a metric or an action and
-they hand back the curvature tensors, the field equations, the Friedmann equations and the
-dimensionless Hubble parameter — non-zero, independent components only.
+Wolfram Language notebooks for symbolic general relativity and modified gravity, written for
+[WLJS Notebook](https://jerryi.github.io/wljs-docs/). Give them a metric or an action and they
+hand back curvature tensors, field equations, Friedmann equations and observables — non-zero,
+independent components only — and then keep going: cosmological distances, structure growth,
+the effective gravitational coupling, the teleparallel and symmetric-teleparallel families, and
+a Hamiltonian mode count.
 
-Conventions throughout: signature $(-,+,+,+)$, geometrized units $G = c = 1$,
-$\kappa = 8\pi G/c^4$, Levi-Civita connection, and $R^{\rho}{}_{\sigma\mu\nu}$ with the first
-index up.
+The through-line is that every result is checked against a limit where the answer is already
+known. Each notebook ends with verification cells, and those cells are not decoration: they
+caught a silent iterator collision that had been returning $R = 0$ for FLRW, an
+Euler–Lagrange operator that dropped the term carrying $k^2$, an $f(\mathcal{T})$ growth
+solution that had walked through a pole, and a degree-of-freedom count that gave general
+relativity a propagating scalar it does not have. A method that loses general relativity
+cannot be trusted with anything else.
+
+| | in | out |
+|---|---|---|
+| **GR-01** | a metric | Christoffel, Riemann, Ricci, Einstein, Kretschmann |
+| **GR-02** | an action | field equations, Friedmann equations, $E(z)$ |
+| **GR-03** | $E(z)$ | distances, times, horizons, the BAO ruler |
+| **GR-04** | $E(z)$ and $G_{\rm eff}$ | growth, $f\sigma_8$ |
+| **GR-05** | perturbed field equations | $G_{\rm eff}$, slip, lensing |
+| **GR-06** | a tetrad | torsion, the TEGR identity, $f(\mathcal{T})$ cosmology |
+| **GR-07** | a metric and a flat connection | non-metricity, $f(Q)$ cosmology |
+| **GR-08** | quadratic actions | kinetic matrices, wave speeds, strong coupling |
+| **GR-09** | a quadratic action | constraints, first and second class, a mode count |
+
+Conventions: signature $(-,+,+,+)$, geometrized units $G = c = 1$, $\kappa = 8\pi G/c^4$, and
+$R^{\rho}{}_{\sigma\mu\nu}$ with the first index up. The connection is Levi-Civita in GR-01
+through GR-05; GR-06 replaces it with a flat metric-compatible connection carrying torsion, and
+GR-07 and GR-09 with a flat torsion-free connection carrying non-metricity. Those three build
+their connection explicitly rather than inheriting it.
 
 ## The notebooks
 
@@ -356,8 +380,9 @@ next rebuild reverts the change.
 
 ## Checks
 
-Both notebooks carry their own verification cells, and the results below are reproduced by
-running them:
+Every notebook carries its own verification cells, and the committed `.wln` files ship with
+those cells already evaluated, so the results below are visible on GitHub without running
+anything:
 
 - Schwarzschild: $R = 0$, $G_{\mu\nu} = 0$, $K = 48M^2/r^6$, $R_{trtr} = -2M/r^3$
 - Kerr: $R_{\mu\nu} = 0$
