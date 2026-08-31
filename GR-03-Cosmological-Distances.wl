@@ -38,6 +38,21 @@ which is exactly where supernova surveys have their leverage.
 
 The notebook is self-contained: it needs an $E(z)$ and nothing else, so it does not load GR-02.
 Section 3 shows how to carry a model across from it.
+
+## The series
+
+| | |
+|---|---|
+| **GR-01** | a metric in, curvature tensors out |
+| **GR-02** | an action in, field equations, Friedmann and $E(z)$ out |
+| **GR-03** | $E(z)$ in, distances, times and the BAO ruler out |
+| **GR-04** | $E(z)$ and $G_{\text{eff}}$ in, growth and $f\sigma_8$ out |
+| **GR-05** | perturbed field equations in, $G_{\text{eff}}$, slip and lensing out |
+
+You are on the observational branch. GR-02 hands over $E(z)$; what leaves here is what a
+telescope actually records. GR-04 takes the same $E(z)$ down the other branch, and the
+interesting models are the ones the two branches disagree about &mdash; identical distances,
+different growth.
 ::*)
 
 (*::md::

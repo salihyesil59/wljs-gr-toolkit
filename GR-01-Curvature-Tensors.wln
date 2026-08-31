@@ -52,6 +52,21 @@ With these signs a round sphere has $R > 0$, and the vacuum field equations read
 2. Pick a metric from the **Metric library** (one long comment, ready to copy) and paste it into **Your metric**.
 3. Evaluate **Run**, then read off the results.
 
+## The series
+
+| | |
+|---|---|
+| **GR-01** | a metric in, curvature tensors out |
+| **GR-02** | an action in, field equations, Friedmann and $E(z)$ out |
+| **GR-03** | $E(z)$ in, distances, times and the BAO ruler out |
+| **GR-04** | $E(z)$ and $G_{\text{eff}}$ in, growth and $f\sigma_8$ out |
+| **GR-05** | perturbed field equations in, $G_{\text{eff}}$, slip and lensing out |
+
+This is where the chain starts, and it is the only notebook that asks for nothing but geometry.
+Everything downstream leans on the curvature engine set up here: GR-02 runs it on the FLRW
+ansatz to get the Friedmann equations, and GR-05 runs it on a *perturbed* metric to get the
+effective gravitational coupling.
+
 %-------------------------------------------------------------------------%
 Display: markdown
 Type: Output
@@ -93,6 +108,21 @@ With these signs a round sphere has $R > 0$, and the vacuum field equations read
 1. Evaluate **Setup** and **Engine** once.
 2. Pick a metric from the **Metric library** (one long comment, ready to copy) and paste it into **Your metric**.
 3. Evaluate **Run**, then read off the results.
+
+## The series
+
+| | |
+|---|---|
+| **GR-01** | a metric in, curvature tensors out |
+| **GR-02** | an action in, field equations, Friedmann and $E(z)$ out |
+| **GR-03** | $E(z)$ in, distances, times and the BAO ruler out |
+| **GR-04** | $E(z)$ and $G_{\text{eff}}$ in, growth and $f\sigma_8$ out |
+| **GR-05** | perturbed field equations in, $G_{\text{eff}}$, slip and lensing out |
+
+This is where the chain starts, and it is the only notebook that asks for nothing but geometry.
+Everything downstream leans on the curvature engine set up here: GR-02 runs it on the FLRW
+ansatz to get the Friedmann equations, and GR-05 runs it on a *perturbed* metric to get the
+effective gravitational coupling.
 
 %-------------------------------------------------------------------------%
 Props:
