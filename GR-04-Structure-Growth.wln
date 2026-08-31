@@ -55,13 +55,19 @@ $$
 ## What is derived here and what is not
 
 The growth equation above is derived in the notebook, and everything downstream of it follows
-by integration. $G_{\text{eff}}/G$ is **input**, not output. In general relativity it is
-exactly 1. For modified gravity the expressions in the library are the standard quasi-static,
-sub-horizon results quoted from the literature; deriving them means perturbing the field
-equations of each theory, which is a longer job than this notebook does. Check the convention
-against your own source before trusting a number, and note that in $f(R)$ gravity
-$G_{\text{eff}}$ depends on the wavenumber $k$ while in $f(\mathcal{T})$ and $f(Q)$ it does not
-— that scale dependence is itself a discriminator.
+by integration. $G_{\text{eff}}/G$ is **input**, not output, and in general relativity it is
+exactly 1.
+
+Where the modified-gravity entries come from splits in two. The $f(R)$ forms are derived from
+scratch in **GR-05**, which perturbs the field equations in Newtonian gauge and solves for the
+metric potentials; its result drops straight into the library below. The $f(\mathcal{T})$ and
+$f(Q)$ forms are quoted from the literature, because their fundamental variables are a tetrad
+and a flat non-metric connection, which metric perturbation theory cannot reach. Check the
+convention against your own source for those two.
+
+One structural difference is worth keeping in view: in $f(R)$ gravity $G_{\text{eff}}$ depends
+on the wavenumber $k$, while in $f(\mathcal{T})$ and $f(Q)$ it does not. That scale dependence
+is itself a discriminator, and GR-05 plots it.
 
 Conventions follow GR-02 and GR-03: $1+z = 1/a$ with $a_0 = 1$, and $\sigma_{8,0} = 0.811$ by
 default.
@@ -111,13 +117,19 @@ $$
 ## What is derived here and what is not
 
 The growth equation above is derived in the notebook, and everything downstream of it follows
-by integration. $G_{\text{eff}}/G$ is **input**, not output. In general relativity it is
-exactly 1. For modified gravity the expressions in the library are the standard quasi-static,
-sub-horizon results quoted from the literature; deriving them means perturbing the field
-equations of each theory, which is a longer job than this notebook does. Check the convention
-against your own source before trusting a number, and note that in $f(R)$ gravity
-$G_{\text{eff}}$ depends on the wavenumber $k$ while in $f(\mathcal{T})$ and $f(Q)$ it does not
-— that scale dependence is itself a discriminator.
+by integration. $G_{\text{eff}}/G$ is **input**, not output, and in general relativity it is
+exactly 1.
+
+Where the modified-gravity entries come from splits in two. The $f(R)$ forms are derived from
+scratch in **GR-05**, which perturbs the field equations in Newtonian gauge and solves for the
+metric potentials; its result drops straight into the library below. The $f(\mathcal{T})$ and
+$f(Q)$ forms are quoted from the literature, because their fundamental variables are a tetrad
+and a flat non-metric connection, which metric perturbation theory cannot reach. Check the
+convention against your own source for those two.
+
+One structural difference is worth keeping in view: in $f(R)$ gravity $G_{\text{eff}}$ depends
+on the wavenumber $k$, while in $f(\mathcal{T})$ and $f(Q)$ it does not. That scale dependence
+is itself a discriminator, and GR-05 plots it.
 
 Conventions follow GR-02 and GR-03: $1+z = 1/a$ with $a_0 = 1$, and $\sigma_{8,0} = 0.811$ by
 default.
