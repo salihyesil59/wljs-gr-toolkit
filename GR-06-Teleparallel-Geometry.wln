@@ -432,7 +432,7 @@ Module[{ys = {t, r, th, ph}, cases},
 %-------------------------------------------------------------------------%
 Type: Output
 %-------------------------------------------------------------------------%
-(*VB[*)(FrontEndRef["28e76b32-ba48-405c-ad2d-14fe4a37f35e"])(*,*)(*"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKG1mkmpslGRvpJiWaWOiaGJgm6yamGKXoGpqkpZokGpunGZumAgCDPBXO"*)(*]VB*)
+(*VB[*)(FrontEndRef["ea8602c7-a38d-4348-8bc7-9f30c570eb04"])(*,*)(*"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKpyZamBkYJZvrJhpbpOiaGJtY6FokAbmWacYGyabmBqlJBiYAgwIVdg=="*)(*]VB*)
 
 %-------------------------------------------------------------------------%
 Props:
@@ -500,7 +500,7 @@ Module[{ys = {t, r, th, ph}, diag, rot, tpD, tpR},
 %-------------------------------------------------------------------------%
 Type: Output
 %-------------------------------------------------------------------------%
-(*VB[*)(FrontEndRef["4fb61704-c797-440f-9807-f0250f26d367"])(*,*)(*"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKm6QlmRmaG5joJptbmuuamBik6VpaGJjrphkYmRqkGZmlGJuZAwB2FxTA"*)(*]VB*)
+(*VB[*)(FrontEndRef["bd6f2946-1011-4fbc-946c-2a5fe50ae8c1"])(*,*)(*"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKJ6WYpRlZmpjpGhoYGuqapCUl6wJ5ybpGiaZpqaYGiakWyYYAg60VzA=="*)(*]VB*)
 
 %-------------------------------------------------------------------------%
 Props:
@@ -630,7 +630,7 @@ Type: Output
  (*FB[*)((1)(*,*)/(*,*)(\[Kappa]))(*]FB*),
  (*FB[*)((1)(*,*)/(*,*)((*SpB[*)Power[a[t](*|*),(*|*)4](*]SpB*)))(*]FB*),
  <<1>>
-](*|*),(*|*)" = 0"}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}(*||*),(*||*){""}(*||*),(*||*){(*VB[*)(FrontEndRef["5c224e9a-3289-4d95-9af9-82424a2e48d7"])(*,*)(*"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKmyYbGZmkWibqGhtZWOqapFia6lomplnqWhiZGJkkGqWaWKSYAwB63RUq"*)(*]VB*)}}(*||*)(*1:eJxTTMoPSmNiYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUiDyIF1Sak1osABV2yq9wzMlMz8tNzStJY4Qp8cksLkHVEMwOZDjn55Tm5hWjqUPhQRipaSUAIwUhsg==*)(*]GB*)
+](*|*),(*|*)" = 0"}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}(*||*),(*||*){""}(*||*),(*||*){(*VB[*)(FrontEndRef["021230da-6ff7-4a89-bd28-24795e9351ec"])(*,*)(*"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKGxgZGhkbpCTqmqWlmeuaJFpY6ialGFnoGpmYW5qmWhqbGqYmAwB7HhVJ"*)(*]VB*)}}(*||*)(*1:eJxTTMoPSmNiYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUiDyIF1Sak1osABV2yq9wzMlMz8tNzStJY4Qp8cksLkHVEMwOZDjn55Tm5hWjqUPhQRipaSUAIwUhsg==*)(*]GB*)
 
 %-------------------------------------------------------------------------%
 Props:
@@ -709,7 +709,7 @@ Module[{tet, tp, ans, dT},
 %-------------------------------------------------------------------------%
 Type: Output
 %-------------------------------------------------------------------------%
-(*GB[*){{(*GB[*){{(*BB[*)("delta T at first order : ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)-(*FB[*)((12 (a')[t] (psi[t] (a')[t]+a[t] (phi')[t]))(*,*)/(*,*)((*SpB[*)Power[a[t](*|*),(*|*)2](*]SpB*)))(*]FB*)}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}(*||*),(*||*){(*GB[*){{(*BB[*)("power of k in it       : ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)0}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}(*||*),(*||*){(*VB[*)(FrontEndRef["cf33f7cb-0299-487c-92e6-3d6af4c11e93"])(*,*)(*"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKJ6cZG6eZJyfpGhhZWuqaWJgn61oapZrpGqeYJaaZJBsaploaAwCIOhWy"*)(*]VB*)}}(*||*)(*1:eJxTTMoPSmNiYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUiDyIF1Sak1osABV2yq9wzMlMz8tNzStJY4Qp8cksLkHVEMwOZDjn55Tm5hWjqUPhQRipaSUAIwUhsg==*)(*]GB*)
+(*GB[*){{(*GB[*){{(*BB[*)("delta T at first order : ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)-(*FB[*)((12 (a')[t] (psi[t] (a')[t]+a[t] (phi')[t]))(*,*)/(*,*)((*SpB[*)Power[a[t](*|*),(*|*)2](*]SpB*)))(*]FB*)}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}(*||*),(*||*){(*GB[*){{(*BB[*)("power of k in it       : ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)0}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}(*||*),(*||*){(*VB[*)(FrontEndRef["eb4b71ed-6c46-4830-b275-5992741bb3d9"])(*,*)(*"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKpyaZJJkbpqbomiWbmOmaWBgb6CYZmZvqmlpaGpmbGCYlGadYAgCESxVM"*)(*]VB*)}}(*||*)(*1:eJxTTMoPSmNiYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUiDyIF1Sak1osABV2yq9wzMlMz8tNzStJY4Qp8cksLkHVEMwOZDjn55Tm5hWjqUPhQRipaSUAIwUhsg==*)(*]GB*)
 
 %-------------------------------------------------------------------------%
 Props:
@@ -726,15 +726,25 @@ The naive field-theory Euler-Lagrange operator,
 
 `D[lag, q[t,x]] - D[D[lag, Derivative[1,0][q][t,x]], t] - D[D[lag, Derivative[0,1][q][t,x]], x]`
 
-does not reliably return what it looks like it returns. On the test case below it gives
-**zero** where the answer is $-\partial_x^2 B$. The gradient term is exactly the one that
+does not reliably return what it looks like it returns. In WLJS it gives **zero** on the test
+case below, where the answer is $-\partial_x^2 B$. The gradient term is exactly the one that
 carries $k^2$, so a Lagrangian full of correct physics silently produces equations with no
 Poisson term in them &mdash; which is what happened here on the first attempt, and what the
 diagonal-tetrad diagnosis in section 8 was almost mistaken for.
 
+The word *reliably* is doing real work. Evaluated with `wolframscript` against the same Wolfram
+Engine 15.0, the same expression returns $-\partial_x^2 B$, correctly. The result depends on the
+environment, and nothing in this notebook or in the WLJS kernel files accounts for the
+difference. An operator whose answer you cannot predict from the source alone is not one to
+build a calculation on, whichever way it happens to fall today. That is why nothing outside the
+demonstration cell asserts what it returns.
+
 The cure is to substitute the derivatives for plain symbols before differentiating, and put
-them back afterwards. `EulerLagrange2D` below does that, and the cell tests both versions
-against a Lagrangian whose Euler-Lagrange equation can be written down by hand.
+them back afterwards. That is ordinary pattern replacement, with no dependence on `D` knowing
+how to differentiate with respect to a derivative, and it gives the same answer everywhere.
+`EulerLagrange2D` below does it, and the cell shows both operators on a Lagrangian whose
+Euler-Lagrange equation can be written down by hand. The cell is a demonstration, not a
+checklist: the assertions are in the checks section, and they cover only `EulerLagrange2D`.
 
 The single-variable operator used for the background in section 6 is not affected, which is
 why the Friedmann equations above were right.
@@ -752,15 +762,25 @@ The naive field-theory Euler-Lagrange operator,
 
 `D[lag, q[t,x]] - D[D[lag, Derivative[1,0][q][t,x]], t] - D[D[lag, Derivative[0,1][q][t,x]], x]`
 
-does not reliably return what it looks like it returns. On the test case below it gives
-**zero** where the answer is $-\partial_x^2 B$. The gradient term is exactly the one that
+does not reliably return what it looks like it returns. In WLJS it gives **zero** on the test
+case below, where the answer is $-\partial_x^2 B$. The gradient term is exactly the one that
 carries $k^2$, so a Lagrangian full of correct physics silently produces equations with no
 Poisson term in them &mdash; which is what happened here on the first attempt, and what the
 diagonal-tetrad diagnosis in section 8 was almost mistaken for.
 
+The word *reliably* is doing real work. Evaluated with `wolframscript` against the same Wolfram
+Engine 15.0, the same expression returns $-\partial_x^2 B$, correctly. The result depends on the
+environment, and nothing in this notebook or in the WLJS kernel files accounts for the
+difference. An operator whose answer you cannot predict from the source alone is not one to
+build a calculation on, whichever way it happens to fall today. That is why nothing outside the
+demonstration cell asserts what it returns.
+
 The cure is to substitute the derivatives for plain symbols before differentiating, and put
-them back afterwards. `EulerLagrange2D` below does that, and the cell tests both versions
-against a Lagrangian whose Euler-Lagrange equation can be written down by hand.
+them back afterwards. That is ordinary pattern replacement, with no dependence on `D` knowing
+how to differentiate with respect to a derivative, and it gives the same answer everywhere.
+`EulerLagrange2D` below does it, and the cell shows both operators on a Lagrangian whose
+Euler-Lagrange equation can be written down by hand. The cell is a demonstration, not a
+checklist: the assertions are in the checks section, and they cover only `EulerLagrange2D`.
 
 The single-variable operator used for the background in section 6 is not affected, which is
 why the Friedmann equations above were right.
@@ -783,19 +803,21 @@ EulerLagrange2D[lag_, q_] :=
   ls   = lag /. fwd;
   (D[ls, u0] /. back) - D[D[ls, u1] /. back, t] - D[D[ls, u2] /. back, x]];
 
-Module[{toy, want},
- toy  = D[uA[t, x], x] D[uB[t, x], x];
- want = -D[uB[t, x], {x, 2}];
+(* A demonstration, not a checklist. The naive row carries no verdict on purpose:
+   what it returns depends on the environment, so there is nothing here worth
+   asserting. The answer by hand is -d_x^2 B. *)
+Module[{toy},
+ toy = D[uA[t, x], x] D[uB[t, x], x];
  Dataset @ {
    <|"operator" -> "naive", "result" -> EulerLagrangeNaive[toy, uA],
-     "correct" -> (Simplify[EulerLagrangeNaive[toy, uA] - want] === 0)|>,
+     "note" -> "environment dependent: zero in WLJS, correct under wolframscript"|>,
    <|"operator" -> "EulerLagrange2D", "result" -> EulerLagrange2D[toy, uA],
-     "correct" -> (Simplify[EulerLagrange2D[toy, uA] - want] === 0)|>}]
+     "note" -> "correct, and the same in every kernel tested"|>}]
 
 %-------------------------------------------------------------------------%
 Type: Output
 %-------------------------------------------------------------------------%
-(*VB[*)(FrontEndRef["183239ce-8363-4c56-8735-d6fcdf9c6ce8"])(*,*)(*"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKG1oYGxlbJqfqWhibGeuaJJua6VqYG5vqppilJaekWSabJadaAAB2WRWR"*)(*]VB*)
+(*VB[*)(FrontEndRef["d88ba68d-3c6e-4470-9640-a6b599454d0d"])(*,*)(*"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKp1hYJCWaWaToGiebpeqamJgb6FqamRjoJpolmVpampiapBikAACDhRVU"*)(*]VB*)
 
 %-------------------------------------------------------------------------%
 Props:
@@ -906,7 +928,7 @@ Dataset @ {
 %-------------------------------------------------------------------------%
 Type: Output
 %-------------------------------------------------------------------------%
-(*VB[*)(FrontEndRef["feaff6bb-736d-4693-8788-e7396f5782df"])(*,*)(*"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKp6UmpqWZJSXpmhubpeiamFka61qYW1joppobW5qlmZpbGKWkAQCRhhXS"*)(*]VB*)
+(*VB[*)(FrontEndRef["9f9606ad-4587-4dbd-b27a-74c00e59a28b"])(*,*)(*"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKW6ZZmhmYJabomphamOuapCSl6CYZmSfqmpskGxikmlomGlkkAQCDtRWs"*)(*]VB*)
 
 %-------------------------------------------------------------------------%
 Props:
@@ -1025,7 +1047,7 @@ Module[{ph, trunc1, hp, ibgT, ivp, edn, gpert, detp, uUp, rhoTot, tUpper, sigmaF
 %-------------------------------------------------------------------------%
 Type: Output
 %-------------------------------------------------------------------------%
-(*GB[*){{(*GB[*){{(*BB[*)("metric from the tetrad, g_00 = ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)-1-2 ((*SpB[*)Power[E(*|*),(*|*)I k x](*]SpB*)) eps psi[t]}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}(*||*),(*||*){(*GB[*){{(*BB[*)("                       g_0x = ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)0}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}(*||*),(*||*){(*GB[*){{(*BB[*)("                       g_11 = ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)(*SpB[*)Power[a[t](*|*),(*|*)2](*]SpB*)-2 ((*SpB[*)Power[E(*|*),(*|*)I k x](*]SpB*)) eps ((*SpB[*)Power[a[t](*|*),(*|*)2](*]SpB*)) phi[t]}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}(*||*),(*||*){(*VB[*)(FrontEndRef["2d583253-2624-49d1-a343-4492faef88a5"])(*,*)(*"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKG6WYWhgbmRrrGpkZmeiaWKYY6iYamxjrmphYGqUlpqZZWCSaAgBt+hTp"*)(*]VB*)}}(*||*)(*1:eJxTTMoPSmNiYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUiDyIF1Sak1osABV2yq9wzMlMz8tNzStJY4Qp8cksLkHVEMwOZDjn55Tm5hWjqUPhQRipaSUAIwUhsg==*)(*]GB*)
+(*GB[*){{(*GB[*){{(*BB[*)("metric from the tetrad, g_00 = ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)-1-2 ((*SpB[*)Power[E(*|*),(*|*)I k x](*]SpB*)) eps psi[t]}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}(*||*),(*||*){(*GB[*){{(*BB[*)("                       g_0x = ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)0}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}(*||*),(*||*){(*GB[*){{(*BB[*)("                       g_11 = ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)(*SpB[*)Power[a[t](*|*),(*|*)2](*]SpB*)-2 ((*SpB[*)Power[E(*|*),(*|*)I k x](*]SpB*)) eps ((*SpB[*)Power[a[t](*|*),(*|*)2](*]SpB*)) phi[t]}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}(*||*),(*||*){(*VB[*)(FrontEndRef["66b0f7ea-f97c-4ac8-b5aa-641a9092d8a9"])(*,*)(*"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKm5klGaSZpybqplmaJ+uaJCZb6CaZJibqmpkYJloaWBqlWCRaAgCQGxYM"*)(*]VB*)}}(*||*)(*1:eJxTTMoPSmNiYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUiDyIF1Sak1osABV2yq9wzMlMz8tNzStJY4Qp8cksLkHVEMwOZDjn55Tm5hWjqUPhQRipaSUAIwUhsg==*)(*]GB*)
 
 %-------------------------------------------------------------------------%
 Props:
@@ -1119,7 +1141,7 @@ Module[{tegr},
 %-------------------------------------------------------------------------%
 Type: Output
 %-------------------------------------------------------------------------%
-(*GB[*){{(*GB[*){{(*BB[*)("TEGR  0-0 : ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)-2 a[t] (2 ((*SpB[*)Power[k(*|*),(*|*)2](*]SpB*)) phi[t]+3 (del[t]+2 psi[t]) ((*SpB[*)Power[(a')[t](*|*),(*|*)2](*]SpB*)))(*|*),(*|*)" = 0"}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}(*||*),(*||*){(*GB[*){{(*BB[*)("TEGR  0-1 : ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)-4 I k psi[t] (a')[t]-6 a[t] vv[t] ((*SpB[*)Power[(a')[t](*|*),(*|*)2](*]SpB*))(*|*),(*|*)" = 0"}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}(*||*),(*||*){(*GB[*){{(*BB[*)("TEGR  1-0 : ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)2 a[t] (a')[t] (2 I k psi[t]+3 a[t] vv[t] (a')[t])(*|*),(*|*)" = 0"}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}(*||*),(*||*){(*GB[*){{(*BB[*)("TEGR  1-1 : ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)0(*|*),(*|*)" = 0"}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}(*||*),(*||*){(*GB[*){{(*BB[*)("TEGR  2-2 : ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)2 ((*SpB[*)Power[k(*|*),(*|*)2](*]SpB*)) (-phi[t]+psi[t])(*|*),(*|*)" = 0"}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}(*||*),(*||*){(*GB[*){{(*BB[*)("TEGR  2-3 : ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)0(*|*),(*|*)" = 0"}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}(*||*),(*||*){""}(*||*),(*||*){(*VB[*)(FrontEndRef["7b28b827-cf49-434a-8728-211455ea2d2e"])(*,*)(*"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKmycZWSRZGJnrJqeZWOqaGJsk6lqYG1noGhkampiapiYapRilAgB5XhUZ"*)(*]VB*)}}(*||*)(*1:eJxTTMoPSmNiYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUiDyIF1Sak1osABV2yq9wzMlMz8tNzStJY4Qp8cksLkHVEMwOZDjn55Tm5hWjqUPhQRipaSUAIwUhsg==*)(*]GB*)
+(*GB[*){{(*GB[*){{(*BB[*)("TEGR  0-0 : ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)-2 a[t] (2 ((*SpB[*)Power[k(*|*),(*|*)2](*]SpB*)) phi[t]+3 (del[t]+2 psi[t]) ((*SpB[*)Power[(a')[t](*|*),(*|*)2](*]SpB*)))(*|*),(*|*)" = 0"}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}(*||*),(*||*){(*GB[*){{(*BB[*)("TEGR  0-1 : ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)-4 I k psi[t] (a')[t]-6 a[t] vv[t] ((*SpB[*)Power[(a')[t](*|*),(*|*)2](*]SpB*))(*|*),(*|*)" = 0"}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}(*||*),(*||*){(*GB[*){{(*BB[*)("TEGR  1-0 : ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)2 a[t] (a')[t] (2 I k psi[t]+3 a[t] vv[t] (a')[t])(*|*),(*|*)" = 0"}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}(*||*),(*||*){(*GB[*){{(*BB[*)("TEGR  1-1 : ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)0(*|*),(*|*)" = 0"}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}(*||*),(*||*){(*GB[*){{(*BB[*)("TEGR  2-2 : ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)2 ((*SpB[*)Power[k(*|*),(*|*)2](*]SpB*)) (-phi[t]+psi[t])(*|*),(*|*)" = 0"}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}(*||*),(*||*){(*GB[*){{(*BB[*)("TEGR  2-3 : ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)0(*|*),(*|*)" = 0"}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}(*||*),(*||*){""}(*||*),(*||*){(*VB[*)(FrontEndRef["e6d82546-3a5a-4a67-aef0-718591223787"])(*,*)(*"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKp5qlWBiZmpjpGieaJuqaJJqZ6yamphnomhtamFoaGhkZm1uYAwB/URTv"*)(*]VB*)}}(*||*)(*1:eJxTTMoPSmNiYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUiDyIF1Sak1osABV2yq9wzMlMz8tNzStJY4Qp8cksLkHVEMwOZDjn55Tm5hWjqUPhQRipaSUAIwUhsg==*)(*]GB*)
 
 %-------------------------------------------------------------------------%
 Props:
@@ -1284,9 +1306,7 @@ Module[{ys = {t, r, th, ph}, f1, s1, d1, tv, grSub, p1, p2},
   <|"check" -> "the good-tetrad problem: same metric, different T",
     "ok" -> (Simplify[p1["Metric"] - p2["Metric"]] === ConstantArray[0, {4, 4}] &&
        Simplify[p1["TorsionScalar"] - p2["TorsionScalar"]] =!= 0)|>,
-  <|"check" -> "the naive Euler-Lagrange operator really does drop the gradient term",
-    "ok" -> (EulerLagrangeNaive[D[uA[t, x], x] D[uB[t, x], x], uA] === 0)|>,
-  <|"check" -> "EulerLagrange2D gets it right",
+  <|"check" -> "EulerLagrange2D gets the gradient term right",
     "ok" -> (Simplify[EulerLagrange2D[D[uA[t, x], x] D[uB[t, x], x], uA]
         + D[uB[t, x], {x, 2}]] === 0)|>,
   <|"check" -> "TEGR: G_eff = G",
@@ -1301,7 +1321,7 @@ Module[{ys = {t, r, th, ph}, f1, s1, d1, tv, grSub, p1, p2},
 %-------------------------------------------------------------------------%
 Type: Output
 %-------------------------------------------------------------------------%
-(*VB[*)(FrontEndRef["6f6b8d98-56d1-45bf-ad1a-93f5bd4ab096"])(*,*)(*"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKm6WZJVmkWFrompqlGOqamCal6SamGCbqWhqnmSalmCQmGViaAQCK3RYP"*)(*]VB*)
+(*VB[*)(FrontEndRef["7d2c4772-0676-4add-bb5d-0c55c2a10573"])(*,*)(*"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKm6cYJZuYmxvpGpiZm+maJKak6CYlmaboGiSbmiYbJRoamJobAwCAuhVn"*)(*]VB*)
 
 %-------------------------------------------------------------------------%
 Props:
@@ -1362,7 +1382,7 @@ Dataset @ <|
 %-------------------------------------------------------------------------%
 Type: Output
 %-------------------------------------------------------------------------%
-(*VB[*)(FrontEndRef["b4a4e358-6f1b-4a73-ae1c-b0c78bd6b25c"])(*,*)(*"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKJ5kkmqQam1romqUZJumaJJob6yamGibrJhkkm1skpZglGZkmAwCLSBYn"*)(*]VB*)
+(*VB[*)(FrontEndRef["a8d50256-4e92-4c30-9345-f4ea02b24a54"])(*,*)(*"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKJ1qkmBoYmZrpmqRaGumaJBsb6Foam5jqppmkJhoYJRmZJJqaAAB4mBUJ"*)(*]VB*)
 
 %------------------------------%EndOfCells%-------------------------------%
 
@@ -1404,47 +1424,47 @@ Key: 1597888226
 <|"Public" -> Hold[EditorView["(*FB[*)((6 ((*SpB[*)Power[(a')[t](*|*),(*|*)2](*]SpB*)+a[t] (a'')[t]))(*,*)/(*,*)((*SpB[*)Power[a[t](*|*),(*|*)2](*]SpB*)))(*]FB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
 
 %-------------------------------------------------------------------------%
-Key: 28e76b32-ba48-405c-ad2d-14fe4a37f35e
+Key: ea8602c7-a38d-4348-8bc7-9f30c570eb04
 %-------------------------------------------------------------------------%
 <|"Public" -> Hold[Dataset[{Association["tetrad" -> "flat FLRW", "T" -> (6*Derivative[1][a][t]^2)/a[t]^2, "R" -> (6*(Derivative[1][a][t]^2 + a[t]*Derivative[2][a][t]))/a[t]^2, "both T forms agree" -> True, "R = -T + B" -> True], Association["tetrad" -> "Schwarzschild tetrad", "T" -> -2/r^2, "R" -> 0, "both T forms agree" -> True, "R = -T + B" -> True], Association["tetrad" -> "de Sitter", "T" -> 6*hh^2, "R" -> 12*hh^2, "both T forms agree" -> True, "R = -T + B" -> True]}, TypeSystem`Vector[TypeSystem`Struct[{"tetrad", "T", "R", "both T forms agree", "R = -T + B"}, {TypeSystem`Atom[String], TypeSystem`AnyType, TypeSystem`AnyType, TypeSystem`Atom[TypeSystem`Boolean], TypeSystem`Atom[TypeSystem`Boolean]}], 3], Association[]]]|>
 
 %-------------------------------------------------------------------------%
-Key: 4fb61704-c797-440f-9807-f0250f26d367
+Key: bd6f2946-1011-4fbc-946c-2a5fe50ae8c1
 %-------------------------------------------------------------------------%
 <|"Public" -> Hold[Dataset[Association["the two tetrads build the same metric" -> True, "that metric is flat, R =" -> 0, "T from the diagonal tetrad" -> -2/r^2, "T from the rotated tetrad" -> 0, "so T is not a function of the metric alone" -> True], TypeSystem`Struct[{"the two tetrads build the same metric", "that metric is flat, R =", "T from the diagonal tetrad", "T from the rotated tetrad", "so T is not a function of the metric alone"}, {TypeSystem`Atom[TypeSystem`Boolean], TypeSystem`Atom[Integer], TypeSystem`AnyType, TypeSystem`Atom[Integer], TypeSystem`Atom[TypeSystem`Boolean]}], Association[]]]|>
 
 %-------------------------------------------------------------------------%
-Key: cf33f7cb-0299-487c-92e6-3d6af4c11e93
+Key: eb4b71ed-6c46-4830-b275-5992741bb3d9
 %-------------------------------------------------------------------------%
 <|"Public" -> Hold[Dataset[{Association["observation" -> "the diagonal tetrad puts no gradient into delta T", "ok" -> True]}, TypeSystem`Vector[TypeSystem`Struct[{"observation", "ok"}, {TypeSystem`Atom[String], TypeSystem`Atom[TypeSystem`Boolean]}], 1], Association[]]]|>
 
 %-------------------------------------------------------------------------%
-Key: 183239ce-8363-4c56-8735-d6fcdf9c6ce8
+Key: d88ba68d-3c6e-4470-9640-a6b599454d0d
 %-------------------------------------------------------------------------%
-<|"Public" -> Hold[Dataset[{Association["operator" -> "naive", "result" -> 0, "correct" -> False], Association["operator" -> "EulerLagrange2D", "result" -> -Derivative[0, 2][uB][t, x], "correct" -> True]}, TypeSystem`Vector[TypeSystem`Struct[{"operator", "result", "correct"}, {TypeSystem`Atom[String], TypeSystem`AnyType, TypeSystem`Atom[TypeSystem`Boolean]}], 2], Association[]]]|>
+<|"Public" -> Hold[Dataset[{Association["operator" -> "naive", "result" -> 0, "note" -> "environment dependent: zero in WLJS, correct under wolframscript"], Association["operator" -> "EulerLagrange2D", "result" -> -Derivative[0, 2][uB][t, x], "note" -> "correct, and the same in every kernel tested"]}, TypeSystem`Vector[TypeSystem`Struct[{"operator", "result", "note"}, {TypeSystem`Atom[String], TypeSystem`AnyType, TypeSystem`Atom[String]}], 2], Association[]]]|>
 
 %-------------------------------------------------------------------------%
-Key: feaff6bb-736d-4693-8788-e7396f5782df
+Key: 9f9606ad-4587-4dbd-b27a-74c00e59a28b
 %-------------------------------------------------------------------------%
 <|"Public" -> Hold[Dataset[{Association["check" -> "the series inverse is exact to O(eps^2)", "ok" -> True], Association["check" -> "the series determinant is exact to O(eps^2)", "ok" -> True], Association["check" -> "background torsion scalar is 6 H^2", "ok" -> True], Association["check" -> "the second order Lagrangian carries spatial gradients", "ok" -> True]}, TypeSystem`Vector[TypeSystem`Struct[{"check", "ok"}, {TypeSystem`Atom[String], TypeSystem`Atom[TypeSystem`Boolean]}], 4], Association[]]]|>
 
 %-------------------------------------------------------------------------%
-Key: 2d583253-2624-49d1-a343-4492faef88a5
+Key: 66b0f7ea-f97c-4ac8-b5aa-641a9092d8a9
 %-------------------------------------------------------------------------%
 <|"Public" -> Hold[Dataset[{Association["check" -> "the ansatz is in Newtonian gauge, g_0x = 0", "ok" -> True], Association["check" -> "zeta and chi are invisible to the metric at first order", "ok" -> True], Association["check" -> "the four-velocity is normalised to O(eps)", "ok" -> True], Association["check" -> "the background 0-0 equation is (f - 2 T f_T) = 2 kappa rho", "ok" -> True]}, TypeSystem`Vector[TypeSystem`Struct[{"check", "ok"}, {TypeSystem`Atom[String], TypeSystem`Atom[TypeSystem`Boolean]}], 4], Association[]]]|>
 
 %-------------------------------------------------------------------------%
-Key: 7b28b827-cf49-434a-8728-211455ea2d2e
+Key: e6d82546-3a5a-4a67-aef0-718591223787
 %-------------------------------------------------------------------------%
 <|"Public" -> Hold[Dataset[{Association["acceptance test" -> "0-0 is the Poisson equation, carrying k^2", "ok" -> True], Association["acceptance test" -> "the transverse equation forces phi = psi, no slip", "ok" -> True], Association["acceptance test" -> "the two momentum equations are the same equation", "ok" -> True], Association["acceptance test" -> "the boost mode zeta drops out, as local Lorentz demands", "ok" -> True], Association["acceptance test" -> "the rotation mode chi drops out", "ok" -> True], Association["acceptance test" -> "the pressure equation vanishes for dust", "ok" -> True]}, TypeSystem`Vector[TypeSystem`Struct[{"acceptance test", "ok"}, {TypeSystem`Atom[String], TypeSystem`Atom[TypeSystem`Boolean]}], 6], Association[]]]|>
 
 %-------------------------------------------------------------------------%
-Key: 6f6b8d98-56d1-45bf-ad1a-93f5bd4ab096
+Key: 7d2c4772-0676-4add-bb5d-0c55c2a10573
 %-------------------------------------------------------------------------%
-<|"Public" -> Hold[Dataset[{Association["check" -> "T = 6 H^2 in flat FLRW", "ok" -> True], Association["check" -> "superpotential and three-term forms agree on three tetrads", "ok" -> True], Association["check" -> "R = -T + B on all three", "ok" -> True], Association["check" -> "the good-tetrad problem: same metric, different T", "ok" -> True], Association["check" -> "the naive Euler-Lagrange operator really does drop the gradient term", "ok" -> True], Association["check" -> "EulerLagrange2D gets it right", "ok" -> True], Association["check" -> "TEGR: G_eff = G", "ok" -> True], Association["check" -> "G_eff = -1/f_T, and is scale independent", "ok" -> True], Association["check" -> "no gravitational slip", "ok" -> True], Association["check" -> "this is what GR-04's library quotes, in its own sign convention", "ok" -> True]}, TypeSystem`Vector[TypeSystem`Struct[{"check", "ok"}, {TypeSystem`Atom[String], TypeSystem`Atom[TypeSystem`Boolean]}], 10], Association[]]]|>
+<|"Public" -> Hold[Dataset[{Association["check" -> "T = 6 H^2 in flat FLRW", "ok" -> True], Association["check" -> "superpotential and three-term forms agree on three tetrads", "ok" -> True], Association["check" -> "R = -T + B on all three", "ok" -> True], Association["check" -> "the good-tetrad problem: same metric, different T", "ok" -> True], Association["check" -> "EulerLagrange2D gets the gradient term right", "ok" -> True], Association["check" -> "TEGR: G_eff = G", "ok" -> True], Association["check" -> "G_eff = -1/f_T, and is scale independent", "ok" -> True], Association["check" -> "no gravitational slip", "ok" -> True], Association["check" -> "this is what GR-04's library quotes, in its own sign convention", "ok" -> True]}, TypeSystem`Vector[TypeSystem`Struct[{"check", "ok"}, {TypeSystem`Atom[String], TypeSystem`Atom[TypeSystem`Boolean]}], 9], Association[]]]|>
 
 %-------------------------------------------------------------------------%
-Key: b4a4e358-6f1b-4a73-ae1c-b0c78bd6b25c
+Key: a8d50256-4e92-4c30-9345-f4ea02b24a54
 %-------------------------------------------------------------------------%
 <|"Public" -> Hold[Dataset[Association["f(R)" -> "G_eff derived in GR-05", "f(T)" -> "geometry, background and G_eff derived here", "f(Q)" -> "still quoted in GR-04's library", "approximations" -> "quasi-static and sub-horizon; both fail near the horizon", "cross-checks" -> "background matches GR-02; TEGR limit reproduces general relativity"], TypeSystem`Assoc[TypeSystem`Atom[TypeSystem`Enumeration["approximations", "cross-checks", "f(Q)", "f(R)", "f(T)"]], TypeSystem`Atom[String], 5], Association[]]]|>
 

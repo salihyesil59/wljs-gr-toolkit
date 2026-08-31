@@ -278,9 +278,12 @@ Module[{gL, nn, lag, toN1, contin, names, fr1, fr2, qv},
 ## 6. The Euler-Lagrange operator, twice over
 
 Two things have to be right here, and the first one is the trap GR-06 documents: the obvious
-Wolfram spelling of the field-theory Euler-Lagrange operator silently discards the spatial
-term, which is exactly the one carrying $k^2$. The toy Lagrangian below catches that in one
-line, and the single-variable operator used for the background above is unaffected.
+Wolfram spelling of the field-theory Euler-Lagrange operator can silently discard the spatial
+term, which is exactly the one carrying $k^2$. It does so in WLJS and not under `wolframscript`,
+on the same engine, for reasons neither notebook can account for &mdash; so the operator is
+shown below but never asserted. The single-variable operator used for the background above is
+unaffected, and both operators built here work by pattern replacement instead, which behaves
+the same everywhere.
 
 The second is specific to $f(Q)$ and easy to walk past. The non-metricity tensor contains the
 connection, and the connection contains $\partial_\mu\partial_\nu\xi^\rho$, so
@@ -299,6 +302,11 @@ $$
 and the difference is visible immediately: with it, the STEGR connection equations come out
 identically zero, which is what diffeomorphism invariance demands, where the first-order
 operator leaves a spurious constraint behind.
+
+The table below is a demonstration, not a checklist. Rows that come back zero are the point:
+each shows an operator falling short on the test that motivated the next one. The assertions
+live in the checks section, and they cover only `EulerLagrange2D` and `EulerLagrange`, whose
+results do not vary between environments.
 ::*)
 
 (*::code::*)
@@ -330,23 +338,25 @@ EulerLagrange[lag_, q_] :=
    + D[D[ls, u[2, 0]] /. back, {t, 2}] + D[D[ls, u[1, 1]] /. back, t, x]
    + D[D[ls, u[0, 2]] /. back, {x, 2}]];
 
-Module[{toy, want, toy2},
+(* A demonstration, not a checklist. The answers by hand are -d_x^2 B for the
+   first test and d_t^2 B for the second. The naive row carries no verdict on
+   purpose: what it returns depends on the environment. *)
+Module[{toy, toy2},
  toy  = D[uA[t, x], x] D[uB[t, x], x];
- want = -D[uB[t, x], {x, 2}];
  toy2 = D[uA[t, x], {t, 2}] uB[t, x];
  Dataset @ {
-   <|"operator" -> "naive, first order", "test" -> "L = (d_x A)(d_x B)",
+   <|"operator" -> "naive, first order", "test" -> "(d_x A)(d_x B)",
      "result" -> EulerLagrangeNaive[toy, uA],
-     "correct" -> (Simplify[EulerLagrangeNaive[toy, uA] - want] === 0)|>,
-   <|"operator" -> "EulerLagrange2D", "test" -> "L = (d_x A)(d_x B)",
+     "note" -> "environment dependent: zero in WLJS, correct under wolframscript"|>,
+   <|"operator" -> "EulerLagrange2D", "test" -> "(d_x A)(d_x B)",
      "result" -> EulerLagrange2D[toy, uA],
-     "correct" -> (Simplify[EulerLagrange2D[toy, uA] - want] === 0)|>,
-   <|"operator" -> "EulerLagrange2D", "test" -> "L = (d_t^2 A) B, second derivative",
+     "note" -> "correct"|>,
+   <|"operator" -> "EulerLagrange2D", "test" -> "(d_t^2 A) B",
      "result" -> EulerLagrange2D[toy2, uA],
-     "correct" -> (Simplify[EulerLagrange2D[toy2, uA] - D[uB[t, x], {t, 2}]] === 0)|>,
-   <|"operator" -> "EulerLagrange", "test" -> "L = (d_t^2 A) B, second derivative",
+     "note" -> "blind to second derivatives, which is why the next row exists"|>,
+   <|"operator" -> "EulerLagrange", "test" -> "(d_t^2 A) B",
      "result" -> EulerLagrange[toy2, uA],
-     "correct" -> (Simplify[EulerLagrange[toy2, uA] - D[uB[t, x], {t, 2}]] === 0)|>}]
+     "note" -> "correct"|>}]
 
 (*::md::
 ## 7. The second order action, in fourteen free functions
@@ -652,8 +662,6 @@ Module[{gF, gL, gP, nF, nL, nP, qv, lag, fr1, toN1, contin, names, stg},
     "ok" -> (Simplify[fr1 - ((F[qv] - 2 qv F'[qv])/(2 \[Kappa]) - \[Rho])] === 0)|>,
   <|"check" -> "STEGR background gives 3H^2 = kappa rho",
     "ok" -> (Simplify[(fr1 /. F -> Identity) - (3 a'[t]^2/(\[Kappa] a[t]^2) - \[Rho])] === 0)|>,
-  <|"check" -> "the naive Euler-Lagrange operator drops the gradient term",
-    "ok" -> (EulerLagrangeNaive[D[uA[t, x], x] D[uB[t, x], x], uA] === 0)|>,
   <|"check" -> "EulerLagrange2D gets the gradient term right",
     "ok" -> (Simplify[EulerLagrange2D[D[uA[t, x], x] D[uB[t, x], x], uA]
        + D[uB[t, x], {x, 2}]] === 0)|>,

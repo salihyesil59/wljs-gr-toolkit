@@ -378,6 +378,15 @@ next rebuild reverts the change.
 - [WLJS Notebook](https://jerryi.github.io/wljs-docs/) to open the `.wln` files
 - A network connection the first time, for the Function Repository resources
 
+One environment note, found the hard way. `D[expr, Derivative[0,1][f][t,x]]` &mdash;
+differentiating with respect to a derivative of a two-variable function &mdash; does not give
+the same answer in WLJS as it does under `wolframscript`, on the same Wolfram Engine 15.0. In
+WLJS it comes back zero; under `wolframscript` it is correct. Nothing in these notebooks or in
+the WLJS kernel sources accounts for the difference, and it is why every Euler-Lagrange
+operator here works by substituting plain symbols for the derivatives before differentiating,
+and why no check asserts what the naive spelling returns. GR-06 section 9 shows both side by
+side.
+
 ## Checks
 
 Every notebook carries its own verification cells, and the committed `.wln` files ship with
