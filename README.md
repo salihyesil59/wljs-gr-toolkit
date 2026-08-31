@@ -218,7 +218,7 @@ gradient coefficient to the kinetic one is $c^2$.
   It has full rank — but it has full rank at STEGR too, where general relativity has no
   propagating scalars, because $\sqrt{-g}Q$ keeps the time derivatives of the lapse that the
   Einstein–Hilbert boundary term removes. Settling it needs a Hamiltonian constraint analysis
-  the notebook does not do.
+  the notebook does not do — GR-09 does it.
 
 Both families share a degeneracy locus, $f_X + 2Xf_{XX} = 0$ with $X = \mathcal{T}$ or $Q$. For
 a concrete model that is a redshift: quadratic $f = X + \alpha X^2$ with $\alpha H_0^2 = -0.02$
@@ -228,6 +228,49 @@ sits inside your fitting range is one whose linear predictions there should not 
 Method note: real perturbations with $\cos kx$ and $\sin kx$ and an average over one wavelength,
 not a complex plane wave — a quadratic action built from $e^{ikx}$ picks up $e^{2ikx}$ and the
 phases stop cancelling.
+
+### `GR-09-Hamiltonian-Constraints`
+
+GR-08 left one question open and named the tool needed to close it. This notebook is that tool:
+an Ostrogradsky reduction followed by the full Dirac algorithm — velocity Hessian, primary
+constraints, canonical Hamiltonian, consistency conditions, secondary constraints, and the
+split into first and second class from the rank of the matrix of Poisson brackets.
+
+**General $f(Q)$ propagates one scalar mode where general relativity propagates none.** The
+mechanism is in the algebra rather than in the counting: the number of constraints is the same
+twelve in both cases, but two of them move from first class to second once $f_{QQ}
+eq 0$. A
+first-class constraint costs two phase-space dimensions and a second-class one costs one, so
+moving two across the line frees exactly one degree of freedom. General relativity's scalar
+sector is pure gauge; $f_{QQ}$ breaks one of those gauge symmetries and the mode that was gauge
+becomes physical.
+
+Two implementation traps are worth repeating, because both produced confident wrong answers
+before an acceptance test caught them.
+
+- **Primary constraints come from the null space of the velocity Hessian, not from momenta that
+  happen to be velocity free.** One cross term $\dot q_1\dot q_2$ makes every momentum depend on
+  a velocity while the Hessian stays degenerate, and a scan over momenta then misses the
+  constraint entirely.
+- **A constraint is new only when it is linearly independent of the ones already found.** The
+  chain regenerates old constraints rescaled by background factors; an equality test never
+  recognises them and the algorithm runs forever.
+
+And one modelling trap, which is the reason this could not be done with the notebooks that
+already existed: **fixing Newtonian gauge in the action before varying deletes the momentum
+constraint**, since that constraint is what varying the shift produces. Do the count that way
+and general relativity comes out with one scalar mode instead of none — off by exactly one,
+because exactly one constraint was thrown away. The scalar sector here is therefore kept
+complete, lapse and shift and curvature and anisotropy, with no gauge fixed, and the metric part
+is written in ADM form so that lapse and shift carry no time derivatives by construction.
+
+Three acceptance tests frame the result, and all three must return zero: general relativity in
+the metric ADM sector, STEGR as $f = Q - 2\Lambda$, and the linear branch $f'' = 0$. The count
+is also reproduced with concrete numbers, so it does not rest on a symbolic rank.
+
+Scope: de Sitter background, scalar sector, one Fourier mode, linearised theory. Constraint
+structure can be background dependent, so a background with $\dot H 
+eq 0$ is not covered.
 
 ## Conventions worth knowing before you trust the output
 
@@ -321,6 +364,8 @@ running them:
 - Round 2-sphere: $R = 2/R_0^2$
 - FLRW: $G_{tt} = 3\dot a^2/a^2$, and $3H^2/\kappa = \rho$, $p = -(3H^2 + 2\dot H)/\kappa$
 - TEGR ($f = \mathcal{T}$) and STEGR ($f = Q$) reproduce GR exactly
+- General relativity, STEGR and the linear branch $f'' = 0$ each give **zero** propagating
+  scalar modes in the Dirac count; general $f(Q)$ gives **one**
 - Gauss–Bonnet is topological in four dimensions: $f = R + \alpha\mathcal{G}$ gives plain GR
 - $f(R) = R + \alpha R^2$ agrees between the covariant and minisuperspace routes, and matches
   the textbook $3FH^2 = \kappa\rho + \tfrac{1}{2}(FR - f) - 3H\dot F$

@@ -49,7 +49,8 @@ Two clean results and one honest limit.
   multiplier. Around flat FLRW they simply do not propagate, and that is strong coupling
   computed rather than asserted.
 - **In $f(Q)$ the bare kinetic matrix cannot settle the question**, and section 8 says why
-  rather than pretending otherwise.
+  rather than pretending otherwise. GR-09 settles it properly, with an Ostrogradsky reduction
+  and a Dirac constraint analysis, and finds one propagating scalar mode.
 
 There is also a shared structure worth noticing. The surviving scalar kinetic term degenerates
 in both theories on the same locus,
@@ -107,7 +108,8 @@ Two clean results and one honest limit.
   multiplier. Around flat FLRW they simply do not propagate, and that is strong coupling
   computed rather than asserted.
 - **In $f(Q)$ the bare kinetic matrix cannot settle the question**, and section 8 says why
-  rather than pretending otherwise.
+  rather than pretending otherwise. GR-09 settles it properly, with an Ostrogradsky reduction
+  and a Dirac constraint analysis, and finds one propagating scalar mode.
 
 There is also a shared structure worth noticing. The surviving scalar kinetic term degenerates
 in both theories on the same locus,
@@ -144,6 +146,7 @@ Type: Input
 | **GR-06** | a tetrad in, torsion, the TEGR identity and $f(\mathcal{T})$ cosmology out |
 | **GR-07** | a metric and a flat connection in, non-metricity and $f(Q)$ cosmology out |
 | **GR-08** | the same quadratic actions in, kinetic matrices and wave speeds out |
+| **GR-09** | a quadratic action in, primary and secondary constraints and a mode count out |
 
 This one reuses the second order actions GR-06 and GR-07 built, and asks a different question
 of them: not what the equations say, but whether the modes in them are there at all.
@@ -164,6 +167,7 @@ Type: Output
 | **GR-06** | a tetrad in, torsion, the TEGR identity and $f(\mathcal{T})$ cosmology out |
 | **GR-07** | a metric and a flat connection in, non-metricity and $f(Q)$ cosmology out |
 | **GR-08** | the same quadratic actions in, kinetic matrices and wave speeds out |
+| **GR-09** | a quadratic action in, primary and secondary constraints and a mode count out |
 
 This one reuses the second order actions GR-06 and GR-07 built, and asks a different question
 of them: not what the equations say, but whether the modes in them are there at all.
@@ -600,6 +604,12 @@ Settling $f(Q)$ therefore needs an Ostrogradsky treatment followed by a Dirac co
 analysis &mdash; primary and secondary constraints, first and second class &mdash; which this
 notebook does not attempt. Stating that is more useful than a number that would not survive it.
 
+**GR-09 does attempt it, and the answer is one propagating scalar mode.** The constraint count
+is the same twelve in general $f(Q)$ as in general relativity; what changes is that two
+constraints move from first class to second, which is a broken gauge symmetry leaving half of
+its pair behind as a physical mode. Rank four here was a symptom of the second-derivative
+problem, not a mode count: at STEGR the correct analysis returns zero, as it must.
+
 What the matrix **can** say is where it degenerates, and that much is convention-independent:
 
 $$
@@ -636,6 +646,12 @@ larger and $\dot\xi$ is an independent coordinate in its own right.
 Settling $f(Q)$ therefore needs an Ostrogradsky treatment followed by a Dirac constraint
 analysis &mdash; primary and secondary constraints, first and second class &mdash; which this
 notebook does not attempt. Stating that is more useful than a number that would not survive it.
+
+**GR-09 does attempt it, and the answer is one propagating scalar mode.** The constraint count
+is the same twelve in general $f(Q)$ as in general relativity; what changes is that two
+constraints move from first class to second, which is a broken gauge symmetry leaving half of
+its pair behind as a physical mode. Rank four here was a symptom of the second-derivative
+problem, not a mode count: at STEGR the correct analysis returns zero, as it must.
 
 What the matrix **can** say is where it degenerates, and that much is convention-independent:
 
@@ -779,7 +795,8 @@ modes as though linear theory described them; around flat FLRW it does not, beca
 kinetic term there at all.
 
 **$f(Q)$**: GR-07's $G_{\text{eff}} = G/f_Q$ is likewise a metric-sector statement. The status
-of the connection modes is genuinely open at this level of analysis.
+of the connection modes is open *at this level of analysis*, and GR-09 closes it: one of them
+propagates, on a de Sitter background, in the scalar sector.
 
 **Both teleparallel families** pass the gravitational-wave test outright, with
 $c_{\text{GW}}^2 = 1$ identically rather than approximately.
@@ -804,7 +821,8 @@ modes as though linear theory described them; around flat FLRW it does not, beca
 kinetic term there at all.
 
 **$f(Q)$**: GR-07's $G_{\text{eff}} = G/f_Q$ is likewise a metric-sector statement. The status
-of the connection modes is genuinely open at this level of analysis.
+of the connection modes is open *at this level of analysis*, and GR-09 closes it: one of them
+propagates, on a de Sitter background, in the scalar sector.
 
 **Both teleparallel families** pass the gravitational-wave test outright, with
 $c_{\text{GW}}^2 = 1$ identically rather than approximately.
@@ -822,7 +840,7 @@ Dataset @ {
     "c_GW^2" -> "1", "linear theory reliable" -> "yes"|>,
   <|"theory" -> "f(T)",  "extra modes" -> "boost and rotation, kinetic terms identically zero",
     "c_GW^2" -> "1", "linear theory reliable" -> "metric sector only"|>,
-  <|"theory" -> "f(Q)",  "extra modes" -> "two connection scalars, status open here",
+  <|"theory" -> "f(Q)",  "extra modes" -> "two connection scalars, one propagates (GR-09)",
     "c_GW^2" -> "1", "linear theory reliable" -> "metric sector only"|>}
 
 %-------------------------------------------------------------------------%
