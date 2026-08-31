@@ -369,6 +369,11 @@ Module[{gF, gL, gP, cases},
       "R = Q - B" -> (Simplify[rr - (nn["Scalar"] - BoundaryQ[nn])] === 0)|>]] /@ cases]]
 
 %-------------------------------------------------------------------------%
+Type: Output
+%-------------------------------------------------------------------------%
+(*VB[*)(FrontEndRef["75335a00-05d3-43e8-ae75-4407a8c1337d"])(*,*)(*"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKm5saG5smGhjoGpimGOuaGKda6CammpvqmpgYmCdaJBsaG5unAABxiRTa"*)(*]VB*)
+
+%-------------------------------------------------------------------------%
 Props:
   Hidden: true
 Type: Input
@@ -427,6 +432,11 @@ Module[{xiT, gamT, nn, gF, tors},
        "ok" -> (Simplify[RicciScalarOf[gF, xs] - (nn["Scalar"] - BoundaryQ[nn])] === 0)|>}}]]
 
 %-------------------------------------------------------------------------%
+Type: Output
+%-------------------------------------------------------------------------%
+(*GB[*){{(*GB[*){{(*BB[*)("Gamma^0_00 = ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)(*FB[*)(((ff'')[t])(*,*)/(*,*)(1+(ff')[t]))(*]FB*)}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}(*||*),(*||*){(*GB[*){{(*BB[*)("Gamma^1_11 = ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)(*FB[*)(((gg1'')[x])(*,*)/(*,*)(1+(gg1')[x]))(*]FB*)}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}(*||*),(*||*){(*VB[*)(FrontEndRef["994a6997-db46-46fa-9158-752bd1ac9180"])(*,*)(*"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKW1qaJJpZWprrpiSZmOmamKUl6loamlrompsaJaUYJiZbGloYAAB7MRUs"*)(*]VB*)}}(*||*)(*1:eJxTTMoPSmNiYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUiDyIF1Sak1osABV2yq9wzMlMz8tNzStJY4Qp8cksLkHVEMwOZDjn55Tm5hWjqUPhQRipaSUAIwUhsg==*)(*]GB*)
+
+%-------------------------------------------------------------------------%
 Props:
   Hidden: true
 Type: Input
@@ -483,6 +493,11 @@ Module[{gL, nn, lag, toN1, contin, names, fr1, fr2, qv},
           - (3 (a'[t]^2 + 2 a[t] a''[t])/(\[Kappa] a[t]^2) + 3 p)] === 0)|>,
     <|"check" -> "no sign flip needed: this is already the GR-02 convention for Qs",
       "ok" -> (Simplify[qv + 6 a'[t]^2/a[t]^2] === 0)|>}}]]
+
+%-------------------------------------------------------------------------%
+Type: Output
+%-------------------------------------------------------------------------%
+(*GB[*){{(*GB[*){{(*BB[*)("Q with a lapse : ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)-(*FB[*)((6 ((*SpB[*)Power[(a')[t](*|*),(*|*)2](*]SpB*)))(*,*)/(*,*)(((*SpB[*)Power[a[t](*|*),(*|*)2](*]SpB*)) ((*SpB[*)Power[Nl[t](*|*),(*|*)2](*]SpB*))))(*]FB*)}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}(*||*),(*||*){(*GB[*){{(*BB[*)("Friedmann I    : ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)-\[Rho]+(*FB[*)((F[-(*FB[*)((6 ((*SpB[*)Power[(a')[t](*|*),(*|*)2](*]SpB*)))(*,*)/(*,*)((*SpB[*)Power[a[t](*|*),(*|*)2](*]SpB*)))(*]FB*)])(*,*)/(*,*)(2 \[Kappa]))(*]FB*)+(*FB[*)((6 ((*SpB[*)Power[(a')[t](*|*),(*|*)2](*]SpB*)) (F')[-(*FB[*)((6 ((*SpB[*)Power[(a')[t](*|*),(*|*)2](*]SpB*)))(*,*)/(*,*)((*SpB[*)Power[a[t](*|*),(*|*)2](*]SpB*)))(*]FB*)])(*,*)/(*,*)(\[Kappa] ((*SpB[*)Power[a[t](*|*),(*|*)2](*]SpB*))))(*]FB*)(*|*),(*|*)" = 0"}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}(*||*),(*||*){(*VB[*)(FrontEndRef["3f8e0981-5813-4fcc-8f7e-96b76a4f31f6"])(*,*)(*"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKG6dZpBpYWhjqmloYGuuapCUn61qkmafqWpolmZslmqQZG6aZAQB/jBWP"*)(*]VB*)}}(*||*)(*1:eJxTTMoPSmNiYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUiDyIF1Sak1osABV2yq9wzMlMz8tNzStJY4Qp8cksLkHVEMwOZDjn55Tm5hWjqUPhQRipaSUAIwUhsg==*)(*]GB*)
 
 %-------------------------------------------------------------------------%
 Props:
@@ -596,6 +611,11 @@ Module[{toy, want, toy2},
      "correct" -> (Simplify[EulerLagrange[toy2, uA] - D[uB[t, x], {t, 2}]] === 0)|>}]
 
 %-------------------------------------------------------------------------%
+Type: Output
+%-------------------------------------------------------------------------%
+(*VB[*)(FrontEndRef["9d1331c1-436c-49a2-bf9e-1783531b77b0"])(*,*)(*"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKW6YYGhsbJhvqmhibJeuaWCYa6SalWabqGppbGJsaGyaZmycZAAB5gxUQ"*)(*]VB*)
+
+%-------------------------------------------------------------------------%
 Props:
   Hidden: true
 Type: Input
@@ -686,6 +706,11 @@ Module[{bgG, ibgG, hm, gfull, igfull, mmg, sqrtg, zt, gam, qd, qu, qtr, qtil,
     "ok" -> (Length[Cases[lagQ2, Derivative[0, 1][hq[__]][t, x], Infinity]] > 0)|>,
   <|"check" -> "and carries the Stueckelberg fields",
     "ok" -> (Length[Cases[lagQ2, zz[_][t, x] | Derivative[__][zz[_]][t, x], Infinity]] > 0)|>}]
+
+%-------------------------------------------------------------------------%
+Type: Output
+%-------------------------------------------------------------------------%
+(*VB[*)(FrontEndRef["a8bc06cc-ed99-4f49-b026-f376d16d39b8"])(*,*)(*"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKJ1okJRuYJSfrpqZYWuqapJlY6iYZGJnpphmbm6UYmqUYWyZZAACQfhXk"*)(*]VB*)
 
 %-------------------------------------------------------------------------%
 Props:
@@ -784,6 +809,12 @@ Module[{ph, trunc1, gpert, uUp, rhoT, tUp, sqg, bgMet, b00, b11},
       "ok" -> (! MemberQ[Keys[matterSource], zz[_]])|>}}]]
 
 %-------------------------------------------------------------------------%
+Type: Output
+%-------------------------------------------------------------------------%
+(*GB[*){{(*GB[*){{(*BB[*)("background 0-0 : ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)((*SpB[*)Power[a[t](*|*),(*|*)3](*]SpB*)) (-(*FB[*)((1)(*,*)/(*,*)(2))(*]FB*) F[-(*FB[*)((6 ((*SpB[*)Power[(a')[t](*|*),(*|*)2](*]SpB*)))(*,*)/(*,*)((*SpB[*)Power[a[t](*|*),(*|*)2](*]SpB*)))(*]FB*)]+\[Kappa] rho[t])+
+ <<1>>(*|*),(*|*)" = 0"}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}(*||*),(*||*){(*VB[*)(FrontEndRef["8ecc4d36-3f6f-48cc-aa7c-e5a2f370f95e"])(*,*)(*"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKW6QmJ5ukGJvpGqeZpemaWCQn6yYmmifrppomGqUZmxukWZqmAgCVRBZw"*)(*]VB*)}}(*||*)(*1:eJxTTMoPSmNiYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUiDyIF1Sak1osABV2yq9wzMlMz8tNzStJY4Qp8cksLkHVEMwOZDjn55Tm5hWjqUPhQRipaSUAIwUhsg==*)(*]GB*)
+
+%-------------------------------------------------------------------------%
 Props:
   Hidden: true
 Type: Input
@@ -865,6 +896,11 @@ Module[{st = {F -> Identity}, m00, m0x, mxx, myy, c1, c2},
      "ok" -> (Simplify[c1] === 0 && Simplify[c2] === 0)|>}}]]
 
 %-------------------------------------------------------------------------%
+Type: Output
+%-------------------------------------------------------------------------%
+(*GB[*){{(*GB[*){{(*BB[*)("STEGR  0-0       : ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)a[t] (2 ((*SpB[*)Power[k(*|*),(*|*)2](*]SpB*)) phi[t]+3 (del[t]+2 psi[t]) ((*SpB[*)Power[(a')[t](*|*),(*|*)2](*]SpB*)))(*|*),(*|*)" = 0"}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}(*||*),(*||*){(*GB[*){{(*BB[*)("STEGR  transverse: ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)(*FB[*)((((*SpB[*)Power[k(*|*),(*|*)2](*]SpB*)) (-phi[t]+psi[t]))(*,*)/(*,*)(a[t]))(*]FB*)(*|*),(*|*)" = 0"}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}(*||*),(*||*){(*GB[*){{(*BB[*)("STEGR  xx        : ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)0(*|*),(*|*)" = 0"}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}(*||*),(*||*){""}(*||*),(*||*){(*VB[*)(FrontEndRef["30e48bc1-64fa-4e22-b8bc-6352cdf95d75"])(*,*)(*"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKGxukmlgkJRvqmpmkJeqapBoZ6SYB+bpmxqZGySlplqYp5qYAhqEV1Q=="*)(*]VB*)}}(*||*)(*1:eJxTTMoPSmNiYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUiDyIF1Sak1osABV2yq9wzMlMz8tNzStJY4Qp8cksLkHVEMwOZDjn55Tm5hWjqUPhQRipaSUAIwUhsg==*)(*]GB*)
+
+%-------------------------------------------------------------------------%
 Props:
   Hidden: true
 Type: Input
@@ -932,6 +968,11 @@ Module[{abbrev, nm, e00, e0x, exx, eyy, c1, vsol, sol, poi, dsol},
  Column[{
    Row[{Style["G_eff / G, sub-horizon     : ", Bold], geffSubHorizon}],
    Row[{Style["slip  Phi/Psi, sub-horizon : ", Bold], slipSubHorizon}]}]]
+
+%-------------------------------------------------------------------------%
+Type: Output
+%-------------------------------------------------------------------------%
+(*GB[*){{(*GB[*){{(*BB[*)("G_eff / G, sub-horizon     : ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)(*FB[*)((1)(*,*)/(*,*)(fQ))(*]FB*)}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}(*||*),(*||*){(*GB[*){{(*BB[*)("slip  Phi/Psi, sub-horizon : ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)1}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}}(*||*)(*1:eJxTTMoPSmNiYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUiDyIF1Sak1osABV2yq9wzMlMz8tNzStJY4Qp8cksLkHVEMwOZDjn55Tm5hWjqUPhQRipaSUAIwUhsg==*)(*]GB*)
 
 %-------------------------------------------------------------------------%
 Props:
@@ -1005,6 +1046,11 @@ Dataset @ {
     "scale dependent" -> False, "derived in" -> "GR-06"|>,
   <|"theory" -> "f(Q)",  "G_eff/G" -> "1/fQ",  "slip" -> "1",
     "scale dependent" -> False, "derived in" -> "GR-07"|>}
+
+%-------------------------------------------------------------------------%
+Type: Output
+%-------------------------------------------------------------------------%
+(*VB[*)(FrontEndRef["d85feaee-af82-4db3-9c8b-f37d974f3c8a"])(*,*)(*"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKp1iYpqUmpqbqJqZZGOmapCQZ61omWyTpphmbp1iam6QZJ1skAgCdmxar"*)(*]VB*)
 
 %-------------------------------------------------------------------------%
 Props:
@@ -1088,6 +1134,11 @@ Module[{gF, gL, gP, nF, nL, nP, qv, lag, fr1, toN1, contin, names, stg},
     "ok" -> (Simplify[slipSubHorizon - 1] === 0)|>}]
 
 %-------------------------------------------------------------------------%
+Type: Output
+%-------------------------------------------------------------------------%
+(*VB[*)(FrontEndRef["5540db8b-3f3e-4125-a7ec-e4f45caa9f65"])(*,*)(*"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKm5qaGKQkWSTpGqcZp+qaGBqZ6iaapybrppqkmZgmJyZappmZAgCGQBYF"*)(*]VB*)
+
+%-------------------------------------------------------------------------%
 Props:
   Hidden: true
 Type: Input
@@ -1132,11 +1183,55 @@ Dataset @ <|
   "not addressed"      -> "strong coupling, where linear theory may not describe the extra modes",
   "cross-checks"       -> "background matches GR-02; the STEGR limit reproduces general relativity"|>
 
+%-------------------------------------------------------------------------%
+Type: Output
+%-------------------------------------------------------------------------%
+(*VB[*)(FrontEndRef["1b2e08f2-d34f-4862-a86e-95651f7d086c"])(*,*)(*"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKGyYZpRpYpBnpphibpOmaWJgZ6SZamKXqWpqamRqmmacYWJglAwB/tRVS"*)(*]VB*)
+
 %------------------------------%EndOfCells%-------------------------------%
 
 
 
 %--------------------------------%Objects%--------------------------------%
+Key: 48
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["0", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: 75335a00-05d3-43e8-ae75-4407a8c1337d
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[Dataset[{Association["metric" -> "flat FLRW", "Q" -> (-6*Derivative[1][a][t]^2)/a[t]^2, "R = Q - B" -> True], Association["metric" -> "FLRW with a lapse", "Q" -> (-6*Derivative[1][a][t]^2)/(a[t]^2*Nl[t]^2), "R = Q - B" -> True], Association["metric" -> "perturbed FLRW", "Q" -> (-2*(3*(-1 + 2*vw[t, x])^3*Derivative[1][a][t]^2 + 2*(-1 + 2*vw[t, x])*Derivative[0, 1][uu][t, x]*Derivative[0, 1][vw][t, x] + Derivative[0, 1][vw][t, x]^2 + 2*uu[t, x]*Derivative[0, 1][vw][t, x]^2 + 6*a[t]*(1 - 2*vw[t, x])^2*Derivative[1][a][t]*Derivative[1, 0][vw][t, x] - 3*a[t]^2*Derivative[1, 0][vw][t, x]^2 + 6*a[t]^2*vw[t, x]*Derivative[1, 0][vw][t, x]^2))/(a[t]^2*(1 + 2*uu[t, x])*(-1 + 2*vw[t, x])^3), "R = Q - B" -> True]}, TypeSystem`Vector[TypeSystem`Struct[{"metric", "Q", "R = Q - B"}, {TypeSystem`Atom[String], TypeSystem`AnyType, TypeSystem`Atom[TypeSystem`Boolean]}], 3], Association[]]]|>
+
+%-------------------------------------------------------------------------%
+Key: 994a6997-db46-46fa-9158-752bd1ac9180
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[Dataset[{Association["check" -> "the Stueckelberg connection is torsion-free by construction", "ok" -> True], Association["check" -> "the identity R = Q - B survives a non-zero connection", "ok" -> True]}, TypeSystem`Vector[TypeSystem`Struct[{"check", "ok"}, {TypeSystem`Atom[String], TypeSystem`Atom[TypeSystem`Boolean]}], 2], Association[]]]|>
+
+%-------------------------------------------------------------------------%
+Key: 3f8e0981-5813-4fcc-8f7e-96b76a4f31f6
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[Dataset[{Association["check" -> "Friedmann I is kappa rho = (f - 2 Q f_Q)/2", "ok" -> True], Association["check" -> "STEGR, f = Q, gives 3H^2 = kappa rho", "ok" -> True], Association["check" -> "STEGR gives the standard acceleration equation", "ok" -> True], Association["check" -> "no sign flip needed: this is already the GR-02 convention for Qs", "ok" -> True]}, TypeSystem`Vector[TypeSystem`Struct[{"check", "ok"}, {TypeSystem`Atom[String], TypeSystem`Atom[TypeSystem`Boolean]}], 4], Association[]]]|>
+
+%-------------------------------------------------------------------------%
+Key: 9d1331c1-436c-49a2-bf9e-1783531b77b0
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[Dataset[{Association["operator" -> "naive, first order", "test" -> "L = (d_x A)(d_x B)", "result" -> 0, "correct" -> False], Association["operator" -> "EulerLagrange2D", "test" -> "L = (d_x A)(d_x B)", "result" -> -Derivative[0, 2][uB][t, x], "correct" -> True], Association["operator" -> "EulerLagrange2D", "test" -> "L = (d_t^2 A) B, second derivative", "result" -> 0, "correct" -> False], Association["operator" -> "EulerLagrange", "test" -> "L = (d_t^2 A) B, second derivative", "result" -> Derivative[2, 0][uB][t, x], "correct" -> True]}, TypeSystem`Vector[TypeSystem`Struct[{"operator", "test", "result", "correct"}, {TypeSystem`Atom[String], TypeSystem`Atom[TypeSystem`Enumeration["L = (d_t^2 A) B, second derivative", "L = (d_x A)(d_x B)"]], TypeSystem`AnyType, TypeSystem`Atom[TypeSystem`Boolean]}], 4], Association[]]]|>
+
+%-------------------------------------------------------------------------%
+Key: a8bc06cc-ed99-4f49-b026-f376d16d39b8
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[Dataset[{Association["check" -> "the series inverse metric is exact to O(eps^2)", "ok" -> True], Association["check" -> "the series volume element is exact to O(eps^2)", "ok" -> True], Association["check" -> "background Q = -6 H^2", "ok" -> True], Association["check" -> "the second order Lagrangian carries metric gradients", "ok" -> True], Association["check" -> "and carries the Stueckelberg fields", "ok" -> True]}, TypeSystem`Vector[TypeSystem`Struct[{"check", "ok"}, {TypeSystem`Atom[String], TypeSystem`Atom[TypeSystem`Boolean]}], 5], Association[]]]|>
+
+%-------------------------------------------------------------------------%
+Key: 8ecc4d36-3f6f-48cc-aa7c-e5a2f370f95e
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[Dataset[{Association["check" -> "the four-velocity is normalised to O(eps)", "ok" -> True], Association["check" -> "lambda = -kappa reproduces the section 5 Friedmann equation", "ok" -> True], Association["check" -> "matter does not source the connection equations", "ok" -> True]}, TypeSystem`Vector[TypeSystem`Struct[{"check", "ok"}, {TypeSystem`Atom[String], TypeSystem`Atom[TypeSystem`Boolean]}], 3], Association[]]]|>
+
+%-------------------------------------------------------------------------%
+Key: 30e48bc1-64fa-4e22-b8bc-6352cdf95d75
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[Dataset[{Association["acceptance test" -> "0-0 is the Poisson equation, carrying k^2", "ok" -> True], Association["acceptance test" -> "the transverse equation forces phi = psi", "ok" -> True], Association["acceptance test" -> "the connection modes leave the metric equations", "ok" -> True], Association["acceptance test" -> "the dust pressure equation is consistent", "ok" -> True], Association["acceptance test" -> "the connection equations vanish identically, as diffeomorphism invariance demands", "ok" -> True]}, TypeSystem`Vector[TypeSystem`Struct[{"acceptance test", "ok"}, {TypeSystem`Atom[String], TypeSystem`Atom[TypeSystem`Boolean]}], 5], Association[]]]|>
+
 %-----------------------------%EndOfObjects%------------------------------%
 
 

@@ -305,6 +305,11 @@ Dataset @ {
     "ok" -> (Simplify[$Q0 + 6 a'[t]^2/a[t]^2] === 0)|>}
 
 %-------------------------------------------------------------------------%
+Type: Output
+%-------------------------------------------------------------------------%
+(*VB[*)(FrontEndRef["7d5466a1-598b-41d0-9f9b-79df3b2a35ea"])(*,*)(*"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKm6eYmpiZJRrqmlpaJOmaGKYY6FqmWSbpmlumpBknGSUam6YmAgB9OxWw"*)(*]VB*)
+
+%-------------------------------------------------------------------------%
 Props:
   Hidden: true
 Type: Input
@@ -412,6 +417,11 @@ Module[{lred},
    Row[{Style["rank at TEGR    : ", Bold], MatrixRank[Simplify[kinT /. $tegr]]}]}]]
 
 %-------------------------------------------------------------------------%
+Type: Output
+%-------------------------------------------------------------------------%
+(*GB[*){{(*GB[*){{(*BB[*)("K, rows and columns ordered (psi, phi, zeta, chi):")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}(*||*),(*||*){(*GB[*){{0(*|*),(*|*)0(*|*),(*|*)0(*|*),(*|*)0}(*||*),(*||*){0(*|*),(*|*)6 fT ((*SpB[*)Power[a[t](*|*),(*|*)3](*]SpB*))+72 fTT a[t] ((*SpB[*)Power[(a')[t](*|*),(*|*)2](*]SpB*))(*|*),(*|*)0(*|*),(*|*)0}(*||*),(*||*){0(*|*),(*|*)0(*|*),(*|*)0(*|*),(*|*)0}(*||*),(*||*){0(*|*),(*|*)0(*|*),(*|*)0(*|*),(*|*)0}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcFsQBHfxJKizAoAs04KOA==*)(*]GB*)}(*||*),(*||*){(*GB[*){{(*BB[*)("rank, general f : ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)1}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}(*||*),(*||*){(*GB[*){{(*BB[*)("rank at TEGR    : ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)1}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}}(*||*)(*1:eJxTTMoPSmNiYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUiDyIF1Sak1osABV2yq9wzMlMz8tNzStJY4Qp8cksLkHVEMwOZDjn55Tm5hWjqUPhQRipaSUAIwUhsg==*)(*]GB*)
+
+%-------------------------------------------------------------------------%
 Props:
   Hidden: true
 Type: Input
@@ -475,6 +485,11 @@ Dataset @ {
     "ok" -> (Simplify[kinT[[2, 2]] - 6 a[t]^3 (fT + 2 $T0 fTT)] === 0)|>}
 
 %-------------------------------------------------------------------------%
+Type: Output
+%-------------------------------------------------------------------------%
+(*VB[*)(FrontEndRef["ed5e9828-051a-46f3-ad42-db4fee6366cf"])(*,*)(*"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKp6aYplpaGFnoGpgaJuqamKUZ6yammBjppiSZpKWmmhmbmSWnAQCHghYO"*)(*]VB*)
+
+%-------------------------------------------------------------------------%
 Props:
   Hidden: true
 Type: Input
@@ -522,6 +537,11 @@ Module[{lred},
    Row[{Style["c_GW^2     : ", Bold], speedT}],
    Row[{Style["both polarisations agree : ", Bold],
         Simplify[SpeedSquared[lred, hc] - speedT] === 0}]}]]
+
+%-------------------------------------------------------------------------%
+Type: Output
+%-------------------------------------------------------------------------%
+(*GB[*){{(*GB[*){{(*BB[*)("tensor K   : ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)(*GB[*){{-(*FB[*)((1)(*,*)/(*,*)(2))(*]FB*) fT ((*SpB[*)Power[a[t](*|*),(*|*)3](*]SpB*))(*|*),(*|*)0}(*||*),(*||*){0(*|*),(*|*)-(*FB[*)((1)(*,*)/(*,*)(2))(*]FB*) fT ((*SpB[*)Power[a[t](*|*),(*|*)3](*]SpB*))}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcFsQBHfxJKizAoAs04KOA==*)(*]GB*)}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}(*||*),(*||*){(*GB[*){{(*BB[*)("c_GW^2     : ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)1}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}(*||*),(*||*){(*GB[*){{(*BB[*)("both polarisations agree : ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)True}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}}(*||*)(*1:eJxTTMoPSmNiYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUiDyIF1Sak1osABV2yq9wzMlMz8tNzStJY4Qp8cksLkHVEMwOZDjn55Tm5hWjqUPhQRipaSUAIwUhsg==*)(*]GB*)
 
 %-------------------------------------------------------------------------%
 Props:
@@ -572,6 +592,11 @@ Module[{lred},
    Row[{Style["rank at STEGR    : ", Bold], MatrixRank[Simplify[kinQ /. $stegr]]}],
    Row[{Style["det K            : ", Bold], Simplify[Det[kinQ]]}],
    Row[{Style["det K at STEGR   : ", Bold], Simplify[Det[kinQ] /. $stegr]}]}]]
+
+%-------------------------------------------------------------------------%
+Type: Output
+%-------------------------------------------------------------------------%
+(*GB[*){{(*GB[*){{(*BB[*)("rank, general f  : ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)4}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}(*||*),(*||*){(*GB[*){{(*BB[*)("rank at STEGR    : ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)4}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}(*||*),(*||*){(*GB[*){{(*BB[*)("det K            : ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)((*FB[*)((3)(*,*)/(*,*)(2))(*]FB*)) ((*SpB[*)Power[fQ(*|*),(*|*)3](*]SpB*)) ((*SpB[*)Power[k(*|*),(*|*)4](*]SpB*)) ((*SpB[*)Power[a[t](*|*),(*|*)8](*]SpB*)) (fQ ((*SpB[*)Power[a[t](*|*),(*|*)2](*]SpB*))-12 fQQ ((*SpB[*)Power[(a')[t](*|*),(*|*)2](*]SpB*)))}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}(*||*),(*||*){(*GB[*){{(*BB[*)("det K at STEGR   : ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)((*FB[*)((3)(*,*)/(*,*)(2))(*]FB*)) ((*SpB[*)Power[k(*|*),(*|*)4](*]SpB*)) ((*SpB[*)Power[a[t](*|*),(*|*)10](*]SpB*))}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}}(*||*)(*1:eJxTTMoPSmNiYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUiDyIF1Sak1osABV2yq9wzMlMz8tNzStJY4Qp8cksLkHVEMwOZDjn55Tm5hWjqUPhQRipaSUAIwUhsg==*)(*]GB*)
 
 %-------------------------------------------------------------------------%
 Props:
@@ -683,6 +708,11 @@ Dataset @ {
              FreeQ[Simplify[Det[kinQ]/(fQ^3 (fQ + 2 $Q0 fQQ))], fQQ | fQQQ])|>}
 
 %-------------------------------------------------------------------------%
+Type: Output
+%-------------------------------------------------------------------------%
+(*VB[*)(FrontEndRef["a01dda6c-430f-40d6-896e-8060478b9a05"])(*,*)(*"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKJxoYpqQkmiXrmhgbpOmaGKSY6VpYmqXqWhiYGZiYWyRZJhqYAgCEnxVA"*)(*]VB*)
+
+%-------------------------------------------------------------------------%
 Props:
   Hidden: false
 Type: Input
@@ -704,6 +734,11 @@ Module[{lred},
  Column[{
    Row[{Style["f(Q) tensor K : ", Bold], MatrixForm[kinQT]}],
    Row[{Style["f(Q) c_GW^2   : ", Bold], speedQ}]}]]
+
+%-------------------------------------------------------------------------%
+Type: Output
+%-------------------------------------------------------------------------%
+(*GB[*){{(*GB[*){{(*BB[*)("f(Q) tensor K : ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)(*GB[*){{((*FB[*)((1)(*,*)/(*,*)(2))(*]FB*)) fQ ((*SpB[*)Power[a[t](*|*),(*|*)3](*]SpB*))(*|*),(*|*)0}(*||*),(*||*){0(*|*),(*|*)((*FB[*)((1)(*,*)/(*,*)(2))(*]FB*)) fQ ((*SpB[*)Power[a[t](*|*),(*|*)3](*]SpB*))}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcFsQBHfxJKizAoAs04KOA==*)(*]GB*)}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}(*||*),(*||*){(*GB[*){{(*BB[*)("f(Q) c_GW^2   : ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)1}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}}(*||*)(*1:eJxTTMoPSmNiYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUiDyIF1Sak1osABV2yq9wzMlMz8tNzStJY4Qp8cksLkHVEMwOZDjn55Tm5hWjqUPhQRipaSUAIwUhsg==*)(*]GB*)
 
 %-------------------------------------------------------------------------%
 Props:
@@ -777,6 +812,11 @@ Module[{om = 0.315, alphaTilde, ez, hsq, zdeg, tab},
    Style["a positive alpha puts the locus at imaginary H, so it never occurs", Italic]}]]
 
 %-------------------------------------------------------------------------%
+Type: Output
+%-------------------------------------------------------------------------%
+(*GB[*){{(*BB[*)("quadratic f = X + alpha X^2, degeneracy at 1 + 6 alpha X = 0")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAYU8ixJzMlMhuhlARJBpTmpwWxgtUWZeelgsZCi0lQA5zsZIQ=="*)(*]BB*)}(*||*),(*||*){(*GB[*){{(*BB[*)("alpha H0^2")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)(*BB[*)("degeneracy redshift")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)}(*||*),(*||*){-0.05`(*|*),(*|*)Missing["none in the past"]}(*||*),(*||*){-0.02`(*|*),(*|*)0.30736800395723074`}(*||*),(*||*){-0.01`(*|*),(*|*)0.879912001414501`}(*||*),(*||*){-0.005`(*|*),(*|*)1.4912806178385136`}(*||*),(*||*){-0.001`(*|*),(*|*)3.414155826301325`}}(*||*)(*1:eJxTTMoPSmNmYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3osyUNCaQPIgXVJqTWiwAFXbKr3DMyUzPy03NK0ljhCnxySwuQdUQzA5kOOfnlObmFaOpQ+FBGKlpaNqL+RH2BRckJmfmpRcjVJBvXSbI12hawYz8crz6itLA4Jk9AJ66RYg=*)(*]GB*)}(*||*),(*||*){(*BB[*)("a positive alpha puts the locus at imaginary H, so it never occurs")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAYU8ixJzMlMhuhlARJBpTmpwWxgtUWZeelgsZCi0lQA5zsZIQ=="*)(*]BB*)}}(*||*)(*1:eJxTTMoPSmNiYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUiDyIF1Sak1osABV2yq9wzMlMz8tNzStJY4Qp8cksLkHVEMwOZDjn55Tm5hWjqUPhQRipaSUAIwUhsg==*)(*]GB*)
+
+%-------------------------------------------------------------------------%
 Props:
   Hidden: true
 Type: Input
@@ -844,6 +884,11 @@ Dataset @ {
     "c_GW^2" -> "1", "linear theory reliable" -> "metric sector only"|>}
 
 %-------------------------------------------------------------------------%
+Type: Output
+%-------------------------------------------------------------------------%
+(*VB[*)(FrontEndRef["756409ca-ff86-4a93-b7da-269d00fb51cb"])(*,*)(*"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKm5uamRhYJifqpqVZmOmaJFoa6yaZpyTqGplZphgYpCWZGiYnAQCChhXX"*)(*]VB*)
+
+%-------------------------------------------------------------------------%
 Props:
   Hidden: true
 Type: Input
@@ -888,11 +933,40 @@ Dataset @ {
    "ok" -> (Simplify[kinTT[[1, 1]] /. $tegr] =!= 0 &&
             Simplify[kinQT[[1, 1]] /. $stegr] =!= 0)|>}
 
+%-------------------------------------------------------------------------%
+Type: Output
+%-------------------------------------------------------------------------%
+(*VB[*)(FrontEndRef["802a53c8-a038-4d02-afbc-f4c3bd61f5c5"])(*,*)(*"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKWxgYJZoaJ1voJhoYW+iapBgY6SamJSXrppkkGyelmBmmmSabAgCCVRXz"*)(*]VB*)
+
 %------------------------------%EndOfCells%-------------------------------%
 
 
 
 %--------------------------------%Objects%--------------------------------%
+Key: 7d5466a1-598b-41d0-9f9b-79df3b2a35ea
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[Dataset[{Association["check" -> "torsion scalar background is +6 H^2", "ok" -> True], Association["check" -> "non-metricity scalar background is -6 H^2", "ok" -> True]}, TypeSystem`Vector[TypeSystem`Struct[{"check", "ok"}, {TypeSystem`Atom[String], TypeSystem`Atom[TypeSystem`Boolean]}], 2], Association[]]]|>
+
+%-------------------------------------------------------------------------%
+Key: ed5e9828-051a-46f3-ad42-db4fee6366cf
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[Dataset[{Association["statement" -> "the lapse row of K vanishes", "ok" -> True], Association["statement" -> "the boost row vanishes, for every f", "ok" -> True], Association["statement" -> "the rotation row vanishes, for every f", "ok" -> True], Association["statement" -> "the extra modes add no rank over TEGR", "ok" -> True], Association["statement" -> "the surviving entry is 6 a^3 (f_T + 2 T f_TT)", "ok" -> True]}, TypeSystem`Vector[TypeSystem`Struct[{"statement", "ok"}, {TypeSystem`Atom[String], TypeSystem`Atom[TypeSystem`Boolean]}], 5], Association[]]]|>
+
+%-------------------------------------------------------------------------%
+Key: a01dda6c-430f-40d6-896e-8060478b9a05
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[Dataset[{Association["statement" -> "the f(Q) kinetic matrix has full rank", "ok" -> True], Association["statement" -> "it also has full rank at STEGR, where GR has no propagating scalars", "ok" -> True], Association["statement" -> "L2 carries second time derivatives of the connection, so the phase space is larger", "ok" -> True], Association["statement" -> "the metric perturbation, by contrast, appears only with first derivatives", "ok" -> True], Association["statement" -> "so the diagnostic over-counts and cannot settle f(Q)", "ok" -> True], Association["statement" -> "det K is proportional to fQ^3 (fQ + 2 Q fQQ)", "ok" -> True]}, TypeSystem`Vector[TypeSystem`Struct[{"statement", "ok"}, {TypeSystem`Atom[String], TypeSystem`Atom[TypeSystem`Boolean]}], 6], Association[]]]|>
+
+%-------------------------------------------------------------------------%
+Key: 756409ca-ff86-4a93-b7da-269d00fb51cb
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[Dataset[{Association["theory" -> "f(R)", "extra modes" -> "one scalaron, healthy kinetic term", "c_GW^2" -> "1", "linear theory reliable" -> "yes"], Association["theory" -> "f(T)", "extra modes" -> "boost and rotation, kinetic terms identically zero", "c_GW^2" -> "1", "linear theory reliable" -> "metric sector only"], Association["theory" -> "f(Q)", "extra modes" -> "two connection scalars, one propagates (GR-09)", "c_GW^2" -> "1", "linear theory reliable" -> "metric sector only"]}, TypeSystem`Vector[TypeSystem`Struct[{"theory", "extra modes", "c_GW^2", "linear theory reliable"}, {TypeSystem`Atom[String], TypeSystem`Atom[String], TypeSystem`Atom[TypeSystem`Enumeration["1"]], TypeSystem`Atom[String]}], 3], Association[]]]|>
+
+%-------------------------------------------------------------------------%
+Key: 802a53c8-a038-4d02-afbc-f4c3bd61f5c5
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[Dataset[{Association["check" -> "T background = +6H^2 and Q background = -6H^2", "ok" -> True], Association["check" -> "f(T): the boost and rotation rows of K vanish identically", "ok" -> True], Association["check" -> "f(T): the lapse row vanishes, as a Lagrange multiplier must", "ok" -> True], Association["check" -> "f(T): rank equals the TEGR rank, so no extra propagating scalar", "ok" -> True], Association["check" -> "f(T): the surviving kinetic term is 6 a^3 (f_T + 2 T f_TT)", "ok" -> True], Association["check" -> "f(Q): det K vanishes exactly on f_Q + 2 Q f_QQ = 0", "ok" -> True], Association["check" -> "f(T) tensor modes propagate", "ok" -> True], Association["check" -> "f(Q) tensor modes propagate", "ok" -> True], Association["check" -> "f(T) gravitational waves are exactly luminal", "ok" -> True], Association["check" -> "f(Q) gravitational waves are exactly luminal", "ok" -> True], Association["check" -> "both theories reduce to a healthy tensor sector in the linear limit", "ok" -> True]}, TypeSystem`Vector[TypeSystem`Struct[{"check", "ok"}, {TypeSystem`Atom[String], TypeSystem`Atom[TypeSystem`Boolean]}], 11], Association[]]]|>
+
 %-----------------------------%EndOfObjects%------------------------------%
 
 

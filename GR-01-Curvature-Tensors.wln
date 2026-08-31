@@ -511,7 +511,7 @@ AbsoluteTiming[gr = GRTensors[metric, coords, "Assumptions" -> assumptions];]
 %-------------------------------------------------------------------------%
 Type: Output
 %-------------------------------------------------------------------------%
-{8.1442689`,Null}
+{7.5345659`,Null}
 
 %-------------------------------------------------------------------------%
 Props:
@@ -523,7 +523,7 @@ ShowSummary[gr]
 %-------------------------------------------------------------------------%
 Type: Output
 %-------------------------------------------------------------------------%
-(*VB[*)(FrontEndRef["d05ea176-11c1-4e98-adf5-c7b1a4a3a1bd"])(*,*)(*"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKpxiYpiYampvpGhomG+qapFpa6CampJnqJpsnGSaaJBonGialAACG1hYe"*)(*]VB*)
+(*VB[*)(FrontEndRef["034064a2-2e49-4690-944c-24ee27587860"])(*,*)(*"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKGxibGJiZJBrpGqWaWOqamFka6FqamCTrGpmkphqZm1qYW5gZAABriBRd"*)(*]VB*)
 
 %-------------------------------------------------------------------------%
 Props:
@@ -728,7 +728,7 @@ Type: Input
 %-------------------------------------------------------------------------%
 Type: Output
 %-------------------------------------------------------------------------%
-(*VB[*)(FrontEndRef["b2ce61c7-758e-4fc0-b54f-445fc1d418cd"])(*,*)(*"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKJxklp5oZJpvrmptapOqapCUb6CaZmqTpmpiYpiUbppgYWiSnAACLYRYG"*)(*]VB*)
+(*VB[*)(FrontEndRef["ff0c8bbc-b6a6-4776-aee4-64bba15d263c"])(*,*)(*"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKp6UZJFskJSXrJpklmumamJub6SampprompkkJSUamqYYmRknAwCYoBZe"*)(*]VB*)
 
 %------------------------------%EndOfCells%-------------------------------%
 
@@ -740,24 +740,9 @@ Key: 48
 <|"Public" -> Hold[EditorView["0", "ReadOnly" -> True, "Selectable" -> False]]|>
 
 %-------------------------------------------------------------------------%
-Key: 90667117
-%-------------------------------------------------------------------------%
-<|"Public" -> Hold[EditorView["{r->2 M}[{r->0}]", "ReadOnly" -> True, "Selectable" -> False]]|>
-
-%-------------------------------------------------------------------------%
-Key: 235427342
-%-------------------------------------------------------------------------%
-<|"Public" -> Hold[EditorView["(*FB[*)((48 ((*SpB[*)Power[M(*|*),(*|*)2](*]SpB*)))(*,*)/(*,*)((*SpB[*)Power[r(*|*),(*|*)6](*]SpB*)))(*]FB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
-
-%-------------------------------------------------------------------------%
-Key: d05ea176-11c1-4e98-adf5-c7b1a4a3a1bd
+Key: 034064a2-2e49-4690-944c-24ee27587860
 %-------------------------------------------------------------------------%
 <|"Public" -> Hold[Dataset[{Association["tensor" -> "Christoffel  \[CapitalGamma]^a_bc", "non-zero" -> 13], Association["tensor" -> "Riemann  R^a_bcd", "non-zero" -> 24], Association["tensor" -> "Ricci  R_ab", "non-zero" -> 0], Association["tensor" -> "Einstein  G_ab", "non-zero" -> 0]}, TypeSystem`Vector[TypeSystem`Struct[{"tensor", "non-zero"}, {TypeSystem`Atom[String], TypeSystem`Atom[Integer]}], 4], Association[]]]|>
-
-%-------------------------------------------------------------------------%
-Key: b2ce61c7-758e-4fc0-b54f-445fc1d418cd
-%-------------------------------------------------------------------------%
-<|"Public" -> Hold[Dataset[Association["vacuum (G_ab = 0)" -> True, "flat (R^a_bcd = 0)" -> False, "Kretschmann K" -> (48*M^2)/r^6, "curvature singularities" -> {{r -> 2*M}, {r -> 0}}], TypeSystem`Struct[{"vacuum (G_ab = 0)", "flat (R^a_bcd = 0)", "Kretschmann K", "curvature singularities"}, {TypeSystem`Atom[TypeSystem`Boolean], TypeSystem`Atom[TypeSystem`Boolean], TypeSystem`AnyType, TypeSystem`Vector[TypeSystem`Vector[TypeSystem`AnyType, 1], 2]}], Association[]]]|>
 
 %-----------------------------%EndOfObjects%------------------------------%
 
