@@ -392,15 +392,25 @@ The naive field-theory Euler-Lagrange operator,
 
 `D[lag, q[t,x]] - D[D[lag, Derivative[1,0][q][t,x]], t] - D[D[lag, Derivative[0,1][q][t,x]], x]`
 
-does not reliably return what it looks like it returns. On the test case below it gives
-**zero** where the answer is $-\partial_x^2 B$. The gradient term is exactly the one that
+does not reliably return what it looks like it returns. In WLJS it gives **zero** on the test
+case below, where the answer is $-\partial_x^2 B$. The gradient term is exactly the one that
 carries $k^2$, so a Lagrangian full of correct physics silently produces equations with no
 Poisson term in them &mdash; which is what happened here on the first attempt, and what the
 diagonal-tetrad diagnosis in section 8 was almost mistaken for.
 
+The word *reliably* is doing real work. Evaluated with `wolframscript` against the same Wolfram
+Engine 15.0, the same expression returns $-\partial_x^2 B$, correctly. The result depends on the
+environment, and nothing in this notebook or in the WLJS kernel files accounts for the
+difference. An operator whose answer you cannot predict from the source alone is not one to
+build a calculation on, whichever way it happens to fall today. That is why nothing outside the
+demonstration cell asserts what it returns.
+
 The cure is to substitute the derivatives for plain symbols before differentiating, and put
-them back afterwards. `EulerLagrange2D` below does that, and the cell tests both versions
-against a Lagrangian whose Euler-Lagrange equation can be written down by hand.
+them back afterwards. That is ordinary pattern replacement, with no dependence on `D` knowing
+how to differentiate with respect to a derivative, and it gives the same answer everywhere.
+`EulerLagrange2D` below does it, and the cell shows both operators on a Lagrangian whose
+Euler-Lagrange equation can be written down by hand. The cell is a demonstration, not a
+checklist: the assertions are in the checks section, and they cover only `EulerLagrange2D`.
 
 The single-variable operator used for the background in section 6 is not affected, which is
 why the Friedmann equations above were right.
@@ -420,14 +430,16 @@ EulerLagrange2D[lag_, q_] :=
   ls   = lag /. fwd;
   (D[ls, u0] /. back) - D[D[ls, u1] /. back, t] - D[D[ls, u2] /. back, x]];
 
-Module[{toy, want},
- toy  = D[uA[t, x], x] D[uB[t, x], x];
- want = -D[uB[t, x], {x, 2}];
+(* A demonstration, not a checklist. The naive row carries no verdict on purpose:
+   what it returns depends on the environment, so there is nothing here worth
+   asserting. The answer by hand is -d_x^2 B. *)
+Module[{toy},
+ toy = D[uA[t, x], x] D[uB[t, x], x];
  Dataset @ {
    <|"operator" -> "naive", "result" -> EulerLagrangeNaive[toy, uA],
-     "correct" -> (Simplify[EulerLagrangeNaive[toy, uA] - want] === 0)|>,
+     "note" -> "environment dependent: zero in WLJS, correct under wolframscript"|>,
    <|"operator" -> "EulerLagrange2D", "result" -> EulerLagrange2D[toy, uA],
-     "correct" -> (Simplify[EulerLagrange2D[toy, uA] - want] === 0)|>}]
+     "note" -> "correct, and the same in every kernel tested"|>}]
 
 (*::md::
 ## 10. All sixteen components
@@ -741,9 +753,7 @@ Module[{ys = {t, r, th, ph}, f1, s1, d1, tv, grSub, p1, p2},
   <|"check" -> "the good-tetrad problem: same metric, different T",
     "ok" -> (Simplify[p1["Metric"] - p2["Metric"]] === ConstantArray[0, {4, 4}] &&
        Simplify[p1["TorsionScalar"] - p2["TorsionScalar"]] =!= 0)|>,
-  <|"check" -> "the naive Euler-Lagrange operator really does drop the gradient term",
-    "ok" -> (EulerLagrangeNaive[D[uA[t, x], x] D[uB[t, x], x], uA] === 0)|>,
-  <|"check" -> "EulerLagrange2D gets it right",
+  <|"check" -> "EulerLagrange2D gets the gradient term right",
     "ok" -> (Simplify[EulerLagrange2D[D[uA[t, x], x] D[uB[t, x], x], uA]
         + D[uB[t, x], {x, 2}]] === 0)|>,
   <|"check" -> "TEGR: G_eff = G",
