@@ -346,16 +346,24 @@ The $f(\mathcal{T})$ answer was clean because two rows of $K$ were identically z
 matrix has full rank instead &mdash; and it has full rank **at STEGR too**, where the theory is
 general relativity, which has no propagating scalar modes at all.
 
-So the bare kinetic matrix is over-counting, and the reason is structural rather than a mistake.
-$\sqrt{-g}\,Q$ and $-\sqrt{-g}R$ differ by a total derivative, and that boundary term is
-precisely what removes the time derivatives of the lapse from the Einstein-Hilbert form. Working
-with $Q$ keeps them, so $\dot\psi$ appears, mixes with $\dot z_1$, and inflates the rank. The
-entries are real but some of them are removable by parts, and reading degrees of freedom off
-them directly would be wrong.
+So the bare kinetic matrix is over-counting, and there are two structural reasons, neither of
+them a slip in the arithmetic.
 
-Settling $f(Q)$ needs a constraint analysis &mdash; the Hamiltonian, the primary and secondary
-constraints, and their classification &mdash; which this notebook does not do. Stating that is
-more useful than a number that would not survive it.
+The first is the boundary term. $\sqrt{-g}\,Q$ and $-\sqrt{-g}R$ differ by a total derivative,
+and that term is precisely what removes the time derivatives of the lapse from the
+Einstein-Hilbert form. Working with $Q$ keeps them, so $\dot\psi$ appears, mixes with
+$\dot z_1$, and inflates the rank.
+
+The second is worse and is specific to the connection. Non-metricity contains
+$\Gamma^\lambda{}_{\mu\nu} = \partial_\mu\partial_\nu\xi^\lambda + \ldots$, so $\mathcal{L}^{(2)}$
+carries **second** time derivatives of the Stückelberg fields. The metric perturbation appears
+only with first derivatives; $\xi$ does not. A matrix built from $\partial^2/\partial\dot q^2$
+is simply not the right object for a higher-derivative Lagrangian, where the phase space is
+larger and $\dot\xi$ is an independent coordinate in its own right.
+
+Settling $f(Q)$ therefore needs an Ostrogradsky treatment followed by a Dirac constraint
+analysis &mdash; primary and secondary constraints, first and second class &mdash; which this
+notebook does not attempt. Stating that is more useful than a number that would not survive it.
 
 What the matrix **can** say is where it degenerates, and that much is convention-independent:
 
@@ -372,6 +380,11 @@ Dataset @ {
     "ok" -> (MatrixRank[kinQ] === 4)|>,
   <|"statement" -> "it also has full rank at STEGR, where GR has no propagating scalars",
     "ok" -> (MatrixRank[Simplify[kinQ /. $stegr]] === 4)|>,
+  <|"statement" -> "L2 carries second time derivatives of the connection, so the phase space is larger",
+    "ok" -> (Length[Cases[lagQ2, Derivative[2, _][zz[_]][t, x], Infinity]] > 0)|>,
+  <|"statement" -> "the metric perturbation, by contrast, appears only with first derivatives",
+    "ok" -> (Length[Cases[lagQ2, Derivative[2, _][hq[__]][t, x] |
+         Derivative[_, 2][hq[__]][t, x], Infinity]] === 0)|>,
   <|"statement" -> "so the diagnostic over-counts and cannot settle f(Q)",
     "ok" -> True|>,
   <|"statement" -> "det K is proportional to fQ^3 (fQ + 2 Q fQQ)",
