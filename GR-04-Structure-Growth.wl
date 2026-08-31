@@ -66,6 +66,21 @@ is itself a discriminator, and GR-05 plots it.
 
 Conventions follow GR-02 and GR-03: $1+z = 1/a$ with $a_0 = 1$, and $\sigma_{8,0} = 0.811$ by
 default.
+
+## The series
+
+| | |
+|---|---|
+| **GR-01** | a metric in, curvature tensors out |
+| **GR-02** | an action in, field equations, Friedmann and $E(z)$ out |
+| **GR-03** | $E(z)$ in, distances, times and the BAO ruler out |
+| **GR-04** | $E(z)$ and $G_{\text{eff}}$ in, growth and $f\sigma_8$ out |
+| **GR-05** | perturbed field equations in, $G_{\text{eff}}$, slip and lensing out |
+| **GR-06** | a tetrad in, torsion, the TEGR identity and $f(\mathcal{T})$ cosmology out |
+
+You are on the growth branch, the one distances cannot substitute for. GR-03 takes the same
+$E(z)$ and turns it into what a telescope measures; the models worth arguing about are the ones
+those two branches disagree about.
 ::*)
 
 (*::md::

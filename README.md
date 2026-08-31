@@ -117,6 +117,35 @@ Scope: this is metric perturbation theory, so it covers $f(R)$ and any other the
 variable is $g_{\mu\nu}$. $f(\mathcal{T})$ and $f(Q)$ need tetrad and connection perturbations
 and are **not** covered — those entries in GR-04's library stay quoted.
 
+### `GR-06-Teleparallel-Geometry`
+
+The first notebook in the series whose fundamental variable is not the metric. Teleparallel
+gravity trades curvature for **torsion**: a flat, metric-compatible connection built from a
+tetrad $e^A{}_\mu$, with
+
+$$T^\lambda{}_{\mu\nu} = e_A{}^\lambda\left(\partial_\mu e^A{}_\nu - \partial_\nu e^A{}_\mu\right), \qquad \mathcal{T} = S_\lambda{}^{\mu\nu}T^\lambda{}_{\mu\nu}.$$
+
+Everything is built from its definition — torsion, contortion, superpotential, torsion scalar
+— and the torsion scalar is computed twice by routes sharing nothing but the torsion tensor,
+because index placement in the superpotential is where such a calculation quietly goes wrong.
+
+What it establishes:
+
+- the TEGR identity $R = -\mathcal{T} + B$, verified on three unrelated geometries, which is
+  why teleparallel gravity is equivalent to general relativity at linear order and stops being
+  equivalent the moment $f$ is non-linear;
+- the **good-tetrad problem as arithmetic**: two tetrads related by a local Lorentz rotation
+  build the same flat Minkowski metric and have different torsion scalars, $-2/r^2$ and $0$;
+- the $f(\mathcal{T})$ Friedmann equations, $\kappa\rho = \tfrac{1}{2}(f - 2\mathcal{T}f_\mathcal{T})$,
+  derived by varying the tetrad and agreeing with what GR-02 got from the metric side.
+
+It deliberately stops short of $G_{\rm eff}$, and section 8 shows why: for the perturbed
+diagonal tetrad $\delta\mathcal{T}$ carries no spatial gradient at all, and the restricted
+variation returns zero **even in the TEGR limit**, where the answer has to be the Poisson
+equation. A method that loses general relativity cannot be trusted with anything else. The fix
+is to vary all sixteen tetrad components rather than the diagonal four, which is a different
+calculation, not an extension of this one.
+
 ## Conventions worth knowing before you trust the output
 
 - **Torsion and non-metricity scalars.** In flat FLRW the notebook uses
@@ -135,11 +164,17 @@ and are **not** covered — those entries in GR-04's library stay quoted.
   The Gauss–Bonnet term is assembled explicitly as
   $R^2 - 4R_{\mu\nu}R^{\mu\nu} + R_{\rho\sigma\mu\nu}R^{\rho\sigma\mu\nu}$ rather than taken
   from the resource's `"EulerScalar"` property, which is a differently normalised object.
-- **$G_{\rm eff}$ is derived for metric theories, quoted for the rest.** GR-04 takes it as
-  input; GR-05 derives it for $f(R)$ from perturbed field equations. For $f(\mathcal{T})$ and
-  $f(Q)$ the library entries remain quoted from the literature, because their fundamental
-  variables are a tetrad and a flat non-metric connection rather than the metric. Check the
-  convention against your source for those two.
+- **What is derived and what is quoted.** GR-04 takes $G_{\rm eff}/G$ as input. GR-05 derives
+  it for $f(R)$. GR-06 derives the teleparallel geometry, the TEGR equivalence and the
+  $f(\mathcal{T})$ *background* cosmology, but **not** its $G_{\rm eff}$ — its section 8 shows
+  the diagonal-tetrad calculation failing the TEGR test rather than papering over it. Nothing
+  is derived for $f(Q)$ yet. So the $f(\mathcal{T})$ and $f(Q)$ entries in GR-04's library are
+  still quoted from the literature; check the convention against your source for those two.
+- **Two sign conventions for the torsion scalar, both used here on purpose.** GR-06 computes
+  the standard superpotential contraction, $\mathcal{T} = +6H^2$ in flat FLRW, so TEGR is
+  $f = -\mathcal{T}$. GR-02 uses `Ts` $= -6H^2$ instead, chosen so a linear $f$ is GR, matching
+  the convention in much of the $f(T)$ cosmology literature. They are related by
+  `Ts` $= -\mathcal{T}$, and GR-06 checks that both give the same Friedmann equations.
 - **GR-05's approximations are real approximations.** Quasi-static and sub-horizon both fail
   on scales approaching the horizon. The sub-horizon truncation is implemented as an explicit,
   readable term filter rather than hidden, so you can change it.

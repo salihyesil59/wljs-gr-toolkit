@@ -48,6 +48,7 @@ Section 3 shows how to carry a model across from it.
 | **GR-03** | $E(z)$ in, distances, times and the BAO ruler out |
 | **GR-04** | $E(z)$ and $G_{\text{eff}}$ in, growth and $f\sigma_8$ out |
 | **GR-05** | perturbed field equations in, $G_{\text{eff}}$, slip and lensing out |
+| **GR-06** | a tetrad in, torsion, the TEGR identity and $f(\mathcal{T})$ cosmology out |
 
 You are on the observational branch. GR-02 hands over $E(z)$; what leaves here is what a
 telescope actually records. GR-04 takes the same $E(z)$ down the other branch, and the
