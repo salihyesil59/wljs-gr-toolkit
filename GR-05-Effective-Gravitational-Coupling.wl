@@ -80,6 +80,7 @@ change.
 | **GR-03** | $E(z)$ in, distances, times and the BAO ruler out |
 | **GR-04** | $E(z)$ and $G_{\text{eff}}$ in, growth and $f\sigma_8$ out |
 | **GR-05** | perturbed field equations in, $G_{\text{eff}}$, slip and lensing out |
+| **GR-06** | a tetrad in, torsion, the TEGR identity and $f(\mathcal{T})$ cosmology out |
 
 This is the last link and the only one that feeds backwards: GR-04 treats $G_{\text{eff}}$ as
 something you look up, and this is where the $f(R)$ entry it looks up is manufactured.
