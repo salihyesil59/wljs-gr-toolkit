@@ -490,23 +490,59 @@ Props:
 Type: Input
 %-------------------------------------------------------------------------%
 .md
-## 6. The Euler-Lagrange operator
+## 6. The Euler-Lagrange operator, twice over
 
-The same trap GR-06 documents applies here, so the same fix is used. The obvious Wolfram
-spelling of the field-theory Euler-Lagrange operator silently discards the spatial term, which
-is exactly the one carrying $k^2$. The toy Lagrangian below is the one-line test that catches
-it; the single-variable operator used for the background above is unaffected.
+Two things have to be right here, and the first one is the trap GR-06 documents: the obvious
+Wolfram spelling of the field-theory Euler-Lagrange operator silently discards the spatial
+term, which is exactly the one carrying $k^2$. The toy Lagrangian below catches that in one
+line, and the single-variable operator used for the background above is unaffected.
+
+The second is specific to $f(Q)$ and easy to walk past. The non-metricity tensor contains the
+connection, and the connection contains $\partial_\mu\partial_\nu\xi^\rho$, so
+$\mathcal{L}^{(2)}$ carries **second** derivatives of the Stückelberg fields &mdash; the metric
+perturbation appears only with first derivatives, but $\xi$ does not. An Euler-Lagrange operator
+that stops at first derivatives therefore gets the connection equations wrong while leaving the
+metric equations untouched, which is a nasty failure mode: the STEGR acceptance test lives in
+the metric sector and passes either way.
+
+`EulerLagrange` below runs to second order,
+
+$$
+\frac{\partial L}{\partial q} - \partial_\mu\frac{\partial L}{\partial(\partial_\mu q)} + \partial_\mu\partial_\nu\frac{\partial L}{\partial(\partial_\mu\partial_\nu q)},
+$$
+
+and the difference is visible immediately: with it, the STEGR connection equations come out
+identically zero, which is what diffeomorphism invariance demands, where the first-order
+operator leaves a spurious constraint behind.
 
 %-------------------------------------------------------------------------%
 Display: markdown
 Type: Output
 %-------------------------------------------------------------------------%
-## 6. The Euler-Lagrange operator
+## 6. The Euler-Lagrange operator, twice over
 
-The same trap GR-06 documents applies here, so the same fix is used. The obvious Wolfram
-spelling of the field-theory Euler-Lagrange operator silently discards the spatial term, which
-is exactly the one carrying $k^2$. The toy Lagrangian below is the one-line test that catches
-it; the single-variable operator used for the background above is unaffected.
+Two things have to be right here, and the first one is the trap GR-06 documents: the obvious
+Wolfram spelling of the field-theory Euler-Lagrange operator silently discards the spatial
+term, which is exactly the one carrying $k^2$. The toy Lagrangian below catches that in one
+line, and the single-variable operator used for the background above is unaffected.
+
+The second is specific to $f(Q)$ and easy to walk past. The non-metricity tensor contains the
+connection, and the connection contains $\partial_\mu\partial_\nu\xi^\rho$, so
+$\mathcal{L}^{(2)}$ carries **second** derivatives of the Stückelberg fields &mdash; the metric
+perturbation appears only with first derivatives, but $\xi$ does not. An Euler-Lagrange operator
+that stops at first derivatives therefore gets the connection equations wrong while leaving the
+metric equations untouched, which is a nasty failure mode: the STEGR acceptance test lives in
+the metric sector and passes either way.
+
+`EulerLagrange` below runs to second order,
+
+$$
+\frac{\partial L}{\partial q} - \partial_\mu\frac{\partial L}{\partial(\partial_\mu q)} + \partial_\mu\partial_\nu\frac{\partial L}{\partial(\partial_\mu\partial_\nu q)},
+$$
+
+and the difference is visible immediately: with it, the STEGR connection equations come out
+identically zero, which is what diffeomorphism invariance demands, where the first-order
+operator leaves a spurious constraint behind.
 
 %-------------------------------------------------------------------------%
 Props:
@@ -526,14 +562,38 @@ EulerLagrange2D[lag_, q_] :=
   ls   = lag /. fwd;
   (D[ls, u0] /. back) - D[D[ls, u1] /. back, t] - D[D[ls, u2] /. back, x]];
 
-Module[{toy, want},
+(* the one actually used: second order, because Q carries d_mu d_nu xi *)
+ClearAll[EulerLagrange];
+EulerLagrange[lag_, q_] :=
+ Module[{u, ord, fwd, back, ls},
+  ord = {{0, 0}, {1, 0}, {0, 1}, {2, 0}, {1, 1}, {0, 2}};
+  fwd = Table[If[o === {0, 0}, q[t, x] -> u[0, 0],
+     Derivative[o[[1]], o[[2]]][q][t, x] -> u[o[[1]], o[[2]]]], {o, ord}];
+  back = Table[If[o === {0, 0}, u[0, 0] -> q[t, x],
+     u[o[[1]], o[[2]]] -> Derivative[o[[1]], o[[2]]][q][t, x]], {o, ord}];
+  ls = lag /. fwd;
+  (D[ls, u[0, 0]] /. back)
+   - D[D[ls, u[1, 0]] /. back, t] - D[D[ls, u[0, 1]] /. back, x]
+   + D[D[ls, u[2, 0]] /. back, {t, 2}] + D[D[ls, u[1, 1]] /. back, t, x]
+   + D[D[ls, u[0, 2]] /. back, {x, 2}]];
+
+Module[{toy, want, toy2},
  toy  = D[uA[t, x], x] D[uB[t, x], x];
  want = -D[uB[t, x], {x, 2}];
+ toy2 = D[uA[t, x], {t, 2}] uB[t, x];
  Dataset @ {
-   <|"operator" -> "naive", "result" -> EulerLagrangeNaive[toy, uA],
+   <|"operator" -> "naive, first order", "test" -> "L = (d_x A)(d_x B)",
+     "result" -> EulerLagrangeNaive[toy, uA],
      "correct" -> (Simplify[EulerLagrangeNaive[toy, uA] - want] === 0)|>,
-   <|"operator" -> "EulerLagrange2D", "result" -> EulerLagrange2D[toy, uA],
-     "correct" -> (Simplify[EulerLagrange2D[toy, uA] - want] === 0)|>}]
+   <|"operator" -> "EulerLagrange2D", "test" -> "L = (d_x A)(d_x B)",
+     "result" -> EulerLagrange2D[toy, uA],
+     "correct" -> (Simplify[EulerLagrange2D[toy, uA] - want] === 0)|>,
+   <|"operator" -> "EulerLagrange2D", "test" -> "L = (d_t^2 A) B, second derivative",
+     "result" -> EulerLagrange2D[toy2, uA],
+     "correct" -> (Simplify[EulerLagrange2D[toy2, uA] - D[uB[t, x], {t, 2}]] === 0)|>,
+   <|"operator" -> "EulerLagrange", "test" -> "L = (d_t^2 A) B, second derivative",
+     "result" -> EulerLagrange[toy2, uA],
+     "correct" -> (Simplify[EulerLagrange[toy2, uA] - D[uB[t, x], {t, 2}]] === 0)|>}]
 
 %-------------------------------------------------------------------------%
 Props:
@@ -707,7 +767,7 @@ Module[{ph, trunc1, gpert, uUp, rhoT, tUp, sqg, bgMet, b00, b11},
     Flatten@Table[hq[i, j] -> trunc1[(-\[Kappa]) sqg tUp[[i, j]] If[i === j, 1, 2]],
       {i, 4}, {j, i, 4}]];
 
- bgMet = Association[# -> EulerLagrange2D[lagQ1, #] & /@ metVars];
+ bgMet = Association[# -> EulerLagrange[lagQ1, #] & /@ metVars];
  b00 = Simplify[bgMet[hq[1, 1]] - (matterSource[hq[1, 1]] /. eps -> 0)];
  b11 = Simplify[bgMet[hq[2, 2]] - (matterSource[hq[2, 2]] /. eps -> 0)];
  backgroundOnShell = Simplify[First@Solve[{b00 == 0, b11 == 0}, {rho[t], a''[t]}]];
@@ -775,8 +835,8 @@ Module[{ph, subst, onShell, gMet, gCon},
  subst[e_] := Simplify[(e /. qAnsatz)/ph];
  onShell[e_] := Simplify[Simplify[e /. quasiStatic] /. backgroundOnShell];
 
- gMet = Association[# -> subst[EulerLagrange2D[lagQ2, #]] & /@ metVars];
- gCon = Association[# -> subst[EulerLagrange2D[lagQ2, #]] & /@ conVars];
+ gMet = Association[# -> subst[EulerLagrange[lagQ2, #]] & /@ metVars];
+ gCon = Association[# -> subst[EulerLagrange[lagQ2, #]] & /@ conVars];
 
  linMet = Association[# -> onShell[gMet[#] - Coefficient[matterSource[#], eps, 1]/ph]
      & /@ {hq[1, 1], hq[1, 2], hq[2, 2], hq[3, 3], hq[4, 4]}];
@@ -800,7 +860,9 @@ Module[{st = {F -> Identity}, m00, m0x, mxx, myy, c1, c2},
    <|"acceptance test" -> "the connection modes leave the metric equations",
      "ok" -> AllTrue[{m00, m0x, mxx, myy}, FreeQ[#, z0 | z1] &]|>,
    <|"acceptance test" -> "the dust pressure equation is consistent",
-     "ok" -> (mxx === 0 || Simplify[mxx /. phi[t] -> psi[t]] === 0)|>}}]]
+     "ok" -> (mxx === 0 || Simplify[mxx /. phi[t] -> psi[t]] === 0)|>,
+   <|"acceptance test" -> "the connection equations vanish identically, as diffeomorphism invariance demands",
+     "ok" -> (Simplify[c1] === 0 && Simplify[c2] === 0)|>}}]]
 
 %-------------------------------------------------------------------------%
 Props:
@@ -995,9 +1057,19 @@ Module[{gF, gL, gP, nF, nL, nP, qv, lag, fr1, toN1, contin, names, stg},
     "ok" -> (Simplify[(fr1 /. F -> Identity) - (3 a'[t]^2/(\[Kappa] a[t]^2) - \[Rho])] === 0)|>,
   <|"check" -> "the naive Euler-Lagrange operator drops the gradient term",
     "ok" -> (EulerLagrangeNaive[D[uA[t, x], x] D[uB[t, x], x], uA] === 0)|>,
-  <|"check" -> "EulerLagrange2D gets it right",
+  <|"check" -> "EulerLagrange2D gets the gradient term right",
     "ok" -> (Simplify[EulerLagrange2D[D[uA[t, x], x] D[uB[t, x], x], uA]
        + D[uB[t, x], {x, 2}]] === 0)|>,
+  <|"check" -> "L2 really does carry second time derivatives of the connection",
+    "ok" -> (Length[Cases[lagQ2, Derivative[2, _][zz[_]][t, x], Infinity]] > 0)|>,
+  <|"check" -> "so a first-order operator is not enough, and the second-order one is right",
+    "ok" -> (Simplify[EulerLagrange[D[uA[t, x], {t, 2}] uB[t, x], uA]
+          - D[uB[t, x], {t, 2}]] === 0 &&
+       Simplify[EulerLagrange2D[D[uA[t, x], {t, 2}] uB[t, x], uA]
+          - D[uB[t, x], {t, 2}]] =!= 0)|>,
+  <|"check" -> "STEGR: the connection equations vanish identically",
+    "ok" -> (Simplify[linCon[zz[1]] /. F -> Identity] === 0 &&
+             Simplify[linCon[zz[2]] /. F -> Identity] === 0)|>,
   <|"check" -> "STEGR: the 0-0 equation carries k^2",
     "ok" -> (Exponent[Expand[Simplify[linMet[hq[1, 1]] /. F -> Identity]], k] === 2)|>,
   <|"check" -> "STEGR: no slip",
