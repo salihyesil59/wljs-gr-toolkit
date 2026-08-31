@@ -89,6 +89,7 @@ default.
 | **GR-05** | perturbed field equations in, $G_{\text{eff}}$, slip and lensing out |
 | **GR-06** | a tetrad in, torsion, the TEGR identity and $f(\mathcal{T})$ cosmology out |
 | **GR-07** | a metric and a flat connection in, non-metricity and $f(Q)$ cosmology out |
+| **GR-08** | the same quadratic actions in, kinetic matrices and wave speeds out |
 
 You are on the growth branch, the one distances cannot substitute for. GR-03 takes the same
 $E(z)$ and turns it into what a telescope measures; the models worth arguing about are the ones
@@ -173,6 +174,7 @@ default.
 | **GR-05** | perturbed field equations in, $G_{\text{eff}}$, slip and lensing out |
 | **GR-06** | a tetrad in, torsion, the TEGR identity and $f(\mathcal{T})$ cosmology out |
 | **GR-07** | a metric and a flat connection in, non-metricity and $f(Q)$ cosmology out |
+| **GR-08** | the same quadratic actions in, kinetic matrices and wave speeds out |
 
 You are on the growth branch, the one distances cannot substitute for. GR-03 takes the same
 $E(z)$ and turns it into what a telescope measures; the models worth arguing about are the ones

@@ -55,6 +55,7 @@ Section 3 shows how to carry a model across from it.
 | **GR-05** | perturbed field equations in, $G_{\text{eff}}$, slip and lensing out |
 | **GR-06** | a tetrad in, torsion, the TEGR identity and $f(\mathcal{T})$ cosmology out |
 | **GR-07** | a metric and a flat connection in, non-metricity and $f(Q)$ cosmology out |
+| **GR-08** | the same quadratic actions in, kinetic matrices and wave speeds out |
 
 You are on the observational branch. GR-02 hands over $E(z)$; what leaves here is what a
 telescope actually records. GR-04 takes the same $E(z)$ down the other branch, and the
@@ -106,6 +107,7 @@ Section 3 shows how to carry a model across from it.
 | **GR-05** | perturbed field equations in, $G_{\text{eff}}$, slip and lensing out |
 | **GR-06** | a tetrad in, torsion, the TEGR identity and $f(\mathcal{T})$ cosmology out |
 | **GR-07** | a metric and a flat connection in, non-metricity and $f(Q)$ cosmology out |
+| **GR-08** | the same quadratic actions in, kinetic matrices and wave speeds out |
 
 You are on the observational branch. GR-02 hands over $E(z)$; what leaves here is what a
 telescope actually records. GR-04 takes the same $E(z)$ down the other branch, and the

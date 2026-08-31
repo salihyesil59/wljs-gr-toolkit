@@ -196,6 +196,39 @@ With this the three families line up:
 $f(R)$ carries a scalaron with a Compton wavelength, so it has a scale to compare $k$ against.
 Neither teleparallel family does, and their modification is a pure rescaling.
 
+### `GR-08-Strong-Coupling`
+
+Every earlier notebook ends with the same caveat — a correct linear calculation is necessary,
+not sufficient. This one makes that quantitative. It reuses the quadratic actions GR-06 and
+GR-07 built and asks a different question of them: not what the equations say, but whether the
+modes in them propagate at all.
+
+The diagnostic is the kinetic matrix $K_{ij} = \partial^2 L^{(2)}/\partial\dot q_i\partial\dot q_j$
+for one Fourier mode. A zero eigenvalue is a direction with no kinetic term; the ratio of the
+gradient coefficient to the kinetic one is $c^2$.
+
+- **Both theories propagate gravitational waves at exactly the speed of light**, $c_{\rm GW}^2 = 1$
+  identically rather than approximately, both polarisations, every $f$. Neither is touched by
+  the GW170817 constraint.
+- **In $f(\mathcal{T})$ the extra Lorentz modes carry no kinetic term at all** — the boost and
+  rotation rows of $K$ vanish identically, exactly like the lapse, which is a Lagrange
+  multiplier. Around flat FLRW they do not propagate, which is strong coupling computed rather
+  than asserted, and the surviving scalar entry is $6a^3(f_{\mathcal T} + 2\mathcal{T}f_{\mathcal{TT}})$.
+- **In $f(Q)$ the bare kinetic matrix cannot settle the question**, and the notebook says so.
+  It has full rank — but it has full rank at STEGR too, where general relativity has no
+  propagating scalars, because $\sqrt{-g}Q$ keeps the time derivatives of the lapse that the
+  Einstein–Hilbert boundary term removes. Settling it needs a Hamiltonian constraint analysis
+  the notebook does not do.
+
+Both families share a degeneracy locus, $f_X + 2Xf_{XX} = 0$ with $X = \mathcal{T}$ or $Q$. For
+a concrete model that is a redshift: quadratic $f = X + \alpha X^2$ with $\alpha H_0^2 = -0.02$
+degenerates at $z = 0.31$, in the middle of the range surveys measure. A model whose degeneracy
+sits inside your fitting range is one whose linear predictions there should not be trusted.
+
+Method note: real perturbations with $\cos kx$ and $\sin kx$ and an average over one wavelength,
+not a complex plane wave — a quadratic action built from $e^{ikx}$ picks up $e^{2ikx}$ and the
+phases stop cancelling.
+
 ## Conventions worth knowing before you trust the output
 
 - **Torsion and non-metricity scalars.** In flat FLRW the notebook uses
@@ -216,10 +249,14 @@ Neither teleparallel family does, and their modification is a pure rescaling.
   from the resource's `"EulerScalar"` property, which is a differently normalised object.
 - **Nothing is quoted.** GR-04 takes $G_{\rm eff}/G$ as input, and every entry its library
   offers is derived inside the series: $f(R)$ in GR-05, $f(\mathcal{T})$ in GR-06, $f(Q)$ in
-  GR-07. What remains are the approximations, shared by all three — quasi-static and
-  sub-horizon, both of which fail on scales approaching the horizon — and the strong-coupling
-  question in the teleparallel families, where extra modes propagate and their kinetic terms
-  can degenerate, so a correct linear calculation is necessary but not sufficient.
+  GR-07. What remains are the quasi-static and sub-horizon approximations, shared by all three,
+  which fail on scales approaching the horizon.
+- **The $G_{\rm eff}$ results are metric-sector statements.** GR-08 shows that in
+  $f(\mathcal{T})$ the extra Lorentz modes have identically zero kinetic terms around flat
+  FLRW, so linear theory does not describe them, and that for $f(Q)$ the status of the
+  connection modes is open at that level of analysis. This does not touch the algebra of GR-06
+  and GR-07; it bounds how far to trust it. $f(R)$ is unaffected — its scalaron has a healthy
+  kinetic term.
 - **Two sign conventions for the torsion scalar, both used here on purpose.** GR-06 computes
   the standard superpotential contraction, $\mathcal{T} = +6H^2$ in flat FLRW, so TEGR is
   $f = -\mathcal{T}$. GR-02 uses `Ts` $= -6H^2$ instead, chosen so a linear $f$ is GR, matching
