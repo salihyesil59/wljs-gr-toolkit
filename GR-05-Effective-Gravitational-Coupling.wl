@@ -68,7 +68,21 @@ This is metric perturbation theory, so it covers $f(R)$ and, with the field equa
 any other theory whose fundamental variable is $g_{\mu\nu}$. It does **not** cover
 $f(\mathcal{T})$ or $f(Q)$: their fundamental variables are a tetrad and a flat non-metric
 connection, and perturbing those needs machinery this notebook does not have. Those entries in
-GR-04's library remain quoted rather than derived.
+GR-04's library remain quoted rather than derived. Section 10 says exactly what would have to
+change.
+
+## The series
+
+| | |
+|---|---|
+| **GR-01** | a metric in, curvature tensors out |
+| **GR-02** | an action in, field equations, Friedmann and $E(z)$ out |
+| **GR-03** | $E(z)$ in, distances, times and the BAO ruler out |
+| **GR-04** | $E(z)$ and $G_{\text{eff}}$ in, growth and $f\sigma_8$ out |
+| **GR-05** | perturbed field equations in, $G_{\text{eff}}$, slip and lensing out |
+
+This is the last link and the only one that feeds backwards: GR-04 treats $G_{\text{eff}}$ as
+something you look up, and this is where the $f(R)$ entry it looks up is manufactured.
 ::*)
 
 (*::md::
@@ -355,12 +369,35 @@ Nothing in sections 2 to 6 assumed anything about $f(R)$ except the form of the 
 equations fed into `fieldEq`. Swap those for another **metric** theory and the rest of the
 pipeline runs unchanged.
 
-Torsion and non-metricity are a different matter. In $f(\mathcal{T})$ the dynamical variable is
-the tetrad $e^A{}_\mu$, and a perturbed tetrad carries six more degrees of freedom than the
-metric it builds; in $f(Q)$ the flat connection has its own perturbations that survive the
-coincident gauge. Neither can be reached by perturbing $g_{\mu\nu}$ alone, so this notebook
-does not attempt them, and the corresponding entries in GR-04's library stay quoted from the
-literature. That is a real boundary of the series, not an oversight.
+Torsion and non-metricity break that, and not on a technicality. In both the object being
+varied is something other than the metric.
+
+**Teleparallel, $f(\mathcal{T})$.** The variable is the tetrad $e^A{}_\mu$: sixteen components
+against the metric's ten. The extra six are exactly the dimension of the local Lorentz group,
+and in TEGR they are pure gauge, which is why the linear theory can be general relativity in
+disguise at all. For a non-linear $f$ that invariance is lost in the pure-tetrad formulation,
+so the six stop being gauge and start being physics &mdash; two different tetrads building the
+*same* metric then satisfy different field equations. This is the good-tetrad problem, and it
+means a perturbation calculation has to commit to a tetrad, not merely to a metric. The
+covariant formulation buys the invariance back by carrying a spin connection alongside, at the
+price of that connection having equations of its own.
+
+**Symmetric teleparallel, $f(Q)$.** The variable is a flat, torsion-free connection, and the
+coincident gauge that makes $Q$ come out as the tidy $-6H^2$ used in GR-02 is a statement about
+that connection rather than about coordinates in the usual sense. It does not stack for free
+on top of Newtonian gauge: fixing the connection spends freedom that the metric gauge choice
+also wants. A consistent calculation either keeps the connection perturbations explicitly or
+gives up the convenient form of $Q$.
+
+Both families also carry known perturbative pathologies. Extra modes propagate, and their
+kinetic terms can degenerate on cosmological backgrounds, so linear theory is not automatically
+the right description of them &mdash; the strong-coupling problem. A correct linear calculation
+is necessary but not obviously sufficient.
+
+None of this is unreachable. It is a different derivation over different variables, and it is
+the natural starting point for a GR-06. What matters here is that the boundary is stated: the
+$f(\mathcal{T})$ and $f(Q)$ entries in GR-04's library are quoted from the literature, and
+nothing in this notebook licenses them.
 ::*)
 
 (*::code::*)

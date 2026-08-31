@@ -163,7 +163,25 @@ source file you can evaluate directly with `Get`, which is how the physics is te
 it ever becomes a notebook.
 
 Both the `.wl` sources and the built `.wln` notebooks are committed, so you can open a
-notebook straight away or rebuild it from source.
+notebook straight away or rebuild it from source. The committed notebooks also carry their
+saved evaluation outputs, which is why the results are visible on GitHub without running
+anything — and why a rebuild is not free: `wl2wln.wls` regenerates the notebook from source
+and discards every one of them.
+
+For a small change, `patchwln.wls` edits a built notebook in place instead:
+
+```
+wolframscript -file patchwln.wls GR-04-Structure-Growth.wln patch.txt
+```
+
+where `patch.txt` holds the old and new text between `%%%OLD%%%` and `%%%NEW%%%` marker
+lines. A Markdown passage lives in a `.wln` exactly twice, once in the hidden `.md` input cell
+and once in its rendered output cell, so the tool refuses to write unless it finds precisely
+that many matches — a partial replacement would leave the source and the rendered copy
+disagreeing. It also rejects replacement text containing a blank line followed by `%`, which
+is how the reader recognises a cell separator, and it parses the result with WLJS's own reader
+before and after so you can see the output cells survived. Edit the matching `.wl` too, or the
+next rebuild reverts the change.
 
 ## Requirements
 

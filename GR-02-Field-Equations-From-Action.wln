@@ -52,6 +52,20 @@ The scalars are written as the symbols `Rs` (Ricci scalar), `Tms` (trace $T = g^
 of the stress tensor), `Ts` (torsion scalar), `Qs` (non-metricity scalar) and `Gs`
 (Gauss-Bonnet). You build the action out of those.
 
+## The series
+
+| | |
+|---|---|
+| **GR-01** | a metric in, curvature tensors out |
+| **GR-02** | an action in, field equations, Friedmann and $E(z)$ out |
+| **GR-03** | $E(z)$ in, distances, times and the BAO ruler out |
+| **GR-04** | $E(z)$ and $G_{\text{eff}}$ in, growth and $f\sigma_8$ out |
+| **GR-05** | perturbed field equations in, $G_{\text{eff}}$, slip and lensing out |
+
+You are at the second link, and it is the one that turns a guess about gravity into equations.
+GR-01 supplies the curvature machinery reused here; the $E(z)$ that falls out at the end is
+where GR-03 and GR-04 both begin, one heading for distances and the other for growth.
+
 %-------------------------------------------------------------------------%
 Display: markdown
 Type: Output
@@ -93,6 +107,20 @@ $u^\mu u_\mu = -1$.
 The scalars are written as the symbols `Rs` (Ricci scalar), `Tms` (trace $T = g^{\mu\nu}T_{\mu\nu}$
 of the stress tensor), `Ts` (torsion scalar), `Qs` (non-metricity scalar) and `Gs`
 (Gauss-Bonnet). You build the action out of those.
+
+## The series
+
+| | |
+|---|---|
+| **GR-01** | a metric in, curvature tensors out |
+| **GR-02** | an action in, field equations, Friedmann and $E(z)$ out |
+| **GR-03** | $E(z)$ in, distances, times and the BAO ruler out |
+| **GR-04** | $E(z)$ and $G_{\text{eff}}$ in, growth and $f\sigma_8$ out |
+| **GR-05** | perturbed field equations in, $G_{\text{eff}}$, slip and lensing out |
+
+You are at the second link, and it is the one that turns a guess about gravity into equations.
+GR-01 supplies the curvature machinery reused here; the $E(z)$ that falls out at the end is
+where GR-03 and GR-04 both begin, one heading for distances and the other for growth.
 
 %-------------------------------------------------------------------------%
 Props:
