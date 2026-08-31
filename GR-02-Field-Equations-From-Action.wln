@@ -62,6 +62,7 @@ of the stress tensor), `Ts` (torsion scalar), `Qs` (non-metricity scalar) and `G
 | **GR-04** | $E(z)$ and $G_{\text{eff}}$ in, growth and $f\sigma_8$ out |
 | **GR-05** | perturbed field equations in, $G_{\text{eff}}$, slip and lensing out |
 | **GR-06** | a tetrad in, torsion, the TEGR identity and $f(\mathcal{T})$ cosmology out |
+| **GR-07** | a metric and a flat connection in, non-metricity and $f(Q)$ cosmology out |
 
 You are at the second link, and it is the one that turns a guess about gravity into equations.
 GR-01 supplies the curvature machinery reused here; the $E(z)$ that falls out at the end is
@@ -119,6 +120,7 @@ of the stress tensor), `Ts` (torsion scalar), `Qs` (non-metricity scalar) and `G
 | **GR-04** | $E(z)$ and $G_{\text{eff}}$ in, growth and $f\sigma_8$ out |
 | **GR-05** | perturbed field equations in, $G_{\text{eff}}$, slip and lensing out |
 | **GR-06** | a tetrad in, torsion, the TEGR identity and $f(\mathcal{T})$ cosmology out |
+| **GR-07** | a metric and a flat connection in, non-metricity and $f(Q)$ cosmology out |
 
 You are at the second link, and it is the one that turns a guess about gravity into equations.
 GR-01 supplies the curvature machinery reused here; the $E(z)$ that falls out at the end is

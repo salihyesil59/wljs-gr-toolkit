@@ -57,6 +57,7 @@ With these signs a round sphere has $R > 0$, and the vacuum field equations read
 | **GR-04** | $E(z)$ and $G_{\text{eff}}$ in, growth and $f\sigma_8$ out |
 | **GR-05** | perturbed field equations in, $G_{\text{eff}}$, slip and lensing out |
 | **GR-06** | a tetrad in, torsion, the TEGR identity and $f(\mathcal{T})$ cosmology out |
+| **GR-07** | a metric and a flat connection in, non-metricity and $f(Q)$ cosmology out |
 
 This is where the chain starts, and it is the only notebook that asks for nothing but geometry.
 Everything downstream leans on the curvature engine set up here: GR-02 runs it on the FLRW
