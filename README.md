@@ -406,6 +406,30 @@ anything:
 - $\Lambda$CDM: $E^2 = \Omega_m(1+z)^3 + \Omega_r(1+z)^4 + \Omega_k(1+z)^2 + \Omega_\Lambda$,
   $q_0 = -1 + \tfrac{3}{2}\Omega_m$, acceleration from $z = 0.671$ at $\Omega_m = 0.3$
 
+### Against a second implementation
+
+The notebooks have a numerical counterpart: [CosmoFit](https://github.com/salihyesil59/CosmoFit),
+a Python cosmological parameter-estimation library that fits these same models to BAO, supernova,
+cosmic-chronometer and CMB data. It derives its Friedmann constraints independently, in sympy,
+and solves them with its own root finder — no code is shared with these notebooks.
+
+`cosmofit-reference.wls` prints $E(z)$ at 25 digits by loading GR-02 and driving its
+`FriedmannEquations` and `HubbleFunction` directly, rather than re-deriving anything:
+
+```
+wolframscript -file cosmofit-reference.wls
+```
+
+Those numbers are pinned on the other side in `tests/test_notebook_agreement.py`. Two derivations
+written years and languages apart currently agree to **3 parts in $10^{16}$** — machine precision
+— for $\Lambda$CDM and for the $f(\mathcal{T})$ power law at $n = -0.5,\, 0.2,\, 0.7$, both
+through CosmoFit's hand-written models and through its action compiler.
+
+Worth knowing: GR-02 hands the $f(\mathcal{T})$ and $f(Q)$ power laws the *identical* background
+constraint, since both scalars are $-6H^2$ on flat FLRW. That is correct rather than an oversight,
+and it means background data alone cannot separate those two families — a growth or perturbation
+observable is needed, which is what GR-04 and GR-05 are for.
+
 ## License
 
 MIT — see [LICENSE](LICENSE). Use it, change it, publish with it; just keep the copyright
