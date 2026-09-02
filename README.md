@@ -292,6 +292,23 @@ Three acceptance tests frame the result, and all three must return zero: general
 the metric ADM sector, STEGR as $f = Q - 2\Lambda$, and the linear branch $f'' = 0$. The count
 is also reproduced with concrete numbers, so it does not rest on a symbolic rank.
 
+**$f(R)$ gets the same treatment, by a second route.** It propagates **one** scalar mode, the
+scalaron, where general relativity propagates none — and here the constraint structure is
+*identical* between the two, four first class and eight second class in both. Only the number of
+coordinates differs, nine against eight, the extra one being the scalaron. So $f(R)$ adds a
+field, while $f(Q)$ moves a constraint across the first/second-class line; two different ways of
+freeing exactly one mode.
+
+$f(R)$ cannot be reached the ADM way, and the reason is the third trap in this notebook. In ADM
+variables ${}^{(4)}R = K_{ij}K^{ij} - K^2 + {}^{(3)}R$ **plus total derivatives**, and those are
+droppable in general relativity, where they multiply a constant, but not in $f(R)$, where they
+multiply $f'$. So nothing is integrated by parts by hand: the full four-metric is rebuilt out of
+the ADM pieces, ${}^{(4)}R$ is computed from it directly, and the second time derivatives go to
+`OstrogradskyReduce` intact. The eight second-class constraints are then a check on the route
+itself — they are what removes the Ostrogradsky variables again, the algorithm discovering on its
+own that general relativity is not fourth order. A mistake in the four-metric would show up as a
+control that no longer returns zero.
+
 Scope: de Sitter background, scalar sector, one Fourier mode, linearised theory. Constraint
 structure can be background dependent, so a background with $\dot H 
 eq 0$ is not covered.
@@ -399,7 +416,9 @@ anything:
 - FLRW: $G_{tt} = 3\dot a^2/a^2$, and $3H^2/\kappa = \rho$, $p = -(3H^2 + 2\dot H)/\kappa$
 - TEGR ($f = \mathcal{T}$) and STEGR ($f = Q$) reproduce GR exactly
 - General relativity, STEGR and the linear branch $f'' = 0$ each give **zero** propagating
-  scalar modes in the Dirac count; general $f(Q)$ gives **one**
+  scalar modes in the Dirac count; general $f(Q)$ gives **one**, and so does general $f(R)$ —
+  reached by a second route, from the four-metric rather than from ADM, with general relativity
+  again giving zero as the control
 - Gauss–Bonnet is topological in four dimensions: $f = R + \alpha\mathcal{G}$ gives plain GR
 - $f(R) = R + \alpha R^2$ agrees between the covariant and minisuperspace routes, and matches
   the textbook $3FH^2 = \kappa\rho + \tfrac{1}{2}(FR - f) - 3H\dot F$

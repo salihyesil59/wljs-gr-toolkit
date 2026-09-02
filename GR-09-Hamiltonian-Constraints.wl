@@ -428,7 +428,131 @@ Rank four was a symptom of that, not a mode count.
 ::*)
 
 (*::md::
-## 8. Checks
+## 8. $f(R)$, and a second route to the whole calculation
+
+Everything above reaches a first-order Lagrangian by writing the action in ADM form, where the
+lapse and shift carry no velocities. $f(R)$ cannot be reached that way, and the reason is worth
+being precise about, because getting it wrong produces a plausible number.
+
+In ADM variables the four-dimensional Ricci scalar is
+
+$$
+{}^{(4)}R \;=\; K_{ij}K^{ij} - K^2 + {}^{(3)}R \;+\; \text{total derivatives}.
+$$
+
+In general relativity those total derivatives multiply a **constant** and integrate away, which
+is why $\sqrt{h}\,N(K_{ij}K^{ij} - K^2 + {}^{(3)}R)$ is a legitimate starting point. In $f(R)$
+they multiply $f'(R)$, which is not constant, and dropping them changes the theory. It is the
+same trap the ordinary minisuperspace reduction hits — see the companion library's
+`theory/curvature.py`, which avoids it with a Lagrange multiplier for exactly this reason.
+
+So this section does not integrate anything by parts by hand. It builds the full four-metric
+back out of the ADM pieces already defined above,
+
+$$
+g_{00} = -(N^2 - N_iN^i), \qquad g_{0i} = N_i, \qquad g_{ij} = h_{ij},
+$$
+
+computes ${}^{(4)}R$ from it directly, and hands the result — second time derivatives and all —
+to `OstrogradskyReduce`. Nothing is discarded, so nothing can be discarded wrongly.
+
+**The scalar-tensor form.** With a Lagrange multiplier, $f(R)$ is
+
+$$
+L = \sqrt{-g}\,\big[\,F\,{}^{(4)}R - V(F)\,\big], \qquad F = f'(\chi), \qquad V = F\chi - f(\chi),
+$$
+
+so that $V'(F) = \chi$ and $V''(F) = 1/f''(\chi)$. The background must solve its own equations or
+the constraint structure is not the theory's: on de Sitter with $F = f_0$ constant, varying $F$
+gives $V'(f_0) = {}^{(4)}R = 12H^2$ and the Friedmann constraint gives $V(f_0) = 6f_0H^2$. Both
+are imposed. $V''$ is left free, and it is the whole story:
+
+- $V''$ finite and non-zero is a genuine $f(R)$, and the scalaron propagates;
+- $f'' \to 0$ — general relativity — is $V'' \to \infty$, an infinitely heavy scalar, which does
+  not propagate at all.
+
+The control below runs the same pipeline with the scalaron switched off, so the covariant route
+is checked against the answer §2 already established by the ADM route.
+::*)
+
+(*::code::*)
+ClearAll[ff, ffld, vv2, f0fr, g4, g4inv, ch4, ric4, rr4, sq4, nsUp, nsSq];
+
+(* nshift is N_i with a lower index -- see how dnab contracts it above *)
+nsUp = Table[Sum[h3inv[[i, j]] nshift[[j]], {j, 3}], {i, 3}];
+nsSq = ser[Sum[nshift[[i]] nsUp[[i]], {i, 3}]];
+
+g4 = Table[0, {4}, {4}];
+g4[[1, 1]] = ser[-(nlapse^2 - nsSq)];
+Do[g4[[1, i + 1]] = nshift[[i]]; g4[[i + 1, 1]] = nshift[[i]], {i, 3}];
+Do[g4[[i + 1, j + 1]] = h3[[i, j]], {i, 3}, {j, 3}];
+g4 = ser[g4];
+
+co4 = {t, x, y, z};
+g4inv = ser[Inverse[g4]];
+
+ch4 = Table[ser[(1/2) Sum[g4inv[[p, s]] (D[g4[[s, m]], co4[[n]]]
+     + D[g4[[s, n]], co4[[m]]] - D[g4[[m, n]], co4[[s]]]), {s, 4}]],
+   {p, 4}, {m, 4}, {n, 4}];
+
+ric4 = Table[ser[
+    Sum[D[ch4[[s, m, n]], co4[[s]]], {s, 4}]
+  - Sum[D[ch4[[s, m, s]], co4[[n]]], {s, 4}]
+  + Sum[ch4[[s, s, p]] ch4[[p, m, n]], {s, 4}, {p, 4}]
+  - Sum[ch4[[s, n, p]] ch4[[p, m, s]], {s, 4}, {p, 4}]],
+  {m, 4}, {n, 4}];
+
+rr4 = ser[Sum[g4inv[[m, n]] ric4[[m, n]], {m, 4}, {n, 4}]];
+sq4 = ser[nlapse Sqrt[Det[h3]]];
+
+(* F = f0fr + eps ff[t] cos kx, with the background conditions imposed *)
+ffld = f0fr + eps ff[t] cc;
+vpot = 6 f0fr hh^2 + 12 hh^2 (ffld - f0fr) + (1/2) vv2 (ffld - f0fr)^2;
+
+lagFR = ser[sq4 (ffld rr4 - vpot)];
+
+countCov[lag_, vars_] := Module[{l2, need, lred, extra},
+  l2 = Simplify[avg[Coefficient[lag, eps, 2]]];
+  need = Select[vars, ! FreeQ[l2, Derivative[2][#][t]] &];
+  {lred, extra} = If[need === {}, {l2, {}}, OstrogradskyReduce[l2, need]];
+  DiracCount[lred, Join[vars, extra]]];
+
+grCovResult = countCov[ser[sq4 (f0fr rr4 - 6 f0fr hh^2)], {psi, phi, b, ee}];
+frResult     = countCov[lagFR, {psi, phi, b, ee, ff}];
+
+Dataset @ {
+ <|"case" -> "general relativity, covariant route", "coords" -> grCovResult["Coordinates"],
+   "constraints" -> grCovResult["Total"], "1st" -> grCovResult["FirstClass"],
+   "2nd" -> grCovResult["SecondClass"], "DOF" -> grCovResult["DOF"]|>,
+ <|"case" -> "general f(R)", "coords" -> frResult["Coordinates"],
+   "constraints" -> frResult["Total"], "1st" -> frResult["FirstClass"],
+   "2nd" -> frResult["SecondClass"], "DOF" -> frResult["DOF"]|>}
+
+(*::md::
+$f(R)$ propagates **one** scalar mode, the scalaron, and general relativity by the same route
+propagates none. The difference is exactly one, which is the answer every textbook gives, and it
+is here derived rather than quoted.
+
+The bookkeeping is worth reading. Both cases carry four first-class constraints — the four
+diffeomorphisms — and eight second class. What differs is only the number of coordinates: nine
+against eight, the extra one being $\delta F$. So
+
+$$
+\text{GR} : \frac{2\cdot 8 - 2\cdot 4 - 8}{2} = 0, \qquad
+f(R) : \frac{2\cdot 9 - 2\cdot 4 - 8}{2} = 1 .
+$$
+
+The eight second-class constraints are themselves informative. They are what removes the
+Ostrogradsky variables that ${}^{(4)}R$'s second time derivatives forced into the phase space.
+General relativity is not a fourth-order theory, and the constraint algorithm discovers that on
+its own — the second derivatives were an artefact of the covariant form, and the algorithm takes
+them straight back out. That is a stronger check on this route than the mode count alone: a
+mistake in the four-metric or in the Ostrogradsky reduction would show up as a control that no
+longer returns zero.
+::*)
+
+(*::md::
+## 9. Checks
 ::*)
 
 (*::code::*)
@@ -467,4 +591,17 @@ Dataset @ {
  <|"check" -> "numerical spot check, general f(Q) gives one mode",
    "ok" -> (numFq["DOF"] === 1)|>,
  <|"check" -> "numerical spot check, the linear branch gives none",
-   "ok" -> (numLin["DOF"] === 0)|>}
+   "ok" -> (numLin["DOF"] === 0)|>,
+ <|"check" -> "the 4D Ricci scalar is 12 H^2 on the de Sitter background",
+   "ok" -> (Simplify[(rr4 /. eps -> 0) - 12 hh^2] === 0)|>,
+ <|"check" -> "ACCEPTANCE: the covariant route also gives general relativity no scalar mode",
+   "ok" -> (grCovResult["DOF"] === 0)|>,
+ <|"check" -> "ACCEPTANCE: f(R) propagates exactly one scalar mode",
+   "ok" -> (frResult["DOF"] === 1)|>,
+ <|"check" -> "f(R) differs from general relativity by one coordinate and nothing else",
+   "ok" -> (frResult["Coordinates"] - grCovResult["Coordinates"] === 1 &&
+            frResult["FirstClass"] === grCovResult["FirstClass"] &&
+            frResult["SecondClass"] === grCovResult["SecondClass"])|>,
+ <|"check" -> "the covariant form really does carry second time derivatives",
+   "ok" -> (! FreeQ[Simplify[avg[Coefficient[lagFR, eps, 2]]],
+            Derivative[2][phi][t] | Derivative[2][ee][t]])|>}
