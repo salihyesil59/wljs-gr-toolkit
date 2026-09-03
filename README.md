@@ -444,6 +444,18 @@ written years and languages apart currently agree to **3 parts in $10^{16}$** �
 — for $\Lambda$CDM and for the $f(\mathcal{T})$ power law at $n = -0.5,\, 0.2,\, 0.7$, both
 through CosmoFit's hand-written models and through its action compiler.
 
+`cosmofit-mu-reference.wls` does the same for the **perturbations**, driving GR-06's own
+`geffSubHorizon`. That comparison matters more than it sounds, because the two codebases
+disagree about the sign of the torsion scalar deliberately: GR-06 uses $\mathcal{T} = +6H^2$ with
+TEGR at $f = -\mathcal{T}$ and derives $G_{m eff}/G = -1/f_{\mathcal{T}}$, while CosmoFit uses
+$\mathcal{T} = -6H^2$ and $+1/f_{\mathcal{T}}$. Two minus signs that cancel — so the same theory
+must give the same number, and would not if either were ever flipped alone. They agree to
+**1.4 parts in $10^{16}$**.
+
+The two also agree about where the model is *sick*: at $n = 0.7$ this expression gives
+$G_{m eff}/G = -4.44$, then $+25.6$ — negative, then through a pole — and CosmoFit refuses that
+region rather than returning the numbers.
+
 Worth knowing: GR-02 hands the $f(\mathcal{T})$ and $f(Q)$ power laws the *identical* background
 constraint, since both scalars are $-6H^2$ on flat FLRW. That is correct rather than an oversight,
 and it means background data alone cannot separate those two families — a growth or perturbation
