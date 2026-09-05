@@ -4,8 +4,8 @@ Wolfram Language notebooks for symbolic general relativity and modified gravity,
 [WLJS Notebook](https://jerryi.github.io/wljs-docs/). Give them a metric or an action and they
 hand back curvature tensors, field equations, Friedmann equations and observables — non-zero,
 independent components only — and then keep going: cosmological distances, structure growth,
-the effective gravitational coupling, the teleparallel and symmetric-teleparallel families, and
-a Hamiltonian mode count.
+the effective gravitational coupling, the teleparallel and symmetric-teleparallel families, a
+Hamiltonian mode count, and the price of the approximation all of it rests on.
 
 The through-line is that every result is checked against a limit where the answer is already
 known. Each notebook ends with verification cells, and those cells are not decoration: they
@@ -26,6 +26,7 @@ cannot be trusted with anything else.
 | **GR-07** | a metric and a flat connection | non-metricity, $f(Q)$ cosmology |
 | **GR-08** | quadratic actions | kinetic matrices, wave speeds, strong coupling |
 | **GR-09** | a quadratic action | constraints, first and second class, a mode count |
+| **GR-10** | the same perturbed action | the exact linear system, and what quasi-static costs |
 
 Conventions: signature $(-,+,+,+)$, geometrized units $G = c = 1$, $\kappa = 8\pi G/c^4$, and
 $R^{\rho}{}_{\sigma\mu\nu}$ with the first index up. The connection is Levi-Civita in GR-01
@@ -313,6 +314,62 @@ Scope: de Sitter background, scalar sector, one Fourier mode, linearised theory.
 structure can be background dependent, so a background with $\dot H 
 eq 0$ is not covered.
 
+### `GR-10-Beyond-Quasi-Static`
+
+Every $G_{\rm eff}$ in the series rests on two approximations GR-05 states plainly and then
+never tests. This notebook drops both and solves the linear scalar system exactly.
+
+Two things had to be added first. Matter gets a **velocity** — GR-05 leaves it comoving, which
+is free under the quasi-static approximation and fatal without it, because the continuity
+equation needs somewhere for the density to flow to. And the trace of the $ij$ equations turns
+out to be **fourth order in $\Phi$**: that is the scalaron hiding inside the metric variables.
+Promoting $\delta R$ to a field of its own drops the order, leaving five first-order equations
+in $(\Phi, \delta R, \dot{\delta R}, \delta, v)$. The step that makes it work is an identity,
+
+$$\mathcal{E}_{xx} - \mathcal{E}_{yy} = -k^2\left[f_R(\Phi - \Psi) - f_{RR}\delta R\right],$$
+
+so the gravitational slip is sourced by the scalaron and by nothing else.
+
+**The headline is that the obvious comparison is the wrong one.** Setting the exact $\mu$
+against GR-05's formula gives a $15\%$ disagreement at $k = 3aH$, which looks like the
+quasi-static approximation failing badly. It is not. $\mu \equiv -2k^2\Psi/(a^2\kappa\rho\delta)$
+is not $1$ in general relativity either — the exact $00$ equation carries
+$3H(\dot\Phi + H\Psi)$ — and almost all of that $15\%$ is a relativistic correction $\Lambda$CDM
+has too, which GR-04's growth equation drops in exactly the same way. Run general relativity
+through the same solver and divide it out, and what is left is the part that is really about
+$f(R)$:
+
+| | $\mu_{f(R)}/\mu_{\rm QS} - 1$ | the same, GR divided out | as a fraction of the modification |
+|---|---|---|---|
+| $k = 3aH$ | $-14.7\%$ | $3.6\times10^{-6}$ | $1.2\%$ |
+| $k = 10aH$ | $-1.5\%$ | $-9.8\times10^{-6}$ | $0.44\%$ |
+| $k = 50aH$ | $-0.06\%$ | $6.8\times10^{-6}$ | $0.015\%$ |
+
+at $|f_{R0}| = 10^{-4}$ on a $\Lambda$CDM background. The third column is the honest one: the
+modification itself is only a few parts in $10^4$ there, so an error that is negligible against
+$\mu$ need not be negligible against the thing being measured. Repeated at $|f_{R0}| = 10^{-2}$,
+where the modification is $O(1)$ and the ratio is unambiguous, it reads $3.7\%$ of the
+modification at $k = 3aH$, $2.0\%$ at $k = 10aH$, $0.74\%$ at $k = 20aH$ and $0.12\%$ at
+$k = 50aH$.
+
+So GR-05's $\mu$, used as a **ratio to general relativity** — which is how GR-04 and CosmoFit
+use it — holds to a few percent of the modification right down to $k \approx 3aH$, and to about
+one percent there for the realistic $|f_{R0}| = 10^{-4}$: far further than "sub-horizon"
+suggests. What quasi-static does *not* capture is the near-horizon
+correction to the Poisson equation, and that is a property of the growth equation rather than
+of $G_{\rm eff}$.
+
+Two traps are kept, because both produce confident wrong answers. **$f_R$ is a function of
+time**, through the background curvature; abbreviate it to an inert symbol and then
+differentiate, and every chain-rule term is silently dropped — the notebook runs the reduction
+both ways and shows the trace equations differ. And the sign in the slip relation is easy to
+invert, which leaves a system whose derivative structure looks perfectly healthy and whose
+numbers are wrong.
+
+Scope: metric perturbation theory, so $f(R)$ and nothing teleparallel; pressureless matter, no
+radiation; one Fourier mode; the $\Lambda$CDM background is exact only to $O(|f_{R0}|)$, which
+the notebook measures rather than assumes.
+
 ## Conventions worth knowing before you trust the output
 
 - **Torsion and non-metricity scalars.** In flat FLRW the notebook uses
@@ -333,8 +390,9 @@ eq 0$ is not covered.
   from the resource's `"EulerScalar"` property, which is a differently normalised object.
 - **Nothing is quoted.** GR-04 takes $G_{\rm eff}/G$ as input, and every entry its library
   offers is derived inside the series: $f(R)$ in GR-05, $f(\mathcal{T})$ in GR-06, $f(Q)$ in
-  GR-07. What remains are the quasi-static and sub-horizon approximations, shared by all three,
-  which fail on scales approaching the horizon.
+  GR-07. What remains are the quasi-static and sub-horizon approximations, shared by all three.
+  For $f(R)$ they are no longer untested either: GR-10 solves the same system exactly and puts
+  a number on them.
 - **The $G_{\rm eff}$ results are metric-sector statements.** GR-08 shows that in
   $f(\mathcal{T})$ the extra Lorentz modes have identically zero kinetic terms around flat
   FLRW, so linear theory does not describe them, and that for $f(Q)$ the status of the
@@ -346,9 +404,13 @@ eq 0$ is not covered.
   $f = -\mathcal{T}$. GR-02 uses `Ts` $= -6H^2$ instead, chosen so a linear $f$ is GR, matching
   the convention in much of the $f(T)$ cosmology literature. They are related by
   `Ts` $= -\mathcal{T}$, and GR-06 checks that both give the same Friedmann equations.
-- **GR-05's approximations are real approximations.** Quasi-static and sub-horizon both fail
-  on scales approaching the horizon. The sub-horizon truncation is implemented as an explicit,
-  readable term filter rather than hidden, so you can change it.
+- **GR-05's approximations are real approximations, and GR-10 says how real.** Used as a ratio
+  to general relativity — the way GR-04 consumes it — $\mu$ is good to about a percent of the
+  modification down to $k pprox 3aH$. Used as an absolute Poisson equation it is $15\%$ off
+  there, but so is $\Lambda$CDM, for the same reason and by nearly the same amount. The
+  sub-horizon truncation is an explicit, readable term filter rather than something hidden, so
+  you can change it; GR-10 does exactly that, by not applying it. $f(\mathcal{T})$ and $f(Q)$
+  are **not** covered — GR-10 is metric perturbation theory, like GR-05.
 - **The CMB acoustic scale in GR-03 is indicative only.** $r_s$ is accurate, but $\theta_*$
   comes out around $100\theta_* = 1.06$ against Planck's $1.0411$, because $z_d$ and $z_*$ are
   put in by hand and $\Omega_r$ is a single number rather than a proper photon plus neutrino
@@ -447,8 +509,8 @@ GR-06-Teleparallel-Geometry.wl
   15 cells, 45.7 s, 28 checks, all pass
 ```
 
-The whole series is **137 checks**, and all of them pass. It takes ten to fifteen minutes
-depending on the machine, well over half of that inside GR-09 alone. Flags: `--verbose` lists
+The whole series is **156 checks**, and all of them pass. It takes eight to fifteen minutes
+depending on how busy the machine is, half of that inside GR-09 alone. Flags: `--verbose` lists
 every check rather than only the failures, `--parse-only` reads the sources and counts cells
 without evaluating anything, and `--timeout=N` caps the seconds any one expression may take
 (`0` removes the cap). Named files run instead of the whole series.
@@ -502,13 +564,15 @@ through CosmoFit's hand-written models and through its action compiler.
 `cosmofit-mu-reference.wls` does the same for the **perturbations**, driving GR-06's own
 `geffSubHorizon`. That comparison matters more than it sounds, because the two codebases
 disagree about the sign of the torsion scalar deliberately: GR-06 uses $\mathcal{T} = +6H^2$ with
-TEGR at $f = -\mathcal{T}$ and derives $G_{m eff}/G = -1/f_{\mathcal{T}}$, while CosmoFit uses
+TEGR at $f = -\mathcal{T}$ and derives $G_{
+m eff}/G = -1/f_{\mathcal{T}}$, while CosmoFit uses
 $\mathcal{T} = -6H^2$ and $+1/f_{\mathcal{T}}$. Two minus signs that cancel — so the same theory
 must give the same number, and would not if either were ever flipped alone. They agree to
 **1.4 parts in $10^{16}$**.
 
 The two also agree about where the model is *sick*: at $n = 0.7$ this expression gives
-$G_{m eff}/G = -4.44$, then $+25.6$ — negative, then through a pole — and CosmoFit refuses that
+$G_{
+m eff}/G = -4.44$, then $+25.6$ — negative, then through a pole — and CosmoFit refuses that
 region rather than returning the numbers.
 
 Worth knowing: GR-02 hands the $f(\mathcal{T})$ and $f(Q)$ power laws the *identical* background
