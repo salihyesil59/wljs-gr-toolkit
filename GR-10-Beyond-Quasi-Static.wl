@@ -1,0 +1,619 @@
+(*::md::
+# GR-10 — Beyond the quasi-static approximation
+
+Every $G_{\rm eff}$ in this series rests on two approximations that GR-05 states plainly and
+then never tests: **quasi-static**, which drops time derivatives of the perturbations, and
+**sub-horizon**, which keeps only the terms carrying $k^2$. GR-05 says both "fail on scales
+approaching the horizon". This notebook says where.
+
+The plan is to solve the linear scalar system **exactly** — nothing dropped — and compare.
+
+## What has to be added first
+
+GR-05 puts matter at rest: its four-velocity is $u^\mu = (1 - \epsilon\Psi, 0, 0, 0)$, comoving
+to first order. Under the quasi-static approximation that costs nothing, because the velocity
+only ever enters through terms that get dropped. Without it the system does not close: the
+continuity equation needs somewhere for the density to flow to. So the matter sector is widened
+here, and $\nabla_\mu T^{\mu\nu} = 0$ is **derived** rather than assumed — the background piece
+comes back as $\dot\rho + 3H\rho = 0$, which is a free check that the widening was done right.
+
+## The obstacle, and the way around it
+
+The trace of the $ij$ equations is **fourth order** in $\Phi$. That is not a mistake; it is the
+scalaron, hiding inside the metric variables, and it is why $(\Phi, \Psi)$ cannot simply be
+handed to `NDSolve`. Promoting $\delta R$ to a field of its own drops the order: $\Psi$ becomes
+algebraic, $\ddot\Phi$ becomes the definition of $\delta R$, and the trace becomes the
+scalaron's own second-order equation. What is left is five first-order equations in
+$(\Phi, \delta R, \dot{\delta R}, \delta, v)$.
+
+## The two questions the answer must not mix
+
+$\mu \equiv -2k^2\Psi/(a^2\kappa\rho\delta)$ is **not** $1$ in general relativity either. The
+exact $00$ equation carries $3H(\dot\Phi + H\Psi)$, so $\mu_{\rm GR}$ falls below one as $k$
+approaches $aH$. That has nothing to do with $f(R)$ — every $\Lambda$CDM analysis has it, and
+GR-04's growth equation drops it too. So the raw comparison $\mu_{f(R)}/\mu_{\rm QS}$ measures
+mostly a relativistic correction that is common to both theories, and the question that is
+actually about $f(R)$ is whether the quasi-static formula gets the **modification** right:
+
+$$\frac{\mu_{f(R)}(k)}{\mu_{\rm GR}(k)} \quad\text{against}\quad \mu_{\rm QS}(k) = \frac{1}{f_R}\frac{1+4m}{1+3m}.$$
+
+Both are reported below, and they give very different answers about where quasi-static stops
+being safe.
+
+## Scope
+
+Metric perturbation theory, so $f(R)$ and nothing teleparallel — the same restriction GR-05
+carries, for the same reason. Pressureless matter only, no radiation. One Fourier mode, scalar
+sector, flat FLRW.
+::*)
+
+(*::md::
+## 1. Setup
+
+Same curvature backend as the rest of the series, and the same trick GR-05 uses to stay
+general: leave $f$ as an undefined symbol `F`, so `F'`, `F''` and `F'''` appear on their own
+and the derivation holds for every $f(R)$ at once.
+::*)
+
+(*::code::*)
+ClearAll["Global`*"];
+
+$grMetric = ResourceFunction["MetricTensor"];
+$grRicci  = ResourceFunction["RicciTensor"];
+$grChr    = ResourceFunction["ChristoffelSymbols"];
+
+$coords = {t, x, y, z};
+$wave   = Exp[I k x];
+
+(*::md::
+## 2. The perturbed metric, and matter that is allowed to move
+
+Newtonian gauge, one plane wave along $x$. The only difference from GR-05 is in $u^\mu$: the
+spatial component is no longer zero.
+
+Normalisation fixes $u^0$ at first order and leaves $u^x$ free, so `vel` is a genuine extra
+degree of freedom rather than something the metric already determines. The cell checks
+$u^\mu u_\mu = -1$ to $O(\epsilon)$ rather than asserting it.
+::*)
+
+(*::code::*)
+gPert = DiagonalMatrix[{
+   -(1 + 2 eps psi[t] $wave),
+   a[t]^2 (1 - 2 eps phi[t] $wave),
+   a[t]^2 (1 - 2 eps phi[t] $wave),
+   a[t]^2 (1 - 2 eps phi[t] $wave)}];
+
+mt  = $grMetric[gPert, $coords];
+gdn = mt["MatrixRepresentation"];
+gup = mt["InverseMetricTensor"]["MatrixRepresentation"];
+chr = $grChr[mt]["TensorRepresentation"];
+ric = $grRicci[mt]["MatrixRepresentation"];
+rsc = Sum[gup[[i, j]] ric[[i, j]], {i, 4}, {j, 4}];
+
+uUp = {1 - eps psi[t] $wave, eps vel[t] $wave, 0, 0};
+uDn = Table[Sum[gdn[[i, j]] uUp[[j]], {j, 4}], {i, 4}];
+
+normCheck = Simplify[Normal[Series[
+   Sum[gdn[[i, j]] uUp[[i]] uUp[[j]], {i, 4}, {j, 4}], {eps, 0, 1}]]];
+
+Row[{Style["u.u to first order = ", Bold], normCheck}]
+
+(*::md::
+## 3. Field equations and conservation
+
+The $f(R)$ field equations, and $\nabla_\mu T^{\mu\nu}$ built from the same Christoffels. The
+Hessian is memoised: GR-05 rebuilds it inside a $4\times4$ table, which computes it sixteen
+times, and the wider matter sector here makes every expression big enough for that to matter.
+::*)
+
+(*::code::*)
+ClearAll[hess, boxOf];
+hess[f_] := hess[f] = Table[
+   D[f, $coords[[m]], $coords[[q]]]
+     - Sum[chr[[l, m, q]] D[f, $coords[[l]]], {l, 4}], {m, 4}, {q, 4}];
+boxOf[f_] := boxOf[f] = Sum[gup[[m, q]] hess[f][[m, q]], {m, 4}, {q, 4}];
+
+rhoTot = rho[t] (1 + eps del[t] $wave);
+tmn    = Table[rhoTot uDn[[i]] uDn[[j]], {i, 4}, {j, 4}];
+tUpUp  = Table[Sum[gup[[i, m]] gup[[j, q]] tmn[[m, q]], {m, 4}, {q, 4}], {i, 4}, {j, 4}];
+
+fieldEq = With[{fv = F[rsc], fr = F'[rsc]},
+  Table[fr ric[[i, j]] - (1/2) fv gdn[[i, j]] + gdn[[i, j]] boxOf[fr]
+      - hess[fr][[i, j]] - kap tmn[[i, j]], {i, 4}, {j, 4}]];
+
+divT = Table[
+   Sum[D[tUpUp[[m, n]], $coords[[m]]], {m, 4}]
+   + Sum[chr[[m, m, l]] tUpUp[[l, n]], {m, 4}, {l, 4}]
+   + Sum[chr[[n, m, l]] tUpUp[[m, l]], {m, 4}, {l, 4}],
+   {n, 4}];
+
+Dimensions[fieldEq]
+
+(*::md::
+## 4. Expanding in $\epsilon$
+
+Order $\epsilon^0$ is the background and order $\epsilon^1$ is the whole exact system. Two
+versions of each first-order equation are kept, and the distinction matters more than it looks:
+
+- the **abbreviated** one, with `F'[R]` written as `fR`, is for reading;
+- the **raw** one, with `F'[R]` left standing, is the only one safe to differentiate.
+
+$f_R$ and $f_{RR}$ are functions of time through the background curvature. Abbreviate them to
+inert symbols and then apply `D`, and every chain-rule term the derivative owes is silently
+dropped. Section 7 checks that this is not bookkeeping — it changes the answer.
+::*)
+
+(*::code::*)
+AbsoluteTiming[
+ order0 = Table[Normal[Series[fieldEq[[i, j]], {eps, 0, 0}]], {i, 4}, {j, 4}];
+ order1 = Table[Coefficient[Normal[Series[fieldEq[[i, j]], {eps, 0, 1}]], eps], {i, 4}, {j, 4}];
+ bgR    = Simplify[Normal[Series[rsc, {eps, 0, 0}]]];
+ deltaR = Simplify[Coefficient[Normal[Series[rsc, {eps, 0, 1}]], eps]/$wave];
+ cons0  = Table[Normal[Series[divT[[n]], {eps, 0, 0}]], {n, 4}];
+ cons1  = Table[Coefficient[Normal[Series[divT[[n]], {eps, 0, 1}]], eps], {n, 4}];
+]
+
+(*::code::*)
+abbrev = {Derivative[3][F][bgR] -> fRRR, Derivative[2][F][bgR] -> fRR,
+          Derivative[1][F][bgR] -> fR,   F[bgR] -> f0};
+
+abbreviated[e_] := Simplify[Expand[e/$wave] /. abbrev];
+raw[e_]         := Simplify[Expand[e/$wave]];
+
+bg00  = Simplify[order0[[1, 1]] /. abbrev];
+eq00  = abbreviated[order1[[1, 1]]];
+eq0x  = abbreviated[order1[[1, 2]]];
+eqTL  = abbreviated[order1[[2, 2]] - order1[[3, 3]]];
+eqTR  = abbreviated[Sum[order1[[i, i]], {i, 2, 4}]];
+
+eq00u = raw[order1[[1, 1]]];
+eq0xu = raw[order1[[1, 2]]];
+eqTLu = raw[order1[[2, 2]] - order1[[3, 3]]];
+eqTRu = raw[Sum[order1[[i, i]], {i, 2, 4}]];
+
+consBG = Simplify[cons0[[1]]];
+consT  = Simplify[Expand[cons1[[1]]/$wave]];
+consX  = Simplify[Expand[cons1[[2]]/$wave]];
+
+Column[{
+  Row[{Style["background R  = ", Bold], bgR}],
+  Row[{Style["background continuity: ", Bold], consBG, " = 0"}],
+  Row[{Style["delta R = ", Bold], deltaR}]}]
+
+(*::md::
+## 5. What order is each equation?
+
+The table below is the reason this notebook exists. `-1` means the function is absent, `0`
+means it appears undifferentiated.
+::*)
+
+(*::code::*)
+ClearAll[orderOf];
+orderOf[e_, sym_] := Max[Append[
+   Cases[e, Derivative[n_][sym][t] :> n, Infinity], If[FreeQ[e, sym], -1, 0]]];
+
+Dataset @ Table[
+  <|"equation" -> p[[1]],
+    "phi" -> orderOf[p[[2]], phi], "psi" -> orderOf[p[[2]], psi],
+    "delta" -> orderOf[p[[2]], del], "v" -> orderOf[p[[2]], vel]|>,
+  {p, {{"00", eq00}, {"0x", eq0x}, {"traceless ij", eqTL}, {"trace ij", eqTR},
+       {"continuity", consT}, {"Euler", consX}, {"delta R", deltaR}}}]
+
+(*::md::
+## 6. The traceless equation is the slip
+
+Fourth order in the trace is intimidating; the traceless equation is not. It is exactly
+
+$$\mathcal{E}_{xx} - \mathcal{E}_{yy} = -k^2\left[f_R(\Phi - \Psi) - f_{RR}\,\delta R\right],$$
+
+an identity, checked below rather than asserted. So the gravitational slip is sourced by the
+scalaron and by nothing else:
+
+$$\Psi = \Phi - \frac{f_{RR}}{f_R}\delta R.$$
+
+The sign is worth dwelling on, because getting it backwards leaves a system whose derivative
+structure looks perfectly healthy and whose numbers are wrong. Setting $f_{RR} = 0$ returns
+$\Phi = \Psi$, which is general relativity with no anisotropic stress.
+::*)
+
+(*::code::*)
+slipIdentity = Simplify[eqTLu - (-k^2 (F'[bgR] (phi[t] - psi[t]) - F''[bgR] deltaR))];
+
+psiSol = phi[t] - (F''[bgR]/F'[bgR]) dR[t];
+
+(* Evaluated here and kept as a boolean, not re-tested in section 13. Section 9
+   gives F an actual definition, after which F''[bgR] evaluates to an explicit
+   function of a[t] and a rule matching F''[bgR] never fires again. *)
+slipGRLimit = Simplify[(psiSol /. F''[bgR] -> 0) - phi[t]] === 0;
+
+Column[{
+  Row[{Style["traceless - identity = ", Bold], slipIdentity}],
+  Row[{Style["psi = ", Bold], psiSol /. {F''[bgR] -> fRR, F'[bgR] -> fR}}],
+  Row[{Style["at fRR = 0 it gives phi = psi: ", Bold], slipGRLimit}]}]
+
+(*::md::
+## 7. Closing the system
+
+Two substitutions do it. $\Psi$ goes first, from the slip relation. Then $\ddot\Phi$ goes, from
+the definition of $\delta R$ solved for it. Both are applied to the **raw** equations, so `D`
+sees `F'[R]` and produces the $f_{RR}\dot R$ terms the chain rule owes.
+
+Check **F** below runs the same reduction the wrong way — with $f_R$ frozen to an inert symbol
+— and compares. The two trace equations are not equal, so the chain-rule terms are physics and
+not bookkeeping.
+::*)
+
+(*::code::*)
+psiRules = Prepend[
+  Table[Derivative[n][psi][t] -> D[psiSol, {t, n}], {n, 1, 4}],
+  psi[t] -> psiSol];
+
+phi2 = phi''[t] /. First @ Solve[(deltaR /. psiRules) == dR[t], phi''[t]];
+
+elim[e_] := Together[(e /. psiRules) //.
+  Derivative[n_][phi][t] /; n >= 2 :> D[phi2, {t, n - 2}]];
+
+eq00r  = elim[eq00u];
+eqTRr  = elim[eqTRu];
+eq0xr  = elim[eq0xu];
+consTr = Together[consT /. psiRules];
+consXr = Together[consX /. psiRules];
+
+Dataset @ Table[
+  <|"equation" -> p[[1]],
+    "phi" -> orderOf[p[[2]], phi], "delta R" -> orderOf[p[[2]], dR],
+    "delta" -> orderOf[p[[2]], del], "v" -> orderOf[p[[2]], vel]|>,
+  {p, {{"00", eq00r}, {"0x", eq0xr}, {"trace ij", eqTRr},
+       {"continuity", consTr}, {"Euler", consXr}}}]
+
+(*::code::*)
+(* F. the same reduction done the wrong way, with fR frozen *)
+frozen = {Derivative[3][F][bgR] -> fRRR, Derivative[2][F][bgR] -> fRR,
+          Derivative[1][F][bgR] -> fR, F[bgR] -> f0};
+
+psiSolBad   = phi[t] - (fRR/fR) dR[t];
+psiRulesBad = Prepend[
+  Table[Derivative[n][psi][t] -> D[psiSolBad, {t, n}], {n, 1, 4}],
+  psi[t] -> psiSolBad];
+phi2Bad = phi''[t] /. First @ Solve[(deltaR /. psiRulesBad) == dR[t], phi''[t]];
+eqTRrBad = Together[(eqTRu /. frozen /. psiRulesBad) //.
+   Derivative[n_][phi][t] /; n >= 2 :> D[phi2Bad, {t, n - 2}]];
+
+chainRuleMatters = Simplify[(eqTRr /. frozen) - eqTRrBad] =!= 0;
+
+Row[{Style["freezing fR changes the trace equation: ", Bold], chainRuleMatters}]
+
+(*::md::
+## 8. The quasi-static limit, rebuilt from these same equations
+
+GR-05's two approximations, applied to the exact system derived here. If this does not return
+GR-05's $\mu$ exactly then the two derivations have drifted apart and nothing below means
+anything, so it is an acceptance test rather than a demonstration.
+
+The sub-horizon filter is GR-05's, unchanged: keep a term if it has no metric perturbation in
+it at all, or if it carries $k^2$ or more with no Hubble factor.
+::*)
+
+(*::code::*)
+quasiStatic = {Derivative[_][psi][t] -> 0, Derivative[_][phi][t] -> 0,
+               Derivative[_][del][t] -> 0, Derivative[_][vel][t] -> 0, vel[t] -> 0};
+
+subHorizon[e_] := Total[Select[List @@ Expand[e],
+   (FreeQ[#, psi | phi] || (Exponent[#, k] >= 2 && FreeQ[#, Derivative[_][a][t]])) &]];
+
+reduceQS[e_] := subHorizon[Expand[Simplify[e /. quasiStatic]]];
+
+qsSol   = Simplify[First @ Solve[{reduceQS[eq00] == 0, reduceQS[eqTL] == 0}, {psi[t], phi[t]}]];
+muQSsym = Simplify[-2 k^2 (psi[t] /. qsSol)/(a[t]^2 kap rho[t] del[t])];
+dRQSsym = Simplify[(fR/fRR)((phi[t] /. qsSol) - (psi[t] /. qsSol))];
+
+mVar    = k^2 fRR/(a[t]^2 fR);
+muGR05  = (1/fR)(1 + 4 mVar)/(1 + 3 mVar);
+
+Column[{
+  Row[{Style["mu (quasi-static)  = ", Bold], muQSsym}],
+  Row[{Style["matches GR-05:       ", Bold], Simplify[muQSsym - muGR05] === 0}],
+  Row[{Style["delta R on the attractor = ", Bold], dRQSsym}]}]
+
+(*::md::
+## 9. A concrete model
+
+Hu–Sawicki with $n = 1$, in the large-curvature form that is the one actually used:
+
+$$f(R) = R - 2\Lambda + \frac{\alpha}{R}, \qquad \alpha = |f_{R0}|R_0^2,$$
+
+so $f_R = 1 - \alpha/R^2$ and $f_{RR} = 2\alpha/R^3 > 0$ — no ghost, no tachyon, which is the
+GR-05 and CosmoFit viability gate satisfied by construction.
+
+The background is taken to be $\Lambda$CDM. That is an approximation, not an identity, and the
+cell measures it instead of waving at it: the residual left in the $f(R)$ background equation,
+as a fraction of $\kappa\rho$, should be of order $|f_{R0}|$ and it is. Both the exact and the
+quasi-static calculation use the *same* background, so this common error largely cancels in the
+comparison that follows.
+
+Units: $H_0 = 1$, so $t$ is in Hubble times and $k$ in units of $H_0$. Then $k = 0.1\,h/$Mpc is
+$k/H_0 \approx 300$, and at $z = 0$ the number in the $k$ column **is** $k/(aH)$.
+::*)
+
+(*::code::*)
+Om = 3/10; OL = 7/10; Lam = 3 OL;
+R0 = 3 (Om + 4 OL);
+
+(* Two strengths. The first is a plausible model; the second is far too strong to
+   be viable, and is here because at |fR0| = 1e-4 the modification itself is only
+   a few parts in 10^4, so an error measured against it sits near the
+   integrator's floor. At 1e-2 the modification is O(1) and the fraction is
+   unambiguous. *)
+fR0A = 1/10000;
+fR0B = 1/100;
+alphaOf[x_] := x R0^2;
+
+F[r_] := r - 2 Lam + alpha/r;          (* alpha stays symbolic until run time *)
+
+aFun      = Function[tt, (Om/OL)^(1/3) Sinh[(3/2) Sqrt[OL] tt]^(2/3)];
+t0        = (2/(3 Sqrt[OL])) ArcSinh[Sqrt[OL/Om]];
+rhoFun    = Function[tt, 3 Om/aFun[tt]^3];
+tOfa[av_] := (2/(3 Sqrt[OL])) ArcSinh[Sqrt[OL/Om] av^(3/2)];
+
+bgSub = {a -> aFun, rho -> rhoFun, kap -> 1};
+abbF  = {fRRR -> F'''[bgR], fRR -> F''[bgR], fR -> F'[bgR], f0 -> F[bgR]};
+
+bgResidual[tt_, al_] := N[Abs[(bg00 /. abbF /. bgSub /. alpha -> al /. t -> tt)/rhoFun[tt]]];
+
+Dataset @ Table[
+  <|"a" -> N[av],
+    "residual/kap rho, |fR0|=1e-4" -> ScientificForm[bgResidual[tOfa[av], alphaOf[fR0A]], 3],
+    "residual/kap rho, |fR0|=1e-2" -> ScientificForm[bgResidual[tOfa[av], alphaOf[fR0B]], 3]|>,
+  {av, {1/40, 1/10, 1/2, 1}}]
+
+(*::md::
+## 10. Solving it
+
+Five first-order equations for $f(R)$, three for the general-relativity reference. The GR run
+is its own system rather than the $f(R)$ one at tiny $\alpha$: $f_{RR}\to0$ divides by zero in
+the slip relation, and a merely small $f_{RR}$ makes the scalaron mass enormous and the system
+unintegrable.
+
+Initial conditions are the matter-dominated growing mode at $a = 0.1$, where
+$\Omega_m a^{-3} \approx 300 \gg \Omega_\Lambda$. In matter domination $\Phi$ is constant on
+**every** scale, not only sub-horizon ones, so the same condition is right for the near-horizon
+modes too. $\delta R$ starts on the quasi-static attractor. Section 12 checks that none of this
+is remembered.
+::*)
+
+(*::code::*)
+sysSol = First @ Solve[Thread[({eq00r, eqTRr, consTr, consXr} /. bgSub) == 0],
+   {phi'[t], dR''[t], del'[t], vel'[t]}];
+rhsFR  = {phi'[t], dR''[t], del'[t], vel'[t]} /. sysSol;
+psiNum = psiSol /. bgSub;
+
+nv[e_, kk_, tt_, d_, al_] :=
+  N[e /. abbF /. bgSub /. {k -> kk, del[t] -> d, alpha -> al} /. t -> tt];
+
+ClearAll[runFR, runGR, muFR, muGR, muQS, ndOpts];
+
+muQS[kk_, tt_, al_] := nv[muQSsym, kk, tt, 1, al];
+
+(* a List and not a Sequence: a Sequence here splices into If's own arguments
+   and turns it into an eight-argument call *)
+(* Tighter goals at machine precision, not extended precision. Machine epsilon is
+   2 x 10^-16 and the errors being measured are ~10^-6, so WorkingPrecision -> 30
+   resolves nothing extra and costs minutes per mode instead of seconds. It was
+   tried; it agrees with this to four digits. *)
+ndOpts[tight_] := If[tight,
+  {Method -> "StiffnessSwitching", AccuracyGoal -> 12, PrecisionGoal -> 12,
+   MaxSteps -> 10^7},
+  {Method -> "StiffnessSwitching", MaxSteps -> 10^7}];
+
+runFR[kk_, ai_, al_, tight_: False, kick_: 0] :=
+ Module[{ti, Hi, di = 1, phii, veli, dRi, dRdi, sub},
+  sub = {k -> kk, alpha -> al};
+  ti = tOfa[ai]; Hi = aFun'[ti]/aFun[ti];
+  dRi  = nv[dRQSsym, kk, ti, di, al] (1 + kick);
+  dRdi = N[D[dRQSsym /. del[t] -> aFun[t]/aFun[ti], t] /. abbF /. bgSub /. sub /. t -> ti];
+  phii = phi[ti] /. First @ Solve[
+     (eq00r /. bgSub /. {del[t] -> di, dR[t] -> dRi, Derivative[1][dR][t] -> dRdi,
+                         Derivative[1][phi][t] -> 0} /. sub /. t -> ti) == 0, phi[ti]];
+  veli = vel[ti] /. First @ Solve[
+     (consTr /. bgSub /. {del[t] -> di, Derivative[1][del][t] -> Hi di, dR[t] -> dRi,
+                          Derivative[1][dR][t] -> dRdi, phi[t] -> phii,
+                          Derivative[1][phi][t] -> 0} /. sub /. t -> ti) == 0, vel[ti]];
+  First @ NDSolve[
+    Join[Thread[{phi'[t], dR''[t], del'[t], vel'[t]} == (rhsFR /. sub)],
+         {phi[ti] == phii, dR[ti] == dRi, dR'[ti] == dRdi, del[ti] == di, vel[ti] == veli}],
+    {phi, dR, del, vel}, {t, ti, t0}, Sequence @@ ndOpts[tight]]];
+
+muFR[sol_, kk_, tt_, al_] := Re[-2 kk^2 (psiNum /. sol /. {k -> kk, alpha -> al} /. t -> tt)/
+   (aFun[tt]^2 rhoFun[tt] (del[t] /. sol /. t -> tt))];
+
+(*::code::*)
+(* the general-relativity reference: psi = phi, no scalaron *)
+grRule = {fRRR -> 0, fRR -> 0, fR -> 1, f0 -> bgR - 2 Lam};
+grSub  = {psi[t] -> phi[t], Derivative[1][psi][t] -> Derivative[1][phi][t],
+          Derivative[2][psi][t] -> Derivative[2][phi][t]};
+
+gr00 = eq00  /. grRule /. grSub /. bgSub;
+grT  = consT /. grSub /. bgSub;
+grX  = consX /. grSub /. bgSub;
+
+rhsGR = {phi'[t], del'[t], vel'[t]} /.
+   First @ Solve[{gr00 == 0, grT == 0, grX == 0}, {phi'[t], del'[t], vel'[t]}];
+
+runGR[kk_, ai_, tight_: False] := Module[{ti, Hi, di = 1, phii, veli},
+  ti = tOfa[ai]; Hi = aFun'[ti]/aFun[ti];
+  phii = phi[ti] /. First @ Solve[
+     (gr00 /. {del[t] -> di, Derivative[1][phi][t] -> 0, k -> kk} /. t -> ti) == 0, phi[ti]];
+  veli = vel[ti] /. First @ Solve[
+     (grT /. {del[t] -> di, Derivative[1][del][t] -> Hi di, phi[t] -> phii,
+              Derivative[1][phi][t] -> 0, k -> kk} /. t -> ti) == 0, vel[ti]];
+  First @ NDSolve[
+    Join[Thread[{phi'[t], del'[t], vel'[t]} == (rhsGR /. k -> kk)],
+         {phi[ti] == phii, del[ti] == di, vel[ti] == veli}],
+    {phi, del, vel}, {t, ti, t0}, Sequence @@ ndOpts[tight]]];
+
+muGR[sol_, kk_, tt_] := Re[-2 kk^2 (phi[t] /. sol /. t -> tt)/
+   (aFun[tt]^2 rhoFun[tt] (del[t] /. sol /. t -> tt))];
+
+(*::md::
+## 11. The measurement
+
+Three numbers per mode, and they say different things:
+
+- `raw %` is $\mu_{f(R)}/\mu_{\rm QS} - 1$, the whole disagreement;
+- `mod %` divides out the relativistic correction general relativity has too,
+  $(\mu_{f(R)}/\mu_{\rm GR})/\mu_{\rm QS} - 1$, and is the part that is actually about $f(R)$;
+- `mod / signal` is that same error as a fraction of the modification being predicted,
+  $\mu_{\rm QS} - 1$. This is the honest denominator: at $|f_{R0}| = 10^{-4}$ the modification
+  is only a few parts in $10^4$, so an error of $10^{-5}$ on $\mu$ is small against $\mu$ and
+  not small against the thing being measured.
+
+Notice how completely the raw column and the modification column disagree.
+::*)
+
+(*::code::*)
+aStart = 1/10;
+alphaA = alphaOf[fR0A];
+
+scan = Table[
+  Module[{mf, mg, mq},
+    (* tight, not default: the convergence cell below shows the default setting
+       is a factor of several out by k = 50, where the modification error is
+       smallest and the tolerance floor is nearest *)
+    mf = muFR[runFR[kk, aStart, alphaA, True], kk, t0, alphaA];
+    mg = muGR[runGR[kk, aStart, True], kk, t0];
+    mq = muQS[kk, t0, alphaA];
+    <|"k/aH" -> kk, "mu_GR" -> mg, "mu_f(R)" -> mf, "mu_QS" -> mq,
+      "raw" -> mf/mq - 1, "modification" -> (mf/mg)/mq - 1, "signal" -> mq - 1|>],
+  {kk, {3, 5, 10, 20, 50}}];
+
+Dataset @ Table[
+  <|"k/aH" -> r["k/aH"],
+    "mu_GR" -> NumberForm[N[r["mu_GR"]], {7, 5}],
+    "mu_f(R)" -> NumberForm[N[r["mu_f(R)"]], {7, 5}],
+    "mu_QS" -> NumberForm[N[r["mu_QS"]], {7, 5}],
+    "raw %" -> NumberForm[100. r["raw"], {6, 3}],
+    "mod %" -> ScientificForm[N[100. r["modification"]], 3],
+    "mod / signal" -> ScientificForm[N[r["modification"]/r["signal"]], 3]|>,
+  {r, scan}]
+
+(*::md::
+At $|f_{R0}| = 10^{-4}$ the modification is small enough that the largest $k$ in the table is
+measured near the integrator's own floor. The cell below tightens the tolerance and reruns: at
+$k = 3aH$ the answer does not move, and at $k = 50aH$ it moves by a factor of several, so the
+default setting is not to be trusted that far out. Worth doing before quoting any of these
+numbers.
+
+So the fraction is measured again at $|f_{R0}| = 10^{-2}$, where the modification is $O(1)$ and
+the ratio is unambiguous. That model is far too strong to survive the Solar System, but it is
+the clean place to read off how the quasi-static error behaves with $k$.
+::*)
+
+(*::code::*)
+alphaB = alphaOf[fR0B];
+
+convergence = Table[
+  Module[{loose, tight, mg},
+    mg    = muGR[runGR[kk, aStart], kk, t0];
+    loose = muFR[runFR[kk, aStart, alphaA, False], kk, t0, alphaA];
+    tight = muFR[runFR[kk, aStart, alphaA, True], kk, t0, alphaA];
+    <|"k/aH" -> kk,
+      "err, default" -> ScientificForm[N[(loose/mg)/muQS[kk, t0, alphaA] - 1], 3],
+      "err, tight" -> ScientificForm[N[(tight/mg)/muQS[kk, t0, alphaA] - 1], 3]|>],
+  {kk, {3, 50}}];
+
+Dataset[convergence]
+
+(*::code::*)
+strong = Table[
+  Module[{mf, mg, mq},
+    mf = muFR[runFR[kk, aStart, alphaB, True], kk, t0, alphaB];
+    mg = muGR[runGR[kk, aStart, True], kk, t0];
+    mq = muQS[kk, t0, alphaB];
+    <|"k/aH" -> kk, "signal" -> ScientificForm[N[mq - 1], 3],
+      "mod err" -> ScientificForm[N[(mf/mg)/mq - 1], 3],
+      "mod / signal" -> ScientificForm[N[((mf/mg)/mq - 1)/(mq - 1)], 3],
+      "fraction" -> ((mf/mg)/mq - 1)/(mq - 1)|>],
+  {kk, {3, 5, 10, 20, 50}}];
+
+Dataset[strong][All, {"k/aH", "signal", "mod err", "mod / signal"}]
+
+(*::md::
+## 12. Does any of it depend on how the run was started?
+
+Two things are varied, and they have to be varied for real: the run is restarted from a
+different scale factor, and the scalaron is given a 50% wrong initial amplitude. The second
+comparison is worthless unless the two runs genuinely began apart, so the starting values are
+printed next to the answers rather than only the answers.
+::*)
+
+(*::code::*)
+insensitivity = Table[
+  Module[{base, early, kicked, dR0, dR1, ti = tOfa[aStart]},
+    dR0 = nv[dRQSsym, kk, ti, 1, alphaA];
+    dR1 = dR0 3/2;
+    base   = muFR[runFR[kk, aStart, alphaA], kk, t0, alphaA];
+    early  = muFR[runFR[kk, 1/25, alphaA], kk, t0, alphaA];
+    kicked = muFR[runFR[kk, aStart, alphaA, False, 1/2], kk, t0, alphaA];
+    <|"k/aH" -> kk,
+      "dR start" -> NumberForm[N[dR0], {8, 3}],
+      "kicked start" -> NumberForm[N[dR1], {8, 3}],
+      "from a=0.1" -> NumberForm[N[base], {9, 7}],
+      "from a=0.04" -> NumberForm[N[early], {9, 7}],
+      "kicked" -> NumberForm[N[kicked], {9, 7}],
+      "spread" -> ScientificForm[N[Max[Abs[{early/base - 1, kicked/base - 1}]]], 3],
+      "startsDiffer" -> Abs[dR1/dR0 - 1],
+      "spreadValue" -> Max[Abs[{early/base - 1, kicked/base - 1}]]|>],
+  {kk, {3, 10, 30}}];
+
+Dataset[insensitivity][All, {"k/aH", "dR start", "kicked start",
+   "from a=0.1", "from a=0.04", "kicked", "spread"}]
+
+(*::md::
+## 13. Checks
+::*)
+
+(*::code::*)
+rawErr  = Association[#["k/aH"] -> #["raw"] & /@ scan];
+modErr  = Association[#["k/aH"] -> #["modification"] & /@ scan];
+muGRat  = Association[#["k/aH"] -> #["mu_GR"] & /@ scan];
+frac    = Association[#["k/aH"] -> Abs[#["fraction"]] & /@ strong];
+
+Dataset @ {
+ <|"check" -> "u.u = -1 to first order, so the velocity is a free function",
+   "ok" -> (Simplify[normCheck + 1] === 0)|>,
+ <|"check" -> "matter conservation gives the background continuity equation",
+   "ok" -> (Simplify[consBG - (rho'[t] + 3 rho[t] a'[t]/a[t])] === 0)|>,
+ <|"check" -> "the traceless equation is exactly -k^2 (fR (phi - psi) - fRR dR)",
+   "ok" -> (slipIdentity === 0)|>,
+ <|"check" -> "at fRR = 0 the slip relation returns phi = psi",
+   "ok" -> slipGRLimit|>,
+ <|"check" -> "the trace equation is fourth order in phi before the reduction",
+   "ok" -> (orderOf[eqTR, phi] === 4)|>,
+ <|"check" -> "after the reduction nothing is above first order in phi",
+   "ok" -> (Max[orderOf[#, phi] & /@ {eq00r, eq0xr, eqTRr, consTr, consXr}] === 1)|>,
+ <|"check" -> "the scalaron carries the second derivative instead",
+   "ok" -> (orderOf[eqTRr, dR] === 2)|>,
+ <|"check" -> "freezing fR to a constant changes the trace equation",
+   "ok" -> chainRuleMatters|>,
+ <|"acceptance test" -> "quasi-static plus sub-horizon reproduces GR-05's G_eff exactly",
+   "ok" -> (Simplify[muQSsym - muGR05] === 0)|>,
+ <|"acceptance test" -> "the LCDM background solves the f(R) background to order |fR0|",
+   "ok" -> (bgResidual[t0, alphaOf[fR0A]] < 10 fR0A)|>,
+ <|"acceptance test" -> "mu_GR tends to 1 well inside the horizon",
+   "ok" -> (Abs[muGRat[50] - 1] < 1/100)|>,
+ <|"check" -> "mu_GR is suppressed near the horizon, which is not an f(R) effect",
+   "ok" -> (muGRat[3] < 0.95)|>,
+ <|"check" -> "the raw error falls roughly as (aH/k)^2",
+   "ok" -> (2 < Abs[rawErr[5]/rawErr[10]] < 6)|>,
+ <|"check" -> "dividing out the relativistic correction shrinks the error at every k",
+   "ok" -> AllTrue[Keys[rawErr], Abs[modErr[#]] < Abs[rawErr[#]]/10 &]|>,
+ <|"acceptance test" -> "the modification error, per unit of modification, falls with k",
+   "ok" -> (frac[3] > frac[10] > frac[50])|>,
+ <|"check" -> "and is under 5% of the modification even at k = 3 aH",
+   "ok" -> (frac[3] < 1/20)|>,
+ <|"check" -> "and under 1% of it by k = 20 aH",
+   "ok" -> (frac[20] < 1/100)|>,
+ <|"check" -> "the two insensitivity runs really did start from different values",
+   "ok" -> AllTrue[insensitivity, #["startsDiffer"] > 1/4 &]|>,
+ <|"check" -> "and the answer does not remember either choice",
+   "ok" -> AllTrue[insensitivity, #["spreadValue"] < 1/100 &]|>}
