@@ -389,6 +389,9 @@ is how the reader recognises a cell separator, and it parses the result with WLJ
 before and after so you can see the output cells survived. Edit the matching `.wl` too, or the
 next rebuild reverts the change.
 
+Neither tool looks at the physics. `check.wls` does — it evaluates the sources and reports every
+verification cell's verdict, without opening a notebook. See [Checks](#checks).
+
 ## Requirements
 
 - Wolfram Engine or Mathematica (developed against 15.0)
@@ -424,6 +427,58 @@ anything:
   the textbook $3FH^2 = \kappa\rho + \tfrac{1}{2}(FR - f) - 3H\dot F$
 - $\Lambda$CDM: $E^2 = \Omega_m(1+z)^3 + \Omega_r(1+z)^4 + \Omega_k(1+z)^2 + \Omega_\Lambda$,
   $q_0 = -1 + \tfrac{3}{2}\Omega_m$, acceleration from $z = 0.671$ at $\Omega_m = 0.3$
+
+### Running them headless
+
+Those cells only report when someone opens a notebook and looks. `check.wls` runs them instead:
+
+```
+wolframscript -file check.wls
+```
+
+It reads each `.wl` source with the same cell reader `wl2wln.wls` uses, evaluates the code cells
+in order, and collects every association carrying an `"ok"` key — wherever it sits, inside a
+`Dataset` or not. Failures are printed with the cell they came from, and the exit code is 0 only
+when every check passed and no cell errored, so it can be wired to anything that reads exit
+codes.
+
+```
+GR-06-Teleparallel-Geometry.wl
+  15 cells, 45.7 s, 28 checks, all pass
+```
+
+The whole series is **137 checks**, and all of them pass. It takes ten to fifteen minutes
+depending on the machine, well over half of that inside GR-09 alone. Flags: `--verbose` lists
+every check rather than only the failures, `--parse-only` reads the sources and counts cells
+without evaluating anything, and `--timeout=N` caps the seconds any one expression may take
+(`0` removes the cap). Named files run instead of the whole series.
+
+Two things are worth knowing before reading its output.
+
+**GR-01 reports no checks, and that is true rather than a bug.** Its verification cells print
+tensors for a reader to inspect — Schwarzschild's vanishing Ricci, the 2-sphere's $R = 2/R_0^2$ —
+and never reduce them to a boolean, so there is nothing for a runner to collect. Those claims are
+checked by eye.
+
+**The label key is not uniform.** Most notebooks write `"check"`, GR-05 and GR-08 write
+`"statement"`, and eleven rows write `"acceptance test"`. All three are read, rather than edited
+into agreement: changing a notebook means rebuilding its `.wln`, and that discards the saved
+outputs which are the reason the results are visible on GitHub at all. A row spelled some fourth
+way is still reported, under whatever string it carries, so a new spelling shows up as a check
+with an odd label instead of disappearing.
+
+`check-self-test.wl` is the negative control, and it is meant to fail:
+
+```
+wolframscript -file check.wls check-self-test.wl
+```
+
+Every notebook in the series passes, so a green run on its own does not distinguish a working
+checker from one that reports nothing. That file holds one of each way a check can go wrong —
+`ok -> False`, an `"ok"` that never evaluated to a boolean at all, a row outside a `Dataset` under
+the other spelling, and a cell that aborts — and the runner has to see all of them, and has to
+keep going past the cell that died. Its name does not begin with `GR-`, so the default run leaves
+it alone.
 
 ### Against a second implementation
 
