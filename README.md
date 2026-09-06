@@ -5,7 +5,8 @@ Wolfram Language notebooks for symbolic general relativity and modified gravity,
 hand back curvature tensors, field equations, Friedmann equations and observables — non-zero,
 independent components only — and then keep going: cosmological distances, structure growth,
 the effective gravitational coupling, the teleparallel and symmetric-teleparallel families, a
-Hamiltonian mode count, and the price of the approximation all of it rests on.
+Hamiltonian mode count, the price of the approximation all of it rests on, and what a
+gravitational wave does on the way here.
 
 The through-line is that every result is checked against a limit where the answer is already
 known. Each notebook ends with verification cells, and those cells are not decoration: they
@@ -27,6 +28,7 @@ cannot be trusted with anything else.
 | **GR-08** | quadratic actions | kinetic matrices, wave speeds, strong coupling |
 | **GR-09** | a quadratic action | constraints, first and second class, a mode count |
 | **GR-10** | the same perturbed action | the exact linear system, and what quasi-static costs |
+| **GR-11** | a transverse traceless mode | the wave equation, $c_{\rm GW}$, and the siren distance |
 
 Conventions: signature $(-,+,+,+)$, geometrized units $G = c = 1$, $\kappa = 8\pi G/c^4$, and
 $R^{\rho}{}_{\sigma\mu\nu}$ with the first index up. The connection is Levi-Civita in GR-01
@@ -370,6 +372,53 @@ Scope: metric perturbation theory, so $f(R)$ and nothing teleparallel; pressurel
 radiation; one Fourier mode; the $\Lambda$CDM background is exact only to $O(|f_{R0}|)$, which
 the notebook measures rather than assumes.
 
+### `GR-11-Gravitational-Wave-Propagation`
+
+GR-08 asked how fast the tensor modes travel and found $c_{\rm GW}^2 = 1$ for the two
+teleparallel families. Speed is half the story: a wave is also **damped** on the way here, and
+if it is damped by more than the expansion alone then a standard siren reports the wrong
+distance. This notebook does the tensor sector of $f(R)$, which GR-08 does not touch at all.
+
+The transverse traceless mode is the easy corner of perturbation theory, and for a good reason:
+it does not change the Ricci scalar, so $\delta R = 0$ and the scalaron that made GR-10 fourth
+order is simply not excited. Through the same engine GR-05 and GR-10 use, the result is
+
+$$\ddot h + \left(3H + \frac{\dot f_R}{f_R}\right)\dot h + \frac{k^2}{a^2}h = 0,$$
+
+so $c_{\rm GW}^2 = 1$ identically for $f(R)$ too — the gradient and acceleration terms carry the
+same $f_R$ — while the friction is $(3 + \alpha_M)H$ with $\alpha_M = d\ln f_R/d\ln a$. One trap
+on the way: the $34$ equation at first order still contains (background $\mathcal{E}_{yy}$)
+$\times\,h$, which looks exactly like matter sourcing a tensor mode until the background
+equations are imposed and it disappears.
+
+Reducing in conformal time shows the wave carries $a\sqrt{f_R}h$ unchanged rather than $ah$ —
+$h = u/(a\sqrt{f_R})$ removes the friction exactly, leaving $u'' + (k^2 - z''/z)u = 0$ — and the
+notebook then confirms that numerically by following a mode's envelope: multiplied by $a$ it
+drifts by $5\%$, multiplied by $a\sqrt{f_R}$ by $0.3\%$. Hence
+
+$$\frac{d_L^{\rm GW}(z)}{d_L^{\rm EM}(z)} = \sqrt{\frac{f_R(0)}{f_R(z)}},$$
+
+which falls with redshift and **saturates**, because there is nothing left to accumulate once
+$f_R(z)$ has reached one. The whole effect is bounded at every redshift at once by
+$1 - \sqrt{1 - |f_{R0}|} \approx |f_{R0}|/2$.
+
+**That is a clean negative result.** Three observables in the series now track the same single
+function: $G_{\rm eff}/G = (1/f_R)(1+4m)/(1+3m)$ for growth, $\Sigma = 1/f_R$ for lensing, and
+now the siren ratio. At $z = 0$ lensing gives $\Sigma - 1 \approx |f_{R0}|$ and sirens give
+$|f_{R0}|/2$ — lensing wins by a factor of two on exactly the same parameter — and the Solar
+System already pins that parameter below $10^{-6}$. So standard sirens cannot constrain viable
+$f(R)$, and not by bad luck: the $f_R \approx 1$ that lets the theory survive a laboratory is
+what forces the wave to travel as it does in general relativity.
+
+It does **not** follow for the other two families. GR-08's tensor kinetic coefficients are
+$f_{\mathcal{T}}$ and $f_Q$, the same coefficients that appear in $G_{\rm eff}/G$ there, and
+those are not tied to unity the way $f_R$ is. Whether sirens can see them is open, and is the
+obvious next calculation; section 9 says what machinery it needs.
+
+Scope: metric perturbation theory, so $f(R)$ only. The propagation effect alone — a full siren
+prediction also has to ask whether the source's own emission is modified, which is a question
+about screening near the binary rather than about the wave.
+
 ## Conventions worth knowing before you trust the output
 
 - **Torsion and non-metricity scalars.** In flat FLRW the notebook uses
@@ -393,6 +442,10 @@ the notebook measures rather than assumes.
   GR-07. What remains are the quasi-static and sub-horizon approximations, shared by all three.
   For $f(R)$ they are no longer untested either: GR-10 solves the same system exactly and puts
   a number on them.
+- **Every $f(R)$ deviation in this series is one function.** $G_{\rm eff}$, the lensing
+  $\Sigma$, the gravitational-wave friction and the siren distance are all built from $f_R$ and
+  its running, so the Solar System bound on $|f_{R0}|$ caps all of them at once. GR-05 derives
+  the first two, GR-11 the last two.
 - **The $G_{\rm eff}$ results are metric-sector statements.** GR-08 shows that in
   $f(\mathcal{T})$ the extra Lorentz modes have identically zero kinetic terms around flat
   FLRW, so linear theory does not describe them, and that for $f(Q)$ the status of the
@@ -509,7 +562,7 @@ GR-06-Teleparallel-Geometry.wl
   15 cells, 45.7 s, 28 checks, all pass
 ```
 
-The whole series is **156 checks**, and all of them pass. It takes eight to fifteen minutes
+The whole series is **172 checks**, and all of them pass. It takes eight to fifteen minutes
 depending on how busy the machine is, half of that inside GR-09 alone. Flags: `--verbose` lists
 every check rather than only the failures, `--parse-only` reads the sources and counts cells
 without evaluating anything, and `--timeout=N` caps the seconds any one expression may take
