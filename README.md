@@ -674,6 +674,39 @@ $G_{
 m eff}/G = -4.44$, then $+25.6$ — negative, then through a pole — and CosmoFit refuses that
 region rather than returning the numbers.
 
+### The bridge the other way
+
+Those two scripts compare the codebases on models someone has already written twice.
+`cosmofit-export.wls` goes the other way — derive something new here, and get the Python that
+fits it:
+
+```
+wolframscript -file cosmofit-export.wls "Ts + A0 (-Ts)^bb" A0 bb=0.2
+```
+
+It emits a runnable `Action(...).build(...)` **with this repository's own $E(z)$ carried along as
+an assertion**, so the generated script fails loudly if the two derivations ever disagree. Both
+built-in examples currently come out at $0.0\mathrm{e}0$.
+
+Carrying the numbers is not decoration; it is what made the translation correct. Torsion needs
+no translation — GR-02 and CosmoFit both put $\mathcal{T} = -6H^2$ — but non-metricity is not a
+rename. GR-02 uses $Q = -6H^2$ and CosmoFit $Q = +6E^2$, and since **both** call a linear $f$ the
+GR limit, their two STEGR Lagrangians differ by an overall sign that the $E(0)=1$ closure hides
+for linear $f$ and for nothing else. What survives is
+
+$$f_{\rm CosmoFit}(Q) = -f_{\rm GR02}(-Q),$$
+
+sending $Q_s + A_0(-Q_s)^b$ to $Q - A_0Q^b$. That was measured, not reasoned: the literal
+$Q_s \to Q$ produces a complex closure and $Q_s \to -Q$ alone is rejected as having no real
+solution. Both were caught by the assertion rather than by inspection.
+
+The script also refuses rather than guessing. It will not export a fourth-order $f(R)$, where
+GR-02 returns an ODE and there is no closed form to assert against; and it will not export a
+model whose closure pushes $E(z)$ off the real line. That second case is not hypothetical:
+$f = Q + \alpha Q^2$ looks entirely reasonable, and once the closure fixes $\alpha$ its
+discriminant goes negative at $z = 0.06$. Root-finding through it returns a confident $0.845$
+that barely moves with redshift.
+
 Worth knowing: GR-02 hands the $f(\mathcal{T})$ and $f(Q)$ power laws the *identical* background
 constraint, since both scalars are $-6H^2$ on flat FLRW. That is correct rather than an oversight,
 and it means background data alone cannot separate those two families — a growth or perturbation
