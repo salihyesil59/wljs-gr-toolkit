@@ -197,6 +197,11 @@ rsc = Sum[gup[[i, j]] ric[[i, j]], {i, 4}, {j, 4}];
 MatrixForm[gPert]
 
 %-------------------------------------------------------------------------%
+Type: Output
+%-------------------------------------------------------------------------%
+(*GB[*){{-1(*|*),(*|*)0(*|*),(*|*)0(*|*),(*|*)0}(*||*),(*||*){0(*|*),(*|*)(*SpB[*)Power[a[t](*|*),(*|*)2](*]SpB*)(*|*),(*|*)0(*|*),(*|*)0}(*||*),(*||*){0(*|*),(*|*)0(*|*),(*|*)((*SpB[*)Power[a[t](*|*),(*|*)2](*]SpB*)) (1+((*SpB[*)Power[E(*|*),(*|*)I k x](*]SpB*)) eps hp[t])(*|*),(*|*)((*SpB[*)Power[E(*|*),(*|*)I k x](*]SpB*)) eps ((*SpB[*)Power[a[t](*|*),(*|*)2](*]SpB*)) hc[t]}(*||*),(*||*){0(*|*),(*|*)0(*|*),(*|*)((*SpB[*)Power[E(*|*),(*|*)I k x](*]SpB*)) eps ((*SpB[*)Power[a[t](*|*),(*|*)2](*]SpB*)) hc[t](*|*),(*|*)((*SpB[*)Power[a[t](*|*),(*|*)2](*]SpB*)) (1-((*SpB[*)Power[E(*|*),(*|*)I k x](*]SpB*)) eps hp[t])}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcFsQBHfxJKizAoAs04KOA==*)(*]GB*)
+
+%-------------------------------------------------------------------------%
 Props:
   Hidden: true
 Type: Input
@@ -245,6 +250,11 @@ AbsoluteTiming[
 ]
 
 %-------------------------------------------------------------------------%
+Type: Output
+%-------------------------------------------------------------------------%
+{19.4846208`,Null}
+
+%-------------------------------------------------------------------------%
 Props:
   Hidden: false
 Type: Input
@@ -253,6 +263,11 @@ Column[{
   Row[{Style["background R = ", Bold], bgR}],
   Row[{Style["delta R at first order = ", Bold], deltaR}],
   Row[{Style["so the scalaron is not excited: ", Bold], deltaR === 0}]}]
+
+%-------------------------------------------------------------------------%
+Type: Output
+%-------------------------------------------------------------------------%
+(*GB[*){{(*GB[*){{(*BB[*)("background R = ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)(*FB[*)((6 ((*SpB[*)Power[(a')[t](*|*),(*|*)2](*]SpB*)+a[t] (a'')[t]))(*,*)/(*,*)((*SpB[*)Power[a[t](*|*),(*|*)2](*]SpB*)))(*]FB*)}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}(*||*),(*||*){(*GB[*){{(*BB[*)("delta R at first order = ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)0}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}(*||*),(*||*){(*GB[*){{(*BB[*)("so the scalaron is not excited: ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)True}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}}(*||*)(*1:eJxTTMoPSmNiYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUiDyIF1Sak1osABV2yq9wzMlMz8tNzStJY4Qp8cksLkHVEMwOZDjn55Tm5hWjqUPhQRipaSUAIwUhsg==*)(*]GB*)
 
 %-------------------------------------------------------------------------%
 Props:
@@ -305,6 +320,11 @@ Column[{
        FreeQ[eqCross, rho | pres]}],
   Row[{Style["both polarisations obey the same equation: ", Bold],
        Simplify[(eqCross /. hc -> hh) - (eqPlus /. hp -> hh)] === 0}]}]
+
+%-------------------------------------------------------------------------%
+Type: Output
+%-------------------------------------------------------------------------%
+(*GB[*){{(*GB[*){{(*BB[*)("cross equation: ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)((*FB[*)((1)(*,*)/(*,*)(2))(*]FB*)) (fR ((*SpB[*)Power[k(*|*),(*|*)2](*]SpB*)) hc[t]-(*FB[*)((12 fRR ((*SpB[*)Power[(a')[t](*|*),(*|*)3](*]SpB*)) (hc')[t])(*,*)/(*,*)(a[t]))(*]FB*)+6 fRR (a')[t] (hc')[t] (a'')[t]+fR ((*SpB[*)Power[a[t](*|*),(*|*)2](*]SpB*)) (hc'')[t]+3 a[t] (hc')[t] (fR (a')[t]+2 fRR (a''')[t]))(*|*),(*|*)" = 0"}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}(*||*),(*||*){(*GB[*){{(*BB[*)("free of rho and p, so matter does not source it: ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)True}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}(*||*),(*||*){(*GB[*){{(*BB[*)("both polarisations obey the same equation: ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)True}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}}(*||*)(*1:eJxTTMoPSmNiYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUiDyIF1Sak1osABV2yq9wzMlMz8tNzStJY4Qp8cksLkHVEMwOZDjn55Tm5hWjqUPhQRipaSUAIwUhsg==*)(*]GB*)
 
 %-------------------------------------------------------------------------%
 Props:
@@ -376,6 +396,11 @@ Column[{
          - (a[t]^2/2)(hc''[t] + 3 (a'[t]/a[t]) hc'[t] + k^2 hc[t]/a[t]^2)] === 0}]}]
 
 %-------------------------------------------------------------------------%
+Type: Output
+%-------------------------------------------------------------------------%
+(*GB[*){{(*GB[*){{(*BB[*)("equation is fR (h'' + 3H h' + k^2 h/a^2) + fR' h', times a^2/2 : ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)True}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}(*||*),(*||*){(*GB[*){{(*BB[*)("c_GW^2 = ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)1}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}(*||*),(*||*){(*GB[*){{(*BB[*)("in general relativity (f = R) the friction is just 3H: ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)True}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}}(*||*)(*1:eJxTTMoPSmNiYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUiDyIF1Sak1osABV2yq9wzMlMz8tNzStJY4Qp8cksLkHVEMwOZDjn55Tm5hWjqUPhQRipaSUAIwUhsg==*)(*]GB*)
+
+%-------------------------------------------------------------------------%
 Props:
   Hidden: true
 Type: Input
@@ -441,6 +466,11 @@ Column[{
   Row[{Style["conformal form is the same equation: ", Bold], sameEquation}],
   Row[{Style["h = u/(a Sqrt[fR]) removes the friction: ", Bold], frictionGone}],
   Row[{Style["what is left is u'' + (k^2 - z''/z) u = 0: ", Bold], leftIsWKB}]}]
+
+%-------------------------------------------------------------------------%
+Type: Output
+%-------------------------------------------------------------------------%
+(*GB[*){{(*GB[*){{(*BB[*)("conformal form is the same equation: ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)True}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}(*||*),(*||*){(*GB[*){{(*BB[*)("h = u/(a Sqrt[fR]) removes the friction: ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)True}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}(*||*),(*||*){(*GB[*){{(*BB[*)("what is left is u'' + (k^2 - z''/z) u = 0: ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)True}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}}(*||*)(*1:eJxTTMoPSmNiYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUiDyIF1Sak1osABV2yq9wzMlMz8tNzStJY4Qp8cksLkHVEMwOZDjn55Tm5hWjqUPhQRipaSUAIwUhsg==*)(*]GB*)
 
 %-------------------------------------------------------------------------%
 Props:
@@ -540,6 +570,11 @@ Column[{Dataset[envelope],
   Row[{Style["spread of a Sqrt[fR] h: ", Bold], ScientificForm[spread["x a Sqrt[fR]"], 3]}]}]
 
 %-------------------------------------------------------------------------%
+Type: Output
+%-------------------------------------------------------------------------%
+(*GB[*){{(*VB[*)(FrontEndRef["4ea74bf9-eb69-4cd0-b7a4-3a352bd9b843"])(*,*)(*"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKm6QmmpskpVnqpiaZWeqaJKcY6CaZJ5roGicamxolpVgmWZgYAwCRHBYG"*)(*]VB*)}(*||*),(*||*){(*GB[*){{(*BB[*)("spread of a h        : ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)(*VB[*)(5.464385298903358*^-2)(*,*)(*"1:eJxtUdtOwkAQrbfE+BXIE7RoxFAeTHjYLZQE5GKn2xvhoSwLqd3euG0hfrwtamKML2fOzJmHc2buF4mxupIkaXtXQG8Z7JKNFTAB7oUk1WSMZ3K9pj622j+8Wskr1XpNbhRcrjZf2CA3zVEyhWgcuH2UqGsKiDiq54VpBrGCwfYUJ9Z9V6w1s7XuWTlE3jQrVOqohhtyheRrAapA8MbUyekQqgqx9G6/KwRum8jsL7EPrbFGmxFqbm2uR8576r4OIRljgsg4ZEJ0OtXSzxzjskBaWp0mgm1mzaea/CHXG2d8eJ4XS4Us1/+PEH5FGIEA25r44T6j8bdJKzU1nOsBMqxBZtqB0EiqGU6uUpKCx5U2Da2ARPoRbG7QE8oI7R1GQ9LSEXIj3Up+WVxdlhe/LsDYcwa3JWH+chLz43lqbvbsz075HmCc0Z2/4Gx7U7S6z7fsE+v9gOY="*)(*]VB*)}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}(*||*),(*||*){(*GB[*){{(*BB[*)("spread of a Sqrt[fR] h: ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)(*VB[*)(2.7181875883591955*^-3)(*,*)(*"1:eJxtUdtOwkAQrbfE+BXIE7RoBCkmJjzsFkoCcrHT7Y3wUJaV1G5py20L8eNtURNjfDlzZs48nDNzO4+NtwtJkjY3OXQXwTZeWwET4J5JUkXGeCpXK437p8YPL5eyUrlakWs5l8v1Z9bPTHMYTyAaBW4PxeqSAiKO6nlhksJKwWB7irPSfVcsNbO57FoZRN4kzVXqqIYbcoVkSwGqQPDK1PFxH6oKsfROryMEbpnI7C2wD82RRusRqm9srkfOe+K+DCAeYYLIKGRCtNvlws8M46JAUlidxIKtp/WHivwhV2snvHuc5Uu5LFf/jxB+RRiCANsa++Eupatvk1ZiajjTA2RY/dS0A6GRRDOcTKUkAY8rLRpaAYn0A9jcoEeUEtrdDwekqSPkRroV/7L4dl5c/DIHY8cZXBeE+Yvxih9OU3O9Y392ivcA44xu/Tlnm6u81X2+YZ/mZYDj"*)(*]VB*)}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}}(*||*)(*1:eJxTTMoPSmNiYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUiDyIF1Sak1osABV2yq9wzMlMz8tNzStJY4Qp8cksLkHVEMwOZDjn55Tm5hWjqUPhQRipaSUAIwUhsg==*)(*]GB*)
+
+%-------------------------------------------------------------------------%
 Props:
   Hidden: true
 Type: Input
@@ -610,6 +645,11 @@ Column[{
   Row[{Style["largest deviation, |fR0| = 1e-6  : ", Bold], ScientificForm[N[bound[1/1000000]], 4]}],
   Row[{Style["against |fR0|/2                  : ", Bold],
        ScientificForm[N[1/1000000/2], 4]}]}]
+
+%-------------------------------------------------------------------------%
+Type: Output
+%-------------------------------------------------------------------------%
+(*GB[*){{(*VB[*)(FrontEndRef["7fdab379-b8f1-45f5-8446-47bf32803ac7"])(*,*)(*"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKm6elJCYZm1vqJlmkGeqamKaZ6lqYmJjpmpgnpRkbWRgYJyabAwCIFBWD"*)(*]VB*)}(*||*),(*||*){(*GB[*){{(*BB[*)("saturation value at |fR0| = 1e-4 : ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)0.99994999874993749609347654199057604098`12.}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}(*||*),(*||*){(*GB[*){{(*BB[*)("largest deviation, |fR0| = 1e-4  : ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)(*VB[*)(5.0001250062603475*^-5)(*,*)(*"1:eJxtUU1PwkAQrV+J8Vcgp9KikYTlYMJht1ISkILdbr8Ih7IspHb7RYEtxB9vi5oY4+XNm3lzeG/mfpma6ytJkoq7CgarcJdu7ZAJ7FxIkqwgNFdaMnj8Yc1G2Wi2ZKVdcaXZeWaj0rIm6QzHRugNYQo2FEPiAt+PshwnKsKOr7qJHnhio1ndzcAucezP8kqlLjC9iKuk3AgMBMRvDExPhwioxNZfhi9CoJ4FreEKBbhraLQTw07hcD123zPvdYxTAxFIjIgJ0e83az8LhOqCs9rqLBVsO+88ycqH0mqf8QEsqqVKVlr/R4i+IkxwFd+eBtE+p8m3STuzNFTqITTtUW45odBIppluCSjJsM/VHo3skMT6ETvcpCeYEzo4TMakq0Poxbqd/rK4vqzvfV2BuecM39aEBatpwo/nqbXdsz879XMw44zugiVnxU3V6gEv2Ccvx4B9"*)(*]VB*)}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}(*||*),(*||*){(*GB[*){{(*BB[*)("largest deviation, |fR0| = 1e-6  : ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)(*VB[*)(5.000001249699793*^-7)(*,*)(*"1:eJxtUdtOwkAQrbfE+BXYJ2jR2IRiYsLDbqEkIAW73d4ID2VZSO32RoEtxI+3RU2M8eXMmTnzcM7M/TI111eCIBR3FQxW4S7d2iHlyLkQhKYE4VxqNdXHHyY2yobYakrtikui8kJHpWVN0hmKjdAbglTdEASwq/p+lOUokSFyfNlN9MDjG83qbAZ2iWJ/llcqcVXTi5iMyw1HKgfojarT0yFSZWzr/WGfc9i1gDVcwQB1DI0oMVAKh+mx+555r2OUGhADbESU815PrP0sIKwLymqrs5TT7Vx5akofUqt9xofnRbVUyVLr/wjRV4QJquLb0yDa5yT5NmlnlgZLPQSmPcotJ+QazjTTLVWCM+QzuUsiO8SxfkQOM8kJ5JgMDpMx7ugAeLFup78sri/re19XYO4ZRbc1ocFqmrDjeWpt9/TPTv0cRBklu2DJaHFTtXrACvoJMWuAfw=="*)(*]VB*)}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}(*||*),(*||*){(*GB[*){{(*BB[*)("against |fR0|/2                  : ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)(*VB[*)(5.*^-7)(*,*)(*"1:eJxtUdtOwkAQrbfE+BXYJ2jR2IRiYsLDbqEkIAW73d4ID2VZSO32RoEtxI+3RU2M8eXMmTnzcM7M/TI111eCIBR3FQxW4S7d2iHlyLkQhKYE4VxqNdXHHyY2yobYakrtikui8kJHpWVN0hmKjdAbglTdEASwq/p+lOUokSFyfNlN9MDjG83qbAZ2iWJ/llcqcVXTi5iMyw1HKgfojarT0yFSZWzr/WGfc9i1gDVcwQB1DI0oMVAKh+mx+555r2OUGhADbESU815PrP0sIKwLymqrs5TT7Vx5akofUqt9xofnRbVUyVLr/wjRV4QJquLb0yDa5yT5NmlnlgZLPQSmPcotJ+QazjTTLVWCM+QzuUsiO8SxfkQOM8kJ5JgMDpMx7ugAeLFup78sri/re19XYO4ZRbc1ocFqmrDjeWpt9/TPTv0cRBklu2DJaHFTtXrACvoJMWuAfw=="*)(*]VB*)}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}}(*||*)(*1:eJxTTMoPSmNiYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUiDyIF1Sak1osABV2yq9wzMlMz8tNzStJY4Qp8cksLkHVEMwOZDjn55Tm5hWjqUPhQRipaSUAIwUhsg==*)(*]GB*)
 
 %-------------------------------------------------------------------------%
 Props:
@@ -738,11 +778,30 @@ Dataset @ {
  <|"check" -> "lensing beats sirens by a factor of two on the same parameter",
    "ok" -> (Abs[(1/fRat[t0, 1/1000000] - 1)/bound[1/1000000] - 2] < 1/100)|>}
 
+%-------------------------------------------------------------------------%
+Type: Output
+%-------------------------------------------------------------------------%
+(*VB[*)(FrontEndRef["044dc61f-3d08-4f82-815b-45dc40e61fce"])(*,*)(*"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKG5iYpCSbGabpGqcYWOiapFkY6VoYmibpmpimJJsYpAJlklMBfcUVoA=="*)(*]VB*)
+
 %------------------------------%EndOfCells%-------------------------------%
 
 
 
 %--------------------------------%Objects%--------------------------------%
+Key: 4ea74bf9-eb69-4cd0-b7a4-3a352bd9b843
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[Dataset[{Association["a" -> 0.1, "amplitude" -> 1, "x a" -> 0.1, "x a Sqrt[fR]" -> 0.09999947593785713], Association["a" -> 0.25, "amplitude" -> 0.39980566370400966, "x a" -> 0.09995141592600242, "x a Sqrt[fR]" -> 0.09985213799474886], Association["a" -> 0.5, "amplitude" -> 0.20338579076126576, "x a" -> 0.10169289538063288, "x a Sqrt[fR]" -> 0.09986946794967175], Association["a" -> 0.75, "amplitude" -> 0.13888767440505573, "x a" -> 0.1041657558037918, "x a Sqrt[fR]" -> 0.10002336001623882], Association["a" -> 1, "amplitude" -> 0.10553984177542526, "x a" -> 0.10553984177542526, "x a Sqrt[fR]" -> 0.10012388517123984]}, TypeSystem`Vector[TypeSystem`Struct[{"a", "amplitude", "x a", "x a Sqrt[fR]"}, {TypeSystem`Atom[Real], TypeSystem`Atom[Real], TypeSystem`Atom[Real], TypeSystem`Atom[Real]}], 5], Association[]]]|>
+
+%-------------------------------------------------------------------------%
+Key: 7fdab379-b8f1-45f5-8446-47bf32803ac7
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[Dataset[{Association["z" -> 0.1, "|fR0| = 1e-4" -> 0.999996944072, "|fR0| = 1e-6" -> 0.999999969444], Association["z" -> 0.5, "|fR0| = 1e-4" -> 0.999983056516, "|fR0| = 1e-6" -> 0.999999830578], Association["z" -> 1, "|fR0| = 1e-4" -> 0.999967768305, "|fR0| = 1e-6" -> 0.9999996777], Association["z" -> 2, "|fR0| = 1e-4" -> 0.999954042845, "|fR0| = 1e-6" -> 0.999999540443], Association["z" -> 5, "|fR0| = 1e-4" -> 0.999950103892, "|fR0| = 1e-6" -> 0.999999501051]}, TypeSystem`Vector[TypeSystem`Struct[{"z", "|fR0| = 1e-4", "|fR0| = 1e-6"}, {TypeSystem`Atom[Real], TypeSystem`Atom[Real], TypeSystem`Atom[Real]}], 5], Association[]]]|>
+
+%-------------------------------------------------------------------------%
+Key: 044dc61f-3d08-4f82-815b-45dc40e61fce
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[Dataset[{Association["check" -> "a transverse traceless mode does not perturb the Ricci scalar", "ok" -> True], Association["check" -> "matter carries no anisotropic stress, so it does not source the tensor mode", "ok" -> True], Association["check" -> "both polarisations obey the same equation", "ok" -> True], Association["acceptance test" -> "the wave equation is fR (h'' + 3H h' + k^2 h/a^2) + fR' h'", "ok" -> True], Association["acceptance test" -> "c_GW^2 = 1 identically, for every f", "ok" -> True], Association["acceptance test" -> "general relativity gives back friction 3H and nothing else", "ok" -> True], Association["check" -> "the conformal-time form is the same equation", "ok" -> True], Association["check" -> "h = u/(a Sqrt[fR]) removes the friction exactly", "ok" -> True], Association["check" -> "and leaves u'' + (k^2 - z''/z) u = 0", "ok" -> True], Association["acceptance test" -> "numerically, a Sqrt[fR] h is far flatter than a h", "ok" -> True], Association["check" -> "the numerical invariant is flat to better than a percent", "ok" -> True], Association["check" -> "the siren ratio is below one and falls with redshift", "ok" -> True], Association["check" -> "it saturates at Sqrt[1 - |fR0|] rather than growing without limit", "ok" -> True], Association["check" -> "the largest deviation is |fR0|/2 to within a part in a thousand", "ok" -> True], Association["acceptance test" -> "at the Solar System bound the siren effect is below 1e-6", "ok" -> True], Association["check" -> "lensing beats sirens by a factor of two on the same parameter", "ok" -> True]}, TypeSystem`Vector[TypeSystem`Assoc[TypeSystem`Atom[String], TypeSystem`AnyType, TypeSystem`AnyLength], 16], Association[]]]|>
+
 %-----------------------------%EndOfObjects%------------------------------%
 
 
