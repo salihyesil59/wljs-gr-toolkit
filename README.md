@@ -5,8 +5,8 @@ Wolfram Language notebooks for symbolic general relativity and modified gravity,
 hand back curvature tensors, field equations, Friedmann equations and observables — non-zero,
 independent components only — and then keep going: cosmological distances, structure growth,
 the effective gravitational coupling, the teleparallel and symmetric-teleparallel families, a
-Hamiltonian mode count, the price of the approximation all of it rests on, and what a
-gravitational wave does on the way here.
+Hamiltonian mode count, the price of the approximation all of it rests on, what a gravitational
+wave does on the way here, and why the laboratory has not already ruled the whole thing out.
 
 The through-line is that every result is checked against a limit where the answer is already
 known. Each notebook ends with verification cells, and those cells are not decoration: they
@@ -29,6 +29,7 @@ cannot be trusted with anything else.
 | **GR-09** | a quadratic action | constraints, first and second class, a mode count |
 | **GR-10** | the same perturbed action | the exact linear system, and what quasi-static costs |
 | **GR-11** | a transverse traceless mode | the wave equation, $c_{\rm GW}$, and the siren distance |
+| **GR-12** | a dense body in a background | the thin shell, PPN $\gamma$, and the bound on $|f_{R0}|$ |
 
 Conventions: signature $(-,+,+,+)$, geometrized units $G = c = 1$, $\kappa = 8\pi G/c^4$, and
 $R^{\rho}{}_{\sigma\mu\nu}$ with the first index up. The connection is Levi-Civita in GR-01
@@ -406,8 +407,8 @@ $1 - \sqrt{1 - |f_{R0}|} \approx |f_{R0}|/2$.
 function: $G_{\rm eff}/G = (1/f_R)(1+4m)/(1+3m)$ for growth, $\Sigma = 1/f_R$ for lensing, and
 now the siren ratio. At $z = 0$ lensing gives $\Sigma - 1 \approx |f_{R0}|$ and sirens give
 $|f_{R0}|/2$ — lensing wins by a factor of two on exactly the same parameter — and the Solar
-System already pins that parameter below $10^{-6}$. So standard sirens cannot constrain viable
-$f(R)$, and not by bad luck: the $f_R \approx 1$ that lets the theory survive a laboratory is
+System pins that parameter below $10^{-6}$, which GR-12 derives. So standard sirens cannot
+constrain viable $f(R)$, and not by bad luck: the $f_R \approx 1$ that lets the theory survive a laboratory is
 what forces the wave to travel as it does in general relativity.
 
 It does **not** follow for the other two families. GR-08's tensor kinetic coefficients are
@@ -418,6 +419,48 @@ obvious next calculation; section 9 says what machinery it needs.
 Scope: metric perturbation theory, so $f(R)$ only. The propagation effect alone — a full siren
 prediction also has to ask whether the source's own emission is modified, which is a question
 about screening near the binary rather than about the wave.
+
+### `GR-12-Screening-And-The-Solar-System`
+
+Every other result in the series is derived. One was not: $|f_{R0}| \lesssim 10^{-6}$, the Solar
+System bound, which GR-05, GR-11, this README and the companion fitting library all leaned on
+and all took on trust. GR-11 made that worse by using it twice. This notebook derives it.
+
+The problem is already in GR-05. Its slip $\eta = (1+2m)/(1+4m)$ goes to $\tfrac{1}{2}$ on small
+scales, and in a static weak field that slip *is* the post-Newtonian $\gamma$. Cassini measures
+$\gamma - 1 = (2.1 \pm 2.3)\times10^{-5}$, so $f(R)$ with a light scalaron is not marginally
+disfavoured — it is out by four orders of magnitude, and needs a mechanism rather than a fit.
+
+The mechanism is the whole content of one relation. Linearising the trace equation gives a
+Poisson equation for the scalaron with $-\kappa/3$ where gravity has $+\kappa/2$, so sourced by
+the same matter $\delta f_R = -\tfrac{2}{3}\Phi_N$: **the field cannot move further than
+$\tfrac{2}{3}|\Phi_N|$ however dense the body gets.** If the background value it would have to
+climb from is larger than that, it never reaches its interior minimum and the body is bare.
+
+Working that out for a uniform sphere with a pinned core gives a closed form, all of it checked
+rather than quoted — with $\varepsilon = |f_{R,\rm bg}|/\Phi_N$,
+
+$$w = \frac{(x-x_s)^2(x+2x_s)}{3\varepsilon x}, \qquad \frac{x_s}{r_b} = \sqrt{1-\varepsilon},
+\qquad \frac{A}{A_{\rm linear}} = 1 - (1-\varepsilon)^{3/2},$$
+
+so a screened core exists only for $\varepsilon < 1$, and deep in the screened regime the fifth
+force is suppressed by $\tfrac{3}{2}\varepsilon$ — linear in how small the background field is.
+Requiring the **Galaxy** to have a thin shell, which is what actually screens the Solar System
+sitting inside it, is then $|f_{R0}| < \Phi_{\rm gal} \approx 10^{-6}$. The bound looks like a
+potential because it is one: the depth of the well the scalaron has to climb out of.
+
+The pinned core is an idealisation, and section 6 measures it instead of waving at it. What was
+dropped is a fraction $1/(D\sqrt{w})$ of the source with $D$ the density contrast, so it matters
+only in a boundary layer where $w \lesssim 1/D^2$ — reaching $\sqrt{\varepsilon}/D$ out from the
+core, which for a real body is a part in $10^{27}$ of the shell. That is worth doing
+algebraically: the interior minimum is an *equilibrium*, so a numerical solution started exactly
+on it never leaves, and started just off it, where it leaves depends on rounding.
+
+One caveat the notebook keeps in view, because it cuts the other way: screening is **local**. It
+suppresses the fifth force near dense bodies and does nothing in the voids and filaments where
+GR-04 and GR-05 work. A model can be invisible in the Solar System and still move $f\sigma_8$ by
+percent, which is why the cosmological fits are worth doing rather than foreclosed by the
+laboratory. The bound constrains $|f_{R0}|$, not the shape of $f$.
 
 ## Conventions worth knowing before you trust the output
 
@@ -441,11 +484,13 @@ about screening near the binary rather than about the wave.
   offers is derived inside the series: $f(R)$ in GR-05, $f(\mathcal{T})$ in GR-06, $f(Q)$ in
   GR-07. What remains are the quasi-static and sub-horizon approximations, shared by all three.
   For $f(R)$ they are no longer untested either: GR-10 solves the same system exactly and puts
-  a number on them.
+  a number on them. The last quoted quantity anywhere in the series was the Solar System bound
+  $|f_{R0}| \lesssim 10^{-6}$, and GR-12 derives that too. What is quoted now is measurement —
+  Cassini's $\gamma$, the Galaxy's potential — which is the only kind of input that should be.
 - **Every $f(R)$ deviation in this series is one function.** $G_{\rm eff}$, the lensing
   $\Sigma$, the gravitational-wave friction and the siren distance are all built from $f_R$ and
-  its running, so the Solar System bound on $|f_{R0}|$ caps all of them at once. GR-05 derives
-  the first two, GR-11 the last two.
+  its running, so the bound on $|f_{R0}|$ caps all of them at once. GR-05 derives the first two,
+  GR-11 the last two, and GR-12 the bound — which was the last quoted number in the series.
 - **The $G_{\rm eff}$ results are metric-sector statements.** GR-08 shows that in
   $f(\mathcal{T})$ the extra Lorentz modes have identically zero kinetic terms around flat
   FLRW, so linear theory does not describe them, and that for $f(Q)$ the status of the
@@ -562,8 +607,9 @@ GR-06-Teleparallel-Geometry.wl
   15 cells, 45.7 s, 28 checks, all pass
 ```
 
-The whole series is **172 checks**, and all of them pass. It takes eight to fifteen minutes
-depending on how busy the machine is, half of that inside GR-09 alone. Flags: `--verbose` lists
+The whole series is **191 checks**, and all of them pass. It takes anywhere from
+seven to twenty minutes depending on how busy the machine is, most of that inside GR-09 and
+GR-10; GR-12 runs in under a second. Flags: `--verbose` lists
 every check rather than only the failures, `--parse-only` reads the sources and counts cells
 without evaluating anything, and `--timeout=N` caps the seconds any one expression may take
 (`0` removes the cap). Named files run instead of the whole series.
