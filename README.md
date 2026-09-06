@@ -6,7 +6,8 @@ hand back curvature tensors, field equations, Friedmann equations and observable
 independent components only — and then keep going: cosmological distances, structure growth,
 the effective gravitational coupling, the teleparallel and symmetric-teleparallel families, a
 Hamiltonian mode count, the price of the approximation all of it rests on, what a gravitational
-wave does on the way here, and why the laboratory has not already ruled the whole thing out.
+wave does on the way here, why the laboratory has not already ruled the whole thing out, and
+which of the three families a standard siren could actually catch.
 
 The through-line is that every result is checked against a limit where the answer is already
 known. Each notebook ends with verification cells, and those cells are not decoration: they
@@ -30,6 +31,7 @@ cannot be trusted with anything else.
 | **GR-10** | the same perturbed action | the exact linear system, and what quasi-static costs |
 | **GR-11** | a transverse traceless mode | the wave equation, $c_{\rm GW}$, and the siren distance |
 | **GR-12** | a dense body in a background | the thin shell, PPN $\gamma$, and the bound on $|f_{R0}|$ |
+| **GR-13** | GR-08's quadratic actions | the tensor coefficient, and which families sirens can see |
 
 Conventions: signature $(-,+,+,+)$, geometrized units $G = c = 1$, $\kappa = 8\pi G/c^4$, and
 $R^{\rho}{}_{\sigma\mu\nu}$ with the first index up. The connection is Levi-Civita in GR-01
@@ -413,8 +415,8 @@ what forces the wave to travel as it does in general relativity.
 
 It does **not** follow for the other two families. GR-08's tensor kinetic coefficients are
 $f_{\mathcal{T}}$ and $f_Q$, the same coefficients that appear in $G_{\rm eff}/G$ there, and
-those are not tied to unity the way $f_R$ is. Whether sirens can see them is open, and is the
-obvious next calculation; section 9 says what machinery it needs.
+those are not tied to unity the way $f_R$ is. Whether sirens can see them is settled in
+GR-13, which loads GR-08's quadratic actions rather than rebuilding the machinery.
 
 Scope: metric perturbation theory, so $f(R)$ only. The propagation effect alone — a full siren
 prediction also has to ask whether the source's own emission is modified, which is a question
@@ -461,6 +463,69 @@ suppresses the fifth force near dense bodies and does nothing in the voids and f
 GR-04 and GR-05 work. A model can be invisible in the Solar System and still move $f\sigma_8$ by
 percent, which is why the cosmological fits are worth doing rather than foreclosed by the
 laboratory. The bound constrains $|f_{R0}|$, not the shape of $f$.
+
+### `GR-13-Sirens-And-The-Other-Two`
+
+GR-11 answered the siren question for $f(R)$ and ended by saying flatly that the answer does not
+carry over. This closes that, and the answer is the opposite.
+
+It loads GR-08 rather than rebuilding it. GR-08 already constructed the second-order Lagrangians
+for both teleparallel families and checked them against their general-relativity limits; it then
+asked those objects about the propagation *speed*. This asks about the **size of the kinetic
+coefficient**, whose running is the friction, and a second copy of that index algebra would be a
+second thing to keep correct.
+
+$$\text{$f(\mathcal{T})$}: \;\; \frac{\partial^2L}{\partial\dot h^2} = -\tfrac{1}{2}f_\mathcal{T}a^3,
+\qquad
+\text{$f(Q)$}: \;\; \frac{\partial^2L}{\partial\dot h^2} = +\tfrac{1}{2}f_Q a^3,$$
+
+with $c_{\rm GW}^2 = 1$ falling out again as a by-product — GR-08's own result, reached from the
+coefficient instead of the ratio. Normalised so general relativity gives one, $M^2 =
+-f_\mathcal{T}$ and $M^2 = f_Q$, the two sign conventions cancelling exactly as they should. So
+all three families say GR-11's sentence with a different noun:
+$d_L^{\rm GW}/d_L^{\rm EM} = \sqrt{M^2(0)/M^2(z)}$.
+
+**What differs is how large the noun may be, and there they part company completely.**
+
+| | largest $1 - d_L^{\rm GW}/d_L^{\rm EM}$ |
+|---|---|
+| $f(R)$, with $\|f_{R0}\| < 10^{-6}$ | $5\times10^{-7}$ |
+| $f(\mathcal{T})$ or $f(Q)$, $b = 0.1$ | $4\times10^{-2}$ |
+| $f(\mathcal{T})$ or $f(Q)$, $b = 0.2$ | $1\times10^{-1}$ |
+
+Five orders of magnitude, and not because the teleparallel families are wilder. The chain that
+catches $f(R)$ starts with GR-05's slip running to $\eta = 1/2$ on small scales, which Cassini
+excludes, which forces the screening of GR-12, which forces $|f_{R0}| < 10^{-6}$ — the very
+number that then bounds the siren effect. GR-06 and GR-07 find $\eta = 1$ *identically* for the
+other two: that chain never starts.
+
+**One constraint the notebook raises against its own result, and cannot settle.** Nothing local
+pins the *value* of $f_\mathcal{T}$; something does pin its *rate*. GR-06 gives
+$G_{\rm eff}/G = -1/f_\mathcal{T} = 1/M^2$, so a running $M^2$ is a running gravitational
+constant, and lunar laser ranging allows
+$|\alpha_M| = |d\ln M^2/d\ln a| \lesssim 2\times10^{-3}$. The model above has
+$\alpha_M = 0.16$ at $b = 0.2$ — seventy times that, and fifteen times it even at $b = 0.05$.
+
+Whether that excludes it is a question the series cannot answer yet, and the reason is exactly
+GR-12: lunar ranging measures $G$ *inside the Solar System*, so what enters is the local
+$G_{\rm eff}$, and for $f(R)$ the local and cosmological values differ by many orders of
+magnitude precisely because the chameleon pins the field. Whether $f(\mathcal{T})$ or $f(Q)$ do
+anything analogous needs the static spherically symmetric solution in those theories — the
+teleparallel counterpart of GR-12, which GR-06 and GR-07 do not build. So the ten percent stands
+only if the cosmological running survives into the local system, and if it does, the same running
+is in trouble with a much older experiment. Either way both are measuring the same function.
+
+Two smaller results. The background of the fitted power law is rebuilt here from GR-06's own
+Friedmann equation, independently of GR-02's `HubbleFunction`, and agrees with it to twelve
+digits — which is also a check on `cosmofit-export.wls`, since those are the numbers it ships.
+And $f(\mathcal{T})$ and $f(Q)$ power laws give the *same* $M^2$ as well as the same background,
+so sirens cannot separate those two families either, only both from general relativity.
+
+Finally, one value of the exponent is worth knowing about: at $b = \tfrac12$ the correction
+carries $(1-2b)$ in $f - 2\mathcal{T}f_\mathcal{T}$ and leaves the Friedmann constraint entirely,
+so $E(0) = 1$ has no solution and the closure fails. What makes it worth saying is that $M^2$
+still depends on $A_0$ there. A fit near that exponent would have a parameter that does nothing
+to the expansion history and everything to the waves.
 
 ## Conventions worth knowing before you trust the output
 
@@ -607,7 +672,7 @@ GR-06-Teleparallel-Geometry.wl
   15 cells, 45.7 s, 28 checks, all pass
 ```
 
-The whole series is **191 checks**, and all of them pass. It takes anywhere from
+The whole series is **214 checks**, and all of them pass. It takes anywhere from
 seven to twenty minutes depending on how busy the machine is, most of that inside GR-09 and
 GR-10; GR-12 runs in under a second. Flags: `--verbose` lists
 every check rather than only the failures, `--parse-only` reads the sources and counts cells
