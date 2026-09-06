@@ -203,6 +203,11 @@ normCheck = Simplify[Normal[Series[
 Row[{Style["u.u to first order = ", Bold], normCheck}]
 
 %-------------------------------------------------------------------------%
+Type: Output
+%-------------------------------------------------------------------------%
+(*GB[*){{(*BB[*)("u.u to first order = ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)-1}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)
+
+%-------------------------------------------------------------------------%
 Props:
   Hidden: true
 Type: Input
@@ -250,6 +255,11 @@ divT = Table[
    {n, 4}];
 
 Dimensions[fieldEq]
+
+%-------------------------------------------------------------------------%
+Type: Output
+%-------------------------------------------------------------------------%
+{4,4}
 
 %-------------------------------------------------------------------------%
 Props:
@@ -300,6 +310,11 @@ AbsoluteTiming[
 ]
 
 %-------------------------------------------------------------------------%
+Type: Output
+%-------------------------------------------------------------------------%
+{7.2886931`,Null}
+
+%-------------------------------------------------------------------------%
 Props:
   Hidden: false
 Type: Input
@@ -329,6 +344,11 @@ Column[{
   Row[{Style["background R  = ", Bold], bgR}],
   Row[{Style["background continuity: ", Bold], consBG, " = 0"}],
   Row[{Style["delta R = ", Bold], deltaR}]}]
+
+%-------------------------------------------------------------------------%
+Type: Output
+%-------------------------------------------------------------------------%
+(*GB[*){{(*GB[*){{(*BB[*)("background R  = ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)(*FB[*)((6 ((*SpB[*)Power[(a')[t](*|*),(*|*)2](*]SpB*)+a[t] (a'')[t]))(*,*)/(*,*)((*SpB[*)Power[a[t](*|*),(*|*)2](*]SpB*)))(*]FB*)}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}(*||*),(*||*){(*GB[*){{(*BB[*)("background continuity: ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)(*FB[*)((3 rho[t] (a')[t])(*,*)/(*,*)(a[t]))(*]FB*)+(rho')[t](*|*),(*|*)" = 0"}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}(*||*),(*||*){(*GB[*){{(*BB[*)("delta R = ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)-(*FB[*)((2 (2 ((*SpB[*)Power[k(*|*),(*|*)2](*]SpB*)) phi[t]+psi[t] (-((*SpB[*)Power[k(*|*),(*|*)2](*]SpB*))+6 ((*SpB[*)Power[(a')[t](*|*),(*|*)2](*]SpB*))+6 a[t] (a'')[t])+3 a[t] ((a')[t] (4 (phi')[t]+(psi')[t])+a[t] (phi'')[t])))(*,*)/(*,*)((*SpB[*)Power[a[t](*|*),(*|*)2](*]SpB*)))(*]FB*)}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}}(*||*)(*1:eJxTTMoPSmNiYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUiDyIF1Sak1osABV2yq9wzMlMz8tNzStJY4Qp8cksLkHVEMwOZDjn55Tm5hWjqUPhQRipaSUAIwUhsg==*)(*]GB*)
 
 %-------------------------------------------------------------------------%
 Props:
@@ -365,6 +385,11 @@ Dataset @ Table[
     "delta" -> orderOf[p[[2]], del], "v" -> orderOf[p[[2]], vel]|>,
   {p, {{"00", eq00}, {"0x", eq0x}, {"traceless ij", eqTL}, {"trace ij", eqTR},
        {"continuity", consT}, {"Euler", consX}, {"delta R", deltaR}}}]
+
+%-------------------------------------------------------------------------%
+Type: Output
+%-------------------------------------------------------------------------%
+(*VB[*)(FrontEndRef["757bf998-b324-42c6-b6e8-729a1574d194"])(*,*)(*"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKm5uaJ6VZWlroJhkbmeiaGCWb6SaZpVromhtZJhqampukGFqaAAB7JhT9"*)(*]VB*)
 
 %-------------------------------------------------------------------------%
 Props:
@@ -426,6 +451,11 @@ Column[{
   Row[{Style["at fRR = 0 it gives phi = psi: ", Bold], slipGRLimit}]}]
 
 %-------------------------------------------------------------------------%
+Type: Output
+%-------------------------------------------------------------------------%
+(*GB[*){{(*GB[*){{(*BB[*)("traceless - identity = ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)0}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}(*||*),(*||*){(*GB[*){{(*BB[*)("psi = ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)-(*FB[*)((fRR dR[t])(*,*)/(*,*)(fR))(*]FB*)+phi[t]}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}(*||*),(*||*){(*GB[*){{(*BB[*)("at fRR = 0 it gives phi = psi: ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)True}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}}(*||*)(*1:eJxTTMoPSmNiYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUiDyIF1Sak1osABV2yq9wzMlMz8tNzStJY4Qp8cksLkHVEMwOZDjn55Tm5hWjqUPhQRipaSUAIwUhsg==*)(*]GB*)
+
+%-------------------------------------------------------------------------%
 Props:
   Hidden: true
 Type: Input
@@ -483,6 +513,11 @@ Dataset @ Table[
        {"continuity", consTr}, {"Euler", consXr}}}]
 
 %-------------------------------------------------------------------------%
+Type: Output
+%-------------------------------------------------------------------------%
+(*VB[*)(FrontEndRef["42815ef9-6c00-413b-8afa-ffbd1ce9f2ba"])(*,*)(*"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKmxhZGJqmplnqmiUbGOiaGBon6VokpiXqpqUlpRgmp1qmGSUlAgCDIxZd"*)(*]VB*)
+
+%-------------------------------------------------------------------------%
 Props:
   Hidden: false
 Type: Input
@@ -502,6 +537,11 @@ eqTRrBad = Together[(eqTRu /. frozen /. psiRulesBad) //.
 chainRuleMatters = Simplify[(eqTRr /. frozen) - eqTRrBad] =!= 0;
 
 Row[{Style["freezing fR changes the trace equation: ", Bold], chainRuleMatters}]
+
+%-------------------------------------------------------------------------%
+Type: Output
+%-------------------------------------------------------------------------%
+(*GB[*){{(*BB[*)("freezing fR changes the trace equation: ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)True}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)
 
 %-------------------------------------------------------------------------%
 Props:
@@ -555,6 +595,11 @@ Column[{
   Row[{Style["mu (quasi-static)  = ", Bold], muQSsym}],
   Row[{Style["matches GR-05:       ", Bold], Simplify[muQSsym - muGR05] === 0}],
   Row[{Style["delta R on the attractor = ", Bold], dRQSsym}]}]
+
+%-------------------------------------------------------------------------%
+Type: Output
+%-------------------------------------------------------------------------%
+(*GB[*){{(*GB[*){{(*BB[*)("mu (quasi-static)  = ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)(*FB[*)((4 fRR ((*SpB[*)Power[k(*|*),(*|*)2](*]SpB*))+fR ((*SpB[*)Power[a[t](*|*),(*|*)2](*]SpB*)))(*,*)/(*,*)(3 fR fRR ((*SpB[*)Power[k(*|*),(*|*)2](*]SpB*))+((*SpB[*)Power[fR(*|*),(*|*)2](*]SpB*)) ((*SpB[*)Power[a[t](*|*),(*|*)2](*]SpB*))))(*]FB*)}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}(*||*),(*||*){(*GB[*){{(*BB[*)("matches GR-05:       ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)True}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}(*||*),(*||*){(*GB[*){{(*BB[*)("delta R on the attractor = ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)(*FB[*)((kap ((*SpB[*)Power[a[t](*|*),(*|*)2](*]SpB*)) del[t] rho[t])(*,*)/(*,*)(3 fRR ((*SpB[*)Power[k(*|*),(*|*)2](*]SpB*))+fR ((*SpB[*)Power[a[t](*|*),(*|*)2](*]SpB*))))(*]FB*)}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}}(*||*)(*1:eJxTTMoPSmNiYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUiDyIF1Sak1osABV2yq9wzMlMz8tNzStJY4Qp8cksLkHVEMwOZDjn55Tm5hWjqUPhQRipaSUAIwUhsg==*)(*]GB*)
 
 %-------------------------------------------------------------------------%
 Props:
@@ -636,6 +681,11 @@ Dataset @ Table[
     "residual/kap rho, |fR0|=1e-4" -> ScientificForm[bgResidual[tOfa[av], alphaOf[fR0A]], 3],
     "residual/kap rho, |fR0|=1e-2" -> ScientificForm[bgResidual[tOfa[av], alphaOf[fR0B]], 3]|>,
   {av, {1/40, 1/10, 1/2, 1}}]
+
+%-------------------------------------------------------------------------%
+Type: Output
+%-------------------------------------------------------------------------%
+(*VB[*)(FrontEndRef["a35d3fd4-eeab-4b16-b97c-cdd827dc7cd0"])(*,*)(*"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKJxqbphinpZjopqYmJumaJBma6SZZmifrJqekWBiZpySbJ6cYAACZURbB"*)(*]VB*)
 
 %-------------------------------------------------------------------------%
 Props:
@@ -823,6 +873,11 @@ Dataset @ Table[
   {r, scan}]
 
 %-------------------------------------------------------------------------%
+Type: Output
+%-------------------------------------------------------------------------%
+(*VB[*)(FrontEndRef["1b6b031b-cb56-4fe7-9085-0f40830896d7"])(*,*)(*"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKGyaZJRkYGybpJieZmumapKWa61oaWJjqGqSZGFgYG1hYmqWYAwCAbRUX"*)(*]VB*)
+
+%-------------------------------------------------------------------------%
 Props:
   Hidden: true
 Type: Input
@@ -872,6 +927,11 @@ convergence = Table[
 Dataset[convergence]
 
 %-------------------------------------------------------------------------%
+Type: Output
+%-------------------------------------------------------------------------%
+(*VB[*)(FrontEndRef["bfcc2496-6f72-4c68-bd35-c4613af8f834"])(*,*)(*"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKJ6UlJxuZWJrpmqWZG+maJJtZ6CalGJvqJpuYGRonplmkWRibAACKqhWz"*)(*]VB*)
+
+%-------------------------------------------------------------------------%
 Props:
   Hidden: false
 Type: Input
@@ -888,6 +948,11 @@ strong = Table[
   {kk, {3, 5, 10, 20, 50}}];
 
 Dataset[strong][All, {"k/aH", "signal", "mod err", "mod / signal"}]
+
+%-------------------------------------------------------------------------%
+Type: Output
+%-------------------------------------------------------------------------%
+(*VB[*)(FrontEndRef["b63edb80-43b9-40d8-80ed-77d0fb754622"])(*,*)(*"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKJ5kZp6YkWRjomhgnWeqaGKRY6FoYpKbompunGKQlmZuamBkZAQCG0BV4"*)(*]VB*)
 
 %-------------------------------------------------------------------------%
 Props:
@@ -938,6 +1003,11 @@ insensitivity = Table[
 
 Dataset[insensitivity][All, {"k/aH", "dR start", "kicked start",
    "from a=0.1", "from a=0.04", "kicked", "spread"}]
+
+%-------------------------------------------------------------------------%
+Type: Output
+%-------------------------------------------------------------------------%
+(*VB[*)(FrontEndRef["23af0f29-ed63-4fde-a9e3-b72b479d9e05"])(*,*)(*"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKGxknphmkGVnqpqaYGeuapKWk6iZaphrrJpkbJZmYW6ZYphqYAgCOhhYP"*)(*]VB*)
 
 %-------------------------------------------------------------------------%
 Props:
@@ -1003,11 +1073,435 @@ Dataset @ {
  <|"check" -> "and the answer does not remember either choice",
    "ok" -> AllTrue[insensitivity, #["spreadValue"] < 1/100 &]|>}
 
+%-------------------------------------------------------------------------%
+Type: Output
+%-------------------------------------------------------------------------%
+(*VB[*)(FrontEndRef["69b070c4-7ac1-4ad4-95ef-66ee4a9cdf97"])(*,*)(*"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKm1kmGZgbJJvomicmG+qaJKaY6FqapqbpmpmlppokWianpFmaAwCFXBYV"*)(*]VB*)
+
 %------------------------------%EndOfCells%-------------------------------%
 
 
 
 %--------------------------------%Objects%--------------------------------%
+Key: 48
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["0", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: 3634033
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*VB[*)(1.8653078019006397*^-3)(*,*)(*\"1:eJxtUdtOwkAQrbfE+BXIE7RqbKRoTHjYrZQE5GKn2xvhoSwLqd3SltsW4sfboibG+HLmzJx5OGfmepqY8zNJktZXBbRn4SZZ2SET4J1IUk3GeCzXa+rd0+MPr1bySrVek28KLlfVZ9bNLaufjCAehF4HJdqCAiKu5vtRmsFSweD4irs0Ak8sdKuxaNs5xP4oK1TqaqYXcYXkCwGaQPDGtOFhF2kKsY2XzosQuGkhqzPDATQGOlVjpK4dbsTue+q99iAZYILIIGJCtFrV0s8E47JAWlodJYKtxup9Tf6Q6zdHvH2YFEuFLNf/jxB9ReiDAMceBtE2o8tvk3Zq6Tg3QmTa3cxyQqGTVDfdXKMkBZ8rTRrZIYmNPTjcpAeUEdre9XukYSDkxYad/LI4Py0vfl6AueUMLkvCgtlwyffHqbXasj875XuAcUY3wZSz9UXRGgFfs0/uYIDo\"*)(*]VB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: 49437946
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*VB[*)(0.8531083028307621)(*,*)(*\"1:eJxTTMoPSmNmYGAo5gISrimZJflFYZmp5cF9QK6GlpNTtJamhoGehamxoYGFsaaGlg6Qr6VkaJXqVRES4psfEJzrlx3p7phvmu4bXB4cHuafmF1amJxnGhSZnaMdGlYQ4uxU4ZbpGBTmVRgSnlnuHFrgHBRRYZocWhAclaNtlpwdlhma61YZHJ4TlFzlWBia7Frm6x1q4uboGJnrFpZvqwSyL9bJSUszjQnkTBYgEVSakxrMAWKkJqb45+VUgkVDikpT0dSA/BScmpOaXJKYlJNazArkuiXmFKcCAPntQ5I=\"*)(*]VB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: 61884505
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*VB[*)(3.555244416419967*^-4)(*,*)(*\"1:eJxtUdtOwkAQrbfE+BXIE7RoJFIeTHjYLZQE5GKn2xvhoSwLqd3euG0hfrwtamKML2fOzJmHc2buF4mxupIkaXtXQG8Z7JKNFTAB7oUk1WSMZ3K99vyotn94tZJXqvWa3Ci4XG2+sEFumqNkCtE4cPsoUdcUEHFUzwvTDGIFg+0pTqz7rlhrZmvds3KIvGlWqNRRDTfkCsnXAlSB4I2pk9MhVBVi6d1+VwjcNpHZX2IfWmONNiPU3Npcj5z31H0dQjLGBJFxyITodKqlnznGZYG0tDpNBNvMmk81+UOuN8740JoXS4Us1/+PEH5FGIEA25r44T6j8bdJKzU1nOsBMqxBZtqB0EiqGU6uUpKCx5U2Da2ARPoRbG7QE8oI7R1GQ9LSEXIj3Up+WVxdlhe/LsDYcwa3JWH+chLz43lqbvbsz075HmCc0Z2/4Gx7U7S6z7fsE+wDgOc=\"*)(*]VB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: 171932798
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*VB[*)(7.3597393463973974*^-3)(*,*)(*\"1:eJxtUdtOwkAQrbfE+BXIE7RoJFBMTHjYLZQE5GKn2xvhoSwLqd3SltsW4sfboibG+HLmzJx5OGfmfh4byytJkrZ3OXQXwS7eWAET4F5IUkXGeCpXK8+PjdYPL5eyUrlakWs5l8v1F9bPTHMYTyAaBW4PxeqKAiKO6nlhksJawWB7irPWfVesNLO56loZRN4kzVXqqIYbcoVkKwGqQPDG1PHpEKoKsfROryMEbpnI7C2wD82RRusRqm9trkfOe+K+DiAeYYLIKGRCtNvlws8M46JAUlidxIJtpvWnivwhV2tnfGjM8qVclqv/Rwi/IgxBgG2N/XCf0vW3SSsxNZzpATKsfmragdBIohlOplKSgMeVFg2tgET6EWxu0BNKCe0ehgPS1BFyI92Kf1lcXhYXv87B2HMGtwVh/mK85sfz1Nzs2Z+d4j3AOKM7f87Z9iZvdZ9v2SfubYDo\"*)(*]VB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: 176705632
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*VB[*)(1.429478582763255*^-1)(*,*)(*\"1:eJxtUdtOwkAQrbfE+BXIE7RobKQ8mPCwWygJyMVOtzfCQ1kWUrulLbctxI+3RU2M8eXMmTnzcM7M/Twxl1eSJG3vCuguwl2ysUMmwLuQpJqM8VSu19TH5vMPr1bySrVekxsFl6vqC+vnljVMJhCPQq+HEm1FARFX8/0ozWCtYHB8xV0bgSdWutVcde0cYn+SFSp1NdOLuELylQBNIHhj2vh0iDSF2Ean1xECtyxk9RY4gOZIp2qM1K3Djdh9T73XASQjTBAZRUyIdrta+plhXBZIS6uTRLDNVH2qyR9yvXHGB3VWLBWyXP8/QvQVYQgCHHscRPuMrr9N2qml49wIkWn3M8sJhU5S3XRzjZIUfK60aGSHJDaO4HCTnlBGaPcwHJCmgZAXG3byy+Lysrz4dQHmnjO4LQkLFuM1P56n1mbP/uyU7wHGGd0Fc862N0VrBHzLPgHf8IDe\"*)(*]VB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: 267227322
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*VB[*)(-9.790293480249623*^-4)(*,*)(*\"1:eJxtUdtOwkAQrbfE+BXIE7RgJKEYTHjYrZQE5GKn2xvhoSwLqd3SltsW4sfboibG+HJmzpx5OGfmfh4byytJkrZ3OXQXwS7eWAET4F1IUkXGeCpXK/X2w1P7h5RLWalcrci1vJfLjWfWz0xzGE8gGgVuD8XqigIijup5YZLCWsFge4qz1n1XrDSzuepaGUTeJM1V6qiGG3KFZCsBqkDwxtTx6RCqCrH0l96LELhlIrO3wD40RxptRKixtbkeOe+J+zqAeIQJIqOQCdHplAs/M4yLAklhdRILtpk2Hivyh1ytnbHenOVLuSxX/48QfkUYggDbGvvhPqXrb5NWYmo40wNkWP3UtAOhkUQznEylJAGPKy0aWgGJ9CPY3KAnlBLaPQwHpKkj5Ea6Ff+yuLwsTn6dg7HnDG6LhvmL8Zofz1Nzs2d/dor/AOOM7vw5Z9ubnOo+37JPUIGBIA==\"*)(*]VB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: 292993374
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*VB[*)(-1.071688140062098*^-3)(*,*)(*\"1:eJxtUdtOg0AQxVti/ArliUI1EktNTHzYxdLE2osMy63pA92uDbIUKG2XGj9e8JIY48uZOXPm4ZyZi3lmvxxJklSe1dBbxJts7cZMQHggSYqK8VRtKZf61fXtD5HPq3O5pajtuldl/Y49Vo4zzCaQjuKgjzJjSQER3wjDJC9gpWHwQs1fWVEglqbTWfbcCtJwUtQq9Q07SLhGqqUAQyB4Zsb4bZcYGnGth/6DELjrIKe/wBF0RibVU6SXHrdS/zUPngaQjTBBZJQwIe7v5cbPDOOmQN5YnWSCraf6taK+q632J17ezOqlWlZb/0dIviIMQYDnjqNkW9DVt0k3d0xcWTGy3cfC8WJhkty0/cqgJIeQa12auDFJrT143KZvqCC0txsOSMdCKEgtN/tl8eWwOflxDfaWMzhtGhYtxiu+/5w66y37s9P8BxhndBPNOStPampFvGQfNGeBDg==\"*)(*]VB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: 346926613
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*VB[*)(0.8531082972695041)(*,*)(*\"1:eJxTTMoPSmNmYGAo5gISrimZJflFYZmp5cE9QK6GlpNTtJamhoGehamxoaGmhpYOkKelZGiV6lUREuKbHxCc65cd6e6Yb5ruG1weHB7mn5hdWpicZxoUmZ2jHRpWEOLsVOGW6RgU5lUYEp5Z7hxa4BwUUWGaHFoQHJWjbZacHZYZmutWGRyeE5Rc5VgYmuxa5usdauLm6BiZ6xaWb6sEsi/WyUlLM40J5EgWIBFUmpMazAFipCam+OflVIJFQ4pKU9HUgHwUnJqTmlySmJSTWswK5Lol5hSnAgCQk0Mm\"*)(*]VB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: 346930523
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*VB[*)(0.8531082972695461)(*,*)(*\"1:eJxTTMoPSmNmYGAo5gISrimZJflFYZmp5cF9QK6GlpNTtJamhoGehamxoYGFsaaGlg6Qr6VkaJXqVRES4psfEJzrlx3p7phvmu4bXB4cHuafmF1amJxnGhSZnaMdGlYQ4uxU4ZbpGBTmVRgSnlnuHFrgHBRRYZocWhAclaNtlpwdlhma61YZHJ4TlFzlWBia7Frm6x1q4uboGJnrFpZvqwSyL9bJSUszjQnkTBYgEVSakxrMAWKkJqb45+VUgkVDikpT0dSA/BScmpOaXJKYlJNazArkuiXmFKcCAPntQ5I=\"*)(*]VB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: 387618440
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*VB[*)(-4.376160020103682*^-3)(*,*)(*\"1:eJxtUdtOwkAQrbfE+BXIE7RgJFBiTHjYrZQE5GKn2xvhoSwLqd3SltsW4sfboibG+HJmzpx5OGfmfh4byytJkrZ3OXQXwS7eWAET4F1IUkXGeCpXK/XWQ/Pph5RLWalcrci1vJfLjWfWz0xzGE8gGgVuD8XqigIijup5YZLCWsFge4qz1n1XrDSztepaGUTeJM1V6qiGG3KFZCsBqkDwxtTx6RCqCrH0l96LELhtIrO3wD60RhptRKixtbkeOe+J+zqAeIQJIqOQCdHplAs/M4yLAklhdRILtpk2Hivyh1ytnbHenOVLuSxX/48QfkUYggDbGvvhPqXrb5NWYmo40wNkWP3UtAOhkUQznEylJAGPK20aWgGJ9CPY3KAnlBLaPQwHpKUj5Ea6Ff+yuLwsTn6dg7HnDG6LhvmL8Zofz1Nzs2d/dor/AOOM7vw5Z9ubnOo+37JPP6KBFQ==\"*)(*]VB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: 550062914
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*VB[*)(1349.9999300368522)(*,*)(*\"1:eJxTTMoPSmNmYGAo5gISrimZJflFYZmp5cG9QK6GlpNTtJamhqGxqYGegYGBpoaWDpCrpWRolepVERLimx8QnOuXHenumG+a7htcHhwe5p+YXVqYnGcaFJmdox0aVhDi7FThlukYFOZVGBKeWe4cWuAcFFFhmhxaEByVo22WnB2WGZrrVhkcnhOUXOVYGJrsWubrHWri5ugYmesWlm+rBLIv1slJSzONCeRKFiARVJqTGswBYqQmpvjn5VSCRUOKSlPR1IC8FJyak5pckpiUk1rMCuS6JeYUpwIAuhZDTg==\"*)(*]VB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: 579792362
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*VB[*)(1.6071497385332645*^-3)(*,*)(*\"1:eJxtUdtOwkAQrbfE+BXIE7RobKQ8mPCwWygJyMVOtzfCQ1kWUrulLbctxI+3RU2M8eXMmTnzcM7M/Twxl1eSJG3vCuguwl2ysUMmwLuQpJqM8VSu19THlvrDq5W8Uq3X5EbB5ar6wvq5ZQ2TCcSj0OuhRFtRQMTVfD9KM1grGBxfcddG4ImVbjVXXTuH2J9khUpdzfQirpB8JUATCN6YNj4dIk0httHpdYTALQtZvQUOoDnSqRojdetwI3bfU+91AMkIE0RGEROi3a6WfmYYlwXS0uokEWwzVZ9q8odcb5zx4XlWLBWyXP8/QvQVYQgCHHscRPuMrr9N2qml49wIkWn3M8sJhU5S3XRzjZIUfK60aGSHJDaO4HCTnlBGaPcwHJCmgZAXG3byy+Lysrz4dQHmnjO4LQkLFuM1P56n1mbP/uyU7wHGGd0Fc862N0VrBHzLPgHhloDg\"*)(*]VB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: 586135266
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*VB[*)(6.835315725650659*^-4)(*,*)(*\"1:eJxtUdtOwkAQrbfE+BXIE7RoJGmJMeFht1ASkIudbm+Eh7IspHZLW25biB9vi5oY48uZM3Pm4ZyZ+3liLq8kSdreFdBdhLtkY4dMgHchSTUZ46lcr7Uen9UfXq3klWq9JjcKLlebL6yfW9YwmUA8Cr0eSrQVBURczfejNIO1gsHxFXdtBJ5Y6Za66to5xP4kK1TqaqYXcYXkKwGaQPDGtPHpEGkKsY1OryMEblnI6i1wAOpIp80YNbcON2L3PfVeB5CMMEFkFDEh2u1q6WeGcVkgLa1OEsE20+ZTTf6Q640zPqizYqmQ5fr/EaKvCEMQ4NjjINpndP1t0k4tHedGiEy7n1lOKHSS6qaba5Sk4HOlRSM7JLFxBIeb9IQyQruH4YCoBkJebNjJL4vLy/Li1wWYe87gtiQsWIzX/HieWps9+7NTvgcYZ3QXzDnb3hStEfAt+wTyc4Dr\"*)(*]VB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: 594894933
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*VB[*)(-3.706885583376618*^-4)(*,*)(*\"1:eJxtUdtOwkAQrbfE+BXKE7RgbKSYmPCwWygJysVOtzfCQ1kWUru9gbDF+PG2qIkxvpyZM2cezpm5WaTm6kySpO1VCf1l+JZu7JAJ8E8kqS5jPJMb9db97YP6Q2rXxXWtUZebZS/X1Ec2LCxrlE4hHofeAKXamgIirub7UZZDomBwfMVNjMATa91qr/t2AbE/zUuVuprpRVwhxVqAJhC8MG3yvo80hdhGb9ATAncsZA2WOID2WKdqjNStw43Yfc285ydIx5ggMo6YEN1urfIzx7gqkFVWp6lgm5l6V5c/5EbziK32vFwqZbnxf4ToK8IIBDj2JIh2OU2+TdqZpePCCJFpD3PLCYVOMt10C42SDHyudGhkhyQ2DuBwk76jnND+fvRE2gZCXmzY6S+Lq9Pq5OclmDvO4LJqWLCcJPxwnFqbHfuzU/0HGGf0LVhwtr0oqRHwLfsEOhGBEg==\"*)(*]VB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: 767110518
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*VB[*)(3.552059321121348*^-6)(*,*)(*\"1:eJxtUU1PwkAQrV+J8VdgT9CikchyMPGwWyiJSMFOt1/GQ10WUrv9AmGr8cfboibGeHnzZt4c3ps5f87t5ZGiKJuzGkaL+DVfuzGXEBwoSlsj5FHrtK8vEfrhaqtqqZ221q25pvZu+F3lONN8DqkVB2OcoxUDTH0UhklRQqYT8ELdz8wokCvD6a9GbgVpOC9rlfnIDhKh02olAUkMDxzN3ncJ0qlrDsdDKcnAwc54QSLoWwbrpbi38YSZ+i9FcD+B3CIUUyvhUt7eqo2fJ0KaAkVjdZ5Lvn7sXbW1D63T3ePF4KleqmWt83+E5CvCFCR47ixKtiXLvk26hWOQyoyx7d6VjhdLgxaG7VeI0QJCoQ9Y4sY0Nd/AEzZ7xyVlo910QvsmxkFquvkvi8vD5uLHNdhbweG0ITxazDLxtp866y3/s9O8B7jg7DV6FnxzUrdmJDb8E+wOgOg=\"*)(*]VB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: 960357345
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*VB[*)(-9.095857208873959*^-4)(*,*)(*\"1:eJxtUdtOwkAQrbfE+BXIE7RgbEJJNOFht1ISkIudbm+Eh7IspHZLW25biB9vi5oY48uZM3Pm4ZyZ+3liLq8kSdreFdBdhLtkY4dMgHchSTUZ46lcrzWfHtQfXq3klWq9JjcKLlfVZ9bPLWuYTCAehV4PJdqKAiKu5vtRmsFaweD4irs2Ak+sdKu16to5xP4kK1TqaqYXcYXkKwGaQPDGtPHpEGkKsY2X3osQuG0hq7fAAbRGOlVjpG4dbsTue+q9DiAZYYLIKGJCdDrV0s8M47JAWlqdJIJtpupjTf6Q640zNluzYqmQ5fr/EaKvCEMQ4NjjINpndP1t0k4tHedGiEy7n1lOKHSS6qaba5Sk4HOlTSM7JLFxBIeb9IQyQruH4YC0DIS82LCTXxaXl+XFrwsw95zBbUlYsBiv+fE8tTZ79menfA8wzugumHO2vSlaI+Bb9gng0YDg\"*)(*]VB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: 1118826742
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*VB[*)(3.5520592718274457*^-6)(*,*)(*\"1:eJxtUU1PwkAQrV+J8VdgT9CikchyMPGwWyiJSMFOt1/GQ10WUrv9AmGr8cfboibGeHnzZt4c3ps5f87t5ZGiKJuzGkaL+DVfuzGXEBwoSlsj5FHrtK8vEfrhaqtqqZ221q25pvZu+F3lONN8DqkVB2OcoxUDTH0UhklRQqYT8ELdz8wokCvD6a9GbgVpOC9rlfnIDhKh02olAUkMDxzN3ncJ0qlrDsdDKcnAwc54QSLoWwbrpbi38YSZ+i9FcD+B3CIUUyvhUt7eqo2fJ0KaAkVjdZ5Lvn7sXbW1D63T3ePF4KleqmWt83+E5CvCFCR47ixKtiXLvk26hWOQyoyx7d6VjhdLgxaG7VeI0QJCoQ9Y4sY0Nd/AEzZ7xyVlo910QvsmxkFquvkvi8vD5uLHNdhbweG0ITxazDLxtp866y3/s9O8B7jg7DV6FnxzUrdmJDb8E+wOgOg=\"*)(*]VB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: 1134831030
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*VB[*)(9.602618627674185*^-3)(*,*)(*\"1:eJxtUdtOwkAQrbfE+BXIE7RoJFISTXjYrZQE5GKn2xvhoSwLqd3euG0hfrwtamKML2fOzJmHc2Zu54mxvJAkaXNTQHcRbJO1FTABzpkk1WSMp3K99nTf/qHVSl6p1mtyo+BytfnM+rlpDpMJRKPA7aFEXVFAxFE9L0wziBUMtqc4se67YqWZrVXXyiHyJlmhUkc13JArJF8JUAWCN6aOj/tQVYilv/RehMBtE5m9BfahNdJoM0LNjc31yHlP3dcBJCNMEBmFTIhOp1r6mWFcFkhLq5NEsPW0+VCTP+R644R3j7NiqZDl+v8Rwq8IQxBgW2M/3GU0/jZppaaGcz1AhtXPTDsQGkk1w8lVSlLwuNKmoRWQSD+AzQ16RBmh3f1wQFo6Qm6kW8kvi8vz8uCXBRg7zuC6JMxfjGN+OE3N9Y792Sm/A4wzuvXnnG2uilb3+YZ9ApVjgLY=\"*)(*]VB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: 1184501712
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*VB[*)(2.8754768366956673*^-2)(*,*)(*\"1:eJxtUdtOwkAQrbfE+BXIE7RohFBCTHjYrZQE5GKn2xvhoSwLqd3SltsW4sfboibG+HLmzJx5OGfmfh4byytJkrZ3OXQXwS7eWAET4F5IUkXGeCpXK43HdvuHl0tZqVytyLWcy+X6M+tnpjmMJxCNAreHYnVFARFH9bwwSWGtYLA9xVnrvitWmtlcda0MIm+S5ip1VMMNuUKylQBVIHhj6vh0CFWFWPpL70UI3DKR2VtgH5ojjdYjVN/aXI+c98R9HUA8wgSRUciE6HTKhZ8ZxkWBpLA6iQXbTOtPFflDrtbO+NCY5Uu5LFf/jxB+RRiCANsa++E+petvk1ZiajjTA2RY/dS0A6GRRDOcTKUkAY8rLRpaAYn0I9jcoCeUEto9DAekqSPkRroV/7K4vCwufp2DsecMbgvC/MV4zY/nqbnZsz87xXuAcUZ3/pyz7U3e6j7fsk/ww4Dp\"*)(*]VB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: 1202678740
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*VB[*)(1.0022371881821674)(*,*)(*\"1:eJxTTMoPSmNmYGAo5gISrimZJflFYZmp5cE9QK6GlpNTtJamhqGegYGRkYmmhpYOkKelZGiV6lUREuKbHxCc65cd6e6Yb5ruG1weHB7mn5hdWpicZxoUmZ2jHRpWEOLsVOGW6RgU5lUYEp5Z7hxa4BwUUWGaHFoQHJWjbZacHZYZmutWGRyeE5Rc5VgYmuxa5usdauLm6BiZ6xaWb6sEsi/WyUlLM40J5EgWIBFUmpMazAFipCam+OflVIJFQ4pKU9HUgHwUnJqTmlySmJSTWswK5Lol5hSnAgCJWEMd\"*)(*]VB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: 1301576241
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*VB[*)(1.969580738392386*^-2)(*,*)(*\"1:eJxtUdtOwkAQrbfE+BXIE7RqrKEYTXjYrZQE5GKn2xvhoSwLqd3SltsW4sfboibG+HLmzJx5OGfmepqY8zNJktZXBbRn4SZZ2SET4J1IUk3GeCzXa+rd0+MPr1bySrVek28KLlfVZ9bNLaufjCAehF4HJdqCAiKu5vtRmsFSweD4irs0Ak8sdKuxaNs5xP4oK1TqaqYXcYXkCwGaQPDGtOFhF2kKsY2XzosQuGkhqzPDATQGOlVjpK4dbsTue+q99iAZYILIIGJCtFrV0s8E47JAWlodJYKtxup9Tf6Q6zdHvH2YFEuFLNf/jxB9ReiDAMceBtE2o8tvk3Zq6Tg3QmTa3cxyQqGTVDfdXKMkBZ8rTRrZIYmNPTjcpAeUEdre9XukYSDkxYad/LI4Py0vfl6AueUMLkvCgtlwyffHqbXasj875XuAcUY3wZSz9UXRGgFfs0/vKIDo\"*)(*]VB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: 1301890639
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*VB[*)(-0.060816258931528644)(*,*)(*\"1:eJxTTMoPSmNmYGAo5gISrimZJflFYZmp5cHdQK6GlpNTtJamhq6BnoGZoaaGlg6Qo6VkaJXqVRES4psfEJzrlx3p7phvmu4bXB4cHuafmF1amJxnGhSZnaMdGlYQ4uxU4ZbpGBTmVRgSnlnuHFrgHBRRYZocWhAclaNtlpwdlhma61YZHJ4TlFzlWBia7Frm6x1q4uboGJnrFpZvqwSyL9bJSUszjQnkRhYgEVSakxrMAWKkJqb45+VUgkVDikpT0dSAPBScmpOaXJKYlJNazArkuiXmFKcCAFT4Quc=\"*)(*]VB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: 1322636158
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*VB[*)(2.806212583058116*^-2)(*,*)(*\"1:eJxtUdtOg0AQxVti/IrKE4VqpCmNMfFhF0sTtRcZllvTB9yuDbIUKNaljR8vVE2M8eXMmTnzcM7M+XNmvxxJklSe1TBYxG/Z2o2ZgOBAkhQV45naVrqX1/oPl1tVS24raqfmqqzfsPvKcUbZFNJxHAxRZiwpIOIbYZjkBaw0DF6o+SsrCsTSdHrLgVtBGk6LWqW+YQcJ10i1FGAIBE/MmOzeE0MjrnU3vBMC9x3kDBc4gt7YpHqK9NLjVuq/5sHjA2RjTBAZJ0yI21u58TPHuCmQN1anmWDrmX6lqB9qu7PHi+68Xqpltf1/hOQrwggEeO4kSjYFXX2bdHPHxJUVI9u9LxwvFibJTduvDEpyCLnWp4kbk9TagsdtukMFoYP30QPpWQgFqeVmvyy+HDYXP67B3nAGpw1h0WKy4tv91Flv2J+d5j3AOKNv0TNn5UndWhEv2SfllIDi\"*)(*]VB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: 1390416477
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*VB[*)(3.9416063898567444*^-5)(*,*)(*\"1:eJxtUdtOwkAQrbfE+BXIE7RoJFISTXjYrZQE5GKn2xvhoSwLqd3SlgJbiB9vi5oY48uZM3Pm4ZyZ23lsLC8kScpuCugugm28sQImwD2TpJqM8VSu1x7vn1o/vFrJK9V6TW4UXK42n1k/N81hPIFoFLg9FKsrCog4queFSQprBYPtKc5a912x0szWqmvlEHmTtFCpoxpuyBWSrwSoAsEbU8fHfagqxNJfei9C4LaJzN4C+9AaabQZoWZmcz1y3hP3dQDxCBNERiETotOpln5mGJcFktLqJBZsM20+1OQPud444Z06K5YKWa7/HyH8ijAEAbY19sNdStffJq3E1HCuB8iw+qlpB0IjiWY4uUpJAh5X2jS0AhLpB7C5QY8oJbS7Hw5IS0fIjXQr/mVxeV5e/LIAY8cZXJeE+Yvxmh9OU3OzY392yvcA44xu/Tln2VXR6j7P2CfwC4Dq\"*)(*]VB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: 1390763449
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*VB[*)(1.5634719198310956*^-9)(*,*)(*\"1:eJxtUdtOwkAQrbfE+BXIE7RobEJJNOFht1ASkIudbm+Eh7IspHZLW25biB9vi5oY48uZM3Pm4ZyZ+3liLq8kSdreFdBdhLtkY4dMgHchSTUZ46lcr6mPWuuHVyt5pVqvyY2Cy1X1hfVzyxomE4hHoddDibaigIir+X6UZrBWMDi+4q6NwBMr3WquunYOsT/JCpW6mulFXCH5SoAmELwxbXw6RJpCbKPT6wiBWxayegscQHOkUzVG6tbhRuy+p97rAJIRJoiMIiZEu10t/cwwLgukpdVJIthmqj7V5A+53jjjw/OsWCpkuf5/hOgrwhAEOPY4iPYZXX+btFNLx7kRItPuZ5YTCp2kuunmGiUp+Fxp0cgOSWwcweEmPaGM0O5hOCBNAyEvNuzkl8XlZXnx6wLMPWdwWxIWLMZrfjxPrc2e/dkp3wOMM7oL5pxtb4rWCPiWfQLs5YDq\"*)(*]VB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: 1413840931
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*VB[*)(-1.5168467437100874)(*,*)(*\"1:eJxTTMoPSmNmYGAo5gISrimZJflFYZmp5cHdQK6GlpNTtJamhq6hnqmhuaaGlg6Qo6VkaJXqVRES4psfEJzrlx3p7phvmu4bXB4cHuafmF1amJxnGhSZnaMdGlYQ4uxU4ZbpGBTmVRgSnlnuHFrgHBRRYZocWhAclaNtlpwdlhma61YZHJ4TlFzlWBia7Frm6x1q4uboGJnrFpZvqwSyL9bJSUszjQnkRhYgEVSakxrMAWKkJqb45+VUgkVDikpT0dSAPBScmpOaXJKYlJNazArkuiXmFKcCAFqAQu4=\"*)(*]VB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: 1461462622
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*VB[*)(899.9944019484501)(*,*)(*\"1:eJxTTMoPSmNmYGAo5gISrimZJflFYZmp5cE9QK6GlpNTtJamhoWlpZ6lpYmmhpYOkKelZGiV6lUREuKbHxCc65cd6e6Yb5ruG1weHB7mn5hdWpicZxoUmZ2jHRpWEOLsVOGW6RgU5lUYEp5Z7hxa4BwUUWGaHFoQHJWjbZacHZYZmutWGRyeE5Rc5VgYmuxa5usdauLm6BiZ6xaWb6sEsi/WyUlLM40J5EgWIBFUmpMazAFipCam+OflVIJFQ4pKU9HUgHwUnJqTmlySmJSTWswK5Lol5hSnAgCoi0NE\"*)(*]VB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: 1535731954
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*VB[*)(9.602618627677393*^-5)(*,*)(*\"1:eJxtUdtOwkAQrbfE+BXIE7RoJKEkmvCwWygJyMVOtzfCQ1kWUru9cdtC/Hhb1MQYX86cmTMP58zcLxJjdSVJ0vaugN4y2CUbK2ACnAtJqskYz+R67fmx/UOrlbxSrdfkRsHlavOFDXLTHCVTiMaB20eJuqaAiKN6XphmECsYbE9xYt13xVozW+uelUPkTbNCpY5quCFXSL4WoAoEb0ydnA6hqhBL7/a7QuC2icz+EvvQGmu0GaHm1uZ65Lyn7usQkjEmiIxDJkSnUy39zDEuC6Sl1Wki2GbWfKrJH3K9ccYHdV4sFbJc/z9C+BVhBAJsa+KH+4zG3yat1NRwrgfIsAaZaQdCI6lmOLlKSQoeV9o0tAIS6UewuUFPKCO0dxgNSUtHyI10K/llcXVZHvy6AGPPGdyWhPnLScyP56m52bM/O+V3gHFGd/6Cs+1N0eo+37JPlweAuA==\"*)(*]VB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: 1580665417
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*VB[*)(5.0645161290322115*^-2)(*,*)(*\"1:eJxtUdtOwkAQrbfE+BXIE7RowFAeTHjYrZQE5GKn2xvhoSwLqd3euG0hfrwtamKML2fOzJmHc2buF4mxupIkaXtXQG8Z7JKNFTAB7oUk1WSMZ3K9pj42Oz+8Wskr1XpNbhRcrrae2SA3zVEyhWgcuH2UqGsKiDiq54VpBrGCwfYUJ9Z9V6w1s73uWTlE3jQrVOqohhtyheRrAapA8MbUyekQqgqx9Jf+ixC4YyKzv8Q+tMcabUWotbW5Hjnvqfs6hGSMCSLjkAnR7VZLP3OMywJpaXWaCLaZtZo1+UOuN8748DQvlgpZrv8fIfyKMAIBtjXxw31G42+TVmpqONcDZFiDzLQDoZFUM5xcpSQFjysdGloBifQj2NygJ5QR2juMhqStI+RGupX8sri6LC9+XYCx5wxuS8L85STmx/PU3OzZn53yPcA4ozt/wdn2pmh1n2/ZJ+WVgOI=\"*)(*]VB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: 1648614223
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*VB[*)(2.5344753585787116*^-1)(*,*)(*\"1:eJxtUdtOwkAQrbfE+BXIE7RorFIeTHjYrZQE5GKn2xvhoSwLqd3SltsW4sfboibG+HLmzJx5OGfmdpaYiwtJkjY3BXTm4TZZ2yET4J1JUk3GeCLXa4/32tMPr1bySrVekxsFl6vqM+vlljVIxhAPQ6+LEm1JARFX8/0ozWClYHB8xV0ZgSeWutVcduwcYn+cFSp1NdOLuELypQBNIHhj2ui4jzSF2MZL90UI3LKQ1Z3jAJpDnaoxUjcON2L3PfVe+5AMMUFkGDEh2u1q6WeKcVkgLa2OE8HWE/WhJn/I9cYJ79RpsVTIcv3/CNFXhAEIcOxREO0yuvo2aaeWjnMjRKbdyywnFDpJddPNNUpS8LnSopEdktg4gMNNekQZoZ39oE+aBkJebNjJL4uL8/LilwWYO87guiQsmI9W/HCaWusd+7NTvgcYZ3QbzDjbXBWtEfAN+wTjJoDg\"*)(*]VB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: 1652019723
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*VB[*)(1.4729720840333523*^-4)(*,*)(*\"1:eJxtUdtOwkAQrbfE+BXKE7RobNJqYsLDbqEkKAU73d6MD2VZSO32RoUtxo+39ZIY48uZM3Pm4ZyZi0Vur44kSarOGhgt49d848ZMQHAgSV0Z4ye511WvtNsf3jmvzzu9rtxvuNxR79ikdpxpPofUioMxyvU1BUR8PQyTooRMweCFip+ZUSDWhqOtR24NaTgvG5X6uh0kXCH1WoAuEDwyffa2S3SFuOZwPBQC3zjIGS9xBJplUDVFauVxM/VfiuDhHnILE0SshAkxGHRaP88YtwWK1uo8F2zzpF535Xe51//ES+25WWpkufd/hOQrwhQEeO4sSrYlzb5NuoVj4NqMke1OSseLhUEKw/ZrnZICQq7c0MSNSWruweM2fUMloaPd9J5oJkJBarr5L4urw/bixw3YW87gtCUsWs4yvv+cOpst+7PTvgcYZ/Q1WnBWnTStGfGKfQDoyoDl\"*)(*]VB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: 1654363193
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*VB[*)(3.273298411514698*^-1)(*,*)(*\"1:eJxtUdtOwkAQrbfE+BXIE7RorFJMTHjYLZRE5WKn2xvhoSwLqd3eQNxC/Hhb1MQYX86cmTMP58xczlNzeSJJ0uaihP4ifEvXdsgEeEeS1JAxnsrNxt317f0Pr9eKWr3ZkFsll+vqA3ssLGuYTiAehd4ApdqKAiKu5vtRlkOiYHB8xU2MwBMr3Wqv+nYBsT/JS5W6mulFXCHFSoAmELwwbbx/jzSF2EZv0BMCdyxkDRY4gPZIp2qM1I3Djdh9zbznJ0hHmCAyipgQ3W698jPDuCqQVVYnqWDrqXrTkD/kZuuAV+qsXCplufl/hOgrwhAEOPY4iLY5Tb5N2pml48IIkWk/5pYTCp1kuukWGiUZ+Fzp0MgOSWzswOEm3aOc0P778Im0DYS82LDTXxaXx9XFT0swt5zBeUVYsBgnfHeYWust+7NTvQcYZ/QtmHO2OStbI+Ab9gnmWIDi\"*)(*]VB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: 1931431734
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*VB[*)(-14.714200354821926)(*,*)(*\"1:eJxTTMoPSmNmYGAo5gISrimZJflFYZmp5cE9QK6GlpNTtJamhq6hiZ65oYmmhpYOkKelZGiV6lUREuKbHxCc65cd6e6Yb5ruG1weHB7mn5hdWpicZxoUmZ2jHRpWEOLsVOGW6RgU5lUYEp5Z7hxa4BwUUWGaHFoQHJWjbZacHZYZmutWGRyeE5Rc5VgYmuxa5usdauLm6BiZ6xaWb6sEsi/WyUlLM40J5EgWIBFUmpMazAFipCam+OflVIJFQ4pKU9HUgHwUnJqTmlySmJSTWswK5Lol5hSnAgCNT0Mi\"*)(*]VB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: 1980079955
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*VB[*)(0.8528549643439307)(*,*)(*\"1:eJxTTMoPSmNmYGAo5gISrimZJflFYZmp5cE9QK6GlpNTtJamhoGehamRhammhpYOkKelZGiV6lUREuKbHxCc65cd6e6Yb5ruG1weHB7mn5hdWpicZxoUmZ2jHRpWEOLsVOGW6RgU5lUYEp5Z7hxa4BwUUWGaHFoQHJWjbZacHZYZmutWGRyeE5Rc5VgYmuxa5usdauLm6BiZ6xaWb6sEsi/WyUlLM40J5EgWIBFUmpMazAFipCam+OflVIJFQ4pKU9HUgHwUnJqTmlySmJSTWswK5Lol5hSnAgCYckMw\"*)(*]VB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: 2059482029
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*VB[*)(0.9870406296642715)(*,*)(*\"1:eJxTTMoPSmNmYGAo5gISrimZJflFYZmp5cF9QK6GlpNTtJamhoGepYW5gYmBmaaGlg6Qr6VkaJXqVRES4psfEJzrlx3p7phvmu4bXB4cHuafmF1amJxnGhSZnaMdGlYQ4uxU4ZbpGBTmVRgSnlnuHFrgHBRRYZocWhAclaNtlpwdlhma61YZHJ4TlFzlWBia7Frm6x1q4uboGJnrFpZvqwSyL9bJSUszjQnkTBYgEVSakxrMAWKkJqb45+VUgkVDikpT0dSA/BScmpOaXJKYlJNazArkuiXmFKcCAP7FQ5g=\"*)(*]VB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: 2065072957
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*VB[*)(0.853802923520827)(*,*)(*\"1:eJxTTMoPSmNmYGAo5gISrimZJflFYZmp5cF9QK6GlpNTtJamhoGehamxhYGRpaaGlg6Qr6VkaJXqVRES4psfEJzrlx3p7phvmu4bXB4cHuafmF1amJxnGhSZnaMdGlYQ4uxU4ZbpGBTmVRgSnlnuHFrgHBRRYZocWhAclaNtlpwdlhma61YZHJ4TlFzlWBia7Frm6x1q4uboGJnrFpZvqwSyL9bJSUszjQnkTBYgEVSakxrMAWKkJqb45+VUgkVDikpT0dSA/BScmpOaXJKYlJNazArkuiXmFKcCAP97Q5k=\"*)(*]VB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: 2120150866
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*VB[*)(899.9999533579015)(*,*)(*\"1:eJxdj11LwzAUhosfIP6L7arNRCJYQcGLpCzCpE7yVat40WWZhKZLu6628zf4o5d66c3DeV5eOOdMVo5uToMgaC895muzdztpdM9+vYYA4w8QhfcQXkMIoxBceQPTmwe9GDhP3SurXsr8Cbn4K2U9y+SyKLtGbWOal3YmZM0TPBCDqFw0PDN9IuqEvg2xEjV7t7M7VUojKnJgmaXqBzVCzb/TZ3FLEMorIt3jdNz3iTGINifjkWcetLOaXYyDLtbLrT38pXzX6X+d8SOmrVb7YmV1e+6VFLbVR4mGQx0=\"*)(*]VB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: 2156572700
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*VB[*)(-0.38408103512639347)(*,*)(*\"1:eJxTTMoPSmNmYGAo5gISrimZJflFYZmp5cHdQK6GlpNTtJamhq6BnrGFiaaGlg6Qo6VkaJXqVRES4psfEJzrlx3p7phvmu4bXB4cHuafmF1amJxnGhSZnaMdGlYQ4uxU4ZbpGBTmVRgSnlnuHFrgHBRRYZocWhAclaNtlpwdlhma61YZHJ4TlFzlWBia7Frm6x1q4uboGJnrFpZvqwSyL9bJSUszjQnkRhYgEVSakxrMAWKkJqb45+VUgkVDikpT0dSAPBScmpOaXJKYlJNazArkuiXmFKcCAFtIQu8=\"*)(*]VB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: 2197424736
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*VB[*)(0.9993850062986351)(*,*)(*\"1:eJxTTMoPSmNmYGAo5gISrimZJflFYZmp5cE9QK6GlpNTtJamhoGepaWlsaWmhpYOkKelZGiV6lUREuKbHxCc65cd6e6Yb5ruG1weHB7mn5hdWpicZxoUmZ2jHRpWEOLsVOGW6RgU5lUYEp5Z7hxa4BwUUWGaHFoQHJWjbZacHZYZmutWGRyeE5Rc5VgYmuxa5usdauLm6BiZ6xaWb6sEsi/WyUlLM40J5EgWIBFUmpMazAFipCam+OflVIJFQ4pKU9HUgHwUnJqTmlySmJSTWswK5Lol5hSnAgChLkM7\"*)(*]VB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: 2209538228
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*VB[*)(1.01665228995063)(*,*)(*\"1:eJxTTMoPSmNmYGAo5gISrimZJflFYZmp5cF9QK6GlpNTtJamhqGegaGZmamRsaaGlg6Qr6VkaJXqVRES4psfEJzrlx3p7phvmu4bXB4cHuafmF1amJxnGhSZnaMdGlYQ4uxU4ZbpGBTmVRgSnlnuHFrgHBRRYZocWhAclaNtlpwdlhma61YZHJ4TlFzlWBia7Frm6x1q4uboGJnrFpZvqwSyL9bJSUszjQnkTBYgEVSakxrMAWKkJqb45+VUgkVDikpT0dSA/BScmpOaXJKYlJNazArkuiXmFKcCAPasQ44=\"*)(*]VB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: 2308503230
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*VB[*)(0.9848411744470286)(*,*)(*\"1:eJxTTMoPSmNmYGAo5gISrimZJflFYZmp5cE9QK6GlpNTtJamhoGepYWJhYmmhpYOkKelZGiV6lUREuKbHxCc65cd6e6Yb5ruG1weHB7mn5hdWpicZxoUmZ2jHRpWEOLsVOGW6RgU5lUYEp5Z7hxa4BwUUWGaHFoQHJWjbZacHZYZmutWGRyeE5Rc5VgYmuxa5usdauLm6BiZ6xaWb6sEsi/WyUlLM40J5EgWIBFUmpMazAFipCam+OflVIJFQ4pKU9HUgHwUnJqTmlySmJSTWswK5Lol5hSnAgCccEM1\"*)(*]VB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: 2313579615
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*VB[*)(1349.9916029226752)(*,*)(*\"1:eJxTTMoPSmNmYGAo5gISrimZJflFYZmp5cG9QK6GlpNTtJamhqGxiaWepaWRpoaWDpCrpWRolepVERLimx8QnOuXHenumG+a7htcHhwe5p+YXVqYnGcaFJmdox0aVhDi7FThlukYFOZVGBKeWe4cWuAcFFFhmhxaEByVo22WnB2WGZrrVhkcnhOUXOVYGJrsWubrHWri5ugYmesWlm+rBLIv1slJSzONCeRKFiARVJqTGswBYqQmpvjn5VSCRUOKSlPR1IC8FJyak5pckpiUk1rMCuS6JeYUpwIA0ExDag==\"*)(*]VB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: 2345753091
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*VB[*)(1.0046140016482674)(*,*)(*\"1:eJxTTMoPSmNmYGAo5gISrimZJflFYZmp5cE9QK6GlpNTtJamhqGegYGJmaGmhpYOkKelZGiV6lUREuKbHxCc65cd6e6Yb5ruG1weHB7mn5hdWpicZxoUmZ2jHRpWEOLsVOGW6RgU5lUYEp5Z7hxa4BwUUWGaHFoQHJWjbZacHZYZmutWGRyeE5Rc5VgYmuxa5usdauLm6BiZ6xaWb6sEsi/WyUlLM40J5EgWIBFUmpMazAFipCam+OflVIJFQ4pKU9HUgHwUnJqTmlySmJSTWswK5Lol5hSnAgCLu0Mg\"*)(*]VB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: 2409837236
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*VB[*)(1349.9990795636909)(*,*)(*\"1:eJxTTMoPSmNmYGAo5gISrimZJflFYZmp5cG9QK6GlpNTtJamhqGxiaWepaWlpoaWDpCrpWRolepVERLimx8QnOuXHenumG+a7htcHhwe5p+YXVqYnGcaFJmdox0aVhDi7FThlukYFOZVGBKeWe4cWuAcFFFhmhxaEByVo22WnB2WGZrrVhkcnhOUXOVYGJrsWubrHWri5ugYmesWlm+rBLIv1slJSzONCeRKFiARVJqTGswBYqQmpvjn5VSCRUOKSlPR1IC8FJyak5pckpiUk1rMCuS6JeYUpwIA1ctDcQ==\"*)(*]VB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: 2445962483
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*VB[*)(1.0457685394296041)(*,*)(*\"1:eJxTTMoPSmNmYGAo5gISrimZJflFYZmp5cE9QK6GlpNTtJamhqGegYmpubmmhpYOkKelZGiV6lUREuKbHxCc65cd6e6Yb5ruG1weHB7mn5hdWpicZxoUmZ2jHRpWEOLsVOGW6RgU5lUYEp5Z7hxa4BwUUWGaHFoQHJWjbZacHZYZmutWGRyeE5Rc5VgYmuxa5usdauLm6BiZ6xaWb6sEsi/WyUlLM40J5EgWIBFUmpMazAFipCam+OflVIJFQ4pKU9HUgHwUnJqTmlySmJSTWswK5Lol5hSnAgCVNkMs\"*)(*]VB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: 2544982228
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*VB[*)(1.0464049237575088)(*,*)(*\"1:eJxTTMoPSmNmYGAo5gISrimZJflFYZmp5cE9QK6GlpNTtJamhqGegYmZiYGmhpYOkKelZGiV6lUREuKbHxCc65cd6e6Yb5ruG1weHB7mn5hdWpicZxoUmZ2jHRpWEOLsVOGW6RgU5lUYEp5Z7hxa4BwUUWGaHFoQHJWjbZacHZYZmutWGRyeE5Rc5VgYmuxa5usdauLm6BiZ6xaWb6sEsi/WyUlLM40J5EgWIBFUmpMazAFipCam+OflVIJFQ4pKU9HUgHwUnJqTmlySmJSTWswK5Lol5hSnAgCOJEMj\"*)(*]VB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: 2652036467
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*VB[*)(1.008487410533765)(*,*)(*\"1:eJxTTMoPSmNmYGAo5gISrimZJflFYZmp5cE9QK6GlpNTtJamhqGegYGFiaWmhpYOkKelZGiV6lUREuKbHxCc65cd6e6Yb5ruG1weHB7mn5hdWpicZxoUmZ2jHRpWEOLsVOGW6RgU5lUYEp5Z7hxa4BwUUWGaHFoQHJWjbZacHZYZmutWGRyeE5Rc5VgYmuxa5usdauLm6BiZ6xaWb6sEsi/WyUlLM40J5EgWIBFUmpMazAFipCam+OflVIJFQ4pKU9HUgHwUnJqTmlySmJSTWswK5Lol5hSnAgCTm0Mq\"*)(*]VB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: 2831696275
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*VB[*)(-5.810807816073815)(*,*)(*\"1:eJxTTMoPSmNmYGAo5gISrimZJflFYZmp5cHdQK6GlpNTtJamhq6pnoWhoaaGlg6Qo6VkaJXqVRES4psfEJzrlx3p7phvmu4bXB4cHuafmF1amJxnGhSZnaMdGlYQ4uxU4ZbpGBTmVRgSnlnuHFrgHBRRYZocWhAclaNtlpwdlhma61YZHJ4TlFzlWBia7Frm6x1q4uboGJnrFpZvqwSyL9bJSUszjQnkRhYgEVSakxrMAWKkJqb45+VUgkVDikpT0dSAPBScmpOaXJKYlJNazArkuiXmFKcCAFtfQu8=\"*)(*]VB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: 3102057681
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*VB[*)(0.9870347860289748)(*,*)(*\"1:eJxTTMoPSmNmYGAo5gISrimZJflFYZmp5cE9QK6GlpNTtJamhoGepYW5gbGmhpYOkKelZGiV6lUREuKbHxCc65cd6e6Yb5ruG1weHB7mn5hdWpicZxoUmZ2jHRpWEOLsVOGW6RgU5lUYEp5Z7hxa4BwUUWGaHFoQHJWjbZacHZYZmutWGRyeE5Rc5VgYmuxa5usdauLm6BiZ6xaWb6sEsi/WyUlLM40J5EgWIBFUmpMazAFipCam+OflVIJFQ4pKU9HUgHwUnJqTmlySmJSTWswK5Lol5hSnAgCXuEMv\"*)(*]VB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: 3144005436
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*VB[*)(0.9418954133377906)(*,*)(*\"1:eJxTTMoPSmNmYGAo5gISrimZJflFYZmp5cE9QK6GlpNTtJamhoGepYmhpYGmhpYOkKelZGiV6lUREuKbHxCc65cd6e6Yb5ruG1weHB7mn5hdWpicZxoUmZ2jHRpWEOLsVOGW6RgU5lUYEp5Z7hxa4BwUUWGaHFoQHJWjbZacHZYZmutWGRyeE5Rc5VgYmuxa5usdauLm6BiZ6xaWb6sEsi/WyUlLM40J5EgWIBFUmpMazAFipCam+OflVIJFQ4pKU9HUgHwUnJqTmlySmJSTWswK5Lol5hSnAgCUhUMr\"*)(*]VB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: 3194583117
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*VB[*)(1.0006368859370844)(*,*)(*\"1:eJxTTMoPSmNmYGAo5gISrimZJflFYZmp5cE9QK6GlpNTtJamhqGegYGBmYmmhpYOkKelZGiV6lUREuKbHxCc65cd6e6Yb5ruG1weHB7mn5hdWpicZxoUmZ2jHRpWEOLsVOGW6RgU5lUYEp5Z7hxa4BwUUWGaHFoQHJWjbZacHZYZmutWGRyeE5Rc5VgYmuxa5usdauLm6BiZ6xaWb6sEsi/WyUlLM40J5EgWIBFUmpMazAFipCam+OflVIJFQ4pKU9HUgHwUnJqTmlySmJSTWswK5Lol5hSnAgCK6kMf\"*)(*]VB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: 3559483252
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*VB[*)(1.0002934847521683)(*,*)(*\"1:eJxTTMoPSmNmYGAo5gISrimZJflFYZmp5cE9QK6GlpNTtJamhqGegYGBkaWmhpYOkKelZGiV6lUREuKbHxCc65cd6e6Yb5ruG1weHB7mn5hdWpicZxoUmZ2jHRpWEOLsVOGW6RgU5lUYEp5Z7hxa4BwUUWGaHFoQHJWjbZacHZYZmutWGRyeE5Rc5VgYmuxa5usdauLm6BiZ6xaWb6sEsi/WyUlLM40J5EgWIBFUmpMazAFipCam+OflVIJFQ4pKU9HUgHwUnJqTmlySmJSTWswK5Lol5hSnAgCLr0Mg\"*)(*]VB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: 3594734982
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*VB[*)(1.0166536553629153)(*,*)(*\"1:eJxTTMoPSmNmYGAo5gISrimZJflFYZmp5cF9QK6GlpNTtJamhqGegaGZmamxuaaGlg6Qr6VkaJXqVRES4psfEJzrlx3p7phvmu4bXB4cHuafmF1amJxnGhSZnaMdGlYQ4uxU4ZbpGBTmVRgSnlnuHFrgHBRRYZocWhAclaNtlpwdlhma61YZHJ4TlFzlWBia7Frm6x1q4uboGJnrFpZvqwSyL9bJSUszjQnkTBYgEVSakxrMAWKkJqb45+VUgkVDikpT0dSA/BScmpOaXJKYlJNazArkuiXmFKcCAPqaQ5M=\"*)(*]VB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: 3669584729
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*VB[*)(0.9961682506528999)(*,*)(*\"1:eJxTTMoPSmNmYGAo5gISrimZJflFYZmp5cE9QK6GlpNTtJamhoGepaWZobmmhpYOkKelZGiV6lUREuKbHxCc65cd6e6Yb5ruG1weHB7mn5hdWpicZxoUmZ2jHRpWEOLsVOGW6RgU5lUYEp5Z7hxa4BwUUWGaHFoQHJWjbZacHZYZmutWGRyeE5Rc5VgYmuxa5usdauLm6BiZ6xaWb6sEsi/WyUlLM40J5EgWIBFUmpMazAFipCam+OflVIJFQ4pKU9HUgHwUnJqTmlySmJSTWswK5Lol5hSnAgCbp0M0\"*)(*]VB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: 757bf998-b324-42c6-b6e8-729a1574d194
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[Dataset[{Association["equation" -> "00", "phi" -> 3, "psi" -> 2, "delta" -> 0, "v" -> -1], Association["equation" -> "0x", "phi" -> 3, "psi" -> 2, "delta" -> -1, "v" -> 0], Association["equation" -> "traceless ij", "phi" -> 2, "psi" -> 1, "delta" -> -1, "v" -> -1], Association["equation" -> "trace ij", "phi" -> 4, "psi" -> 3, "delta" -> -1, "v" -> -1], Association["equation" -> "continuity", "phi" -> 1, "psi" -> 0, "delta" -> 1, "v" -> 0], Association["equation" -> "Euler", "phi" -> -1, "psi" -> 0, "delta" -> -1, "v" -> 1], Association["equation" -> "delta R", "phi" -> 2, "psi" -> 1, "delta" -> -1, "v" -> -1]}, TypeSystem`Vector[TypeSystem`Struct[{"equation", "phi", "psi", "delta", "v"}, {TypeSystem`Atom[String], TypeSystem`Atom[Integer], TypeSystem`Atom[Integer], TypeSystem`Atom[Integer], TypeSystem`Atom[Integer]}], 7], Association[]]]|>
+
+%-------------------------------------------------------------------------%
+Key: 42815ef9-6c00-413b-8afa-ffbd1ce9f2ba
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[Dataset[{Association["equation" -> "00", "phi" -> 1, "delta R" -> 1, "delta" -> 0, "v" -> -1], Association["equation" -> "0x", "phi" -> 1, "delta R" -> 1, "delta" -> -1, "v" -> 0], Association["equation" -> "trace ij", "phi" -> 1, "delta R" -> 2, "delta" -> -1, "v" -> -1], Association["equation" -> "continuity", "phi" -> 1, "delta R" -> 0, "delta" -> 1, "v" -> 0], Association["equation" -> "Euler", "phi" -> 0, "delta R" -> 0, "delta" -> -1, "v" -> 1]}, TypeSystem`Vector[TypeSystem`Struct[{"equation", "phi", "delta R", "delta", "v"}, {TypeSystem`Atom[String], TypeSystem`Atom[Integer], TypeSystem`Atom[Integer], TypeSystem`Atom[Integer], TypeSystem`Atom[Integer]}], 5], Association[]]]|>
+
+%-------------------------------------------------------------------------%
+Key: a35d3fd4-eeab-4b16-b97c-cdd827dc7cd0
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[Dataset[{Association["a" -> 0.025, "residual/kap rho, |fR0|=1e-4" -> ScientificForm[1.5634656038956664*^-11, 3], "residual/kap rho, |fR0|=1e-2" -> ScientificForm[1.5634719198310956*^-9, 3]], Association["a" -> 0.1, "residual/kap rho, |fR0|=1e-4" -> ScientificForm[6.23777833652639*^-8, 3], "residual/kap rho, |fR0|=1e-2" -> ScientificForm[6.237778345052903*^-6, 3]], Association["a" -> 0.5, "residual/kap rho, |fR0|=1e-4" -> ScientificForm[0.00009602618627677393, 3], "residual/kap rho, |fR0|=1e-2" -> ScientificForm[0.009602618627674185, 3]], Association["a" -> 1, "residual/kap rho, |fR0|=1e-4" -> ScientificForm[0.0005064516129034876, 3], "residual/kap rho, |fR0|=1e-2" -> ScientificForm[0.050645161290322115, 3]]}, TypeSystem`Vector[TypeSystem`Struct[{"a", "residual/kap rho, |fR0|=1e-4", "residual/kap rho, |fR0|=1e-2"}, {TypeSystem`Atom[Real], TypeSystem`AnyType, TypeSystem`AnyType}], 4], Association[]]]|>
+
+%-------------------------------------------------------------------------%
+Key: -1483329
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*VB[*)(1.5634656038956664*^-11)(*,*)(*\"1:eJxtUdtOwkAQrbfE+BXIE7RobEJ5MOFht1ISkIudbm+Eh7IspHZ747aF+PG2qIkxvpw5M2cezpm5X6Tm6kqSpO1dCb1luEs3dsgE+BeS1JAxnsnNhvqodX54vVbU6s2G3Cq5XFef2aCwrFE6hXgcen2UamsKiLia70dZDomCwfEVNzECT6x1q73u2QXE/jQvVepqphdxhRRrAZpA8Ma0yekQaQqxjZf+ixC4YyGrv8QBtMc6VWOkbh1uxO575r0OIR1jgsg4YkJ0u/XKzxzjqkBWWZ2mgm1m6lND/pCbrTM+qOq83Cp1ufl/hugrwwgEOPYkiPY5Tb5d2pml48IIkWkPcssJhU4y3XQLjZIMfK50aGSHJDaO4HCTnlBOaO8wGpK2gZAXG3b6y+Pqsjr5dQnmnjO4rQgLlpOEH89Ta7Nnf3aq/wDjjO6CBWfbm7I1Ar5ln1WvgRQ=\"*)(*]VB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: -477407411
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*VB[*)(6.23777833652639*^-8)(*,*)(*\"1:eJxtUdtOwkAQrbfE+BXIE7RoxFBiTHjYrZQE5GKn2xvhoSwLqd3euG0hfrwtamKML2fOzJmHc2Zu54mxvJAkaXNTQHcRbJO1FTAB7pkk1WSMp3K91r5/bP3waiWvVOs1uVFwudp8Zv3cNIfJBKJR4PZQoq4oIOKonhemGcQKBttTnFj3XbHSzNaqa+UQeZOsUKmjGm7IFZKvBKgCwRtTx8d9qCrE0l96L0LgtonM3gL70BpptBmh5sbmeuS8p+7rAJIRJoiMQiZEp1Mt/cwwLgukpdVJIth62nyoyR9yvXHCu6dZsVTIcv3/COFXhCEIsK2xH+4yGn+btFJTw7keIMPqZ6YdCI2kmuHkKiUpeFxp09AKSKQfwOYGPaKM0O5+OCAtHSE30q3kl8XleXnxywKMHWdwXRLmL8YxP5ym5nrH/uyU7wHGGd36c842V0Wr+3zDPgHsH4Dp\"*)(*]VB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: -1227043171
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*VB[*)(6.237778345052903*^-6)(*,*)(*\"1:eJxtUdtOwkAQrbfE+BXIE7RoxFAeTHjYLZQE5GKn2xvhoSwLqd3euG0hfrwtamKML2fOzJmHc2buF4mxupIkaXtXQG8Z7JKNFTAB7oUk1WSMZ3K91n58bv3waiWvVOs1uVFwudp8YYPcNEfJFKJx4PZRoq4pIOKonhemGcQKBttTnFj3XbHWzNa6Z+UQedOsUKmjGm7IFZKvBagCwRtTJ6dDqCrE0rv9rhC4bSKzv8Q+tMYabUaoubW5Hjnvqfs6hGSMCSLjkAnR6VRLP3OMywJpaXWaCLaZNZ9q8odcb5zxoT0vlgpZrv8fIfyKMAIBtjXxw31G42+TVmpqONcDZFiDzLQDoZFUM5xcpSQFjyttGloBifQj2NygJ5QR2juMhqSlI+RGupX8sri6LC9+XYCx5wxuS8L85STmx/PU3OzZn53yPcA4ozt/wdn2pmh1n2/ZJ+p7gOc=\"*)(*]VB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: -2199092561
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*VB[*)(5.064516129034876*^-4)(*,*)(*\"1:eJxtUUluwkAQdDYpyisIJ7BJBBLmEInDjMFIEJa4Pd4QBzMMyPF4YxuD8vjYJJGiKJfq6q4+VHU/LhNjfSNJ0u6hgP4q2CdbK2AC3CtJqskYz+V6TX1udn54tZJXqvWa3Ci4XG29sGFumuNkBtEkcAcoUTcUEHFUzwvTDGIFg+0pTqz7rthoZnvTt3KIvFlWqNRRDTfkCsk3AlSB4I2p0/MxVBVi6b1BTwjcMZE5WGEf2hONtiLU2tlcj5z31H0dQTLBBJFJyITodqulnwXGZYG0tDpLBNvOW82a/CHXGxd8ai+KpUKW6/9HCL8ijEGAbU398JDR+NuklZoazvUAGdYwM+1AaCTVDCdXKUnB40qHhlZAIv0ENjfoGWWE9o/jEWnrCLmRbiW/LK6vy4vfFmAcOIP7kjB/NY356TI1twf2Z6d8DzDO6N5fcra7K1rd5zv2Cec5gOQ=\"*)(*]VB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: 1b6b031b-cb56-4fe7-9085-0f40830896d7
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[Dataset[{Association["k/aH" -> 3, "mu_GR" -> NumberForm[0.8528549643439307, {7, 5}], "mu_f(R)" -> NumberForm[0.8531082972695041, {7, 5}], "mu_QS" -> NumberForm[1.0002934847521683, {7, 5}], "raw %" -> NumberForm[-14.714200354821926, {6, 3}], "mod %" -> ScientificForm[0.0003555244416419967, 3], "mod / signal" -> ScientificForm[0.012113898218403554, 3]], Association["k/aH" -> 5, "mu_GR" -> NumberForm[0.9418954133377906, {7, 5}], "mu_f(R)" -> NumberForm[0.9424917995585347, {7, 5}], "mu_QS" -> NumberForm[1.0006368859370844, {7, 5}], "raw %" -> NumberForm[-5.810807816073815, {6, 3}], "mod %" -> ScientificForm[-0.0003706885583376618, 3], "mod / signal" -> ScientificForm[-0.005820328833678016, 3]], Association["k/aH" -> 10, "mu_GR" -> NumberForm[0.9848411744470286, {7, 5}], "mu_f(R)" -> NumberForm[0.9870347860289748, {7, 5}], "mu_QS" -> NumberForm[1.0022371881821674, {7, 5}], "raw %" -> NumberForm[-1.5168467437100874, {6, 3}], "mod %" -> ScientificForm[-0.0009790293480249623, 3], "mod / signal" -> ScientificForm[-0.004376160020103682, 3]], Association["k/aH" -> 20, "mu_GR" -> NumberForm[0.9961682506528999, {7, 5}], "mu_f(R)" -> NumberForm[1.0046140016482674, {7, 5}], "mu_QS" -> NumberForm[1.008487410533765, {7, 5}], "raw %" -> NumberForm[-0.38408103512639347, {6, 3}], "mod %" -> ScientificForm[-0.0009095857208873959, 3], "mod / signal" -> ScientificForm[-0.001071688140062098, 3]], Association["k/aH" -> 50, "mu_GR" -> NumberForm[0.9993850062986351, {7, 5}], "mu_f(R)" -> NumberForm[1.0457685394296041, {7, 5}], "mu_QS" -> NumberForm[1.0464049237575088, {7, 5}], "raw %" -> NumberForm[-0.060816258931528644, {6, 3}], "mod %" -> ScientificForm[0.0006835315725650659, 3], "mod / signal" -> ScientificForm[0.00014729720840333523, 3]]}, TypeSystem`Vector[TypeSystem`Struct[{"k/aH", "mu_GR", "mu_f(R)", "mu_QS", "raw %", "mod %", "mod / signal"}, {TypeSystem`Atom[Integer], TypeSystem`AnyType, TypeSystem`AnyType, TypeSystem`AnyType, TypeSystem`AnyType, TypeSystem`AnyType, TypeSystem`AnyType}], 5], Association[]]]|>
+
+%-------------------------------------------------------------------------%
+Key: -1491589345
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*VB[*)(1.2113898218403554*^-2)(*,*)(*\"1:eJxtUdtOwkAQrbfE+BXIE7RoLKE8mPCwWykJyMVOtzfCQ1kWUrulLbctxI+3RU2M8eXMmTnzcM7M/Twxl1eSJG3vCuguwl2ysUMmwLuQpJqM8VSu19THpvrDq5W8Uq3X5EbB5ar6zPq5ZQ2TCcSj0OuhRFtRQMTVfD9KM1grGBxfcddG4ImVbrVWXTuH2J9khUpdzfQirpB8JUATCN6YNj4dIk0htvHSexECty1k9RY4gNZIp2qM1K3Djdh9T73XASQjTBAZRUyITqda+plhXBZIS6uTRLDNVH2qyR9yvXHGh+asWCpkuf5/hOgrwhAEOPY4iPYZXX+btFNLx7kRItPuZ5YTCp2kuunmGiUp+Fxp08gOSWwcweEmPaGM0O5hOCAtAyEvNuzkl8XlZXnx6wLMPWdwWxIWLMZrfjxPrc2e/dkp3wOMM7oL5pxtb4rWCPiWfQLaXIDb\"*)(*]VB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: -349260564
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*VB[*)(0.9424917995585347)(*,*)(*\"1:eJxTTMoPSmNmYGAo5gISrimZJflFYZmp5cE9QK6GlpNTtJamhoGepYmRiaWmhpYOkKelZGiV6lUREuKbHxCc65cd6e6Yb5ruG1weHB7mn5hdWpicZxoUmZ2jHRpWEOLsVOGW6RgU5lUYEp5Z7hxa4BwUUWGaHFoQHJWjbZacHZYZmutWGRyeE5Rc5VgYmuxa5usdauLm6BiZ6xaWb6sEsi/WyUlLM40J5EgWIBFUmpMazAFipCam+OflVIJFQ4pKU9HUgHwUnJqTmlySmJSTWswK5Lol5hSnAgCYb0Mw\"*)(*]VB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: -917578231
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*VB[*)(-5.820328833678016*^-3)(*,*)(*\"1:eJxtUdtOwkAQrbfE+BXIE7RgRCkxJjzsFkoCcrHT7Y3wUJaV1G5py20L8eNtURNjfDkzZ848nDNzO4+NtwtJkjY3OXQXwTZeWwET4J1JUkXGeCpXK3X17unhh5RLWalcrci1vJfLjWfWz0xzGE8gGgVuD8XqkgIijup5YZLCSsFge4qz0n1XLDWzuexaGUTeJM1V6qiGG3KFZEsBqkDwytTxcR+qCrH0Tq8jBG6ZyOwtsA/NkUYbEWpsbK5HznvivgwgHmGCyChkQrTb5cLPDOOiQFJYncSCraeN+4r8IVdrJ6w/zvKlXJar/0cIvyIMQYBtjf1wl9LVt0krMTWc6QEyrH5q2oHQSKIZTqZSkoDHlRYNrYBE+gFsbtAjSgnt7ocD0tQRciPdin9ZfDsvTn6Zg7HjDK6LhvmL8YofTlNzvWN/dor/AOOMbv05Z5urnOo+37BPP6qBFQ==\"*)(*]VB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: bfcc2496-6f72-4c68-bd35-c4613af8f834
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[Dataset[{Association["k/aH" -> 3, "err, default" -> ScientificForm[3.552059321121348*^-6, 3], "err, tight" -> ScientificForm[3.5520592718274457*^-6, 3]], Association["k/aH" -> 50, "err, default" -> ScientificForm[0.000039416063898567444, 3], "err, tight" -> ScientificForm[6.8211070491930315*^-6, 3]]}, TypeSystem`Vector[TypeSystem`Struct[{"k/aH", "err, default", "err, tight"}, {TypeSystem`Atom[Integer], TypeSystem`AnyType, TypeSystem`AnyType}], 2], Association[]]]|>
+
+%-------------------------------------------------------------------------%
+Key: -1152789534
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*VB[*)(6.8211070491930315*^-6)(*,*)(*\"1:eJxtUdtOwkAQrbfE+BXIE7RoxFBiTHjYrZQE5GKn2xvhoSwLqd3euG0hfrwtamKML2fOzJmHc2Zu54mxvJAkaXNTQHcRbJO1FTAB7pkk1WSMp3K91r5/evzh1UpeqdZrcqPgcrX5zPq5aQ6TCUSjwO2hRF1RQMRRPS9MM4gVDLanOLHuu2Klma1V18oh8iZZoVJHNdyQKyRfCVAFgjemjo/7UFWIpb/0XoTAbROZvQX2oTXSaDNCzY3N9ch5T93XASQjTBAZhUyITqda+plhXBZIS6uTRLD1tPlQkz/keuOEd+1ZsVTIcv3/COFXhCEIsK2xH+4yGn+btFJTw7keIMPqZ6YdCI2kmuHkKiUpeFxp09AKSKQfwOYGPaKM0O5+OCAtHSE30q3kl8XleXnxywKMHWdwXRLmL8YxP5ym5nrH/uyU7wHGGd36c842V0Wr+3zDPgHw5YDr\"*)(*]VB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: b63edb80-43b9-40d8-80ed-77d0fb754622
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[Dataset[{Association["k/aH" -> 3, "signal" -> ScientificForm[0.028754768366956673, 3], "mod err" -> ScientificForm[0.0010734152620293091, 3], "mod / signal" -> ScientificForm[0.03732999161498433, 3]], Association["k/aH" -> 5, "signal" -> ScientificForm[0.05727113292257591, 3], "mod err" -> ScientificForm[0.0016071497385332645, 3], "mod / signal" -> ScientificForm[0.02806212583058116, 3]], Association["k/aH" -> 10, "signal" -> ScientificForm[0.1429478582763255, 3], "mod err" -> ScientificForm[0.0028154734825549532, 3], "mod / signal" -> ScientificForm[0.01969580738392386, 3]], Association["k/aH" -> 20, "signal" -> ScientificForm[0.25344753585787116, 3], "mod err" -> ScientificForm[0.0018653078019006397, 3], "mod / signal" -> ScientificForm[0.0073597393463973974, 3]], Association["k/aH" -> 50, "signal" -> ScientificForm[0.3273298411514698, 3], "mod err" -> ScientificForm[0.0003949071846514052, 3], "mod / signal" -> ScientificForm[0.0012064502987635167, 3]]}, TypeSystem`Vector[TypeSystem`Struct[{"k/aH", "signal", "mod err", "mod / signal"}, {TypeSystem`Atom[Integer], TypeSystem`AnyType, TypeSystem`AnyType, TypeSystem`AnyType}], 5], Association[]]]|>
+
+%-------------------------------------------------------------------------%
+Key: -1513764579
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*VB[*)(1.0734152620293091*^-3)(*,*)(*\"1:eJxtUdtOg0AQxVti/IrKE4VqSiw1MfFhF0sTay8yLLemD7hdG2QpUGwXjR8vVE2M8eXMmTnzcM7M+VNmPx9JklSe1TBYxq/Zxo2ZgOBAkhQV47naVvTL7vUPl1tVS24raqfmqqzfsPvKccbZDNJJHAxRZqwoIOIbYZjkBaw1DF6o+WsrCsTKdHqrgVtBGs6KWqW+YQcJ10i1EmAIBI/MmL7vEkMjrnU3vBMC9x3kDJc4gt7EpHqK9NLjVuq/5MHDCLIJJohMEibE7a3c+Flg3BTIG6uzTLDNXO8q6ofa7uzx4mpRL9Wy2v4/QvIVYQwCPHcaJduCrr9Nurlj4sqKke3eF44XC5Pkpu1XBiU5hFzr08SNSWq9gcdt+o4KQge78Yj0LISC1HKzXxafD5uLH9dgbzmD04awaDld87f91Nls2Z+d5j3AOKOv0RNn5UndWhEv2SfhkIDg\"*)(*]VB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: -913834711
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*VB[*)(3.732999161498433*^-2)(*,*)(*\"1:eJxtUdtOwkAQrbfE+BXIE7RoRCgmJjzsFkoCcrHT7Y3wUJaV1G5py20L8eNtURNjfDlzZs48nDNzO4+NtwtJkjY3OXQXwTZeWwET4J5JUkXGeCpXK437p8YPL5eyUrlakWs5l8v1Z9bPTHMYTyAaBW4PxeqSAiKO6nlhksJKwWB7irPSfVcsNbO57FoZRN4kzVXqqIYbcoVkSwGqQPDK1PFxH6oKsfROryMEbpnI7C2wD82RRusRqm9srkfOe+K+DCAeYYLIKGRCtNvlws8M46JAUlidxIKtp/WHivwhV2snvHuc5Uu5LFf/jxB+RRiCANsa++Eupatvk1ZiajjTA2RY/dS0A6GRRDOcTKUkAY8rLRpaAYn0A9jcoEeUEtrdDwekqSPkRroV/7L4dl5c/DIHY8cZXBeE+Yvxih9OU3O9Y392ivcA44xu/Tlnm6u81X2+YZ/oyIDk\"*)(*]VB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: -1306699318
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*VB[*)(5.727113292257591*^-2)(*,*)(*\"1:eJxtUdtOwkAQrbfE+BXIE7RoRCkmJjzsFkoCcrHT7Y3wUJaF1G5py20L8eNtURNjfDlzZs48nDNzO4uNxYUkSZubHDrzYBuvrYAJcM8kqSJjPJGrFfX++emHl0tZqVytyLWcy+X6C+tlpjmIxxANA7eLYnVJARFH9bwwSWGlYLA9xVnpviuWmtlYdqwMIm+c5ip1VMMNuUKypQBVIHhj6ui4D1WFWHq72xYCN01kdufYh8ZQo/UI1Tc21yPnPXFf+xAPMUFkGDIhWq1y4WeKcVEgKayOY8HWk/pDRf6Qq7UT3j1O86Vclqv/Rwi/IgxAgG2N/HCX0tW3SSsxNZzpATKsXmragdBIohlOplKSgMeVJg2tgET6AWxu0CNKCe3sB33S0BFyI92Kf1lcnBcXv8zB2HEG1wVh/ny04ofT1Fzv2J+d4j3AOKNbf8bZ5ipvdZ9v2CfsAIDm\"*)(*]VB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: -831787095
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*VB[*)(2.8154734825549532*^-3)(*,*)(*\"1:eJxtUdtOwkAQrbfE+BXIE7RoBCkxJjzsFkoCcrHT7Y3wUJaV1G5py20L8eNtURNjfDlzZs48nDNzO4+NtwtJkjY3OXQXwTZeWwET4J5JUkXGeCpXK437p8YPL5eyUrlakWs5l8v1Z9bPTHMYTyAaBW4PxeqSAiKO6nlhksJKwWB7irPSfVcsNbO57FoZRN4kzVXqqIYbcoVkSwGqQPDK1PFxH6oKsfROryMEbpnI7C2wD82RRusRqm9srkfOe+K+DCAeYYLIKGRCtNvlws8M46JAUlidxIKtp/WHivwhV2snvHuc5Uu5LFf/jxB+RRiCANsa++Eupatvk1ZiajjTA2RY/dS0A6GRRDOcTKUkAY8rLRpaAYn0A9jcoEeUEtrdDwekqSPkRroV/7L4dl5c/DIHY8cZXBeE+Yvxih9OU3O9Y392ivcA44xu/Tlnm6u81X2+YZ/n/4Dk\"*)(*]VB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: -1608355998
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*VB[*)(3.949071846514052*^-4)(*,*)(*\"1:eJxtUdtOwkAQrbfE+BXIE7RoJFISTXjYrZQE5GKn2xvhoSwLqd3SlgJbiB9vi5oY48uZM3Pm4ZyZ23lsLC8kScpuCugugm28sQImwD2TpJqM8VSu1x7vn9QfXq3klWq9JjcKLlebz6yfm+YwnkA0CtweitUVBUQc1fPCJIW1gsH2FGet+65YaWZr1bVyiLxJWqjUUQ035ArJVwJUgeCNqePjPlQVYukvvRchcNtEZm+BfWiNNNqMUDOzuR4574n7OoB4hAkio5AJ0elUSz8zjMsCSWl1Egu2mTYfavKHXG+c8K41K5YKWa7/HyH8ijAEAbY19sNdStffJq3E1HCuB8iw+qlpB0IjiWY4uUpJAh5X2jS0AhLpB7C5QY8oJbS7Hw5IS0fIjXQr/mVxeV5e/LIAY8cZXJeE+Yvxmh9OU3OzY392yvcA44xu/Tln2VXR6j7P2Cfw0oDq\"*)(*]VB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: -2337158070
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*VB[*)(1.2064502987635167*^-3)(*,*)(*\"1:eJxtUdtOwkAQrbfE+BXIE7RorFIeTHjYrZQE5GKn2xvhoSwLqd3SltsW4sfboibG+HLmzJx5OGfmdpaYiwtJkjY3BXTm4TZZ2yET4J1JUk3GeCLXa+r9o/rDq5W8Uq3X5EbB5ar6zHq5ZQ2SMcTD0OuiRFtSQMTVfD9KM1gpGBxfcVdG4ImlbjWXHTuH2B9nhUpdzfQirpB8KUATCN6YNjruI00htvHSfRECtyxkdec4gOZQp2qM1I3Djdh9T73XPiRDTBAZRkyIdrta+pliXBZIS6vjRLD1RH2oyR9yvXHCu6dpsVTIcv3/CNFXhAEIcOxREO0yuvo2aaeWjnMjRKbdyywnFDpJddPNNUpS8LnSopEdktg4gMNNekQZoZ39oE+aBkJebNjJL4uL8/LilwWYO87guiQsmI9W/HCaWusd+7NTvgcYZ3QbzDjbXBWtEfAN+wTbLoDc\"*)(*]VB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: 23af0f29-ed63-4fde-a9e3-b72b479d9e05
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[Dataset[{Association["k/aH" -> 3, "dR start" -> NumberForm[899.9999533579015, {8, 3}], "kicked start" -> NumberForm[1349.9999300368522, {8, 3}], "from a=0.1" -> NumberForm[0.8531082972695461, {9, 7}], "from a=0.04" -> NumberForm[0.853802923520827, {9, 7}], "kicked" -> NumberForm[0.8531083028307621, {9, 7}], "spread" -> ScientificForm[0.0008142298621454103, 3]], Association["k/aH" -> 10, "dR start" -> NumberForm[899.999386375794, {8, 3}], "kicked start" -> NumberForm[1349.9990795636909, {8, 3}], "from a=0.1" -> NumberForm[0.98703478602897, {9, 7}], "from a=0.04" -> NumberForm[0.9870406296642715, {9, 7}], "kicked" -> NumberForm[0.9870348939421594, {9, 7}], "spread" -> ScientificForm[5.9203944828833954*^-6, 3]], Association["k/aH" -> 30, "dR start" -> NumberForm[899.9944019484501, {8, 3}], "kicked start" -> NumberForm[1349.9916029226752, {8, 3}], "from a=0.1" -> NumberForm[1.016653590790758, {9, 7}], "from a=0.04" -> NumberForm[1.0166536553629153, {9, 7}], "kicked" -> NumberForm[1.01665228995063, {9, 7}], "spread" -> ScientificForm[1.2795313365510097*^-6, 3]]}, TypeSystem`Vector[TypeSystem`Struct[{"k/aH", "dR start", "kicked start", "from a=0.1", "from a=0.04", "kicked", "spread"}, {TypeSystem`Atom[Integer], TypeSystem`AnyType, TypeSystem`AnyType, TypeSystem`AnyType, TypeSystem`AnyType, TypeSystem`AnyType, TypeSystem`AnyType}], 3], Association[]]]|>
+
+%-------------------------------------------------------------------------%
+Key: 69b070c4-7ac1-4ad4-95ef-66ee4a9cdf97
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[Dataset[{Association["check" -> "u.u = -1 to first order, so the velocity is a free function", "ok" -> True], Association["check" -> "matter conservation gives the background continuity equation", "ok" -> True], Association["check" -> "the traceless equation is exactly -k^2 (fR (phi - psi) - fRR dR)", "ok" -> True], Association["check" -> "at fRR = 0 the slip relation returns phi = psi", "ok" -> True], Association["check" -> "the trace equation is fourth order in phi before the reduction", "ok" -> True], Association["check" -> "after the reduction nothing is above first order in phi", "ok" -> True], Association["check" -> "the scalaron carries the second derivative instead", "ok" -> True], Association["check" -> "freezing fR to a constant changes the trace equation", "ok" -> True], Association["acceptance test" -> "quasi-static plus sub-horizon reproduces GR-05's G_eff exactly", "ok" -> True], Association["acceptance test" -> "the LCDM background solves the f(R) background to order |fR0|", "ok" -> True], Association["acceptance test" -> "mu_GR tends to 1 well inside the horizon", "ok" -> True], Association["check" -> "mu_GR is suppressed near the horizon, which is not an f(R) effect", "ok" -> True], Association["check" -> "the raw error falls roughly as (aH/k)^2", "ok" -> True], Association["check" -> "dividing out the relativistic correction shrinks the error at every k", "ok" -> True], Association["acceptance test" -> "the modification error, per unit of modification, falls with k", "ok" -> True], Association["check" -> "and is under 5% of the modification even at k = 3 aH", "ok" -> True], Association["check" -> "and under 1% of it by k = 20 aH", "ok" -> True], Association["check" -> "the two insensitivity runs really did start from different values", "ok" -> True], Association["check" -> "and the answer does not remember either choice", "ok" -> True]}, TypeSystem`Vector[TypeSystem`Assoc[TypeSystem`Atom[String], TypeSystem`AnyType, TypeSystem`AnyLength], 19], Association[]]]|>
+
+%-------------------------------------------------------------------------%
+Key: -1737280050
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*VB[*)(8.142298621454103*^-4)(*,*)(*\"1:eJxtUdtOwkAQrbfE+BXKE7RobNIaY8LDbqEkKAU73d6MD2VZSO32RoUtxo+39ZIY48uZM3Pm4ZyZi0Vur44kSarOGhgt49d848ZMQHAgSV0Z4ye51729UrUf3jmvzzu9rtxvuNxR79ikdpxpPofUioMxyvU1BUR8PQyTooRMweCFip+ZUSDWhqOtR24NaTgvG5X6uh0kXCH1WoAuEDwyffa2S3SFuOZwPBQC3zjIGS9xBJplUDVFauVxM/VfiuDhHnILE0SshAkxGHRaP88YtwWK1uo8F2zzpF535Xe51//ES+25WWpkufd/hOQrwhQEeO4sSrYlzb5NuoVj4NqMke1OSseLhUEKw/ZrnZICQq7c0MSNSWruweM2fUMloaPd9J5oJkJBarr5L4urw/bixw3YW87gtCUsWs4yvv+cOpst+7PTvgcYZ/Q1WnBWnTStGfGKfQDqdYDm\"*)(*]VB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: -424726491
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*VB[*)(899.999386375794)(*,*)(*\"1:eJxdj11LwzAUhosfIP6L7arNRBCsGMGLpCzCpE7yVat40WWZhKZLu6628zf4o5d66c3DeV5eOOdMVo5uToMgaC895muzdztpdM9+vYYA4w8QhfcQXkMIoxBceQPTmwe9GDhP3SurXsr8Cbn4K2U9y+SyKLtGbWOal3YmZM0TPBCDqFw0PDN9IuqEvg2xEjV7t7M7VUojKnJgmaXqBzVCzb/TZ3FLEMorIt3jdNz3iTGINifjkWcetLOaXYyDLtbLrT38pXzX6X+d8SOmrVb7YmV1e+6VFLbVR6x4Q0k=\"*)(*]VB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: -459998255
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*VB[*)(0.98703478602897)(*,*)(*\"1:eJxTTMoPSmNmYGAo5gISrimZJflFYZmp5cF9QK6GlpNTtJamhoGepYW5gbGJhaaGlg6Qr6VkaJXqVRES4psfEJzrlx3p7phvmu4bXB4cHuafmF1amJxnGhSZnaMdGlYQ4uxU4ZbpGBTmVRgSnlnuHFrgHBRRYZocWhAclaNtlpwdlhma61YZHJ4TlFzlWBia7Frm6x1q4uboGJnrFpZvqwSyL9bJSUszjQnkTBYgEVSakxrMAWKkJqb45+VUgkVDikpT0dSA/BScmpOaXJKYlJNazArkuiXmFKcCAALDQ50=\"*)(*]VB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: -386298378
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*VB[*)(0.9870348939421594)(*,*)(*\"1:eJxTTMoPSmNmYGAo5gISrimZJflFYZmp5cF9QK6GlpNTtJamhoGepYW5gbGJpaaGlg6Qr6VkaJXqVRES4psfEJzrlx3p7phvmu4bXB4cHuafmF1amJxnGhSZnaMdGlYQ4uxU4ZbpGBTmVRgSnlnuHFrgHBRRYZocWhAclaNtlpwdlhma61YZHJ4TlFzlWBia7Frm6x1q4uboGJnrFpZvqwSyL9bJSUszjQnkTBYgEVSakxrMAWKkJqb45+VUgkVDikpT0dSA/BScmpOaXJKYlJNazArkuiXmFKcCAAOMQ54=\"*)(*]VB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: -1986899996
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*VB[*)(5.9203944828833954*^-6)(*,*)(*\"1:eJxtUdtOwkAQrbfE+BXIE7RoxFASTXjYrZQE5GKn2xvhoSwLqd3euG0hfrwtamKML2fOzJmHc2Zu54mxvJAkaXNTQHcRbJO1FTAB7pkk1WSMp3K9pt4/Pf7waiWvVOs1uVFwudp8Zv3cNIfJBKJR4PZQoq4oIOKonhemGcQKBttTnFj3XbHSzNaqa+UQeZOsUKmjGm7IFZKvBKgCwRtTx8d9qCrE0l96L0LgtonM3gL70BpptBmh5sbmeuS8p+7rAJIRJoiMQiZEp1Mt/cwwLgukpdVJIth62nyoyR9yvXHCu/asWCpkuf5/hPArwhAE2NbYD3cZjb9NWqmp4VwPkGH1M9MOhEZSzXBylZIUPK60aWgFJNIPYHODHlFGaHc/HJCWjpAb6Vbyy+LyvLz4ZQHGjjO4LgnzF+OYH05Tc71jf3bK9wDjjG79OWebq6LVfb5hn/DjgOs=\"*)(*]VB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: -108740841
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*VB[*)(1.016653590790758)(*,*)(*\"1:eJxTTMoPSmNmYGAo5gISrimZJflFYZmp5cF9QK6GlpNTtJamhqGegaGZmamxmaaGlg6Qr6VkaJXqVRES4psfEJzrlx3p7phvmu4bXB4cHuafmF1amJxnGhSZnaMdGlYQ4uxU4ZbpGBTmVRgSnlnuHFrgHBRRYZocWhAclaNtlpwdlhma61YZHJ4TlFzlWBia7Frm6x1q4uboGJnrFpZvqwSyL9bJSUszjQnkTBYgEVSakxrMAWKkJqb45+VUgkVDikpT0dSA/BScmpOaXJKYlJNazArkuiXmFKcCAPnRQ5I=\"*)(*]VB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: -534301833
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*VB[*)(1.2795313365510097*^-6)(*,*)(*\"1:eJxtUdtOwkAQrbfE+BXIE7RorKHEmPCwWykJyMVOtzfCQ1kWUrulLbctxI+3RU2M8eXMmTnzcM7M7SwxFxeSJG1uCujMw22ytkMmwDuTpJqM8USu19T7x6cfXq3klWq9JjcKLlfVZ9bLLWuQjCEehl4XJdqSAiKu5vtRmsFKweD4irsyAk8sdau57Ng5xP44K1TqaqYXcYXkSwGaQPDGtNFxH2kKsY2X7osQuGUhqzvHATSHOlVjpG4cbsTue+q99iEZYoLIMGJCtNvV0s8U47JAWlodJ4KtJ+pDTf6Q640T3rWmxVIhy/X/I0RfEQYgwLFHQbTL6OrbpJ1aOs6NEJl2L7OcUOgk1U031yhJwedKi0Z2SGLjAA436RFlhHb2gz5pGgh5sWEnvywuzsuLXxZg7jiD65KwYD5a8cNpaq137M9O+R5gnNFtMONsc1W0RsA37BPo04Dm\"*)(*]VB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
 %-----------------------------%EndOfObjects%------------------------------%
 
 
