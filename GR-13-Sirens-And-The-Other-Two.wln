@@ -164,6 +164,11 @@ Get[$gr08];
 "GR-08 loaded from " <> ToString[$gr08]
 
 %-------------------------------------------------------------------------%
+Type: Output
+%-------------------------------------------------------------------------%
+"GR-08 loaded from $gr08"
+
+%-------------------------------------------------------------------------%
 Props:
   Hidden: true
 Type: Input
@@ -232,6 +237,11 @@ Dataset @ {
     "c_GW^2" -> speedQfromCoeff, "M^2" -> m2Q, "M^2 in the GR limit" -> Simplify[m2Q /. $stegr]|>}
 
 %-------------------------------------------------------------------------%
+Type: Output
+%-------------------------------------------------------------------------%
+(*VB[*)(FrontEndRef["fed1eb07-681b-4e3a-8283-1a01074943c5"])(*,*)(*"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKp6WmGKYmGZjrmlkYJumapBon6loYWRjrGiYaGBqYm1iaGCebAgCIxBU6"*)(*]VB*)
+
+%-------------------------------------------------------------------------%
 Props:
   Hidden: true
 Type: Input
@@ -287,6 +297,11 @@ leftIsWKB = Simplify[reducedEq - (u''[s] + (k^2 - D[zed, {s, 2}]/zed) u[s])] ===
 Column[{
   Row[{Style["h = u/(a M) removes the friction: ", Bold], frictionGone}],
   Row[{Style["leaving u'' + (k^2 - z''/z) u = 0: ", Bold], leftIsWKB}]}]
+
+%-------------------------------------------------------------------------%
+Type: Output
+%-------------------------------------------------------------------------%
+(*GB[*){{(*GB[*){{(*BB[*)("h = u/(a M) removes the friction: ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)True}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}(*||*),(*||*){(*GB[*){{(*BB[*)("leaving u'' + (k^2 - z''/z) u = 0: ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)True}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}}(*||*)(*1:eJxTTMoPSmNiYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUiDyIF1Sak1osABV2yq9wzMlMz8tNzStJY4Qp8cksLkHVEMwOZDjn55Tm5hWjqUPhQRipaSUAIwUhsg==*)(*]GB*)
 
 %-------------------------------------------------------------------------%
 Props:
@@ -379,6 +394,11 @@ Dataset @ Table[
   {zz, {1/2, 1}}]
 
 %-------------------------------------------------------------------------%
+Type: Output
+%-------------------------------------------------------------------------%
+(*VB[*)(FrontEndRef["c823856c-59d2-4753-82b3-40b31930031e"])(*,*)(*"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKJ1sYGVuYmiXrmlqmGOmamJsa61oYJRnrmhgkGRtaGhsYGBumAgByAhR+"*)(*]VB*)
+
+%-------------------------------------------------------------------------%
 Props:
   Hidden: true
 Type: Input
@@ -416,6 +436,11 @@ sizeTable = Table[
   {b, {0, 1/20, 1/10, 1/5, 3/10}}];
 
 Dataset[sizeTable]
+
+%-------------------------------------------------------------------------%
+Type: Output
+%-------------------------------------------------------------------------%
+(*VB[*)(FrontEndRef["98e2e297-5541-461b-933e-ba22a08a99ff"])(*,*)(*"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKW1qkGqUaWZrrmpqaGOqamBkm6VoaG6fqJiUaGSUaWCRaWqalAQB2sxVR"*)(*]VB*)
 
 %-------------------------------------------------------------------------%
 Props:
@@ -548,6 +573,11 @@ Column[{
   Row[{Style["lunar laser ranging allows |alpha_M| up to about ", Bold], N[llrBound]}]}]
 
 %-------------------------------------------------------------------------%
+Type: Output
+%-------------------------------------------------------------------------%
+(*GB[*){{(*VB[*)(FrontEndRef["a0270095-e764-4239-839a-a54498129f40"])(*,*)(*"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKJxoYmRsYWJrqppqbmeiaGBlb6loYWybqJpqamFhaGBpZppkYAABsoBRd"*)(*]VB*)}(*||*),(*||*){(*GB[*){{(*BB[*)("lunar laser ranging allows |alpha_M| up to about ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)0.0022`}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}}(*||*)(*1:eJxTTMoPSmNiYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUiDyIF1Sak1osABV2yq9wzMlMz8tNzStJY4Qp8cksLkHVEMwOZDjn55Tm5hWjqUPhQRipaSUAIwUhsg==*)(*]GB*)
+
+%-------------------------------------------------------------------------%
 Props:
   Hidden: true
 Type: Input
@@ -598,6 +628,11 @@ Column[{
   Row[{Style["and the closure has no solution there: ", Bold], halfIsDegenerate}],
   Row[{Style["while M^2 still depends on A0: ", Bold],
        ! FreeQ[Simplify[-fplT[tt, a0, 1/2]], a0]}]}]
+
+%-------------------------------------------------------------------------%
+Type: Output
+%-------------------------------------------------------------------------%
+(*GB[*){{(*GB[*){{(*BB[*)("f - 2 T fT = ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)tt+(a0-2 a0 b) ((*SpB[*)Power[tt(*|*),(*|*)b](*]SpB*))}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}(*||*),(*||*){(*GB[*){{(*BB[*)("the A0 term carries (1 - 2b), so it vanishes at b = 1/2: ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)True}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}(*||*),(*||*){(*GB[*){{(*BB[*)("and the closure has no solution there: ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)True}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}(*||*),(*||*){(*GB[*){{(*BB[*)("while M^2 still depends on A0: ")(*,*)(*"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCT4gEVxSmZPqkpqcX5RYkl9UzAIUcsrPSYHoBPGCSnNSg9nAKosy89LBYiFFpakAp10YSg=="*)(*]BB*)(*|*),(*|*)True}}(*||*)(*1:eJxTTMoPSmNkYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUAJ89CUc=*)(*]GB*)}}(*||*)(*1:eJxTTMoPSmNiYGAo5gUSYZmp5S6pyflFiSX5RcEsQBH3oswUiDyIF1Sak1osABV2yq9wzMlMz8tNzStJY4Qp8cksLkHVEMwOZDjn55Tm5hWjqUPhQRipaSUAIwUhsg==*)(*]GB*)
 
 %-------------------------------------------------------------------------%
 Props:
@@ -671,11 +706,85 @@ Dataset @ {
  <|"check" -> "though M^2 still depends on A0 at that b, which is why it would mislead",
    "ok" -> (! FreeQ[Simplify[-fplT[tt, a0, 1/2]], a0])|>}
 
+%-------------------------------------------------------------------------%
+Type: Output
+%-------------------------------------------------------------------------%
+(*VB[*)(FrontEndRef["e2d09d31-130f-478c-be5f-44b2cf10b67b"])(*,*)(*"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKpxqlGFimGBvqGhobpOmamFsk6yalmgJZJklGyWmGBklm5kkAg/MVyA=="*)(*]VB*)
+
 %------------------------------%EndOfCells%-------------------------------%
 
 
 
 %--------------------------------%Objects%--------------------------------%
+Key: 48
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["0", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: 3243
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["fQ", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: 80816504
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["-fT", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: 572252762
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["((*FB[*)((1)(*,*)/(*,*)(2))(*]FB*)) fT a[t]", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: 572254154
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["-(*FB[*)((1)(*,*)/(*,*)(2))(*]FB*) fQ a[t]", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: 649558895
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["((*FB[*)((1)(*,*)/(*,*)(2))(*]FB*)) fQ ((*SpB[*)Power[a[t](*|*),(*|*)3](*]SpB*))", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: 649560293
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["-(*FB[*)((1)(*,*)/(*,*)(2))(*]FB*) fT ((*SpB[*)Power[a[t](*|*),(*|*)3](*]SpB*))", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: fed1eb07-681b-4e3a-8283-1a01074943c5
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[Dataset[{Association["family" -> "f(T)", "kinetic" -> Rational[-1, 2]*fT*a[t]^3, "gradient k^2" -> Rational[1, 2]*fT*a[t], "c_GW^2" -> 1, "M^2" -> -fT, "M^2 in the GR limit" -> 1], Association["family" -> "f(Q)", "kinetic" -> Rational[1, 2]*fQ*a[t]^3, "gradient k^2" -> Rational[-1, 2]*fQ*a[t], "c_GW^2" -> 1, "M^2" -> fQ, "M^2 in the GR limit" -> 1]}, TypeSystem`Vector[TypeSystem`Struct[{"family", "kinetic", "gradient k^2", "c_GW^2", "M^2", "M^2 in the GR limit"}, {TypeSystem`Atom[String], TypeSystem`AnyType, TypeSystem`AnyType, TypeSystem`Atom[Integer], TypeSystem`AnyType, TypeSystem`Atom[Integer]}], 2], Association[]]]|>
+
+%-------------------------------------------------------------------------%
+Key: c823856c-59d2-4753-82b3-40b31930031e
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[Dataset[{Association["z" -> 0.5, "E(z) here" -> 1.341568202099828, "E(z) from GR-02" -> 1.341568202099828, "agree to" -> ScientificForm[2.220446049250313*^-16, 2]], Association["z" -> 1, "E(z) here" -> 1.813326892482546, "E(z) from GR-02" -> 1.813326892482546, "agree to" -> ScientificForm[0, 2]]}, TypeSystem`Vector[TypeSystem`Struct[{"z", "E(z) here", "E(z) from GR-02", "agree to"}, {TypeSystem`Atom[Real], TypeSystem`Atom[Real], TypeSystem`Atom[Real], TypeSystem`AnyType}], 2], Association[]]]|>
+
+%-------------------------------------------------------------------------%
+Key: 98e2e297-5541-461b-933e-ba22a08a99ff
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[Dataset[{Association["b" -> 0, "A0 (closure)" -> -4.2, "M^2(0)" -> 1., "ratio at z = 1" -> 1., "ratio at z = 3" -> 1., "saturation" -> 1.], Association["b" -> 0.05, "A0 (closure)" -> -4.26677, "M^2(0)" -> 1.03889, "ratio at z = 1" -> 1.01264, "ratio at z = 3" -> 1.01811, "saturation" -> 1.01926], Association["b" -> 0.1, "A0 (closure)" -> -4.38878, "M^2(0)" -> 1.0875, "ratio at z = 1" -> 1.02712, "ratio at z = 3" -> 1.03979, "saturation" -> 1.04283], Association["b" -> 0.2, "A0 (closure)" -> -4.89179, "M^2(0)" -> 1.23333, "ratio at z = 1" -> 1.0637, "ratio at z = 3" -> 1.09916, "saturation" -> 1.11056], Association["b" -> 0.3, "A0 (closure)" -> -6.134, "M^2(0)" -> 1.525, "ratio at z = 1" -> 1.11695, "ratio at z = 3" -> 1.19807, "saturation" -> 1.23491]}, TypeSystem`Vector[TypeSystem`Struct[{"b", "A0 (closure)", "M^2(0)", "ratio at z = 1", "ratio at z = 3", "saturation"}, {TypeSystem`Atom[Real], TypeSystem`Atom[Real], TypeSystem`Atom[Real], TypeSystem`Atom[Real], TypeSystem`Atom[Real], TypeSystem`Atom[Real]}], 5], Association[]]]|>
+
+%-------------------------------------------------------------------------%
+Key: -1704343993
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*VB[*)(2.220446049250313*^-16)(*,*)(*\"1:eJxtUdtOwkAQrbfE+BXIE7RoLKE8mPCwWykJyMVOtzfCQ1kWUrulLbctxI+3RU2M8eXMmTnzcM7M/Twxl1eSJG3vCuguwl2ysUMmwLuQpJqM8VSu15qPzR9areSVar0mNwouV9Vn1s8ta5hMIB6FXg8l2ooCIq7m+1GawVrB4PiKuzYCT6x0q7Xq2jnE/iQrVOpqphdxheQrAZpA8Ma08ekQaQqxjZfeixC4bSGrt8ABtEY6VWOkbh1uxO576r0OIBlhgsgoYkJ0OtXSzwzjskBaWp0kgm2m6lNN/pDrjTM+qO1ZsVXocv3/DNFXhiEIcOxxEO0zuv52aaeWjnMjRKbdzywnFDpJddPNNUpS8LnSppEdktg4gsNNekIZod3DcEBaBkJebNjJL4/Ly/Li1wWYe87gtiQsWIzX/HieWps9+7NTvgcYZ3QXzDnb3hStEfAt+wT1SYDg\"*)(*]VB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
+%-------------------------------------------------------------------------%
+Key: a0270095-e764-4239-839a-a54498129f40
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[Dataset[{Association["b" -> 0.05, "alpha_M(0), h = 1/100" -> 0.0331943, "same, h = 1/200" -> 0.0331808, "times the LLR bound" -> 15.08], Association["b" -> 0.1, "alpha_M(0), h = 1/100" -> 0.0701316, "same, h = 1/200" -> 0.0701058, "times the LLR bound" -> 31.87], Association["b" -> 0.2, "alpha_M(0), h = 1/100" -> 0.158491, "same, h = 1/200" -> 0.158443, "times the LLR bound" -> 72.02], Association["b" -> 0.3, "alpha_M(0), h = 1/100" -> 0.274697, "same, h = 1/200" -> 0.274621, "times the LLR bound" -> 124.8]}, TypeSystem`Vector[TypeSystem`Struct[{"b", "alpha_M(0), h = 1/100", "same, h = 1/200", "times the LLR bound"}, {TypeSystem`Atom[Real], TypeSystem`Atom[Real], TypeSystem`Atom[Real], TypeSystem`Atom[Real]}], 4], Association[]]]|>
+
+%-------------------------------------------------------------------------%
+Key: e2d09d31-130f-478c-be5f-44b2cf10b67b
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[Dataset[{Association["check" -> "GR-08 was loaded and supplied its second-order Lagrangians", "ok" -> True], Association["acceptance test" -> "the f(T) tensor kinetic coefficient is -fT a^3 / 2", "ok" -> True], Association["acceptance test" -> "the f(Q) tensor kinetic coefficient is +fQ a^3 / 2", "ok" -> True], Association["acceptance test" -> "c_GW^2 = 1 for both, read off the coefficients", "ok" -> True], Association["check" -> "which is what GR-08 got by its own route", "ok" -> True], Association["acceptance test" -> "M^2 is 1 in both GR limits, so the two sign conventions cancel", "ok" -> True], Association["check" -> "M^2 is -fT for torsion and +fQ for non-metricity", "ok" -> True], Association["check" -> "the tensor mode has a healthy kinetic term away from fT = 0", "ok" -> True], Association["acceptance test" -> "h = u/(a M) removes the friction exactly", "ok" -> True], Association["check" -> "and leaves u'' + (k^2 - z''/z) u = 0", "ok" -> True], Association["acceptance test" -> "the background here agrees with GR-02's, to twelve digits", "ok" -> True], Association["check" -> "b = 0 is exactly general relativity, so M^2 = 1 and the ratio is 1", "ok" -> True], Association["check" -> "M^2 tends back to 1 at high redshift, so the effect saturates", "ok" -> True], Association["check" -> "the effect grows with b", "ok" -> True], Association["acceptance test" -> "at b = 0.2 the siren distance moves by more than five percent", "ok" -> True], Association["acceptance test" -> "which beats the f(R) bound of |fR0|/2 by five orders of magnitude", "ok" -> True], Association["check" -> "the running alpha_M is resolved: halving the step barely moves it", "ok" -> True], Association["check" -> "alpha_M grows with b and vanishes as b does", "ok" -> True], Association["acceptance test" -> "the same running is far above what lunar ranging allows", "ok" -> True], Association["check" -> "even the mildest exponent in the table exceeds that bound", "ok" -> True], Association["check" -> "at b = 1/2 the correction leaves the Friedmann constraint", "ok" -> True], Association["check" -> "so the closure fails there rather than returning a value", "ok" -> True], Association["check" -> "though M^2 still depends on A0 at that b, which is why it would mislead", "ok" -> True]}, TypeSystem`Vector[TypeSystem`Assoc[TypeSystem`Atom[String], TypeSystem`AnyType, TypeSystem`AnyLength], 23], Association[]]]|>
+
+%-------------------------------------------------------------------------%
+Key: -334194417
+%-------------------------------------------------------------------------%
+<|"Public" -> Hold[EditorView["(*VB[*)(0)(*,*)(*\"1:eJxTTMoPSmNmYGAo5gISrimZJflFYZmp5cFtQK6GlpNTtJamhoGmhpYOkNZSMrRK9aoICfHNDwjO9cuOdHfMN033DS4PDg/zT8wuLUzOMw2KzM7RDg0rCHF2qnDLdAwK8yoMCc8sdw4tcA6KqDBNDi0IjsrRNkvODssMzXWrDA7PCUquciwMTXYt8/UONXFzdIzMdQvLt1UC2Rfr5KSlmcYEch4LkAgqzUkN5gAxUhNT/PNyKsGiIUWlqWhqQH4JTs1JTS5JTMpJLWYFct0Sc4pTAWRqQfA=\"*)(*]VB*)", "ReadOnly" -> True, "Selectable" -> False]]|>
+
 %-----------------------------%EndOfObjects%------------------------------%
 
 
